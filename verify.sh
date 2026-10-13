@@ -52,13 +52,13 @@ if command -v gcc >/dev/null; then
   check "C: 51 graphs stuck"           "$(echo "$R" | grep -c '(atascada=1)')" 51
   check "C: 51 graphs re-found by --modo atascadas" "$(grep -v '^#' data/stuck_14_K4free.g6 | /tmp/atascadas_verify --modo atascadas | wc -l)" 51
   check "C: G14a+{0,1} is I_S"         "$(echo 'M_b@bFHNEk@~|k}U?' | /tmp/atascadas_verify --modo verificar | grep -c 'I_S=1 ')" 1
-  for n in 3 4 5 6 7 8 9; do check "C: almost-stuck graphs on $n vertices" "$(geng -cq $n 2>/dev/null | /tmp/atascadas_verify --modo casi 2>/dev/null | wc -l)" 0; done
   check "C: G14a I-contractible (icert)" "$(echo 'M?b@bFHNEk@~|k}U?' | /tmp/atascadas_verify --modo icert --prof 1 | grep -c 'I-CONTRAIBLE')" 1
 else echo "  gcc not found — skipped"; fi
 
 echo "== Level 2: cardinality table (geng) =="
 if command -v geng >/dev/null; then
   NMAX=9; [ "${1:-}" = "--full-table" ] && NMAX=11
+  for n in 3 4 5 6 7 8 9; do check "almost-stuck graphs on $n vertices (Prop. 3.6)" "$(geng -cq $n | /tmp/atascadas_verify --modo casi 2>/dev/null | wc -l)" 0; done
   for n in $(seq 3 $NMAX); do grep -q "^n=$n " data/table_cardinalities_raw.txt || { echo "  (row n=$n not yet in data file)"; continue; }
     got=$(geng -cq $n | /tmp/atascadas_verify --modo tabla 2>&1)
     exp=$(grep "^n=$n " data/table_cardinalities_raw.txt)
