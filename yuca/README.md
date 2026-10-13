@@ -1,0 +1,44 @@
+# Cluster runs (YUCA, ACARUS – Universidad de Sonora)
+
+All runs follow the same pattern: a 1-core *wrapper* job (`envoltorio_*.sh`) compiles the program, writes the
+array-task script and submits `sbatch --export=NONE --array=0-6` of 64-core tasks (SLURM partition `cpu`).  Task `t`
+processes the `res/mod` slices r ≡ t (mod 7) of the `geng` enumeration with 64 parallel processes (`xargs -P 64`),
+appending the found graphs and the slice number to per-task registries (`enc_t*.txt`, `listas_t*.txt`) under a file
+lock, so a run can be resumed.  For n = 14 a second front ran on account p011 with slices in descending order
+(`envoltorio_n14_K4libre_p011.sh`); both fronts shared the registries.
+
+| run | wrapper | geng command | slices | SLURM arrays | cores | wall |
+|---|---|---|---|---|---|---|
+| n = 12, full table | `envoltorio_n12_tabla.sh` | `geng -c 12 r/4000` | 4,000 | 2079049 / 2079051 | 448 | 8 min |
+| n = 13, stuck graphs | `envoltorio_n13_atascadas.sh` | `geng -C -d4 -D11 13 r/200000` | 200,000 | 2079058 / 2079059 | 448 | 7 h 10 min |
+| n = 14 K₄-free, stuck graphs | `envoltorio_n14_K4libre.sh`, `…_p011.sh` | `geng28 -k -C -d4 -D12 14 r/2000000` | 2,000,000 | 2079102 (p029), 2079156 (p011) | 896 | ≈ 33 h |
+| n = 13, full table | `envoltorio_n13_tabla.sh`, `…_p011.sh` | `geng -c 13 r/200000` | 200,000 | 2084597 (p029), 2084636 (p011) | 896 | in progress |
+| n = 14 K₄-free, full table | `envoltorio_n14_K4libre_tabla.sh` | `geng28 -k -c 14 r/2000000` | 2,000,000 | — | — | queued |
+
+`geng28` is `geng` from nauty 2.8.x compiled in the project directory (the cluster's nauty 2.7r4 `geng` does not
+support `-k`).
+
+## Hardware and software (recorded on node amdcpu-hpc-01, 2026-10-13)
+
+CPU partition: 24 nodes, each with two AMD EPYC 9354 32-core processors (64 cores, 1 thread/core) and 1,031,112 MB of RAM; Rocky Linux 9.6, kernel 5.14; SLURM 24.11.1; gcc 11.5.0; nauty 2.7r4 (`geng`) and nauty 2.8 (`geng28`, built in the project directory). Full `lscpu`, `scontrol`, `sinfo`, `sacct` and `sacctmgr` dumps are archived in the project's Dropbox folder (`10_yuca_raw/sistema/`).
+
+## `logs/`
+
+* `n12_*`, `n13_*`, `n14_*`: the `bitacora` (wrapper log), `resumen` (totals of the filter cascade: `total`, `pasa_cono`,
+  `pasa_chi`, `pasa_vecindades`, `pasa_aristas`, `encontradas`), `encontradas` (graphs found, labelled, before isomorphism
+  reduction), `sacct` accounting output.
+* `n14_listas_distintas.txt.gz`: the 2,000,000 distinct slice numbers processed (coverage proof); `n14_faltantes_n14.txt`
+  is empty (0 missing slices); `n14_duplicadas.txt` lists the 692 slices processed by both fronts (identical outputs);
+  `n14_pordir_n14.txt` counts result files per output directory; `n14_cobertura_n14.txt` is the coverage summary.
+
+## `as_run/` — sources and task scripts exactly as executed
+
+| file | SHA-256 |
+|---|---|
+| `atascadas_n12.c` | `0c3a1a71c132fd697fe0ae0198f2796743bf2386614525cb5052734169d4bc23` |
+| `atascadas_n13.c` | `0c3a1a71c132fd697fe0ae0198f2796743bf2386614525cb5052734169d4bc23` |
+| `atascadas_n14.c` | `d97e8bf58ce368b855eb182b241aaaebf571639fed4be55db42805ae6ae0e199` |
+| `tarea_n12.sh` | `6f575822b9f9eb208ee9bd0c7a6e28e2065f96e0936450b889bf27eb638349f8` |
+| `tarea_n13.sh` | `953ec4d1f0e898c2c878a0098f77c80032b57a1bee6300b0fe9a5b69f23e937f` |
+| `tarea_n14_p011.sh` | `50477550293c8442ee6368b360dbeade20144fe8f20be54f32571d263018b320` |
+| `tarea_n14_p029.sh` | `41fb94bc2d444c225bc0117214b452319e3f131933862e5d899cf5b92bbcfe84` |

@@ -1,0 +1,67 @@
+# Integer homology of the clique complexes (tools/clique_homology.py, exact Smith normal form).
+## data/acyclic_not_strong_13.g6
+L?qa``{wttym~o  n=13 m=40 tri=28 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+L?qa`p{wttym~o  n=13 m=41 tri=29 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+L?qahp{wttym~o  n=13 m=42 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+## data/stuck_14_K4free.g6
+M?`cu_whRRFZ~Wtm?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa`g{guLzwmkU]?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?b@bFHNEk@~|k}U?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+M?qa``{wvkVUt[}Q?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``{ws}Lxmkt[?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``[NNEYlme~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``kMmMIniu~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``kLeE^wt]i}?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa`jSwubncvomd?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``{ufEUimitY?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``{rfEEymitY?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa`awwRxYj{k~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``[iUEylNm~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`cv@UNDNZMtsY{?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``[iej[ZNk~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``[icjk^Nk~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?b@bCw`usLvvw{]?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?B@thku?~Lylk}[?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+M?qa`awkmiNdwu~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+MCOfczgVB]UeM{p{?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qaejaLe[ngmh{[?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?r@daiRbrTYd{tb?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?qa``kifEfUtZ~o?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?r@d`ifbiFfo}~o?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+M?bB@aXdbY[{Nmuu?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aXyTkYZxw^M?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aXlbYFfxwuu?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWqplQzZ]|w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWZTkFf|wuu?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWZSmXZ|wNm?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWdbYFv|wuu?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWdbZEv|wuu?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`FSzcVBmVFs{J{?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWyTkYZ^M|w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@aWYTkZZ^M|w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@_WubXNJlm~w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@_Wu`ZJjlm~w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@_WmbRJZ|M~w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@_WsbX^Jlm~w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?bB@_WsequuZZ~w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?B@cXemAuB}ze{]?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`@E_wDf[UnU}z{?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?B@cXamAu\r{]V{?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+MCp`faiFf{W}][js?  n=14 m=47 tri=34 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`Db_kVcyl]hyvw?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`adL[mBkvLY{d{?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`Db_khi{L\nUvw?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?BDA_wqpmJvj]|w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`adQWtVDUr[]^w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?`adQWT\LK^du^w?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+M?otU`SmVEKm]M^o?  n=14 m=43 tri=30 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=Z/3  H~2=0  NOT Z-acyclic
+## data/minimal_I_not_strong_14.g6
+M?b@bFHNEk@~|k}U?  n=14 m=44 tri=31 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+M?B@thku?~Lylk}[?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+M?r@d`ifbiFfo}~o?  n=14 m=45 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+M_b@bFHNEk@~|k}U?  n=14 m=45 tri=36 K4=4  Z2-betti=[0, 0, 0, 0]  H~0=0  H~1=0  H~2=0  H~3=0  Z-acyclic
+MCB@thku?~Lylk}[?  n=14 m=46 tri=36 K4=3  Z2-betti=[0, 0, 0, 0]  H~0=0  H~1=0  H~2=0  H~3=0  Z-acyclic
+M@r@d`ifbiFfo}~o?  n=14 m=46 tri=37 K4=4  Z2-betti=[0, 0, 0, 0]  H~0=0  H~1=0  H~2=0  H~3=0  Z-acyclic
+## data/dunce_hat_15.g6
+N|thHsL`sHoI`RPOwLG  n=15 m=46 tri=32 K4=0  Z2-betti=[0, 0, 0]  H~0=0  H~1=0  H~2=0  Z-acyclic
+N|thHsL`sHoI`VPOwLG  n=15 m=47 tri=37 K4=4  Z2-betti=[0, 0, 0, 0]  H~0=0  H~1=0  H~2=0  H~3=0  Z-acyclic

@@ -1,0 +1,14 @@
+# Extended cardinality table (connected graphs on n vertices).  n<=11 computed locally with atascadas --modo tabla; n=12 on YUCA (yuca/logs/n12_*).
+# "I-contractible" counts J_S plus Z2-acyclic graphs certified by <=3 I4-edge additions; "I-undecided" = Z2-acyclic graphs with no such certificate (0 for all n<=11).
+# Empty cell = not computed in that run.  n=13 (full) and n=14 (K4-free class) rows: computation in progress on YUCA.
+n,connected,chi=1,Z2-acyclic,I-contractible,I-undecided,strong I-contractible (J_S),J_VS,3-Dis,2-Dis,1-Dis,0-Dis,(-1)-Dis
+3,2,2,2,2,0,2,2,2,2,2,2,2
+4,6,5,5,5,0,5,5,5,5,5,5,4
+5,21,16,16,16,0,16,16,16,16,16,16,11
+6,112,68,68,68,0,68,68,68,68,68,68,34
+7,853,404,403,403,0,403,403,403,403,403,403,156
+8,11117,3837,3798,3798,0,3798,3798,3798,3798,3798,3791,1044
+9,261080,68458,66167,66167,0,66167,66167,66167,66167,66167,65561,12346
+10,11716571,2571263,2343148,2343148,0,2343148,2343148,2343148,2343148,2343148,2258314,274668
+11,1006700565,204131202,166978401,166978401,0,166978401,166978389,166978389,166978389,166978389,151084672,12005168
+12,164059830476,32482574568,22666537431,22666537431,0,22666537431,22666525713,,,,18510237804,

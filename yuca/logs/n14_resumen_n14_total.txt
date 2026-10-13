@@ -1,0 +1,9 @@
+encontradas=51
+n=2000000
+pasa_aristas=13536597
+pasa_chi=1462235073536
+pasa_cono=48303369131820
+pasa_vecindades=108022349478
+total=64856470381820
+encontradas_distintas=51
+rebanadas_duplicadas=692

@@ -1,0 +1,31 @@
+# All 29 graphs on 14 vertices that are I-contractible but NOT strong I-contractible and lie in the I4-closure of the 51 stuck K4-free graphs (pairwise non-isomorphic); 8 of them are K4-free.
+# Columns (tab-separated): graph6 | edges | K4 count | stuck graph of origin | number of added edges
+M?b@bFHNEk@~|k}U?	44	0	M?b@bFHNEk@~|k}U?	0
+M?B@thku?~Lylk}[?	45	0	M?B@thku?~Lylk}[?	0
+M?b@bFXNEk@~|k}U?	45	0	M?b@bFHNEk@~|k}U?	1
+M?b@rFHNEk@~|k}U?	45	0	M?b@bFHNEk@~|k}U?	1
+M?b`bFHNEk@~|k}U?	45	1	M?b@bFHNEk@~|k}U?	1
+M?f@bFHNEk@~|k}U?	45	1	M?b@bFHNEk@~|k}U?	1
+M?j@bFHNEk@~|k}U?	45	1	M?b@bFHNEk@~|k}U?	1
+M?r@d`ifbiFfo}~o?	45	0	M?r@d`ifbiFfo}~o?	0
+M?B@thkuC~Lylk}[?	46	1	M?B@thku?~Lylk}[?	1
+M?BDthku?~Lylk}[?	46	0	M?B@thku?~Lylk}[?	1
+M?b@rFXNEk@~|k}U?	46	0	M?b@bFHNEk@~|k}U?	2
+M?b@thku?~Lylk}[?	46	1	M?B@thku?~Lylk}[?	1
+M?b`bFXNEk@~|k}U?	46	1	M?b@bFHNEk@~|k}U?	2
+M?b`rFHNEk@~|k}U?	46	1	M?b@bFHNEk@~|k}U?	2
+M?f`bFHNEk@~|k}U?	46	2	M?b@bFHNEk@~|k}U?	2
+M?j@bFXNEk@~|k}U?	46	1	M?b@bFHNEk@~|k}U?	2
+M?j`bFHNEk@~|k}U?	46	2	M?b@bFHNEk@~|k}U?	2
+M?n@bFHNEk@~|k}U?	46	2	M?b@bFHNEk@~|k}U?	2
+MOr@d`ifbiFfo}~o?	46	1	M?r@d`ifbiFfo}~o?	1
+M?B@thkuE~Lylk}[?	47	2	M?B@thku?~Lylk}[?	2
+M?BDthkuA~Lylk}[?	47	1	M?B@thku?~Lylk}[?	2
+M?BFthku?~Lylk}[?	47	0	M?B@thku?~Lylk}[?	2
+M?b@thkuA~Lylk}[?	47	2	M?B@thku?~Lylk}[?	2
+M?bBthku?~Lylk}[?	47	1	M?B@thku?~Lylk}[?	2
+M?b`rFXNEk@~|k}U?	47	1	M?b@bFHNEk@~|k}U?	3
+M?j`bFXNEk@~|k}U?	47	2	M?b@bFHNEk@~|k}U?	3
+M?n`bFHNEk@~|k}U?	47	3	M?b@bFHNEk@~|k}U?	3
+MAb@thku?~Lylk}[?	47	2	M?B@thku?~Lylk}[?	2
+MOr@dpifbiFfo}~o?	47	2	M?r@d`ifbiFfo}~o?	2

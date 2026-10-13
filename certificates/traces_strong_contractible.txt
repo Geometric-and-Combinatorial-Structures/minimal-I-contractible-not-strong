@@ -1,0 +1,87 @@
+# Deletion sequences certifying strong I-contractibility (J_S) of G + e for the three minimal examples.
+# Produced by tools/strong_contractible.py (exact search).  Vertex labels are those of the graph6 string.
+# Each step deletes a vertex v with N(v) in J_S, or an edge uv with N(u) cap N(v) in J_S, in the current graph.
+
+M?b@bFHNEk@~|k}U? +{0,1}  n=14 m=45  in J_S
+   1. delete edge 0-5
+   2. delete edge 0-10
+   3. delete edge 0-12
+   4. delete edge 8-12
+   5. delete edge 1-12
+   6. delete vertex 5
+   7. delete vertex 10
+   8. delete vertex 3
+   9. delete vertex 6
+  10. delete vertex 2
+  11. delete vertex 7
+  12. delete vertex 1
+  13. delete vertex 0
+  14. delete vertex 4
+  15. delete vertex 8
+  16. delete vertex 11
+  17. delete vertex 12
+  18. delete vertex 9
+  -> K_1 after 18 deletions
+
+M?B@thku?~Lylk}[? +{0,3}  n=14 m=46  in J_S
+   1. delete edge 0-9
+   2. delete edge 0-13
+   3. delete edge 9-12
+   4. delete edge 3-9
+   5. delete edge 3-13
+   6. delete edge 7-13
+   7. delete vertex 2
+   8. delete vertex 6
+   9. delete vertex 3
+  10. delete vertex 0
+  11. delete vertex 4
+  12. delete vertex 7
+  13. delete vertex 5
+  14. delete vertex 1
+  15. delete vertex 10
+  16. delete vertex 11
+  17. delete vertex 9
+  18. delete vertex 12
+  19. delete vertex 8
+  -> K_1 after 19 deletions
+
+M?r@d`ifbiFfo}~o? +{2,3}  n=14 m=46  in J_S
+   1. delete edge 2-7
+   2. delete edge 2-10
+   3. delete edge 2-13
+   4. delete edge 6-13
+   5. delete edge 3-13
+   6. delete vertex 7
+   7. delete vertex 10
+   8. delete vertex 1
+   9. delete vertex 4
+  10. delete vertex 0
+  11. delete vertex 8
+  12. delete vertex 2
+  13. delete vertex 3
+  14. delete vertex 6
+  15. delete vertex 11
+  16. delete vertex 12
+  17. delete vertex 9
+  18. delete vertex 5
+  -> K_1 after 18 deletions
+
+# Dunce hat (Fig. 2A of DEFH 2023) plus the edge of Fig. 2B:
+N|thHsL`sHoI`RPOwLG +{9,12}  n=15 m=47  in J_S
+   1. delete vertex 11
+   2. delete edge 0-9
+   3. delete edge 0-12
+   4. delete vertex 10
+   5. delete vertex 8
+   6. delete vertex 4
+   7. delete vertex 0
+   8. delete vertex 1
+   9. delete vertex 2
+  10. delete vertex 3
+  11. delete vertex 5
+  12. delete vertex 6
+  13. delete vertex 7
+  14. delete vertex 9
+  15. delete vertex 12
+  16. delete vertex 13
+  -> K_1 after 16 deletions

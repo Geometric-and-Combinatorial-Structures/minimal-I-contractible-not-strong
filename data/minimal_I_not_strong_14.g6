@@ -1,0 +1,9 @@
+# Minimal graphs that are I-contractible but NOT strong I-contractible (14 vertices, K4-free, stuck).
+# graph6 | edges | triangles | |Aut| | edge e to add (graph6 vertex labels) with N(e) in J_S such that G+e is in J_S
+M?b@bFHNEk@~|k}U?	44	31	1	{0,1}	G14a
+M?B@thku?~Lylk}[?	45	32	2	{0,3}	G14b
+M?r@d`ifbiFfo}~o?	45	32	2	{2,3}	G14c
+# The strong I-contractible graphs G+e:
+M_b@bFHNEk@~|k}U?	45	32	-	G14a+{0,1}
+MCB@thku?~Lylk}[?	46	33	-	G14b+{0,3}
+M@r@d`ifbiFfo}~o?	46	33	-	G14c+{2,3}

@@ -1,0 +1,93 @@
+\documentclass[preprint,12pt]{elsarticle}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{siunitx}
+\sisetup{group-separator={,},group-minimum-digits=4}
+\usepackage[colorlinks,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\graphicspath{{figures/}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\newcommand{\I}{\mathfrak{I}}
+\newcommand{\IS}{\mathfrak{I}_S}
+\newcommand{\IVS}{\mathfrak{I}_{VS}}
+\newcommand{\Dis}[1]{#1\text{-Dis}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Ztwo}{\mathbb{Z}_2}
+\newcommand{\cl}{\Delta}
+\newcommand{\Nb}{N}
+\newcommand{\gsix}[1]{\texttt{#1}}
+\newcommand{\Ga}{G_{14}^{a}}
+\newcommand{\Gb}{G_{14}^{b}}
+\newcommand{\Gc}{G_{14}^{c}}
+\newcommand{\Gt}{G_{13}}
+\newcommand{\Dunce}{D_{15}}
+\newcommand{\repo}{\url{https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong}}
+
+\journal{Discrete Mathematics}
+
+\begin{document}
+\begin{frontmatter}
+
+\title{The smallest I-contractible graphs that are not strong I-contractible,\\ and odd torsion in flag complexes on thirteen vertices}
+
+\author[unison]{Jes\'us F. Espinoza\corref{cor1}}
+\ead{jesusfrancisco.espinoza@unison.mx}
+\author[unison]{Mart\'in Eduardo Fr\'ias-Armenta}
+\author[unison]{H\'ector A. Hern\'andez}
+\cortext[cor1]{Corresponding author}
+\address[unison]{Departamento de Matem\'aticas, Universidad de Sonora, Hermosillo, Sonora, M\'exico}
+
+\begin{abstract}
+Ivashchenko's contractible transformations define a hierarchy of graph classes $\IVS\subseteq\IS\subseteq\I$ (vertex-strong, strong and plain I-contractible graphs) whose clique complexes are contractible. Dochtermann, Espinoza, Fr\'ias-Armenta and Hern\'andez [Discrete Math.\ 346 (2023) 113516] exhibited a $15$-vertex flag triangulation of the dunce hat lying in $\I\setminus\IS$ and conjectured that it is the smallest graph with trivial $\Ztwo$-homology that is not strong I-contractible, and in particular the smallest member of $\I\setminus\IS$. We refute both statements by an exhaustive, certified computer search of $2.1\times10^{13}$ graphs on $13$ vertices and $6.5\times10^{13}$ $K_4$-free graphs on $14$ vertices, carried out on the YUCA cluster after a reduction to ``stuck'' graphs (no vertex and no edge admits a strong contractible deletion). The smallest $\Ztwo$-acyclic graphs outside $\IS$ have $13$ vertices: there are exactly three, and the clique complex of each has $H_1\cong\ZZ/3$, so they are Moore spaces $M(\ZZ/3,1)$ and---by a result of Adamaszek on torsion in flag complexes with at most $12$ vertices---the smallest flag complexes with odd torsion. The smallest members of $\I\setminus\IS$ have $14$ vertices; within the $K_4$-free class there are exactly three stuck ones, each a flag triangulation of a disc whose boundary is identified along a cycle of length $4$, $5$ or $6$ with the dunce-hat pattern $a\,a\,a^{-1}$. The same examples refute Conjecture~15 of the cited paper with exact minimum $14$. We extend the enumeration of the classes $\I$, $\IS$, $\IVS$ and $k$-dismantlable graphs to $12$ vertices, give pseudocode for all algorithms, and release code, data and machine-checkable certificates.
+\end{abstract}
+
+\begin{keyword}
+contractible transformations \sep I-contractible graphs \sep strong I-contractible graphs \sep clique complex \sep dunce hat \sep torsion \sep exhaustive enumeration
+\MSC[2020] 05C10 \sep 05C85 \sep 55U10 \sep 57Q10
+\end{keyword}
+\end{frontmatter}
+
+\input{sections/01_intro}
+\input{sections/02_prelim}
+\input{sections/03_reduction}
+\input{sections/04_algorithms}
+\input{sections/05_table}
+\input{sections/06_examples}
+\input{sections/07_consequences}
+\input{sections/08_data}
+
+\section*{Acknowledgements}
+The computations were carried out on the YUCA cluster of the \'Area de C\'omputo de Alto Rendimiento de la Universidad de Sonora (ACARUS), under projects p029 and p011; we thank ACARUS for the computing time and technical support. Graph enumeration used \texttt{geng} from McKay and Piperno's \emph{nauty/Traces}~\cite{McKayPiperno2014}.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\appendix
+\input{sections/A_proofs}
+\input{sections/B_tables}
+\input{sections/C_certificates}
+\input{sections/D_cluster}
+
+\end{document}

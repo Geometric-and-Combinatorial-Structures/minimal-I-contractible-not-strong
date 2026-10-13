@@ -1,0 +1,11 @@
+# build products
+src/atascadas
+*.o
+# LaTeX intermediates (main.pdf is tracked on purpose)
+paper/*.aux
+paper/*.log
+paper/*.blg
+paper/*.bbl
+paper/*.out
+paper/*.toc
+__pycache__/

@@ -1,0 +1,21 @@
+\section{The extended cardinality table}\label{sec:table}
+
+Table~\ref{tab:card} lists, for connected graphs on $n\le 12$ vertices, the number of graphs in each of the classes of Section~\ref{sec:prelim}. The rows $n\le 11$ coincide cell by cell with Table~1 of~\cite{DEFH2023}; the column $\I$ is new (it was obtained by certifying every $\Ztwo$-acyclic graph outside $\IS$ with Algorithm~\ref{alg:icert}, which for $n\le 12$ is vacuous since every $\Ztwo$-acyclic graph is in $\IS$). The row $n=12$ was computed on the cluster in $8$ minutes (Table~\ref{tab:runs}) and gives the new value $|\IVS(12)|=\num{22666525713}$; the columns $3$-Dis, $2$-Dis, $1$-Dis and $(-1)$-Dis for $n=12$ were not part of that run and are being computed together with the row $n=13$.
+
+\begin{sidewaystable}
+\centering\footnotesize
+\caption{Numbers of connected graphs on $n$ vertices in each class. Rows $n\le 11$ agree with~\cite[Table~1]{DEFH2023}. $^{\dagger}$For $n=14$ only the $K_4$-free class has been searched.}\label{tab:card}
+\setlength{\tabcolsep}{3pt}
+\resizebox{\textheight}{!}{\input{tables/table_cardinalities}}
+\end{sidewaystable}
+
+Several patterns in the table are worth recording.
+
+\begin{observation}\label{obs:table}
+\begin{enumerate}[label=(\roman*)]
+\item For $n\le 12$ every $\Ztwo$-acyclic graph is strong I-contractible: $\Ztwo\text{-acyclic}=\I=\IS$. The first exceptions occur at $n=13$ and are the three torsion graphs of Theorem~\ref{thm:A}; the first members of $\I\setminus\IS$ occur at $n=14$ (Theorem~\ref{thm:B}).
+\item $\IVS=2\text{-Dis}=3\text{-Dis}$ for all $n\le 11$, and $|\IVS(12)|$ agrees with the value of $|2\text{-Dis}(12)|$ obtained in an independent (unpublished, 2025) computation by the authors; thus $\IVS=2\text{-Dis}$ up to $12$ vertices, and a graph in $\IVS$ that is not $2$-dismantlable, if any, has at least $13$ vertices.
+\item $\IS\ne\IVS$ first at $n=11$ (twelve graphs; the smallest members of $\IS\setminus\IVS$ of~\cite{DEFH2023}), and $|\IS(12)|-|\IVS(12)|=\num{11718}$.
+\item $\chi=1$ but not $\Ztwo$-acyclic first at $n=7$ (one graph), and the gap grows to $\num{9816037137}$ graphs at $n=12$.
+\end{enumerate}
+\end{observation}

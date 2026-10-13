@@ -1,0 +1,5 @@
+# Flag triangulation of the dunce hat on 15 vertices (Dochtermann et al. 2023, Fig. 2A): 46 edges, 32 triangles, stuck, not in J_S.
+# Second line: the same graph plus the edge {5,7} of Fig. 2B (= edge {9,12} in the vertex labels of the graph6 string), which is in J_S.
+# Vertex labels of the graph6 string were assigned by insertion order in tools/dunce_hat.py; see that file for the triangle list in the labels of Fig. 2.
+N|thHsL`sHoI`RPOwLG
+N|thHsL`sHoI`VPOwLG

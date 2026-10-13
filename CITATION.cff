@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the repository and the accompanying paper."
+title: "Minimal I-contractible graphs that are not strong I-contractible: code, data and certificates"
+type: software
+authors:
+  - family-names: Espinoza
+    given-names: Jesús F.
+    affiliation: Universidad de Sonora
+  - family-names: Frías-Armenta
+    given-names: Martín Eduardo
+    affiliation: Universidad de Sonora
+  - family-names: Hernández
+    given-names: Héctor A.
+    affiliation: Universidad de Sonora
+repository-code: https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong
+license: MIT
+date-released: 2026-10-13
+version: 1.0.0
+keywords:
+  - I-contractible graphs
+  - strong I-contractible graphs
+  - clique complex
+  - dunce hat
+  - torsion
+  - exhaustive graph enumeration
