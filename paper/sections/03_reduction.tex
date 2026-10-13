@@ -3,7 +3,7 @@
 The number of connected graphs on $13$ vertices ($\num{50335907869219}\approx 5.0\times 10^{13}$) and on $14$ vertices ($\approx 2.9\times 10^{16}$; OEIS A001349) makes a naive search for the smallest member of $\I\setminus\IS$ impractical: deciding $\IS$ exactly costs microseconds to milliseconds per graph. The following observation turns the search for a smallest counterexample into a search for a much rarer kind of graph.
 
 \begin{definition}\label{def:stuck}
-A graph $G$ is \emph{stuck} if it is $\Ztwo$-acyclic and has no $\IS$-deletable vertex and no $\IS$-deletable edge, i.e.\ $\Nb(v)\notin\IS$ for every vertex $v$ and $\Nb(u,v)\notin\IS$ for every edge $uv$ (recall that $\emptyset\notin\IS$). A graph $A$ with a distinguished vertex $u$ is \emph{almost stuck at $u$} if it is $\Ztwo$-acyclic, has no $\IS$-deletable edge, and no vertex other than $u$ is $\IS$-deletable ($u$ itself may or may not be).
+A graph $G$ on at least two vertices is \emph{stuck} if it is $\Ztwo$-acyclic and has no $\IS$-deletable vertex and no $\IS$-deletable edge, i.e.\ $\Nb(v)\notin\IS$ for every vertex $v$ and $\Nb(u,v)\notin\IS$ for every edge $uv$ (recall that $\emptyset\notin\IS$). A graph $A$ with a distinguished vertex $u$ is \emph{almost stuck at $u$} if it is $\Ztwo$-acyclic, has no $\IS$-deletable edge, and no vertex other than $u$ is $\IS$-deletable ($u$ itself may or may not be).
 \end{definition}
 
 A stuck graph is trivially outside $\IS$: it admits no strong contractible move at all. Conversely:
@@ -29,20 +29,22 @@ The proofs are elementary and are given in \ref{app:proofs}; Fig.~\ref{fig:wedge
 \centering
 \includegraphics[width=0.75\textwidth]{fig08.pdf}
 \caption{Lemma~\ref{lem:2conn}: if a stuck graph $G=A\cup_u B$ has a cut vertex $u$, the neighbourhoods of all vertices and edges of $A$ other than $u$ are computed inside $A$, so $A$ is almost stuck at $u$. Since no almost stuck graph has at most $11$ vertices (Proposition~\ref{prop:almost}), stuck graphs with at most $22$ vertices are $2$-connected.}\label{fig:wedge}
-\end{figure} To test stuckness during an enumeration one would like to replace the condition ``$\notin\IS$'' on neighbourhoods by the cheaper ``not $\Ztwo$-acyclic''. This is legitimate in the range of this paper:
+\end{figure}
+
+To test stuckness during an enumeration one would like to replace the condition ``$\notin\IS$'' on neighbourhoods by the cheaper ``not $\Ztwo$-acyclic''. This is legitimate in the range of this paper:
 
 \begin{lemma}\label{lem:Z2test}
 Let $G$ be a $\Ztwo$-acyclic graph on $n\le 14$ vertices without a universal vertex. Then $G$ is stuck if and only if no open neighbourhood $\Nb(v)$ and no non-empty common neighbourhood $\Nb(u,v)$ is $\Ztwo$-acyclic. The same holds for ``almost stuck'' when $n\le 11$.
 \end{lemma}
 \begin{proof}
-All neighbourhoods involved have at most $n-2\le 12$ vertices, and for graphs with at most $12$ vertices $\Ztwo$-acyclic is equivalent to $\IS$ (Table~\ref{tab:card}, Theorem~\ref{thm:A}).
+All open and common neighbourhoods involved have at most $n-2\le 12$ vertices (at most $n-1\le 10$ in the almost stuck case), and for graphs with at most $12$ vertices $\Ztwo$-acyclic is equivalent to $\IS$: this is the equality of the columns ``$\Ztwo$-acyclic'' and ``$\IS$'' of Table~\ref{tab:card}, obtained by the exact decision of $\IS$ for every $\Ztwo$-acyclic graph (Observation~\ref{obs:table}(i)); it does not depend on the notion of stuck graph.
 \end{proof}
 
 \begin{proposition}\label{prop:almost}
-There is no almost stuck graph with at most $11$ vertices. Consequently every stuck graph with at most $22$ vertices is $2$-connected.
+There is no almost stuck graph with $2\le n\le 11$ vertices. Consequently every stuck graph with at most $22$ vertices is $2$-connected.
 \end{proposition}
 \begin{proof}
-An almost stuck graph in which $u$ is not $\IS$-deletable is stuck, hence $\Ztwo$-acyclic and outside $\IS$; by Table~\ref{tab:card} there is no such graph with at most $12$ vertices. Algorithm~\ref{alg:stuck} in mode \emph{almost}, which by Lemma~\ref{lem:Z2test} detects exactly the $\Ztwo$-acyclic graphs with no $\IS$-deletable edge and exactly one $\IS$-deletable vertex, was run on all connected graphs with $3\le n\le 11$ vertices ($\num{1006700565}$ graphs for $n=11$) and found none. The second statement is Lemma~\ref{lem:2conn}.
+An almost stuck graph in which $u$ is not $\IS$-deletable is stuck, hence $\Ztwo$-acyclic and outside $\IS$; by Table~\ref{tab:card} there is no such graph with at most $12$ vertices. Algorithm~\ref{alg:stuck} in mode \emph{almost}, which by Lemma~\ref{lem:Z2test} detects exactly the $\Ztwo$-acyclic graphs with no $\IS$-deletable edge and exactly one $\IS$-deletable vertex, was run on all connected graphs with $3\le n\le 11$ vertices ($\num{1006700565}$ graphs for $n=11$) and found none; $K_2$ is not almost stuck since its non-distinguished vertex is $\IS$-deletable. The second statement is Lemma~\ref{lem:2conn}.
 \end{proof}
 
 \begin{theorem}[Reduction]\label{thm:C}
@@ -53,4 +55,4 @@ An almost stuck graph in which $u$ is not $\IS$-deletable is stuck, hence $\Ztwo
 In both cases every stuck graph on $n_i$ vertices is $2$-connected with $4\le\delta\le\Delta\le n_i-2$, and for $n_i\le 14$ stuckness is decided by $\Ztwo$-homology of the neighbourhoods (Lemma~\ref{lem:Z2test}). Hence, to find all graphs of either kind on $n_i$ vertices it suffices to enumerate the $2$-connected graphs with these degree bounds, keep the stuck ones, and compute their $\mathrm{I}_4$-closures.
 \end{theorem}
 
-For $n=13$ the enumeration of $2$-connected graphs with $4\le\delta$ and $\Delta\le 11$ comprises $\num{21011415992470}$ graphs, about $2.4$ times fewer than all connected graphs; the real gain lies in the stuck filter: the cascade of Section~\ref{sec:algorithms} rejects all but a fraction $7.5\times10^{-4}$ of the graphs by looking at cones, the Euler characteristic and a few neighbourhoods, computes the homology of $G$ itself for only $\num{15693920490}$ graphs, and never runs the exact $\IS$ decision during the enumeration. For $n=14$ we restricted the search to $K_4$-free graphs (clique complexes of dimension $2$); this class contains the dunce hat $\Dunce$ and comprises $\num{64856470381820}$ graphs under the same degree constraints. By Theorem~\ref{thm:C}(ii) this determines all $K_4$-free graphs in $\I\setminus\IS$ on $14$ vertices.
+For $n=13$ the enumeration of $2$-connected graphs with $4\le\delta$ and $\Delta\le 11$ comprises $\num{21011415992470}$ graphs, about $2.4$ times fewer than all connected graphs; the real gain lies in the stuck filter: the cascade of Section~\ref{sec:algorithms} rejects all but a fraction $7.5\times10^{-4}$ of the graphs by looking at cones, the Euler characteristic and a few neighbourhoods, examines the common neighbourhoods of only $\num{15693920490}$ graphs, computes the homology of $G$ itself for only $\num{218516}$ graphs, and never runs the exact $\IS$ decision during the enumeration. For $n=14$ we restricted the search to $K_4$-free graphs (clique complexes of dimension $2$); this class contains the dunce hat $\Dunce$ and comprises $\num{64856470381820}$ graphs under the same degree constraints. By Theorem~\ref{thm:C}(ii) this determines all $K_4$-free graphs in $\I\setminus\IS$ on $14$ vertices.

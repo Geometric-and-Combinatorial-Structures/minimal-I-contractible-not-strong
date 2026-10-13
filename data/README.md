@@ -10,6 +10,7 @@ extra columns where indicated).  Vertex labels referred to in other files are th
 | `minimal_I_not_strong_14.g6` | The three minimal members of 𝔍 ∖ 𝔍_S (G14a, G14b, G14c) and the strong I-contractible graphs G + e that certify I-contractibility. |
 | `I_not_strong_14_closure.tsv` | The 29 graphs in 𝔍 ∖ 𝔍_S on 14 vertices lying in the I₄-closure of the 51 stuck graphs (8 of them K₄-free). |
 | `acyclic_not_strong_14_closure.tsv` | The 2,271 ℤ/2-acyclic non-𝔍_S graphs on 14 vertices in that closure (29 contractible, 2,242 with H₁ = ℤ/3). |
+| `closure_G14a.tsv` | The I₄-closure of G14a as computed by `atascadas --modo cerradura` (graphs outside 𝔍_S are expanded; graphs in 𝔍_S are recorded but not expanded): 48 pairwise non-isomorphic graphs, 16 outside 𝔍_S and 32 in 𝔍_S; the latter are the 32 examples for Theorem D (Conjecture 15). |
 | `dunce_hat_15.g6` | Flag dunce hat of DEFH 2023 Fig. 2A and the Fig. 2B graph. |
 | `table_cardinalities_raw.txt` | Rows n = 3 … of the extended cardinality table as printed by `atascadas --modo tabla` (local runs for n ≤ 11; cluster logs in `yuca/logs/` for n = 12, 13). |
 | `table_cardinalities.csv` | The same table in CSV with English column names. |

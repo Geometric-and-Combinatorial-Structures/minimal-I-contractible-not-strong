@@ -52,6 +52,7 @@ if command -v gcc >/dev/null; then
   check "C: 51 graphs stuck"           "$(echo "$R" | grep -c '(atascada=1)')" 51
   check "C: 51 graphs re-found by --modo atascadas" "$(grep -v '^#' data/stuck_14_K4free.g6 | /tmp/atascadas_verify --modo atascadas | wc -l)" 51
   check "C: G14a+{0,1} is I_S"         "$(echo 'M_b@bFHNEk@~|k}U?' | /tmp/atascadas_verify --modo verificar | grep -c 'I_S=1 ')" 1
+  for n in 3 4 5 6 7 8 9; do check "C: almost-stuck graphs on $n vertices" "$(geng -cq $n 2>/dev/null | /tmp/atascadas_verify --modo casi 2>/dev/null | wc -l)" 0; done
   check "C: G14a I-contractible (icert)" "$(echo 'M?b@bFHNEk@~|k}U?' | /tmp/atascadas_verify --modo icert --prof 1 | grep -c 'I-CONTRAIBLE')" 1
 else echo "  gcc not found — skipped"; fi
 

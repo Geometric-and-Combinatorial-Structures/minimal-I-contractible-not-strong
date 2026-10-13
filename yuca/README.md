@@ -24,6 +24,8 @@ CPU partition: 24 nodes, each with two AMD EPYC 9354 32-core processors (64 core
 
 ## `logs/`
 
+* `casi_n03-11.txt`: output of `geng -c n | atascadas --modo casi` for n = 3,…,11 (0 almost-stuck graphs; basis of the 2-connectivity lemma up to 22 vertices). Run locally (n = 11: about 4 min on 8 cores).
+* `n14_bitacora_failed_geng27_array2079068.txt`: log of the first, discarded n = 14 submission (array 2079068, geng 2.7r4 without `-k`: total = 0).
 * `n12_*`, `n13_*`, `n14_*`: the `bitacora` (wrapper log), `resumen` (totals of the filter cascade: `total`, `pasa_cono`,
   `pasa_chi`, `pasa_vecindades`, `pasa_aristas`, `encontradas`), `encontradas` (graphs found, labelled, before isomorphism
   reduction), `sacct` accounting output.
