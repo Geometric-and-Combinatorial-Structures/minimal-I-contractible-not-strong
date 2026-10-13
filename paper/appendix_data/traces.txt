@@ -1,6 +1,7 @@
-# Deletion sequences certifying strong I-contractibility (J_S) of G + e for the three minimal examples.
-# Produced by tools/strong_contractible.py (exact search).  Vertex labels are those of the graph6 string.
-# Each step deletes a vertex v with N(v) in J_S, or an edge uv with N(u) cap N(v) in J_S, in the current graph.
+# Deletion sequences certifying strong I-contractibility (J_S) of G + e
+# for the three minimal examples (tools/strong_contractible.py, exact search).
+# Vertex labels are those of the graph6 string. Each step deletes a vertex v
+# with N(v) in J_S, or an edge uv with N(u) cap N(v) in J_S, in the current graph.
 
 M?b@bFHNEk@~|k}U? +{0,1}  n=14 m=45  in J_S
    1. delete edge 0-5

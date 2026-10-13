@@ -23,7 +23,13 @@ Let $G$ be a stuck graph with a cut vertex $u$, so that $G=A\cup_u B$ with $A$, 
 Let $G$ be a $2$-connected stuck graph on $n\ge 2$ vertices. Then every edge of $G$ lies in a triangle, every common neighbourhood $\Nb(u,v)$ is non-empty, $\delta(G)\ge 4$ and $\Delta(G)\le n-2$.
 \end{lemma}
 
-The proofs are elementary and are given in \ref{app:proofs}. To test stuckness during an enumeration one would like to replace the condition ``$\notin\IS$'' on neighbourhoods by the cheaper ``not $\Ztwo$-acyclic''. This is legitimate in the range of this paper:
+The proofs are elementary and are given in \ref{app:proofs}; Fig.~\ref{fig:wedge} illustrates Lemma~\ref{lem:2conn}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.75\textwidth]{fig08.pdf}
+\caption{Lemma~\ref{lem:2conn}: if a stuck graph $G=A\cup_u B$ has a cut vertex $u$, the neighbourhoods of all vertices and edges of $A$ other than $u$ are computed inside $A$, so $A$ is almost stuck at $u$. Since no almost stuck graph has at most $11$ vertices (Proposition~\ref{prop:almost}), stuck graphs with at most $22$ vertices are $2$-connected.}\label{fig:wedge}
+\end{figure} To test stuckness during an enumeration one would like to replace the condition ``$\notin\IS$'' on neighbourhoods by the cheaper ``not $\Ztwo$-acyclic''. This is legitimate in the range of this paper:
 
 \begin{lemma}\label{lem:Z2test}
 Let $G$ be a $\Ztwo$-acyclic graph on $n\le 14$ vertices without a universal vertex. Then $G$ is stuck if and only if no open neighbourhood $\Nb(v)$ and no non-empty common neighbourhood $\Nb(u,v)$ is $\Ztwo$-acyclic. The same holds for ``almost stuck'' when $n\le 11$.

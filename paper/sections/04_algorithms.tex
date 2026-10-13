@@ -60,7 +60,13 @@ For a $K_4$-free candidate we cut $\cl(G)$ along the edges lying in three triang
 
 \subsection{The distributed search}
 
-The enumeration was run on the YUCA cluster of ACARUS (Universidad de Sonora): CPU partition of $24$ nodes with two $32$-core AMD EPYC 9354 processors ($64$ cores, no hyper-threading) and $1$\,TB of RAM each, Rocky Linux 9.6, SLURM 24.11, Lustre file system, SLURM with a per-project quality-of-service limit of $500$ cores, \texttt{gcc}~11, \texttt{nauty}~2.7r4 (and \texttt{nauty}~2.8 compiled locally for the $K_4$-free option \texttt{-k} of \texttt{geng}). Algorithm~\ref{alg:dist} describes the workflow; the exact scripts are in the repository (\texttt{yuca/}).
+The enumeration was run on the YUCA cluster of ACARUS (Universidad de Sonora): CPU partition of $24$ nodes with two $32$-core AMD EPYC 9354 processors ($64$ cores, no hyper-threading) and $1$\,TB of RAM each, Rocky Linux 9.6, SLURM 24.11, Lustre file system, SLURM with a per-project quality-of-service limit of $500$ cores, \texttt{gcc}~11, \texttt{nauty}~2.7r4 (and \texttt{nauty}~2.8 compiled locally for the $K_4$-free option \texttt{-k} of \texttt{geng}). Algorithm~\ref{alg:dist} and Fig.~\ref{fig:flow} describe the workflow; the exact scripts are in the repository (\texttt{yuca/}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{fig09.pdf}
+\caption{The computational pipeline: \texttt{geng} enumeration in \texttt{res/mod} slices, the filter cascade of Algorithm~\ref{alg:stuck} (with the survivor counts of the $n=13$ run), $\mathrm{I}_4$-closures, integer homology and certificates; bottom: the three cluster runs.}\label{fig:flow}
+\end{figure}
 
 \begin{algorithm}[t]
 \caption{Distributed search on the cluster}\label{alg:dist}

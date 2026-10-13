@@ -1,0 +1,19 @@
+fig01: text overlaps = 0; texts outside figure box = 1
+fig02b swapped graph g6 = L?qa``{wtlzM~o ; edges = 40 ; false triangles = [(1, 4, 11), (2, 5, 10)] ; K4 = [[1, 4, 8, 11], [2, 5, 8, 10]]
+fig02: text overlaps = 0; texts outside figure box = 0
+G14a: word=[12, 5, 10, 13, 9, 12, 5, 10, 13, 9, 12, 9, 13, 10, 5]; segments=[(0, 5, 'a'), (5, 10, 'a'), (10, 15, 'a⁻¹')]; N(0, 1)=[8, 12, 5, 10, 13]; edges in !=2 triangles=[(5, 10), (5, 12), (9, 12), (9, 13), (10, 13)]; multiplicities={(5, 10): 3, (5, 12): 3, (10, 13): 3, (9, 12): 3, (9, 13): 3}
+fig03: text overlaps = 0; texts outside figure box = 0
+G14b: word=[13, 7, 5, 8, 13, 7, 5, 8, 13, 9, 13, 8, 5, 7, 13, 9]; segments=[(0, 4, 'a'), (4, 8, 'a'), (8, 10, 'spur'), (10, 14, 'a⁻¹'), (14, 16, 'spur')]; N(0, 3)=[7, 13, 9, 12]; edges in !=2 triangles=[(5, 7), (5, 8), (7, 13), (8, 13), (9, 13)]; multiplicities={(5, 7): 3, (7, 13): 3, (9, 13): 4, (5, 8): 3, (8, 13): 3}
+fig04: text overlaps = 0; texts outside figure box = 0
+G14c: word=[13, 7, 10, 11, 9, 0, 13, 7, 10, 11, 9, 0, 13, 0, 9, 11, 10, 7]; segments=[(0, 6, 'a'), (6, 12, 'a'), (12, 18, 'a⁻¹')]; N(2, 3)=[6, 13, 7, 10, 11]; edges in !=2 triangles=[(0, 9), (0, 13), (7, 10), (7, 13), (9, 11), (10, 11)]; multiplicities={(0, 9): 3, (0, 13): 3, (7, 13): 3, (7, 10): 3, (10, 11): 3, (9, 11): 3}
+fig05: text overlaps = 0; texts outside figure box = 0
+certificate G14a+(0, 1): 18 steps replayed, ends in K1 = [13]
+fig06: text overlaps = 0; texts outside figure box = 0
+certificate G14b+(0, 3): 19 steps replayed, ends in K1 = [13]
+fig06b: text overlaps = 0; texts outside figure box = 0
+certificate G14c+(2, 3): 18 steps replayed, ends in K1 = [13]
+fig06c: text overlaps = 0; texts outside figure box = 0
+fig07: 51 graphs; edges histogram {44: 19, 45: 6, 43: 25, 47: 1} ; cycle lengths {'5': 19, '4': 26, '6': 3, "('nd', 4, 5)": 2, "('nd', 4, 8)": 1}
+fig07: text overlaps = 0; texts outside figure box = 2
+fig08: text overlaps = 0; texts outside figure box = 0
+fig09: text overlaps = 0; texts outside figure box = 0
