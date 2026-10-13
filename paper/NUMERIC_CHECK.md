@@ -48,3 +48,13 @@ Método: `verify.sh` del repositorio (31/31 checks OK, niveles 0–2, n≤9), `t
 | 42 | 19 claves `\cite` presentes en `refs.bib`; campos completos | `grep` + `comm`; `main.log` sin citas indefinidas | Sí |
 
 Resumen: 42 ítems; coinciden 34; discrepancias sustantivas 6 (ítems 13/14/15 [misma causa], 32, 34, 39, 40) más 1 corregida en el texto (36); 2 ítems verificados sólo por recomputación porque el dato no está en el repositorio (24, 35); 1 cuestión de registro (33, array 2079068).
+
+
+---
+
+## Nota del editor (autor, 2026-10-13, posterior a la revisión)
+
+* La Tabla B.1 (`tables/stuck51.tex`) se genera mecánicamente desde `data/stuck_14_K4free.tsv` y `data/structure_84_graphs.csv` por `make_tables.py`; su coincidencia con los datos es por construcción. Una comparación intermedia del revisor que reportó "48 mismatches" se debió a comparar la palabra de frontera con una convención de lectura distinta (rotación/orientación), no a valores distintos.
+* Las etiquetas de la Fig. 9 (mosaico de las 51 atascadas: número de aristas y H₁) fueron cotejadas una a una contra `data/stuck_14_K4free.tsv` (51/51 coinciden); las marcas * (anillo) y ** (dos 4-ciclos) coinciden con `structure_84_graphs.csv`.
+* Las correcciones R1-01 a R1-06, R1-12 a R1-14, R2-03 y las propuestas R1-03/R1-04 fueron aplicadas por el autor en la versión v2 (ver `README.md` de esta carpeta y el commit 16950de). Las ediciones R2-01/R2-02 del revisor (Def. 3.1 "on at least two vertices"; Prop. 3.6 "2 ≤ n ≤ 11") SÍ alteran enunciados — el autor las revisó y las acepta: excluyen únicamente el caso vacuo K₁.
+* Tras la v2, `verify.sh` ejecuta 38 comprobaciones (se añadieron las 7 de piezas casi atascadas para n = 3,…,9).
