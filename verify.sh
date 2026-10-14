@@ -43,6 +43,8 @@ check "dunce hat: stuck, not in J_S"  "$(python3 $S --g6 'N|thHsL`sHoI`RPOwLG' -
 check "dunce hat + Fig.2B edge in J_S" "$(python3 $S --g6 'N|thHsL`sHoI`RPOwLG' --add 9 12 | grep -c '  in J_S')" 1
 check "dunce hat: integer-acyclic"    "$(python3 $H --g6 'N|thHsL`sHoI`RPOwLG' | grep -vc 'NOT Z-acyclic')" 1
 
+check "n=12: 20 strictly 2-dismantlable graphs (smallest k = 2)" "$(python3 tools/kdismantlable.py data/strictly_2dis_12.g6 | grep -c 'smallest k with G in k-Dis: 2')" 20
+
 echo "== Level 1: C program (gcc) =="
 if command -v gcc >/dev/null; then
   gcc -O2 -o /tmp/atascadas_verify src/atascadas.c -lm

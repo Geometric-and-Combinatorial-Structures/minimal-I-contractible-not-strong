@@ -1,0 +1,23 @@
+# The 20 connected graphs on 12 vertices that are 2-dismantlable but not 1-dismantlable (exhaustive: geng -c 12, 164,059,830,476 graphs,
+# atascadas --modo 2dis_no_1dis; YUCA array/job 2084929, 14 Oct 2026). No such graph exists on <= 11 vertices. Identical to the list V12.g6 in
+# E2Dis_Acyclic.zip of the authors' 2025 computation. Sorted by number of edges.
+KEhutxmv|~^{
+KEjer^{z}~^{
+KQyurzU~t~^{
+KQyurzU~u~^{
+KEhvtzm||~^{
+KEjeu~m^~z^r
+KEnfbzm||~^{
+KEnfbzm~]~^{
+KEnfbzm~^v^{
+KQyurzuv|~^{
+KQyurzuv~}^{
+KEht~jzz~}^f
+KEjflzz^~}^f
+KEnb~jl~t~^{
+KEnb~jl~v|^{
+KEnff^{^~v^{
+KEnfnZ{~r~^{
+KUZurzm~vv^{
+KEnb~rvz~}^f
+KEzftzv^~}^f

@@ -14,6 +14,7 @@ lock, so a run can be resumed.  For n = 14 a second front ran on account p011 wi
 | n = 14 K₄-free, stuck graphs | `envoltorio_n14_K4libre.sh`, `…_p011.sh` | `geng28 -k -C -d4 -D12 14 r/2000000` | 2,000,000 | 2079102 (p029), 2079156 (p011) | 896 | ≈ 33 h |
 | n = 13, full table | `envoltorio_n13_tabla.sh`, `…_p011.sh` | `geng -c 13 r/200000` | 200,000 | 2084597 (p029), 2084636 (p011) | 896 | 21 h (12 Oct 21:04 – 13 Oct 17:59 MST); 483 slices processed twice, 0 missing; logs `n13_tabla_*` |
 | n = 12, full table v2 (all columns) | `envoltorio_n12_tabla_v2.sh` | `geng -c 12 r/4000` | 4,000 | 2084878 | 448 | 8 min; logs `n12_tabla_v2_*` (counters re-summed with the full key list) |
+| n = 12, 2-Dis ∖ 1-Dis extraction | `d21_n12_48cpu.sh` (single 48-core task) | `geng -c 12 r/4000` | 4,000 | 2084929 | 48 | 47 min; 20 graphs (`data/strictly_2dis_12.*`) |
 | n = 14 K₄-free, full table | `envoltorio_n14_K4libre_tabla_p029.sh` | `geng28 -k -c 14 r/2000000` | 2,000,000 | (submitted 14 Oct) | 448 | in progress |
 
 `geng28` is `geng` from nauty 2.8.x compiled in the project directory (the cluster's nauty 2.7r4 `geng` does not

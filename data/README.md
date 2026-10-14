@@ -11,6 +11,7 @@ extra columns where indicated).  Vertex labels referred to in other files are th
 | `I_not_strong_14_closure.tsv` | The 29 graphs in 𝔍 ∖ 𝔍_S on 14 vertices lying in the I₄-closure of the 51 stuck graphs (8 of them K₄-free). |
 | `acyclic_not_strong_14_closure.tsv` | The 2,271 ℤ/2-acyclic non-𝔍_S graphs on 14 vertices in that closure (29 contractible, 2,242 with H₁ = ℤ/3). |
 | `closure_G14a.tsv` | The I₄-closure of G14a as computed by `atascadas --modo cerradura` (graphs outside 𝔍_S are expanded; graphs in 𝔍_S are recorded but not expanded): 48 pairwise non-isomorphic graphs, 16 outside 𝔍_S and 32 in 𝔍_S; the latter are the 32 examples for Theorem D (Conjecture 15). |
+| `strictly_2dis_12.g6` / `.tsv` | The 20 connected graphs on 12 vertices that are 2-dismantlable but not 1-dismantlable (exhaustive over all connected 12-vertex graphs; none on ≤ 11 vertices); `.tsv` adds edges, triangles, K₄ count, clique number, min/max degree, \|Aut\|. 2-dismantling sequences in `certificates/strictly_2dis_12_traces.txt`. Identical to the list of the authors' 2025 computation. |
 | `dunce_hat_15.g6` | Flag dunce hat of DEFH 2023 Fig. 2A and the Fig. 2B graph. |
 | `table_cardinalities_raw.txt` | Rows n = 3 … of the extended cardinality table as printed by `atascadas --modo tabla` (local runs for n ≤ 11; cluster logs in `yuca/logs/` for n = 12, 13). |
 | `table_cardinalities.csv` | The same table in CSV with English column names. |

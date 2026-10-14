@@ -64,4 +64,15 @@ with open('tables/stuck51.tex','w') as f:
         pat = pattern(g6)
         f.write(f'{i} & {tex_g6(g6)} & {m} & {t} & {h1t} & {ic} & {aut} & {pat} \\\\\n')
     f.write(r'\end{longtable}' + '\n')
+rows = [l.rstrip('\n').split('\t') for l in open('../data/strictly_2dis_12.tsv') if not l.startswith('#')]
+with open('tables/strictly2dis12.tex','w') as f:
+    f.write(r'''\begin{tabular}{@{}rlrrrrrr@{}}
+\toprule
+\# & \texttt{graph6} & $m$ & $t$ & $K_4$ & $\omega$ & $\delta,\Delta$ & $|\mathrm{Aut}|$ \\
+\midrule
+''')
+    for i, r in enumerate(rows, 1):
+        g6, m_, t, k4, om, dmin, dmax, aut = r
+        f.write(f'{i} & {tex_g6(g6)} & {m_} & {t} & {k4} & {om} & {dmin},\\,{dmax} & {aut} \\\\\n')
+    f.write(r'\bottomrule' + '\n' + r'\end{tabular}' + '\n')
 print('tables written')

@@ -56,6 +56,7 @@
    --modo cerradura : todas las supergráficas obtenidas pegando aristas con
                       N(u,v) ∈ I_S (etiquetadas) y su estatus I_S.
    --modo traza     : sucesión explícita de borrados I_S (vértices/aristas) hasta K1.
+   --modo 2dis_no_1dis : imprime las gráficas 2-desmantelables que no son 1-desmantelables.
    --modo icert [--prof d] : certificado de I-contraibilidad: busca pegados de
                       aristas I4 (<= d) que lleven a una gráfica I_S.
  Entrada: graph6 por stdin (p. ej. desde geng -c n). n <= 16.
@@ -366,9 +367,9 @@ static int kdis_graph(const msk *A, int k){ if(k>=1) for(int j=1;j<=k;j++) memse
 int main(int argc, char **argv){
   const char *modo="atascadas"; 
   for(int i=1;i<argc;i++){ if(!strcmp(argv[i],"--modo")&&i+1<argc) modo=argv[++i]; }
-  int M_AT=!strcmp(modo,"atascadas"), M_CASI=!strcmp(modo,"casi"), M_TAB=!strcmp(modo,"tabla"), M_VER=!strcmp(modo,"verificar"), M_IC=!strcmp(modo,"icert"), M_CE=!strcmp(modo,"cerradura"), M_TR=!strcmp(modo,"traza");
+  int M_AT=!strcmp(modo,"atascadas"), M_CASI=!strcmp(modo,"casi"), M_TAB=!strcmp(modo,"tabla"), M_VER=!strcmp(modo,"verificar"), M_IC=!strcmp(modo,"icert"), M_CE=!strcmp(modo,"cerradura"), M_TR=!strcmp(modo,"traza"), M_D21=!strcmp(modo,"2dis_no_1dis");
   int maxd=3; for(int i=1;i<argc;i++){ if(!strcmp(argv[i],"--prof")&&i+1<argc) maxd=atoi(argv[++i]); }
-  if(!(M_AT||M_CASI||M_TAB||M_VER||M_IC||M_CE||M_TR)){ fprintf(stderr,"modo desconocido\n"); return 1; }
+  if(!(M_AT||M_CASI||M_TAB||M_VER||M_IC||M_CE||M_TR||M_D21)){ fprintf(stderr,"modo desconocido\n"); return 1; }
   htab=calloc((size_t)1<<HBITS,sizeof(uint64_t)); hval=calloc((size_t)1<<HBITS,1);
   char line[4096]; msk A[MAXN];
   long long total=0, pasa_cono=0, pasa_chi=0, pasa_links=0, pasa_aristas=0, encontradas=0;
@@ -407,6 +408,13 @@ int main(int argc, char **argv){
       if(ac && !si){ int ok=icert_quiet(A,3); if(ok){ c_I++; printf("I_NO_IS %s\n",line);} else { c_Iind++; printf("ACICLICA_NO_IS_INDECISA %s\n",line);} }
       else if(si) c_I++;
       if(si && !ac){ printf("ERROR IS_NO_ACICLICA %s\n",line); }
+    } else if(M_D21){
+      /* imprime las gráficas 2-desmantelables que NO son 1-desmantelables (cascada barata primero) */
+      if(dismantle0(A,FULL)) continue;              /* 0-Dis ⊂ 1-Dis */
+      if(chi(A,FULL)!=1 || !acyclic_full(A,FULL)) continue;   /* k-Dis ⊂ I_S ⇒ acíclica */
+      if(!isv_graph(A)) continue;                   /* k-Dis ⊂ I_SV */
+      if(kdis_graph(A,1)) continue;
+      if(kdis_graph(A,2)){ encontradas++; printf("2DIS_NO_1DIS %s\n",line); fflush(stdout); }
     } else if(M_IC){
       printf("== %s\n",line); icert(A,maxd);
     } else if(M_CE){
