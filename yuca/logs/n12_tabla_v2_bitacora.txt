@@ -1,0 +1,3 @@
+inicio Tue Oct 13 18:52:34 MST 2026  nodo amdcpu-hpc-01  N=12 MOD=4000 NT=7 GOPTS=-c MODE=tabla
+array interno: 2084878
+array terminado Tue Oct 13 19:00:34 MST 2026
