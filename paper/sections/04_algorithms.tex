@@ -92,6 +92,7 @@ For $n=14$ a second wrapper, submitted under a second project account, processed
 $n$ & class (\texttt{geng} options) & mode & graphs & pass cone & pass $\chi$ & pass $\Nb(v)$ & pass $\Nb(u,v)$ & stuck \\
 \midrule
 12 & connected (\texttt{-c}) & table & \num{164059830476} & -- & -- & -- & -- & --$^{*}$ \\
+13 & connected (\texttt{-c}) & table & \num{50335907869219} & -- & -- & -- & -- & --$^{*}$ \\
 13 & \texttt{-C -d4 -D11} & stuck & \num{21011415992470} & \num{3335926431910} & \num{480204455162} & \num{15693920490} & \num{218516} & 1 \\
 14 & \texttt{-k -C -d4 -D12} & stuck & \num{64856470381820} & \num{48303369131820} & \num{1462235073536} & \num{108022349478} & \num{13536597} & 51 \\
 \bottomrule
@@ -103,6 +104,7 @@ $n$ & class (\texttt{geng} options) & mode & graphs & pass cone & pass $\chi$ & 
 $n$ & slices $M$ & cores & wall time & SLURM arrays \\
 \midrule
 12 & \num{4000} & 448 & 8 min & 2079049, 2079051 \\
+13 (table) & \num{200000} & 896 & 21 h & 2084597 (p029), 2084636 (p011) \\
 13 & \num{200000} & 448 & 7 h 10 min & 2079058, 2079059 \\
 14 & \num{2000000} & 896 & $\approx 34$ h & 2079102 (p029), 2079156 (p011) \\
 \bottomrule

@@ -20,8 +20,7 @@ $n$ & connected & $\chi=1$ & $\Ztwo$-acyclic & $\I$ & $\IS$ & $\IVS$ & $3$-Dis &
     for r in rows:
         vals = [r[i] for i in idx]
         f.write(' & '.join([vals[0]] + [num(v) for v in vals[1:]]) + r' \\' + '\n')
-    f.write(r'''13 & \num{50335907869219} & \multicolumn{10}{l}{\emph{computation in progress}; $\Ztwo$-acyclic $\setminus\IS$ $=3$, $\I\setminus\IS=0$ (Theorem~\ref{thm:A})} \\
-14$^{\dagger}$ & & \multicolumn{10}{l}{\emph{computation in progress}; stuck $\Ztwo$-acyclic $\setminus\IS=51$, $\I\setminus\IS\ge 29$ (Theorem~\ref{thm:B})} \\
+    f.write(r'''14$^{\dagger}$ & & \multicolumn{10}{l}{\emph{computation in progress}; stuck $\Ztwo$-acyclic $\setminus\IS=51$, $\I\setminus\IS\ge 29$ (Theorem~\ref{thm:B})} \\
 \bottomrule
 \end{tabular}
 ''')
