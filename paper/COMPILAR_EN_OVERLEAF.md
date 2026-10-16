@@ -23,6 +23,8 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Base textual: v2 de la auditoría (título corto), seleccionada expresamente por el autor; sobre ella se aplicaron las correcciones de la versión 3 (16-oct-2026), listadas en `CAMBIOS_v3.md`: enunciados textuales de las Conjeturas 14 y 15 (versión editorial) con nota sobre el preprint, filas 12 y 13 de la tabla descritas de forma coherente con la tabla, commit del repositorio corregido (`4a059b5` en lugar de `83d5ffe`), evidencia de procedencia del script p011 (prueba Y-F01) y una referencia nueva (preprint arXiv v2).
+Base textual: versión 3 (16-oct-2026, `CAMBIOS_v3.md`) con las correcciones de la versión 4 (16-oct-2026), listadas en `CAMBIOS_v4.md`: premisas explícitas del control A001349 y cotas condicionadas (H-26), generador de tablas sin la fila 13 duplicada (H-27), Tabla 2 en una página apaisada con la leyenda completa (H-28), tabla de las 20 gráficas de orden 12 en 2-Dis∖1-Dis (Apéndice B.2), rutas fuera de la Observación 5.1(ii), procedencia del script p011 como corroboración forense, §4.6, §8 y Apéndice D al día con el repositorio, leyenda de la Fig. 9 con la reserva H14, y cadenas graph6 y opciones de línea de órdenes que ahora se copian del PDF sin alteración.
+
+Paquetes añadidos en la versión 4: `pdflscape` (la página de la Tabla 2 se muestra girada en el visor) y `adjustbox` (reduce la tabla sólo si no cabe). Ambos forman parte de TeX Live y están en Overleaf.
 
 `build.sh` produce `main.pdf` (antes usaba `-jobname=main_v2`).

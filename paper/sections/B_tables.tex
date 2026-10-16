@@ -1,4 +1,16 @@
-\section{The $51$ stuck $K_4$-free graphs on $14$ vertices}\label{app:stuck51}
+\section{Graph lists}\label{app:lists}
+
+\subsection{\texorpdfstring{The $51$ stuck $K_4$-free graphs on $14$ vertices}{The 51 stuck K4-free graphs on 14 vertices}}\label{app:stuck51}
 \scriptsize
 \input{tables/stuck51}
 \normalsize
+
+\subsection{\texorpdfstring{The twenty graphs of order $12$ in $2$-Dis$\setminus1$-Dis}{The twenty graphs of order 12 in 2-Dis minus 1-Dis}}\label{app:strictly2dis12}
+Table~\ref{tab:strictly2dis12} lists the $20$ connected graphs on $12$ vertices that are $2$-dismantlable but not $1$-dismantlable, as returned by a separate run in mode \texttt{2dis\_no\_1dis} over all $\num{164059830476}$ connected graphs of order $12$ ($\num{4000}$ slices, none missing; the total agrees with Table~\ref{tab:card}). Each listed graph is verified individually: its $2$-dismantling sequence is in the repository, and the exact decision of the C program and the independent Python implementation both show that it is not $1$-dismantlable. That no other graph of order $12$ has this property is subject to the same premises as row $12$ of Table~\ref{tab:card} ($\mathrm{H12}$ and Appendix~\ref{app:cluster}).
+
+\begin{table}[ht]
+\centering\footnotesize
+\caption{The $20$ connected graphs on $12$ vertices in $2\text{-Dis}\setminus1\text{-Dis}$: $m$ edges, $t$ triangles, the number of $K_4$ subgraphs, clique number $\omega$, minimum and maximum degree $\delta,\Delta$, and the order of the automorphism group.}\label{tab:strictly2dis12}
+\input{tables/strictly2dis12}
+\end{table}
+\FloatBarrier

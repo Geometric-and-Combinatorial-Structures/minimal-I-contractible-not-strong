@@ -31,7 +31,8 @@ $n$ & connected & $\chi=1$ & $\Ztwo$-acyclic & $\I$ & $\IS$ & $\IVS$ & $3$-Dis &
 
 # Table: the 51 stuck graphs
 rows = [l.rstrip('\n').split('\t') for l in open(data_dir/'stuck_14_K4free.tsv') if not l.startswith('#')]
-ESC = {'\\': r'\textbackslash{}', '{': r'\{', '}': r'\}', '~': r'\textasciitilde{}', '_': r'\_', '^': r'\^{}',
+ESC = {'\\': r'\textbackslash{}', '{': r'\{', '}': r'\}', '~': r'\textasciitilde{}', '_': r'\_', '^': r'\textasciicircum{}',   # not \^{} (a circumflex accent, which copies as U+02C6)
+      
        '&': r'\&', '#': r'\#', '%': r'\%', '$': r'\$', '`': r'\textasciigrave{}'}
 def tex_g6(s):
     return r'\texttt{' + ''.join(ESC.get(c, c) for c in s) + '}'
@@ -68,4 +69,17 @@ with open('tables/stuck51.tex','w') as f:
         pat = pattern(g6)
         f.write(f'{i} & {tex_g6(g6)} & {m} & {t} & {h1t} & {ic} & {aut} & {pat} \\\\\n')
     f.write(r'\end{longtable}' + '\n')
+
+# Table: the 20 graphs of order 12 in 2-Dis \ 1-Dis (Appendix B.2), from data/strictly_2dis_12.tsv
+rows20 = [l.rstrip('\n').split('\t') for l in open(data_dir/'strictly_2dis_12.tsv') if l.strip() and not l.startswith('#')]
+assert len(rows20) == 20 and all(len(r) == 8 for r in rows20)
+with open('tables/strictly2dis12.tex', 'w') as f:
+    f.write(r'''\begin{tabular}{@{}rlrrrrrr@{}}
+\toprule
+\# & \texttt{graph6} & $m$ & $t$ & $K_4$ & $\omega$ & $\delta,\Delta$ & $|\mathrm{Aut}|$ \\
+\midrule
+''')
+    for i, (g6, m, t, k4, om, dmin, dmax, aut) in enumerate(rows20, 1):
+        f.write(f'{i} & {tex_g6(g6)} & {m} & {t} & {k4} & {om} & {dmin},\\,{dmax} & {aut} \\\\\n')
+    f.write('\\bottomrule\n\\end{tabular}\n')
 print('tables written')

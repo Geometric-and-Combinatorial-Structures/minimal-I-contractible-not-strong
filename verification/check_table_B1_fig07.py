@@ -65,6 +65,7 @@ def g6_decode(s):
 
 def unescape_tex(s):
     for a, b in [(r"\textasciitilde{}", "~"), (r"\textasciigrave{}", "`"), (r"\textbackslash{}", "\\"),
+                 (r"\textasciicircum{}", "^"),
                  (r"\^{}", "^"), (r"\_", "_"), (r"\}", "}"), (r"\{", "{")]:
         s = s.replace(a, b)
     return s

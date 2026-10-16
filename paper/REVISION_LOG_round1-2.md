@@ -2,7 +2,6 @@
 
 Manuscrito: *The smallest I-contractible graphs that are not strong I-contractible, and odd torsion in flag complexes on thirteen vertices* (Espinoza, Frías-Armenta, Hernández), snapshot `repo_snapshot_v1.tar.gz`, PDF `manuscript_v1.pdf` (38 pp.).
 Entorno de verificación: conda `grafos` (python3 + networkx, gcc, nauty `geng`/`labelg`), `src/atascadas.c` compilado localmente, `tools/*.py` del repositorio y comprobaciones propias independientes (networkx).
-Nota de proceso: la herramienta `update_step_status` no estaba disponible en esta sesión; el estado del paso se reporta en la respuesta final.
 
 Severidades: **BLOQUEANTE** (impide aceptación tal cual), **MAYOR** (requiere corrección sustantiva del autor), **MENOR** (redacción/formato; aplicado por el revisor cuando no afecta afirmaciones matemáticas ni números).
 

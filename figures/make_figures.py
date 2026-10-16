@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 """make_figures.py — generates fig01..fig09 (+ fig06b, fig06c) of the manuscript
-"Minimal graphs that are I-contractible but not strong I-contractible" (PDF, SVG, PNG 300 dpi).
+"Small non-strong I-contractible graphs and odd torsion in flag complexes" (PDF, SVG, PNG 300 dpi).
 
-Usage:  python make_figures.py [--data DIR] [--out DIR]
+Usage:  python make_figures.py [--data DIR] [--out DIR] [--only fig07 ...]
+  --only regenerates just the named figures (fig07 needs only atascadas14_final.txt).
   DIR (default ./proy) must contain atascadas14_final.txt, traza_G14_mas01.txt,
   traza_G14b_mas03.txt, traza_cand14c.txt.  Everything else is recomputed from the g6 strings.
 Environment: python>=3.10, networkx, numpy, matplotlib (no scipy needed). Deterministic (no RNG).
@@ -335,9 +336,12 @@ def fig07(rows, ncols=6):
     fig.patches.append(FancyBboxPatch((x0, y0), x1-x0, y1-y0, boxstyle='round,pad=0.002', transform=fig.transFigure, fc='none', ec=GREEN, lw=1.2))
     fig.text(x1+0.03, (y0+y1)/2,
              'Green box: the 3 contractible stuck graphs G14a, G14b, G14c\n(I-contractible, not strong I-contractible; word a·a·a⁻¹ on the cycle a).\n'
-             'Below: the 48 stuck graphs with H₁(Δ; ℤ) = ℤ/3, by edge count.\nRed: edges in ≠ 2 triangles (identification cycle a).\n'
-             'All 51 are K₄-free, ℤ₂-acyclic, with no I_S-contractible vertex\nor edge (exhaustive: geng -k -C -d4 -D12 14).\n'
-             '* cut complex is an annulus;  ** cut edges form two 4-cycles.', ha='left', va='center', fontsize=7)
+             'Below: the 48 stuck graphs with H₁(Δ; ℤ) = ℤ/3, by edge count.\n'
+             'Red: edges in ≠ 2 triangles; for discs, the identification cycle a\n'
+             '(in G14b with a spur). * Annulus: a 4-cycle and a disjoint edge\n'
+             'in 4 triangles. ** Annulus and disc: two disjoint 4-cycles.\n'
+             'All 51 are K₄-free, ℤ₂-acyclic, with no I_S-contractible vertex\n'
+             'or edge; all such graphs under H14 (geng -k -C -d4 -D12 14).', ha='left', va='center', fontsize=7)
     log('fig07: 51 graphs; edges histogram', dict(collections.Counter(r['edges'] for r in rows)), '; cycle lengths',
         dict(collections.Counter(str(r['k']) for r in rows)))
     return fig
@@ -421,20 +425,26 @@ def fig09():
 # ------------------------------------------------------------------ main
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--data', default='proy'); ap.add_argument('--out', default='figures')
+    ap.add_argument('--only', nargs='*', default=None, help='regenerate only these figures, e.g. --only fig07')
     a = ap.parse_args(); os.makedirs(a.out, exist_ok=True)
     apply_figure_style()
-    def emit(fig, stem):
-        check(fig, stem); save_all(fig, stem, a.out); plt.close(fig)
-    emit(fig01(), 'fig01')
-    emit(fig02(), 'fig02')
-    for name, stem in (('G14a', 'fig03'), ('G14b', 'fig04'), ('G14c', 'fig05')): emit(fig_G14(name), stem)
-    emit(fig_cert(os.path.join(a.data, 'traza_G14_mas01.txt'), 'G14a', (0, 1)), 'fig06')
-    emit(fig_cert(os.path.join(a.data, 'traza_G14b_mas03.txt'), 'G14b', (0, 3)), 'fig06b')
-    emit(fig_cert(os.path.join(a.data, 'traza_cand14c.txt'), 'G14c', (2, 3)), 'fig06c')
-    emit(fig07(load_atascadas14(os.path.join(a.data, 'atascadas14_final.txt'))), 'fig07')
-    emit(fig08(), 'fig08')
-    emit(fig09(), 'fig09')
-    with open(os.path.join(a.out, 'verify_log.txt'), 'w', encoding='utf-8') as f: f.write('\n'.join(LOG)+'\n')
+    want = (lambda stem: True) if not a.only else (lambda stem: stem in a.only)
+    def emit(make, stem):
+        if want(stem):
+            fig = make(); check(fig, stem); save_all(fig, stem, a.out); plt.close(fig)
+    emit(fig01, 'fig01')
+    emit(fig02, 'fig02')
+    for name, stem in (('G14a', 'fig03'), ('G14b', 'fig04'), ('G14c', 'fig05')): emit(lambda name=name: fig_G14(name), stem)
+    emit(lambda: fig_cert(os.path.join(a.data, 'traza_G14_mas01.txt'), 'G14a', (0, 1)), 'fig06')
+    emit(lambda: fig_cert(os.path.join(a.data, 'traza_G14b_mas03.txt'), 'G14b', (0, 3)), 'fig06b')
+    emit(lambda: fig_cert(os.path.join(a.data, 'traza_cand14c.txt'), 'G14c', (2, 3)), 'fig06c')
+    emit(lambda: fig07(load_atascadas14(os.path.join(a.data, 'atascadas14_final.txt'))), 'fig07')
+    emit(fig08, 'fig08')
+    emit(fig09, 'fig09')
+    if not a.only:   # the full log is written only by a full run
+        with open(os.path.join(a.out, 'verify_log.txt'), 'w', encoding='utf-8') as f: f.write('\n'.join(LOG)+'\n')
+    else:
+        print('\n'.join(LOG))
 
 if __name__ == '__main__':
     main()

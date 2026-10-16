@@ -62,7 +62,7 @@ By Theorem~\ref{thm:A}, the only $\Ztwo$-acyclic graphs on at most $13$ vertices
 
 It is instructive to see what goes wrong when one tries to turn $\Gt$ into a dunce hat (Fig.~\ref{fig:dunce-vs-G13}(b)): reversing the orientation of one block of the boundary word changes the pattern to $a\,a\,a^{-1}$ and the resulting complex is contractible, but two triples of pairwise adjacent vertices are no longer faces, so the complex is not the clique complex of its $1$-skeleton, and that $1$-skeleton (the graph \gsix{L?qa\textasciigrave{}\textasciigrave{}\{wtlzM\textasciitilde{}o}, isomorphic to \gsix{LtDzQNKmpKXT\textasciigrave{}V}) contains the two copies $\{1,4,8,11\}$, $\{2,5,8,10\}$ of $K_4$ and is in $\IVS$.
 
-\subsection{Fourteen vertices: examples of $\I\setminus\IS$}\label{sec:fourteen}
+\subsection{\texorpdfstring{Fourteen vertices: examples of $\I\setminus\IS$}{Fourteen vertices: examples of I minus I-S}}\label{sec:fourteen}
 
 \begin{theorem}\label{thm:B}
 The $51$ listed $K_4$-free graphs on $14$ vertices are stuck. Exactly three have trivial reduced integer homology,
@@ -116,7 +116,7 @@ $\Gc$ & 14 & 45 & 32 & $6^9\,7^4\,8$ & 6 & 2 & 26 & 6 & $a\,a\,a^{-1}$ \\
 \begin{figure}[p]
 \centering
 \includegraphics[height=0.87\textheight]{figures/fig06.pdf}
-\caption{Certificate that $\Ga+\{0,1\}\in\IS$: the $18$ strong deletions found by Algorithm~\ref{alg:IS} (deleted element in red, its neighbourhood or common neighbourhood in amber). The sequence is listed in Appendix~\ref{app:certificates} and reproduced by \texttt{tools/strong\_contractible.py --trace}.}\label{fig:cert}
+\caption{Certificate that $\Ga+\{0,1\}\in\IS$: the $18$ strong deletions found by Algorithm~\ref{alg:IS} (deleted element in red, its neighbourhood or common neighbourhood in amber). The sequence is listed in Appendix~\ref{app:certificates} and reproduced by \texttt{tools/strong\_contractible.py -{}-trace}.}\label{fig:cert}
 \end{figure}
 
 The $48$ torsion examples are listed in Appendix~\ref{app:stuck51} (Table~\ref{tab:stuck51}) and shown in Fig.~\ref{fig:mosaic}. They have $43$ ($25$ graphs), $44$ ($18$), $45$ ($4$) or $47$ ($1$) edges. For $45$ of them the unfolding is a disc whose boundary is identified with a cycle of length $4$ ($25$ graphs), $5$ ($18$) or $6$ ($2$) with the pattern $a^3$, as for $\Gt$; two unfold to an annulus and one (the graph with $47$ edges, whose edges in three triangles form two disjoint $4$-cycles) to an annulus together with a disc. These three cases are not covered by the single-disc argument of Section~\ref{sec:prelim}.
@@ -124,12 +124,12 @@ The $48$ torsion examples are listed in Appendix~\ref{app:stuck51} (Table~\ref{t
 \begin{figure}[p]
 \centering
 \includegraphics[height=0.87\textheight]{figures/fig07.pdf}
-\caption{The $51$ stuck $\Ztwo$-acyclic $K_4$-free graphs on $14$ vertices: the three contractible ones ($\I\setminus\IS$) first, then the $48$ with $H_1\cong\ZZ/3$, ordered by number of edges.}\label{fig:mosaic}
+\caption{The $51$ stuck $\Ztwo$-acyclic $K_4$-free graphs on $14$ vertices returned by the recorded search (all such graphs under $\mathrm{H14}$): the three contractible ones ($\I\setminus\IS$) first, then the $48$ with $H_1\cong\ZZ/3$, ordered by number of edges. Red edges lie in a number of triangles other than two: for the discs they form the identification cycle $a$ (with a spur in $\Gb$); for the two annuli ($*$), a $4$-cycle and a disjoint edge in four triangles; for the annulus with a disc ($**$), two disjoint $4$-cycles.}\label{fig:mosaic}
 \end{figure}
 
 \paragraph{The $\mathrm{I}_4$-closures} Under $\mathrm{H12}$, $\mathrm{Hcasi}$, $\mathrm{H13}$ and $\mathrm{H14}$, Theorem~\ref{thm:C}(ii) shows that every $K_4$-free graph in $\I\setminus\IS$ on $14$ vertices lies in the $\mathrm{I}_4$-closure of one of the $51$ stuck graphs (the closure itself may leave the $K_4$-free class). Computing the pruned closures of the $51$ listed seeds gives $\num{2271}$ pairwise non-isomorphic $\Ztwo$-acyclic graphs on $14$ vertices outside $\IS$, of which $29$ are contractible, hence in $\I\setminus\IS$, and $\num{2242}$ have $H_1\cong\ZZ/3$ (file \texttt{data/acyclic\_not\_\allowbreak strong\_14\_closure.tsv} in the repository); $8$ of the $29$ are $K_4$-free, with $44$--$47$ edges. Under the same computational hypotheses, these $8$ graphs exhaust the $K_4$-free members of $\I\setminus\IS$ on $14$ vertices. These closures do not exhaust the $\Ztwo$-acyclic graphs outside $\IS$ on $14$ vertices. For example, adjoining a leaf to $\Gt$ preserves its homotopy type and gives a graph outside $\IS$ with a deletable vertex. This graph cannot belong to any of the $51$ closures: every enumerated seed has minimum degree at least four, whereas the new graph has a vertex of degree one. Lemma~\ref{lem:stuck}(a) does not apply at $n=14$, since the displayed $13$-vertex example already gives $n_0\le13$.
 
-\subsection{Relation with the dunce hat of~\cite{DEFH2023}}
+\subsection{\texorpdfstring{Relation with the dunce hat of~\cite{DEFH2023}}{Relation with the dunce hat of Dochtermann et al. (2023)}}
 
 The graph $\Dunce$ (Fig.~\ref{fig:dunce-vs-G13}(a)) is also stuck, with $46$ edges, $32$ triangles and the identification pattern $a\,a\,a^{-1}$ along the $4$-cycle $0\text{--}10\text{--}5\text{--}1$ (the $4$-cycle $1\text{--}2\text{--}3\text{--}4$ in the labels of~\cite[Fig.~2A]{DEFH2023}; the map is displayed in the caption of Fig.~\ref{fig:dunce-vs-G13}). It belongs to the same family as $\Ga,\Gb,\Gc$: flag discs with identified boundary. The examples $\Ga$ and $\Gc$ realise the disc identification on one fewer vertex using cycles of lengths $5$ and $6$; $\Gb$ uses a $4$-cycle with an attached edge. Their non-isomorphic local structures show that the cycle length alone does not determine the number of vertices required. Adding the edge $\{9,12\}$ to $\Dunce$ (edge $\{5,7\}$ of~\cite[Fig.~2B]{DEFH2023}) produces a graph in $\IS$ with a $16$-step deletion sequence (Appendix~\ref{app:certificates}), exactly as adding $\{0,1\}$ to $\Ga$ does.
 
