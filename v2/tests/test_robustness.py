@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Input-robustness tests of atascadas_v2 (findings H-18, H-19, H-20 of the external audit).
 
-Usage: python3 test_robustness.py --build ../build --out results/robustness.json
+Usage: python3 test_robustness.py --build ../build --out results/v2.1/robustness.json
 Each case fixes the expected exit status of v2 and, where relevant, the counted totals or a required substring of the
 output.  The behaviour of v1 (src/atascadas.c) on the same input is recorded for the report but is not checked.
 """
@@ -9,6 +9,8 @@ import argparse, json, re, subprocess, sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import provenance  # noqa: E402
 
 K16 = "O" + "~" * 20            # complete graph on 16 vertices (120 bits = 20 characters)
 CASES = [
@@ -57,10 +59,13 @@ def summary(err):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--build", default=str(HERE.parent / "build"))
-    ap.add_argument("--out", default=str(HERE / "results" / "robustness.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.1" / "robustness.json"))
     a = ap.parse_args()
     v1 = str(Path(a.build) / "atascadas_v1")
     v2 = str(Path(a.build) / "atascadas_v2")
+    started = provenance.utc_now()
+    prov = provenance.record(binaries=[(v1, None), (v2, ["--version"])],
+                             sources=[HERE.parent / "src" / "atascadas_v2.c", Path(__file__)])
     out = []
     for name, mode, text, ec, fields, sub in CASES:
         rc, so, se = run(v2, mode, text)
@@ -75,9 +80,10 @@ def main():
             v1info = {"error": str(e)[:100]}
         out.append({"case": name, "pass": ok, "v2_exit": rc, "expected_exit": ec, "v2_summary": s, "v1": v1info})
         print(("PASS " if ok else "FAIL ") + name, "v2 exit", rc, "| v1:", v1info, flush=True)
-    res = {"all_pass": all(c["pass"] for c in out), "cases": out}
+    res = {"all_pass": all(c["pass"] for c in out), "cases": out, "started_utc": started,
+           "finished_utc": provenance.utc_now(), "provenance": prov}
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
-    Path(a.out).write_text(json.dumps(res, indent=1, ensure_ascii=False) + "\n")
+    Path(a.out).write_text(provenance.check_portable(json.dumps(res, indent=1, ensure_ascii=False) + "\n"))
     print("ALL PASS" if res["all_pass"] else "SOME CASES FAILED")
     sys.exit(0 if res["all_pass"] else 1)
 

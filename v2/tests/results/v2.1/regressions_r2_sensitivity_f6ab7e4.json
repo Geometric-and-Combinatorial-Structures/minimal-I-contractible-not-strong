@@ -1,0 +1,206 @@
+{
+ "all_pass": false,
+ "n_cases": 16,
+ "n_failed": 10,
+ "cases": [
+  {
+   "group": "classifier",
+   "case": "NUL without final newline 00",
+   "pass": false,
+   "exit": 0,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "NUL without final newline 0067617262616765",
+   "pass": false,
+   "exit": 0,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "NUL without final newline 00ff",
+   "pass": false,
+   "exit": 0,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "NUL inside a terminated line",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "valid line without final newline",
+   "pass": false,
+   "exit": 0,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "inline header without final newline",
+   "pass": false,
+   "exit": 0,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "stdout write error (/dev/full)",
+   "pass": false,
+   "exit": 0,
+   "expected": 6
+  },
+  {
+   "group": "classifier",
+   "case": "stderr write error (/dev/full)",
+   "pass": false,
+   "exit": 0,
+   "expected": 6
+  },
+  {
+   "group": "classifier",
+   "case": "--prof empty",
+   "pass": false,
+   "exit": 0,
+   "expected": 1
+  },
+  {
+   "group": "classifier",
+   "case": "--prof with a blank",
+   "pass": false,
+   "exit": 0,
+   "expected": 1
+  },
+  {
+   "group": "classifier",
+   "case": "--prof 2 accepted",
+   "pass": true,
+   "exit": 0,
+   "expected": 0
+  },
+  {
+   "group": "classifier",
+   "case": "valid input accepted",
+   "pass": true,
+   "exit": 0,
+   "expected": 0
+  },
+  {
+   "group": "classifier",
+   "case": "header-only line accepted",
+   "pass": true,
+   "exit": 0,
+   "expected": 0
+  },
+  {
+   "group": "classifier",
+   "case": "input read error",
+   "pass": true,
+   "exit": 4
+  },
+  {
+   "group": "classifier",
+   "case": "version string is v2.1",
+   "pass": false,
+   "version": "atascadas v2"
+  },
+  {
+   "group": "classifier",
+   "case": "build.sh compiles without -march=native",
+   "pass": true
+  }
+ ],
+ "tools": {
+  "geng": "geng (outside the repository)",
+  "labelg": "labelg (outside the repository)",
+  "python": "3.11.17"
+ },
+ "binary_under_test": "atascadas_v2_old (outside the repository)",
+ "sections": [
+  "classifier"
+ ],
+ "started_utc": "2026-10-16T14:14:08Z",
+ "finished_utc": "2026-10-16T14:14:08Z",
+ "provenance": {
+  "recorded_utc": "2026-10-16T14:14:08Z",
+  "python": "3.11.17",
+  "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+  "argv": [
+   "v2/tests/test_regressions_r2.py",
+   "--work",
+   "sens (outside the repository)",
+   "--bin",
+   "atascadas_v2_old (outside the repository)",
+   "--sections",
+   "classifier",
+   "--out",
+   "tests/results/v2.1/regressions_r2_sensitivity_f6ab7e4.json"
+  ],
+  "binaries": {
+   "atascadas_v2_old": {
+    "path": "atascadas_v2_old (outside the repository)",
+    "sha256": "d987daf2e0d82516fcd2acdfe987db7fa0ab111e9bff022c93f14a54681196b4",
+    "bytes": 39024,
+    "mtime_utc": "2026-10-16T13:46:32Z",
+    "version": {
+     "exit": 0,
+     "first_line": "atascadas v2 MAXN=16 MAXF=16384 HBITS=22 QMAX=200000"
+    }
+   }
+  },
+  "sources": {
+   "atascadas_v2.c": {
+    "path": "v2/src/atascadas_v2.c",
+    "sha256": "826fec148cb76f4184aedb0e34b841c0a81ce76f9ecc112da0d5803c387d4a2c",
+    "bytes": 35998,
+    "mtime_utc": "2026-10-16T13:59:28Z"
+   },
+   "campana_v2.py": {
+    "path": "v2/pipeline/campana_v2.py",
+    "sha256": "36eafb9add5812e9a344e83d036082f9727add1ae928f228b0000dcd20580c9a",
+    "bytes": 38674,
+    "mtime_utc": "2026-10-16T14:09:50Z"
+   },
+   "build.sh": {
+    "path": "v2/build.sh",
+    "sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+    "bytes": 868,
+    "mtime_utc": "2026-10-16T13:36:05Z"
+   },
+   "test_regressions_r2.py": {
+    "path": "v2/tests/test_regressions_r2.py",
+    "sha256": "36cb9e8380c72e116d10723011a4256e0d8f87a9229646f84f8bba2eaf2be718",
+    "bytes": 24657,
+    "mtime_utc": "2026-10-16T14:13:35Z"
+   }
+  },
+  "tools": {
+   "geng": {
+    "path": "geng (outside the repository)",
+    "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+    "bytes": 395424,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (32 bits)"
+    }
+   },
+   "labelg": {
+    "path": "labelg (outside the repository)",
+    "sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+    "bytes": 1275072,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (64 bits)"
+    }
+   }
+  },
+  "gcc": {
+   "exit": 0,
+   "first_line": "gcc (Debian 14.2.0-19) 14.2.0"
+  }
+ }
+}

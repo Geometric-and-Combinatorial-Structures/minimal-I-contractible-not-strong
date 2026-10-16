@@ -1,0 +1,144 @@
+{
+ "all_pass": true,
+ "cases": [
+  {
+   "case": "P1 normal campaign n=8 equals published row",
+   "pass": true,
+   "counts": {
+    "-1-Dis": 1044,
+    "0-Dis": 3791,
+    "1-Dis": 3798,
+    "2-Dis": 3798,
+    "3-Dis": 3798,
+    "I": 3798,
+    "I_S": 3798,
+    "I_SV": 3798,
+    "I_indecisas": 0,
+    "aciclicas": 3798,
+    "chi1": 3837,
+    "conexas": 11117
+   }
+  },
+  {
+   "case": "P2 resume validates existing receipts",
+   "pass": true,
+   "this_run": {
+    "new": 0,
+    "resumed": 4,
+    "failed": 0
+   }
+  },
+  {
+   "case": "P3 duplicate worker id refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "case": "P4 producer exit 42 is a failure; no receipt; aggregate refuses",
+   "pass": true,
+   "failed_files": 4,
+   "aggregate_exit": 1
+  },
+  {
+   "case": "P5 producer '>E' line rejected",
+   "pass": true
+  },
+  {
+   "case": "P6 missing '>Z' count line rejected",
+   "pass": true
+  },
+  {
+   "case": "P7 truncated stream (count mismatch) rejected",
+   "pass": true
+  },
+  {
+   "case": "P8 unexpected classifier stderr rejected",
+   "pass": true
+  },
+  {
+   "case": "P9 classifier version other than v2.1 refused at init",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "case": "P10 modified pinned binary detected",
+   "pass": true
+  },
+  {
+   "case": "P11 aggregate detects tampering",
+   "pass": true,
+   "baseline": 0,
+   "edited_counts": 1,
+   "forged_record": 1,
+   "missing_receipt": 1,
+   "wrong_shard": 1
+  },
+  {
+   "case": "P12 search mode n=9 totals",
+   "pass": true,
+   "counts": {
+    "encontradas": 0,
+    "pasa_aristas": 2,
+    "pasa_chi": 233,
+    "pasa_cono": 1271,
+    "pasa_vecindades": 23,
+    "total": 12881
+   }
+  }
+ ],
+ "started_utc": "2026-10-16T14:13:49Z",
+ "finished_utc": "2026-10-16T14:13:59Z",
+ "provenance": {
+  "recorded_utc": "2026-10-16T14:13:49Z",
+  "python": "3.11.17",
+  "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+  "argv": [
+   "v2/tests/test_pipeline.py",
+   "--work",
+   "pt (outside the repository)"
+  ],
+  "binaries": {},
+  "sources": {
+   "campana_v2.py": {
+    "path": "v2/pipeline/campana_v2.py",
+    "sha256": "36eafb9add5812e9a344e83d036082f9727add1ae928f228b0000dcd20580c9a",
+    "bytes": 38674,
+    "mtime_utc": "2026-10-16T14:09:50Z"
+   },
+   "atascadas_v2.c": {
+    "path": "v2/src/atascadas_v2.c",
+    "sha256": "826fec148cb76f4184aedb0e34b841c0a81ce76f9ecc112da0d5803c387d4a2c",
+    "bytes": 35998,
+    "mtime_utc": "2026-10-16T13:59:28Z"
+   },
+   "table_cardinalities.csv": {
+    "path": "data/table_cardinalities.csv",
+    "sha256": "ad7cf99d89c2026b65fb2d4b9e325ebe19b2141acb9dea16d83268e07af06f51",
+    "bytes": 1779,
+    "mtime_utc": "2026-10-16T13:47:56Z"
+   },
+   "test_pipeline.py": {
+    "path": "v2/tests/test_pipeline.py",
+    "sha256": "c5130d3012b54935d6990a210f9b837f4384f120072f81e03b776693cbbc4564",
+    "bytes": 9877,
+    "mtime_utc": "2026-10-16T14:13:35Z"
+   }
+  },
+  "tools": {
+   "geng": {
+    "path": "geng (outside the repository)",
+    "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+    "bytes": 395424,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (32 bits)"
+    }
+   }
+  },
+  "gcc": {
+   "exit": 0,
+   "first_line": "gcc (Debian 14.2.0-19) 14.2.0"
+  }
+ }
+}

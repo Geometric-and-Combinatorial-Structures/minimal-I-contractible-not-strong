@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 mkdir -p build
-CF="-O3 -march=native -std=c11"
+CF="-O3 -std=c11"  # portable: no -march=native (Q9 of the external audit)
 gcc $CF -Wall -Wextra -Wpedantic -Werror -o build/atascadas_v2 src/atascadas_v2.c
 gcc $CF -Wall -Wextra -Wpedantic -Werror -DHASH_WEAK_BITS=6 -o build/atascadas_v2_weak src/atascadas_v2.c
 gcc -O1 -g -std=c11 -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer \

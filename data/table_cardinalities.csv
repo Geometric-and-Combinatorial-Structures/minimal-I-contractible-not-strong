@@ -1,6 +1,6 @@
 # Extended cardinality table (connected graphs on n vertices).  n<=11 computed locally with atascadas --modo tabla; n=12 on YUCA (yuca/logs/n12_*).
-# "I-contractible" counts J_S plus Z2-acyclic graphs certified by <=3 I4-edge additions; "I-undecided" = Z2-acyclic graphs with no such certificate (0 for all n<=11).
-# n=12: six columns from the first YUCA run (2079051) and all columns from the second run (2084878, yuca/logs/n12_tabla_v2_*), identical where both exist.  n=13: full table computed on YUCA (yuca/logs/n13_tabla_*; the 3 Z2-acyclic graphs without I4-certificate are the torsion graphs of Theorem A, hence not I-contractible, so I-undecided = 0 after homology).  n=14 (K4-free class): computation in progress.
+# "I-contractible" counts J_S plus Z2-acyclic graphs certified by <=3 I4-edge additions; "I-undecided" = Z2-acyclic graphs with no such certificate (raw counter of the classifier: 0 for all n<=12, 3 for n=13).
+# n=12: six columns from the first YUCA run (2079051) and all columns from the second run (2084878, yuca/logs/n12_tabla_v2_*), identical where both exist.  n=13: full table computed on YUCA (yuca/logs/n13_tabla_*; the 3 Z2-acyclic graphs without I4-certificate, kept here as the raw I-undecided = 3, are the torsion graphs of Theorem A: integer homology shows that none is I-contractible, so the I-contractible column of that run is exact).  n=14 (K4-free class): computation in progress.
 n,connected,chi=1,Z2-acyclic,I-contractible,I-undecided,strong I-contractible (J_S),J_VS,3-Dis,2-Dis,1-Dis,0-Dis,(-1)-Dis
 3,2,2,2,2,0,2,2,2,2,2,2,2
 4,6,5,5,5,0,5,5,5,5,5,5,4
@@ -12,4 +12,4 @@ n,connected,chi=1,Z2-acyclic,I-contractible,I-undecided,strong I-contractible (J
 10,11716571,2571263,2343148,2343148,0,2343148,2343148,2343148,2343148,2343148,2258314,274668
 11,1006700565,204131202,166978401,166978401,0,166978401,166978389,166978389,166978389,166978389,151084672,12005168
 12,164059830476,32482574568,22666537431,22666537431,0,22666537431,22666525713,22666525713,22666525713,22666525693,18510237804,1018997864
-13,50335907869219,9859955384222,5619022190286,5619022190283,0,5619022190283,5619007241580,5619007241580,5619007241580,5619007205823,4015494549880,165091172592
+13,50335907869219,9859955384222,5619022190286,5619022190283,3,5619022190283,5619007241580,5619007241580,5619007241580,5619007205823,4015494549880,165091172592
