@@ -1,16 +1,16 @@
 \section{Algorithms and the computation on YUCA}\label{sec:algorithms}
 
-All algorithms are implemented in a single C program (\texttt{src/atascadas.c} in the repository; \emph{atascada} is Spanish for \emph{stuck}) that reads graphs in \texttt{graph6} format from the output of \texttt{geng}~\cite{McKayPiperno2014}. Graphs have at most $15$ vertices, so vertex sets are bitmasks and neighbourhoods are arrays of bitmasks; cliques are enumerated by recursive extension. Independent re-implementations in pure Python of the exact $\IS$ decision and of integer homology (\texttt{tools/}) are used for the certificates (Section~\ref{sec:data}).
+The graph-search routines are implemented in a C program (\protect\path{src/atascadas.c} in the repository; \emph{atascada} is Spanish for \emph{stuck}) that reads graphs in \texttt{graph6} format from the output of \texttt{geng}~\cite{McKayPiperno2014}. Graphs have at most $15$ vertices, so vertex sets are bitmasks and neighbourhoods are arrays of bitmasks; cliques are enumerated by recursive extension. Independent re-implementations in pure Python of the exact $\IS$ decision and of integer homology (\protect\path{tools/}) are used for the certificates (Section~\ref{sec:data}).
 
 \subsection{Homology and the stuck filter}
 
-$\Ztwo$-homology of $\cl(H)$ for a small graph $H$ is computed by Gaussian elimination over $\mathrm{GF}(2)$ of the boundary matrices, with simplices up to dimension $\omega(H)-1$. The Euler characteristic $\chi(H)=\sum_k(-1)^{k-1}c_k(H)$ is obtained from the clique enumeration and is a much cheaper necessary condition ($\chi=1$) for $\Ztwo$-acyclicity. Integer homology of the (few) candidate graphs is computed by exact Smith normal form of the boundary matrices over $\ZZ$; for the $14$-vertex graphs the matrices have a few dozen rows and columns (at most $51\times 48$ for the graphs in the closures) and the computation is instantaneous.
+$\Ztwo$-homology of $\cl(H)$ for a small graph $H$ is computed by Gaussian elimination over $\mathrm{GF}(2)$ of the boundary matrices, with simplices up to dimension $\omega(H)-1$. The Euler characteristic $\chi(H)=\sum_k(-1)^{k-1}c_k(H)$ is obtained from the clique enumeration and is a much cheaper necessary condition ($\chi=1$) for $\Ztwo$-acyclicity. Integer homology of the candidates is computed by exact Smith normal forms over $\ZZ$. For the $51$ stuck graphs on $14$ vertices, the largest edge--triangle boundary matrix is $47\times34$. The torsion of $H_k$ equals that of the cokernel of $\partial_{k+1}$, since the quotient by $H_k$ is the free abelian group $\operatorname{im}\partial_k$; the free rank is obtained from the two adjacent boundary ranks.
 
-Algorithm~\ref{alg:stuck} decides whether $G$ is stuck by a cascade of tests of increasing cost; the tests are ordered so that the overwhelming majority of graphs is rejected early.
+Under $\mathrm{H12}$ of Section~\ref{sec:reduction}, Algorithm~\ref{alg:stuck} decides whether a graph in the stated search range is stuck by a cascade of tests of increasing cost; the tests are ordered so that the overwhelming majority of graphs is rejected early.
 
 \begin{algorithm}[t]
 \caption{\textsc{Stuck}$(G)$ --- filter cascade}\label{alg:stuck}
-\KwIn{a graph $G$ on $n$ vertices (bitmask adjacency)}
+\KwIn{a connected graph $G$ with $2\le n\le14$, no universal vertex, and hypothesis $\mathrm{H12}$}
 \KwOut{\textbf{true} iff $G$ is stuck}
 \ForEach{vertex $v$}{\lIf{$|\Nb(v)|<2$ \textbf{or} $\Nb(v)$ is a cone}{\Return \textbf{false}}}
 \lIf{$\chi(G)\neq 1$}{\Return \textbf{false}}
@@ -20,23 +20,26 @@ Algorithm~\ref{alg:stuck} decides whether $G$ is stuck by a cascade of tests of 
 \Return \textbf{true}
 \end{algorithm}
 
-The acyclicity test for a neighbourhood $H$ is itself a cascade: $H$ disconnected $\Rightarrow$ not acyclic; $H$ $0$-dismantlable (greedy cone-vertex removal) $\Rightarrow$ acyclic; $\chi(H)\ne1$ $\Rightarrow$ not acyclic; otherwise compute $\widetilde H_*(H;\Ztwo)$. The \emph{almost stuck} variant used for Proposition~\ref{prop:almost} replaces the vertex loop by a count of vertices with acyclic neighbourhood, accepting exactly one.
+The acyclicity test for a neighbourhood $H$ is itself a cascade: $H$ disconnected $\Rightarrow$ not acyclic; $H$ $0$-dismantlable (greedy cone-vertex removal) $\Rightarrow$ acyclic; $\chi(H)\ne1$ $\Rightarrow$ not acyclic; otherwise compute $\widetilde H_*(H;\Ztwo)$. The \emph{almost stuck} variant used for Proposition~\ref{prop:almost} omits the initial cone/degree rejection and permits universal vertices. It tests $\chi=1$, counts vertices with acyclic neighbourhood and accepts exactly one, then applies the edge-neighbourhood and full homology tests.
 
 \subsection{Exact decision of $\IS$, $\IVS$ and $k$-Dis}
 
-Since a greedy sequence of deletions may get stuck in a graph of $\IS$ (\cite[Fig.~2B]{DEFH2023}, Section~\ref{sec:consequences}), we decide $\IS$ by exhaustive search over deletion sequences (Algorithm~\ref{alg:IS}). The search is memoised on the pair (vertex set, edge set) of the current graph; a $0$-dismantlable graph is accepted immediately (\cite[Lemma~19]{DEFH2023}); the neighbourhood conditions are decided recursively by the same procedure. For graphs with at most $15$ vertices the memoised search terminates in milliseconds for the graphs appearing here. $\IVS$ and $k$-Dis are decided by dynamic programming over the $2^n$ induced subgraphs: a set $S$ is reducible if $|S|=1$ or some $v\in S$ has $\Nb_{G[S]}(v)$ in the relevant class and $S\setminus\{v\}$ reducible.
+Since the one-edge certificates of Section~\ref{sec:fourteen} show that a legal strong edge deletion can leave $\IS$, we decide $\IS$ by exhaustive search over deletion sequences (Algorithm~\ref{alg:IS}). The mathematical algorithm memoises the complete pair (vertex set, edge set) of the current graph; a $0$-dismantlable graph is accepted immediately (\cite[Lemma~19]{DEFH2023}); the neighbourhood conditions are decided recursively by the same procedure. $\IVS$ and $k$-Dis are decided by dynamic programming over the $2^n$ induced subgraphs: a set $S$ is reducible if $|S|=1$ or some $v\in S$ has $\Nb_{G[S]}(v)$ in the relevant class and $S\setminus\{v\}$ reducible.
 
 \begin{algorithm}[t]
-\caption{\textsc{InIS}$(G)$ --- exact membership in $\IS$}\label{alg:IS}
+\caption{{\normalfont\scshape InIS}$(G)$ --- exact membership in $\IS$}\label{alg:IS}
 \KwIn{a graph $G=(V,E)$}
 \KwOut{\textbf{true} iff $G\in\IS$ (and, on success, a deletion sequence)}
 \lIf{$|V|=0$}{\Return \textbf{false}}
 \lIf{$|V|=1$ \textbf{or} $G$ is $0$-dismantlable}{\Return \textbf{true}}
 \lIf{$(V,E)$ is memoised}{\Return the stored answer}
-\ForEach{vertex $v$ with $\Nb(v)\neq\emptyset$ and \textsc{InIS}$(\Nb(v))$}{\lIf{\textsc{InIS}$(G-v)$}{memoise and \Return \textbf{true}}}
-\ForEach{edge $uv$ with $\Nb(u,v)\neq\emptyset$ and \textsc{InIS}$(\Nb(u,v))$}{\lIf{\textsc{InIS}$(G-uv)$}{memoise and \Return \textbf{true}}}
+\ForEach{vertex $v$ with $\Nb(v)\neq\emptyset$ and {\normalfont\scshape InIS}$(\Nb(v))$}{\lIf{{\normalfont\scshape InIS}$(G-v)$}{memoise and \Return \textbf{true}}}
+\ForEach{edge $uv$ with $\Nb(u,v)\neq\emptyset$ and {\normalfont\scshape InIS}$(\Nb(u,v))$}{\lIf{{\normalfont\scshape InIS}$(G-uv)$}{memoise and \Return \textbf{true}}}
 memoise and \Return \textbf{false}
 \end{algorithm}
+
+\paragraph{Implementation qualification}
+The Python implementation stores complete graph states and implements Algorithm~\ref{alg:IS} exactly. The archived C versions instead use a $64$-bit hash as the identity of a memoised state, without a final comparison of the underlying graph. The audit did not demonstrate an actual collision, but the implementation alone does not certify its absence. This affects the strong-membership part of the order-$12$ table, which supplies hypothesis $\mathrm{H12}$. Its acyclicity and vertex-strong decisions use exact arithmetic and subset-indexed states. A concrete way to close the gap is to export the $\num{11718}$ acyclic, non-vertex-strong candidates and check their strong membership with complete-state memoisation. The large stuck searches use homology tests rather than this strong-membership cache, but interpreting their outputs relies on $\mathrm{H12}$.
 
 \subsection{Certificates of I-contractibility and $\mathrm{I}_4$-closures}
 
@@ -46,71 +49,59 @@ To certify that a stuck graph $G$ is I-contractible we search breadth-first for 
 \caption{\textsc{ICert}$(G,d)$ --- certificate of I-contractibility by $\le d$ additions}\label{alg:icert}
 $Q\leftarrow\{(G,\emptyset)\}$\;
 \For{$\ell=0,\dots,d$}{
-  \ForEach{$(H,L)\in Q$}{\lIf{\textsc{InIS}$(H)$}{\Return $(L,\ \text{deletion sequence of } H)$}}
+  \ForEach{$(H,L)\in Q$}{\lIf{{\normalfont\scshape InIS}$(H)$}{\Return $(L,\ \text{deletion sequence of } H)$}}
   $Q\leftarrow\{(H+uv,\ L\cdot uv): (H,L)\in Q,\ uv\notin E(H),\ \Nb_H(u,v)\in\IS\}$, one representative per isomorphism class\;
 }
 \Return \textbf{undecided}
 \end{algorithm}
 
-The \emph{$\mathrm{I}_4$-closure} of a stuck graph (Lemma~\ref{lem:stuck}(b)) is computed by the same breadth-first expansion without the stopping rule, expanding only the graphs outside $\IS$ (a graph obtained from a member of $\IS$ by an (I4) addition is again in $\IS$ by (F2) of \ref{app:proofs}) and recording the $\IS$ status of every graph reached; isomorphism reduction uses \texttt{nauty}'s canonical labelling. For the $51$ stuck graphs on $14$ vertices this produces all $\Ztwo$-acyclic graphs on $14$ vertices outside $\IS$ that lie over a $K_4$-free stuck graph (Section~\ref{sec:fourteen}).
+To enumerate the part of an $\mathrm{I}_4$-closure outside $\IS$, we expand only states outside $\IS$ and record their first successors in $\IS$. This pruning is valid because an admissible edge addition to a graph in $\IS$ remains in $\IS$: its inverse deletion starts a successful reduction. We call the retained non-strong states the \emph{pruned closure} and the first strong successors its \emph{strong boundary}. The C program deduplicates labelled states by hashes; canonical labelling with \texttt{labelg} is a separate step. The finite closures used here were also recomputed with complete-state Python storage. For the $51$ listed stuck graphs on $14$ vertices this produces the $\Ztwo$-acyclic graphs outside $\IS$ reached from those seeds (Section~\ref{sec:fourteen}).
 
 \subsection{Unfolding into a disc}
 
-For a $K_4$-free candidate we cut $\cl(G)$ along the edges lying in three triangles and glue the corners back through the edges in two triangles (Section~\ref{sec:prelim}); when the result is a disc we draw it with a Tutte embedding (boundary on a regular polygon, interior vertices at the barycentres of their neighbours) and read off the boundary word. This produces the figures of Section~\ref{sec:examples} and classifies the $51$ stuck graphs by the pattern of their boundary identification.
+For a pure two-dimensional candidate we retain the gluing across edges in exactly two triangles and cut across all other edges, splitting vertices according to the resulting corner equivalence (Section~\ref{sec:prelim}); when the result is a disc we draw it with a Tutte embedding (boundary on a regular polygon, interior vertices at the barycentres of their neighbours) and read off the boundary word. The resulting complexes must be checked for connectedness, vertex links, boundary components and Euler characteristic before they are called discs or annuli. This procedure yields $48$ discs, two annuli, and one disjoint union of a disc and an annulus among the $51$ seeds.
 
 \subsection{The distributed search}
 
-The enumeration was run on the YUCA cluster of ACARUS (Universidad de Sonora): CPU partition of $24$ nodes with two $32$-core AMD EPYC 9354 processors ($64$ cores, no hyper-threading) and $1$\,TB of RAM each, Rocky Linux 9.6, Lustre file system, SLURM 24.11 with a per-project quality-of-service limit of $500$ cores, \texttt{gcc}~11, \texttt{nauty}~2.7r4 (and \texttt{nauty}~2.8 compiled locally for the $K_4$-free option \texttt{-k} of \texttt{geng}). Algorithm~\ref{alg:dist} and Fig.~\ref{fig:flow} describe the workflow; the exact scripts are in the repository (\texttt{yuca/}).
+The enumeration used the CPU partition of the YUCA cluster at ACARUS, Universidad de Sonora, with $64$ cores per node and \texttt{geng}'s \protect\path{res/mod} partitioning. The order-$14$ search used \texttt{nauty}~2.8 for its $K_4$-free option \texttt{-k}. Figure~\ref{fig:flow} summarises the mathematical pipeline; Appendix~\ref{app:cluster} gives the scheduling procedure, hardware and provenance qualifications.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{fig09.pdf}
-\caption{The computational pipeline: \texttt{geng} enumeration in \texttt{res/mod} slices, the filter cascade of Algorithm~\ref{alg:stuck} (with the survivor counts of the $n=13$ run), $\mathrm{I}_4$-closures, integer homology and certificates; bottom: the three cluster runs.}\label{fig:flow}
+\includegraphics[width=\textwidth]{figures/fig09.pdf}
+\caption{The computational pipeline: \texttt{geng} enumeration in \protect\path{res/mod} slices, the filter cascade of Algorithm~\ref{alg:stuck} (with the survivor counts of the $n=13$ run), $\mathrm{I}_4$-closures, integer homology and certificates; bottom: the three cluster runs. The phrase ``all $\Ztwo$-acyclic non-$\IS$ graphs'' applies to order $13$ under the stated hypotheses; at order $14$ only descendants of the listed seeds are covered. The preserved graphic shows the earlier approximate duration $33$ h; the accounting gives $35$ h $2$ min $48$ s for the order-$14$ array span.}\label{fig:flow}
 \end{figure}
 
-\begin{algorithm}[t]
-\caption{Distributed search on the cluster}\label{alg:dist}
-\KwIn{$n$; number of slices $M$; number of array tasks $T$; \texttt{geng} options $\Omega$; mode (stuck / table)}
-A one-core wrapper job compiles the program, creates the registries \texttt{listas\_t}, \texttt{enc\_t} ($t=0,\dots,T-1$) and submits a SLURM array of $T$ tasks with $64$ cores each\;
-\ForEach{task $t$ in parallel}{
-  \ForEach{slice $r\equiv t\pmod T$, $0\le r<M$, with $64$ slices in flight (\texttt{xargs -P 64})}{
-    \lIf{$r\in$ \texttt{listas\_t}}{skip (resumable)}
-    run \texttt{geng $\Omega$ $n$ -q $r/M$ | atascadas --modo} mode, writing the output to a per-slice file\;
-    under a file lock, append the output to \texttt{enc\_t} and $r$ to \texttt{listas\_t}\;
-  }
-}
-The wrapper polls progress every $60$\,s; when all tasks end it sums the counters, verifies that $\bigcup_t\texttt{listas\_t}=\{0,\dots,M-1\}$, lists duplicated slices, and records \texttt{sacct} accounting\;
-\end{algorithm}
 
-For $n=14$ a second wrapper, submitted under a second project account, processed the slices in descending order sharing the same registries, so that the two fronts met in the middle; $692$ slices were processed by both fronts with identical output, and coverage of all $M=\num{2000000}$ slices was verified after completion. (A first submission on 11~October with the cluster's \texttt{geng}~2.7r4, which does not support the option \texttt{-k}, produced no output and was discarded; see \ref{app:cluster}.) Table~\ref{tab:runs} summarises the runs. From the \texttt{sacct} accounting, the total cost including generation was about $0.55\,\mu$s per graph and core for $n=13$ ($1.14\times10^{7}$ core-seconds for $2.1\times10^{13}$ graphs) and about $1.6\,\mu$s for $n=14$ ($1.0\times10^{8}$ core-seconds for $6.5\times10^{13}$ graphs); most of it is spent in \texttt{geng}, since Algorithm~\ref{alg:stuck} rejects the majority of graphs at the cone test.
+
+For $n=14$ two projects processed slices in opposite orders. The reconstructed registries contain $\num{2000692}$ entries, covering every one of the $\num{2000000}$ slices, with $692$ slices recorded twice. The counters in Table~\ref{tab:runs} sum the per-slice files once. The two workers used different lock files while writing shared result paths, so the surviving archive does not establish that both executions of each duplicated slice produced identical output. Repeating those slices with separate output files remains a certification requirement for $\mathrm{H14}$.
 
 \begin{table}[t]
 \centering\small
-\caption{Searches performed. ``graphs'' is the number of graphs produced by \texttt{geng} and examined; the filter counters are the numbers of graphs passing the cone test, the Euler characteristic test and the open-neighbourhood tests of Algorithm~\ref{alg:stuck} (the graphs that also pass the common-neighbourhood tests, and for which the homology of $G$ is computed, are listed in \ref{app:cluster}).}\label{tab:runs}
-\resizebox{\textwidth}{!}{\begin{tabular}{@{}lllrrrrrr@{}}
+\caption{Searches performed. ``graphs'' is the number of graphs produced by \texttt{geng} and examined; the filter counters are the numbers of graphs passing the cone test, the Euler characteristic test and the neighbourhood tests of Algorithm~\ref{alg:stuck}.}\label{tab:runs}
+\resizebox{\textwidth}{!}{\begin{tabular}{@{}lllrrrrr@{}}
 \toprule
-$n$ & class (\texttt{geng} options) & mode & graphs & pass cone & pass $\chi$ & pass $\Nb(v)$ & pass $\Nb(u,v)$ & stuck \\
+$n$ & class (\texttt{geng} options) & mode & graphs & pass cone & pass $\chi$ & pass $\Nb$ & stuck \\
 \midrule
-12 & connected (\texttt{-c}) & table & \num{164059830476} & -- & -- & -- & -- & --$^{*}$ \\
-13 & connected (\texttt{-c}) & table & \num{50335907869219} & -- & -- & -- & -- & --$^{*}$ \\
-13 & \texttt{-C -d4 -D11} & stuck & \num{21011415992470} & \num{3335926431910} & \num{480204455162} & \num{15693920490} & \num{218516} & 1 \\
-14 & \texttt{-k -C -d4 -D12} & stuck & \num{64856470381820} & \num{48303369131820} & \num{1462235073536} & \num{108022349478} & \num{13536597} & 51 \\
+12 & connected (\texttt{-c}) & table & \num{164059830476} & -- & -- & -- & 0 \\
+13 & \texttt{-C -d4 -D11} & stuck & \num{21011415992470} & \num{3335926431910} & \num{480204455162} & \num{15693920490} & 1 \\
+14 & \texttt{-k -C -d4 -D12} & stuck & \num{64856470381820} & \num{48303369131820} & \num{1462235073536} & \num{108022349478} & 51 \\
 \bottomrule
 \end{tabular}}
 
 \medskip
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-$n$ & slices $M$ & cores & wall time & SLURM arrays \\
+$n$ & slices $M$ & max. cores & wall time & SLURM arrays \\
 \midrule
-12 & \num{4000} & 448 & 8 min ($\times 2$ runs) & 2079049/2079051, 2084878 \\
-13 (table) & \num{200000} & 896 & 21 h & 2084597 (p029), 2084636 (p011) \\
+12 & \num{4000} & 448 & $7$ min $10$ s & 2079049, 2079051 \\
 13 & \num{200000} & 448 & 7 h 10 min & 2079058, 2079059 \\
-14 & \num{2000000} & 896 & $\approx 34$ h & 2079102 (p029), 2079156 (p011) \\
+14 & \num{2000000} & 896 & $35$ h $2$ min $48$ s & 2079102 (p029), 2079156 (p011) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Validation}
 
-The program reproduces every entry of Table~1 of~\cite{DEFH2023} for $n\le 11$ (Section~\ref{sec:table}); it classifies the dunce hat $\Dunce$ of~\cite[Fig.~2A]{DEFH2023} as $\Ztwo$-acyclic, stuck and not in $\IS$, and the graph of~\cite[Fig.~2B]{DEFH2023} as a member of $\IS$; and its exact $\IS$ decision agrees with the independent Python implementation on all graphs reported here; the script \texttt{verify.sh} of the repository re-runs these checks (38 checks, all passing at the time of writing). The row $n=12$ agrees with an independent computation by the authors' group (unpublished, 2025) in every cell that both computations cover. Integer homology groups were computed with our own Smith normal form routine and cross-checked with \texttt{sympy} and with Wolfram Mathematica for the key graphs.
+All $63$ cells common to Table~\ref{tab:card} and Table~1 of~\cite{DEFH2023} agree (nine rows and seven columns). In the present audit, \texttt{verify.sh} completed with $31$ checks passed and no failures, including regenerated rows through order $9$; row $10$ was also regenerated. Row $11$ was compared with the publication but its billion-graph enumeration was not repeated to completion. The historical order-$12$ comparison with the unpublished 2025 draft is limited to cells actually filled in that draft; the $\IVS$ cell there is blank.
+
+The seven principal graphs were independently checked in Wolfram Language using integral kernel bases and Smith normal forms. The Python tools verify the homology and strong-membership status of all $51$ seeds, the one-edge certificates and the cone routes. Complete-state closure enumeration and canonical labelling reproduce the finite closure counts. These checks establish the listed finite results; they do not replace the computational hypotheses needed for exhaustivity of the original searches.

@@ -9,13 +9,18 @@ authors:
   - family-names: Frías-Armenta
     given-names: Martín Eduardo
     affiliation: Universidad de Sonora
-  - family-names: Hernández
+  - family-names: Hernández-Amador
+    given-names: Rosalía G.
+    affiliation: Universidad de Sonora
+  - family-names: Hernández-Hernández
     given-names: Héctor A.
     affiliation: Universidad de Sonora
 repository-code: https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong
 license: MIT
-date-released: 2026-10-13
-version: 1.0.0
+# Development snapshot after the external audit; the certified release will be tagged once the
+# exact-key recomputations are finished.
+version: 1.1.0-dev
+date-released: 2026-10-16
 keywords:
   - I-contractible graphs
   - strong I-contractible graphs
@@ -23,3 +28,21 @@ keywords:
   - dunce hat
   - torsion
   - exhaustive graph enumeration
+preferred-citation:
+  type: article
+  title: "Small non-strong I-contractible graphs and odd torsion in flag complexes"
+  status: in-preparation
+  year: 2026
+  authors:
+    - family-names: Espinoza
+      given-names: Jesús F.
+      affiliation: "Departamento de Matemáticas, Universidad de Sonora"
+    - family-names: Frías-Armenta
+      given-names: Martín Eduardo
+      affiliation: "Departamento de Matemáticas, Universidad de Sonora"
+    - family-names: Hernández-Amador
+      given-names: Rosalía G.
+      affiliation: "Departamento de Matemáticas, Universidad de Sonora"
+    - family-names: Hernández-Hernández
+      given-names: Héctor A.
+      affiliation: "Departamento de Matemáticas, Universidad de Sonora"

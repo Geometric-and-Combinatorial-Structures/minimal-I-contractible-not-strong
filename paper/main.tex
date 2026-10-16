@@ -1,4 +1,21 @@
-\documentclass[preprint,12pt]{elsarticle}
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\AtBeginDocument{\lefthyphenmin=2\righthyphenmin=2}
+\usepackage[margin=1in]{geometry}
+\let\Bbbk\relax
+\usepackage{microtype}
+\emergencystretch=3em
+\usepackage{courier}
+\usepackage[numbers]{natbib}
+\makeatletter
+\renewcommand\subsection{\@startsection{subsection}{2}%
+  \z@{.5\linespacing\@plus.7\linespacing}{.5\linespacing}%
+  {\normalfont\bfseries}}
+\makeatother
+\pagestyle{plain}
+\date{}
+\usepackage{textcomp,upquote}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -6,15 +23,25 @@
 \usepackage{multirow}
 \usepackage{longtable}
 \usepackage{rotating}
+\usepackage{placeins}
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \usepackage{xcolor}
 \usepackage{enumitem}
-\PassOptionsToPackage{hyphens}{url}\usepackage{url}
+\PassOptionsToPackage{hyphens}{url}\usepackage{xurl}
+\usepackage{microtype}
+\emergencystretch=3em
 \usepackage{verbatim}
 \usepackage{siunitx}
 \sisetup{group-separator={,},group-minimum-digits=4}
-\usepackage[colorlinks,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\usepackage[colorlinks,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
 \graphicspath{{figures/}}
+\pdfstringdefDisableCommands{%
+  \def\I{I}\def\IS{I-S}\def\IVS{I-VS}%
+  \def\Ztwo{Z2}\def\ZZ{Z}\def\mathrm#1{#1}%
+  \def\setminus{ minus }\def\subseteq{ contained in }%
+  \def\Ga{G14a}\def\Gb{G14b}\def\Gc{G14c}%
+  \def\Gt{G13}\def\Dunce{D15}%
+}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
@@ -37,7 +64,7 @@
 \newcommand{\Ztwo}{\mathbb{Z}_2}
 \newcommand{\cl}{\Delta}
 \newcommand{\Nb}{N}
-\newcommand{\gsix}[1]{\texttt{#1}}
+\newcommand{\gsix}[1]{{\normalfont\ttfamily #1}}
 \newcommand{\Ga}{G_{14}^{a}}
 \newcommand{\Gb}{G_{14}^{b}}
 \newcommand{\Gc}{G_{14}^{c}}
@@ -45,29 +72,28 @@
 \newcommand{\Dunce}{D_{15}}
 \newcommand{\repo}{\url{https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong}}
 
-\journal{Discrete Mathematics}
+
 
 \begin{document}
-\begin{frontmatter}
 
-\title{The smallest I-contractible graphs that are not strong I-contractible,\\ and odd torsion in flag complexes on thirteen vertices}
 
-\author[unison]{Jes\'us F. Espinoza\corref{cor1}}
-\ead{jesusfrancisco.espinoza@unison.mx}
-\author[unison]{Mart\'in Eduardo Fr\'ias-Armenta}
-\author[unison]{H\'ector A. Hern\'andez}
-\cortext[cor1]{Corresponding author}
-\address[unison]{Departamento de Matem\'aticas, Universidad de Sonora, Hermosillo, Sonora, M\'exico}
+\title{Small non-strong I-contractible graphs and odd torsion in flag complexes}
+
+\author{Jes\'us F. Espinoza\textsuperscript{*}}
+\thanks{\textsuperscript{*}Corresponding author}
+\author{Mart\'in Eduardo Fr\'ias-Armenta}
+\author{Rosal\'ia G. Hern\'andez-Amador}
+\author{H\'ector A. Hern\'andez-Hernández}
+\address{Departamento de Matem\'aticas, Universidad de Sonora, Hermosillo, Sonora, M\'exico}
+\email{jesusfrancisco.espinoza@unison.mx}
 
 \begin{abstract}
-Ivashchenko's contractible transformations define a hierarchy of graph classes $\IVS\subseteq\IS\subseteq\I$ (vertex-strong, strong and plain I-contractible graphs) whose clique complexes are contractible. Dochtermann, Espinoza, Fr\'ias-Armenta and Hern\'andez [Discrete Math.\ 346 (2023) 113516] exhibited a $15$-vertex flag triangulation of the dunce hat lying in $\I\setminus\IS$ and conjectured that it is the smallest graph with trivial homology that is not strong I-contractible, and in particular the smallest member of $\I\setminus\IS$. We refute both statements by an exhaustive, certified computer search of $2.1\times10^{13}$ graphs on $13$ vertices and $6.5\times10^{13}$ $K_4$-free graphs on $14$ vertices, carried out on the YUCA cluster after a reduction to ``stuck'' graphs (no vertex and no edge admits a strong contractible deletion). The smallest $\Ztwo$-acyclic graphs outside $\IS$ have $13$ vertices: there are exactly three, and the clique complex of each has $H_1\cong\ZZ/3$, so they are Moore spaces $M(\ZZ/3,1)$ and---by a result of Adamaszek on torsion in flag complexes with at most $12$ vertices---the smallest flag complexes with odd torsion in $H_1$. The smallest $\ZZ$-acyclic graphs outside $\IS$, and the smallest members of $\I\setminus\IS$, have $14$ vertices; within the $K_4$-free class there are exactly three stuck ones, each a flag triangulation of a disc whose boundary is identified along a cycle of length $4$, $5$ or $6$ with the dunce-hat pattern $a\,a\,a^{-1}$. The same examples refute Conjecture~15 of the cited paper with exact minimum $14$. We extend the enumeration of the classes $\I$, $\IS$, $\IVS$ and $k$-dismantlable graphs to $12$ vertices, give pseudocode for all algorithms, and release code, data and machine-checkable certificates.
+We construct three $14$-vertex I-contractible graphs that are not strong I-contractible, and three $13$-vertex $\Ztwo$-acyclic graphs whose clique complexes have $H_1\cong\ZZ/3$. These examples refute Conjectures~14 and~15 of Dochtermann, Espinoza, Fr\'ias-Armenta and Hern\'andez [Discrete Math.\ 346 (2023) 113516]. Their homology and contractibility certificates are checked independently. A reduction to graphs admitting no strong vertex or edge deletion makes an exhaustive search feasible. The recorded searches examined $\num{21011415992470}$ graphs on $13$ vertices and $\num{64856470381820}$ $K_4$-free graphs on $14$ vertices. Subject to the explicit computational hypotheses stated in the paper, the respective minimum orders are $13$ and $14$, and there are exactly eight $K_4$-free graphs of order $14$ in the gap between I-contractibility and strong I-contractibility. The three $13$-vertex examples attain the minimum order for odd torsion in the first homology of a flag complex, using Adamaszek's classification for at most $12$ vertices. We also report cardinalities through order $13$, explain the remaining certification gaps in the enumeration, and provide graph data, code and finite certificates.
 \end{abstract}
 
-\begin{keyword}
-contractible transformations \sep I-contractible graphs \sep strong I-contractible graphs \sep clique complex \sep dunce hat \sep torsion \sep exhaustive enumeration
-\MSC[2020] 05C10 \sep 05C85 \sep 55U10 \sep 57Q10
-\end{keyword}
-\end{frontmatter}
+\keywords{contractible transformations, I-contractible graphs, strong I-contractible graphs, clique complex, dunce hat, torsion, exhaustive enumeration}
+\subjclass[2020]{05C10, 05C85, 55U10, 57Q10}
+\maketitle
 
 \input{sections/01_intro}
 \input{sections/02_prelim}
@@ -75,20 +101,19 @@ contractible transformations \sep I-contractible graphs \sep strong I-contractib
 \input{sections/04_algorithms}
 \input{sections/05_table}
 \input{sections/06_examples}
-\clearpage
 \input{sections/07_consequences}
 \input{sections/08_data}
 
 \section*{Acknowledgements}
 The computations were carried out on the YUCA cluster of the \'Area de C\'omputo de Alto Rendimiento de la Universidad de Sonora (ACARUS), under projects p029 and p011; we thank ACARUS for the computing time and technical support. Graph enumeration used \texttt{geng} from McKay and Piperno's \emph{nauty/Traces}~\cite{McKayPiperno2014}.
 
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
 \appendix
 \input{sections/A_proofs}
 \input{sections/B_tables}
 \input{sections/C_certificates}
 \input{sections/D_cluster}
-
-\bibliographystyle{elsarticle-num}
-\bibliography{refs}
 
 \end{document}

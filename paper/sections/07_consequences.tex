@@ -2,51 +2,68 @@
 
 \subsection{Conjecture 15 of~\cite{DEFH2023}}
 
-In a strong I-contractible graph the order of deletions matters; Theorem~16 and Fig.~3 of~\cite{DEFH2023} show that for vertex-strong I-contractible graphs a bad choice of an $\IVS$-deletable vertex first occurs at $12$ vertices. For edges, Conjecture~15 of~\cite{DEFH2023} proposed that the first bad choice of an $\IS$-deletable edge occurs in the $15$-vertex graph of their Fig.~2B (the dunce hat $\Dunce$ plus one edge).
+In a strong I-contractible graph the order of deletions matters~\cite[Fig.~2B]{DEFH2023}; Theorem~16 of~\cite{DEFH2023} shows that for vertex-strong I-contractible graphs a bad choice of an $\IVS$-deletable vertex first occurs at $12$ vertices. For edges, Conjecture~15 of~\cite{DEFH2023} proposed that the first bad choice of an $\IS$-deletable edge occurs in the $15$-vertex graph of their Fig.~2B (the dunce hat $\Dunce$ plus one edge).
 
 \begin{theorem}\label{thm:D}
-The smallest graph $G$ (in terms of vertices) such that (1) $G\in\IS$ and (2) $G$ has an edge $\{v,w\}$ with $\Nb(v,w)\in\IS$ and $G-\{v,w\}\notin\IS$ has $14$ vertices. The graphs $\Ga+\{0,1\}$, $\Gb+\{0,3\}$ and $\Gc+\{2,3\}$ (\gsix{M\_b@bFHNEk@\textasciitilde{}|k\}U?}, \gsix{MCB@thku?\textasciitilde{}Lylk\}[?}, \gsix{M@r@d`ifbiFfo\}\textasciitilde{}o?}) are such graphs. Moreover there are exactly $32$ pairwise non-isomorphic graphs of the form $H+e$ with $H$ in the $\mathrm{I}_4$-closure of $\Ga$, $H\notin\IS$, $\Nb_H(e)\in\IS$ and $H+e\in\IS$ (\texttt{data/closure\_G14a.tsv}); each of them has properties (1) and (2).
+Under $\mathrm{H12}$, $\mathrm{Hcasi}$ and $\mathrm{H13}$, the smallest graph $G$ (in terms of vertices) such that (1) $G\in\IS$ and (2) $G$ has an edge $\{v,w\}$ with $\Nb(v,w)\in\IS$ and $G-\{v,w\}\notin\IS$ has $14$ vertices. The graphs $\Ga+\{0,1\}$, $\Gb+\{0,3\}$ and $\Gc+\{2,3\}$ with graph6 strings
+\begin{center}\small
+\gsix{M\_b@bFHNEk@\textasciitilde{}|k\}U?},\quad
+\gsix{MCB@thku?\textasciitilde{}Lylk\}[?},\\
+\gsix{M@r@d\textasciigrave{}ifbiFfo\}\textasciitilde{}o?}
+\end{center} are such graphs independently of these hypotheses, and there are at least $32$ pairwise non-isomorphic such graphs in the $\mathrm{I}_4$-closure of $\Ga$ alone.
 \end{theorem}
 \begin{proof}
-$\Ga+\{0,1\}\in\IS$ with $\Nb(0,1)\in\IS$ and $(\Ga+\{0,1\})-\{0,1\}=\Ga\notin\IS$ by Theorem~\ref{thm:B}; likewise for the other two. For minimality, if $G$ on $n\le 13$ vertices satisfied (1) and (2), then $G-\{v,w\}$ would be $\Ztwo$-acyclic (the deletion is a homotopy equivalence since $\cl(\Nb(v,w))$ is contractible) and not in $\IS$, so $n=13$ and $G-\{v,w\}$ is one of the three graphs of Theorem~\ref{thm:A}, by Lemma~\ref{lem:stuck}(a) a graph in the $\mathrm{I}_4$-closure of $\Gt$; but $G$ itself would then be in that closure, which contains no member of $\IS$. The count of $32$ is by direct computation of the $\mathrm{I}_4$-closure of $\Ga$ (Section~\ref{sec:algorithms}; $16$ graphs outside $\IS$ and $32$ graphs in $\IS$ reached from them by one addition, pairwise non-isomorphic by canonical labelling).
+$\Ga+\{0,1\}\in\IS$ with $\Nb(0,1)\in\IS$ and $(\Ga+\{0,1\})-\{0,1\}=\Ga\notin\IS$ by Theorem~\ref{thm:B}; likewise for the other two. For minimality, if $G$ on $n\le 13$ vertices satisfied (1) and (2), then $G-\{v,w\}$ would be $\Ztwo$-acyclic (the deletion is a homotopy equivalence since $\cl(\Nb(v,w))$ is contractible) and not in $\IS$, so $n=13$ and $G-\{v,w\}$ is one of the three graphs of Theorem~\ref{thm:A}, by Lemma~\ref{lem:stuck}(a) a graph in the $\mathrm{I}_4$-closure of $\Gt$; but $G$ itself would then be in that closure, which contains no member of $\IS$. The count of $32$ is the number of non-isomorphic graphs reached by one legal edge addition from a member outside $\IS$ in the $\mathrm{I}_4$-closure of $\Ga$, and lying in $\IS$. It was recomputed by exhaustive expansion with full graph states and canonical labelling. Further additions from a graph in $\IS$ remain in $\IS$ by prepending the inverse edge deletion, so pruning those branches cannot miss any member outside $\IS$. The $32$ boundary graphs therefore give $32$ distinct examples; no claim is made that they exhaust all graphs with a bad edge deletion in the full closure.
 \end{proof}
 
-Thus ``the order matters'' for $\IS$-deletable edges first at $14$ vertices, two more than for $\IVS$-deletable vertices.
+Under these hypotheses, ``the order matters'' for $\IS$-deletable edges first at $14$ vertices, two more than for $\IVS$-deletable vertices.
 
 \subsection{The conjectures of~\cite{FriasArmenta2020}}
 
-Fr\'ias-Armenta~\cite{FriasArmenta2020} gave a $13$-vertex counterexample to an axiom used by Ivashchenko and isolated three statements of~\cite{Ivashchenko1994a} whose published proofs relied on it, restating them as conjectures: (Conjecture~3) every $G\in\I$ on $n$ vertices can be transformed into the complete graph $K_n$ by additions of edges $uv$ with $\Nb(u,v)\in\I$; (Conjecture~4) if $G\in\I$ and $G-v\in\I$ then $\Nb(v)\in\I$; (Conjecture~5) if $G\in\I$ then $\Nb(v)$ and $G-v$ are I-homotopy equivalent. Our examples are natural test cases, being the smallest graphs where $\I$ and $\IS$ differ, but they do not refute these conjectures. (Ghosh and Ghosh~\cite{GhoshGhosh2021} describe an $11$-vertex contractible graph with no ``gluable'' edge, which is relevant to Conjecture~3; we have not analysed its relation to the present examples.)
+Fr\'ias-Armenta~\cite{FriasArmenta2020} gave a $13$-vertex counterexample to an axiom used by Ivashchenko and isolated three statements of~\cite{Ivashchenko1994b} whose published proofs relied on it, restating them as conjectures: (Conjecture~3) every $G\in\I$ on $n$ vertices can be transformed into the complete graph $K_n$ by additions of edges $uv$ with $\Nb(u,v)\in\I$; (Conjecture~4) if $G\in\I$ and $G-v\in\I$ then $\Nb(v)\in\I$; (Conjecture~5) if $G\in\I$ then $\Nb(v)$ and $G-v$ are I-homotopy equivalent. Our examples provide test cases where $\I$ and $\IS$ differ, but they do not refute these conjectures.
 
 \begin{proposition}\label{prop:frias}
-Each of $\Ga$, $\Gb$, $\Gc$ and $\Dunce$ can be transformed into a cone, hence into $K_n$, by $11$, $12$, $12$ and $8$ additions of edges $uv$ with $\Nb(u,v)\in\IS$ respectively (sequences in \ref{app:certificates}). For every vertex $v$ of these four graphs, $\widetilde H_*(G-v;\ZZ)\cong\widetilde H_*(\Nb(v);\ZZ)$, and no $G-v$ is contractible.
+Each of $\Ga$, $\Gb$, $\Gc$ and $\Dunce$ can be transformed into a cone by $11$, $12$, $12$ and $8$ additions of edges $uv$ with $\Nb(u,v)\in\IS$, respectively (sequences in Appendix~\ref{app:certificates}), and thereafter into $K_n$ by further such additions. For every vertex $v$ of these four graphs, $\widetilde H_*(G-v;\ZZ)\cong\widetilde H_*(\Nb(v);\ZZ)$, and no $G-v$ is contractible.
 \end{proposition}
+\begin{proof}
+The sequences in Appendix~\ref{app:certificates} verify the first assertion step by step. Once a universal vertex is present, every missing edge has a common neighbourhood containing that vertex as a cone point, so every remaining addition is legal. The homology isomorphism follows from the Mayer--Vietoris argument below. Each open neighbourhood of these four graphs has at most $10$ vertices and is not $\Ztwo$-acyclic (the neighbourhood checks are included in the certificates). Hence $G-v$ is not $\Ztwo$-acyclic and cannot be contractible.
+\end{proof}
 
-The second statement is not a coincidence: if $\cl(G)$ is contractible then $\cl(G)=\cl(G-v)\cup\mathrm{cone}(\cl(\Nb(v)))$ with intersection $\cl(\Nb(v))$, and the Mayer--Vietoris sequence gives $\widetilde H_k(G-v)\cong\widetilde H_k(\Nb(v))$ for all $k$. Hence Conjectures~4 and~5 cannot be refuted by homological invariants on graphs in $\I$; a counterexample would have to be detected by the fundamental group or by simple homotopy type. (By~\cite{DochtermannMatsushita2025}, $\I$-homotopy equivalence of graphs is simple homotopy equivalence of clique complexes, so Conjecture~5 asks whether $\cl(G-v)$ and $\cl(\Nb(v))$ are simple homotopy equivalent whenever $\cl(G)$ is contractible.)
+The second statement is not a coincidence: if $\cl(G)$ is contractible then $\cl(G)=\cl(G-v)\cup\mathrm{cone}(\cl(\Nb(v)))$ with intersection $\cl(\Nb(v))$, and the Mayer--Vietoris sequence gives $\widetilde H_k(G-v)\cong\widetilde H_k(\Nb(v))$ for all $k$. Hence Conjectures~4 and~5 cannot be refuted by homological invariants on graphs in $\I$; a counterexample would have to be detected by the fundamental group or by simple homotopy type. (By~\cite[Theorem~1.2]{DochtermannMatsushita2025}, $\I$-homotopy equivalence of graphs is simple homotopy equivalence of clique complexes, so Conjecture~5 asks whether $\cl(G-v)$ and $\cl(\Nb(v))$ are simple homotopy equivalent whenever $\cl(G)$ is contractible.)
 
 \subsection{Open problems}\label{sec:open}
 
 \begin{question}\label{q:K4}
-Is every \emph{stuck} graph in $\I\setminus\IS$ on $14$ vertices $K_4$-free? Equivalently, by Theorem~\ref{thm:C}(ii), is every graph in $\I\setminus\IS$ on $14$ vertices one of the $29$ graphs of Section~\ref{sec:fourteen}? (Of those $29$, the $21$ that are not $K_4$-free arise by (I4) additions from the three $K_4$-free stuck graphs.)
+Do the $29$ graphs in $\I\setminus\IS$ obtained from the closures in Section~\ref{sec:fourteen} exhaust this class on $14$ vertices? Under the computational hypotheses above, this is equivalent to asking whether every stuck graph in $\I\setminus\IS$ on $14$ vertices is $K_4$-free.
 \end{question}
 
-The full class of $2$-connected graphs on $14$ vertices with $4\le\delta\le\Delta\le 12$ has about $10^{16}$ members, two to three orders of magnitude beyond the present computation. Two routes seem feasible: enumerating only graphs with a bounded number of copies of $K_4$, or growing the stuck graphs on $13$ and $14$ vertices by one vertex and testing stuckness of the extensions.
+Among the $29$ known graphs, $21$ already contain a $K_4$; thus the corresponding question for all graphs in $\I\setminus\IS$, rather than its stuck members, has a negative answer. The full class of $2$-connected graphs on $14$ vertices with $4\le\delta\le\Delta\le 12$ has about $10^{16}$ members, two to three orders of magnitude beyond the present computation. Two routes seem feasible: enumerating only graphs with a bounded number of copies of $K_4$, or developing further structural restrictions on stuck graphs containing a $K_4$. Adding one vertex to known smaller graphs is useful for discovering examples, but does not by itself give an exhaustive search.
 
-\begin{conjecture}\label{conj:disc}
-Every stuck graph whose clique complex is $2$-dimensional unfolds, after cutting along the edges in three triangles, to a disc whose boundary is identified with an induced cycle $C$ of $G$ with the pattern $a\,a\,a^{-1}$ (contractible case) or $a^{3}$ (torsion case), possibly with pendant edges traversed back and forth.
-\end{conjecture}
+\begin{question}\label{conj:disc}
+Among stuck $K_4$-free graphs of a fixed order, consider those with the minimum number of edges, separately in the contractible case and in the non-contractible case. Must their clique complexes be quotients of a disc with boundary attached to a unicyclic graph, with degree $\pm1$ or $\pm3$ on its unique cycle?
+\end{question}
 
-Among the $51$ stuck $K_4$-free graphs on $14$ vertices, $48$ satisfy the conjecture; the three exceptions (two annuli and one disconnected unfolding) all have $45$ or $47$ edges and torsion, and it may be that the conjecture holds for stuck graphs of minimum size.
+No such statement holds for all stuck graphs: among the $51$ examples on $14$ vertices, two unfold to annuli and one has a disconnected unfolding. Here the cutting set consists of all edges whose triangle incidence differs from two, as explained in Section~\ref{sec:prelim}.
+
+\begin{proposition}\label{prop:noncollapsible}
+The clique complexes of $\Ga$, $\Gb$ and $\Gc$ are not collapsible.
+\end{proposition}
+\begin{proof}
+Each is a pure $2$-dimensional complex and every edge belongs to at least two triangles. Consequently there is no free edge--triangle pair; purity also excludes a free vertex--edge pair. More generally no vertex can be contained in a unique maximal triangle, since each of its incident edges lies in at least two triangles. Thus no elementary collapse can start. These complexes have more than one vertex, so they are not collapsible.
+\end{proof}
+
+The conjecture that a flag complex is collapsible if and only if its $1$-skeleton belongs to $\IS$ is Conjecture~1 of~\cite{EFH2022}, restated as Conjecture~27 of~\cite{DEFH2023}. The forward implication remains a separate question; the implication $\IS\Rightarrow$ collapsible is~\cite[Theorem~1]{EFH2022}. The three graphs above therefore do not refute that conjecture.
 
 \begin{question}
-Are the clique complexes of $\Ga$, $\Gb$, $\Gc$ collapsible? Conjecture~27 of~\cite{EFH2022} asserts that a flag complex is collapsible if and only if its $1$-skeleton is in $\IS$; since the three graphs are not in $\IS$, either they are non-collapsible (as the dunce hat is) or they refute that conjecture.
+Which first-homology torsion groups occur in flag complexes on $13$ and $14$ vertices? In particular, which $13$-vertex examples with odd torsion fail to be $\Ztwo$-acyclic?
 \end{question}
 
-\begin{question}\label{q:torsion}
-Theorem~\ref{thm:A} and Adamaszek's classification~\cite{Adamaszek2014} show that $13$ is the smallest number of vertices of a flag complex with odd torsion in $H_1$. Are the three graphs of Theorem~\ref{thm:A} the only $13$-vertex graphs whose clique complex has odd torsion in $H_1$ (our search covered only the $\Ztwo$-acyclic ones), and which torsion groups occur in $H_1$ on $13$ and $14$ vertices?
-\end{question}
+The minimum order for odd torsion in $H_1$ is $13$, even without the acyclicity assumption; see the discussion of Adamaszek's classification in Section~\ref{sec:thirteen}.
 
 \begin{question}
-Table~\ref{tab:card} shows $\IVS=2\text{-Dis}=3\text{-Dis}$ for $n\le 12$. Are there graphs in $\IVS$ that are not $2$-dismantlable, and what is the smallest one?
+What is the smallest order of a graph in $\IVS$ that is not $2$-dismantlable?
 \end{question}
 
-Finally, Question~28 of~\cite{DEFH2023} asked whether every graph with contractible clique complex is I-contractible; this is now the theorem of Dochtermann and Matsushita~\cite{DochtermannMatsushita2025}. Our results show that the analogous question with ``$\Ztwo$-acyclic'' in place of ``contractible'' has a negative answer already at $13$ vertices, that with ``$\ZZ$-acyclic'' it has a negative answer at $14$ vertices, and that the gap between $\I$ and $\IS$ opens at $14$.
+Such graphs exist: the graph $Q_4$ of~\cite[Proposition~8]{FieuxJouve2020} has $24$ vertices and belongs to $3$-Dis but not $2$-Dis. Thus the minimum is at most $24$, and by Observation~\ref{obs:table}(ii) it is at least $14$.
+
+Finally, Question~28 of~\cite{DEFH2023} asked whether every graph with contractible clique complex is I-contractible; this is now the theorem of Dochtermann and Matsushita~\cite{DochtermannMatsushita2025}. Our results show that the analogous question with ``$\Ztwo$-acyclic'' in place of ``contractible'' has a negative answer already at $13$ vertices, and, under the stated computational hypotheses, that the gap between $\I$ and $\IS$ opens at $14$.
