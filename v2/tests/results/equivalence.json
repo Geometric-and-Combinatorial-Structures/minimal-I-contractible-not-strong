@@ -1,0 +1,681 @@
+{
+ "started": "2026-10-15T22:57:00-0700",
+ "checks": [
+  {
+   "name": "T1 tabla n=1",
+   "pass": true,
+   "v2": {
+    "conexas": 1,
+    "chi1": 1,
+    "aciclicas": 1,
+    "I": 1,
+    "I_indecisas": 0,
+    "I_S": 1,
+    "I_SV": 1,
+    "3-Dis": 1,
+    "2-Dis": 1,
+    "1-Dis": 1,
+    "0-Dis": 1,
+    "-1-Dis": 1
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": null,
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=2",
+   "pass": true,
+   "v2": {
+    "conexas": 1,
+    "chi1": 1,
+    "aciclicas": 1,
+    "I": 1,
+    "I_indecisas": 0,
+    "I_S": 1,
+    "I_SV": 1,
+    "3-Dis": 1,
+    "2-Dis": 1,
+    "1-Dis": 1,
+    "0-Dis": 1,
+    "-1-Dis": 1
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": null,
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=3",
+   "pass": true,
+   "v2": {
+    "conexas": 2,
+    "chi1": 2,
+    "aciclicas": 2,
+    "I": 2,
+    "I_indecisas": 0,
+    "I_S": 2,
+    "I_SV": 2,
+    "3-Dis": 2,
+    "2-Dis": 2,
+    "1-Dis": 2,
+    "0-Dis": 2,
+    "-1-Dis": 2
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    2,
+    2,
+    2,
+    2,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=4",
+   "pass": true,
+   "v2": {
+    "conexas": 6,
+    "chi1": 5,
+    "aciclicas": 5,
+    "I": 5,
+    "I_indecisas": 0,
+    "I_S": 5,
+    "I_SV": 5,
+    "3-Dis": 5,
+    "2-Dis": 5,
+    "1-Dis": 5,
+    "0-Dis": 5,
+    "-1-Dis": 4
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    6,
+    5,
+    5,
+    5,
+    0,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    4
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=5",
+   "pass": true,
+   "v2": {
+    "conexas": 21,
+    "chi1": 16,
+    "aciclicas": 16,
+    "I": 16,
+    "I_indecisas": 0,
+    "I_S": 16,
+    "I_SV": 16,
+    "3-Dis": 16,
+    "2-Dis": 16,
+    "1-Dis": 16,
+    "0-Dis": 16,
+    "-1-Dis": 11
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    21,
+    16,
+    16,
+    16,
+    0,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    11
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=6",
+   "pass": true,
+   "v2": {
+    "conexas": 112,
+    "chi1": 68,
+    "aciclicas": 68,
+    "I": 68,
+    "I_indecisas": 0,
+    "I_S": 68,
+    "I_SV": 68,
+    "3-Dis": 68,
+    "2-Dis": 68,
+    "1-Dis": 68,
+    "0-Dis": 68,
+    "-1-Dis": 34
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    112,
+    68,
+    68,
+    68,
+    0,
+    68,
+    68,
+    68,
+    68,
+    68,
+    68,
+    34
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=7",
+   "pass": true,
+   "v2": {
+    "conexas": 853,
+    "chi1": 404,
+    "aciclicas": 403,
+    "I": 403,
+    "I_indecisas": 0,
+    "I_S": 403,
+    "I_SV": 403,
+    "3-Dis": 403,
+    "2-Dis": 403,
+    "1-Dis": 403,
+    "0-Dis": 403,
+    "-1-Dis": 156
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    853,
+    404,
+    403,
+    403,
+    0,
+    403,
+    403,
+    403,
+    403,
+    403,
+    403,
+    156
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=8",
+   "pass": true,
+   "v2": {
+    "conexas": 11117,
+    "chi1": 3837,
+    "aciclicas": 3798,
+    "I": 3798,
+    "I_indecisas": 0,
+    "I_S": 3798,
+    "I_SV": 3798,
+    "3-Dis": 3798,
+    "2-Dis": 3798,
+    "1-Dis": 3798,
+    "0-Dis": 3791,
+    "-1-Dis": 1044
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    11117,
+    3837,
+    3798,
+    3798,
+    0,
+    3798,
+    3798,
+    3798,
+    3798,
+    3798,
+    3791,
+    1044
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=9",
+   "pass": true,
+   "v2": {
+    "conexas": 261080,
+    "chi1": 68458,
+    "aciclicas": 66167,
+    "I": 66167,
+    "I_indecisas": 0,
+    "I_S": 66167,
+    "I_SV": 66167,
+    "3-Dis": 66167,
+    "2-Dis": 66167,
+    "1-Dis": 66167,
+    "0-Dis": 65561,
+    "-1-Dis": 12346
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    261080,
+    68458,
+    66167,
+    66167,
+    0,
+    66167,
+    66167,
+    66167,
+    66167,
+    66167,
+    65561,
+    12346
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T1 tabla n=10",
+   "pass": true,
+   "v2": {
+    "conexas": 11716571,
+    "chi1": 2571263,
+    "aciclicas": 2343148,
+    "I": 2343148,
+    "I_indecisas": 0,
+    "I_S": 2343148,
+    "I_SV": 2343148,
+    "3-Dis": 2343148,
+    "2-Dis": 2343148,
+    "1-Dis": 2343148,
+    "0-Dis": 2258314,
+    "-1-Dis": 274668
+   },
+   "v2_extras": {
+    "invalidos": 0,
+    "errores": 0,
+    "icert_truncados": 0,
+    "memo_consultas": 0,
+    "memo_colisiones_hash": 0
+   },
+   "csv": [
+    11716571,
+    2571263,
+    2343148,
+    2343148,
+    0,
+    2343148,
+    2343148,
+    2343148,
+    2343148,
+    2343148,
+    2258314,
+    274668
+   ],
+   "stdout_lines": 0
+  },
+  {
+   "name": "T2 atascadas n=5",
+   "pass": true,
+   "v2": {
+    "n": "0",
+    "total": "0",
+    "pasa_cono": "0",
+    "pasa_chi": "0",
+    "pasa_vecindades": "0",
+    "pasa_aristas": "0",
+    "encontradas": "0"
+   }
+  },
+  {
+   "name": "T2 atascadas n=6",
+   "pass": true,
+   "v2": {
+    "n": "6",
+    "total": "1",
+    "pasa_cono": "1",
+    "pasa_chi": "0",
+    "pasa_vecindades": "0",
+    "pasa_aristas": "0",
+    "encontradas": "0"
+   }
+  },
+  {
+   "name": "T2 atascadas n=7",
+   "pass": true,
+   "v2": {
+    "n": "7",
+    "total": "10",
+    "pasa_cono": "3",
+    "pasa_chi": "0",
+    "pasa_vecindades": "0",
+    "pasa_aristas": "0",
+    "encontradas": "0"
+   }
+  },
+  {
+   "name": "T2 atascadas n=8",
+   "pass": true,
+   "v2": {
+    "n": "8",
+    "total": "274",
+    "pasa_cono": "38",
+    "pasa_chi": "9",
+    "pasa_vecindades": "2",
+    "pasa_aristas": "0",
+    "encontradas": "0"
+   }
+  },
+  {
+   "name": "T2 atascadas n=9",
+   "pass": true,
+   "v2": {
+    "n": "9",
+    "total": "12881",
+    "pasa_cono": "1271",
+    "pasa_chi": "233",
+    "pasa_vecindades": "23",
+    "pasa_aristas": "2",
+    "encontradas": "0"
+   }
+  },
+  {
+   "name": "T2 atascadas n=10",
+   "pass": true,
+   "v2": {
+    "n": "10",
+    "total": "1165719",
+    "pasa_cono": "116132",
+    "pasa_chi": "19066",
+    "pasa_vecindades": "997",
+    "pasa_aristas": "19",
+    "encontradas": "0"
+   }
+  },
+  {
+   "name": "T3 casi n=3",
+   "pass": true,
+   "total": "2",
+   "encontradas": "0"
+  },
+  {
+   "name": "T3 casi n=4",
+   "pass": true,
+   "total": "6",
+   "encontradas": "0"
+  },
+  {
+   "name": "T3 casi n=5",
+   "pass": true,
+   "total": "21",
+   "encontradas": "0"
+  },
+  {
+   "name": "T3 casi n=6",
+   "pass": true,
+   "total": "112",
+   "encontradas": "0"
+  },
+  {
+   "name": "T3 casi n=7",
+   "pass": true,
+   "total": "853",
+   "encontradas": "0"
+  },
+  {
+   "name": "T3 casi n=8",
+   "pass": true,
+   "total": "11117",
+   "encontradas": "0"
+  },
+  {
+   "name": "T3 casi n=9",
+   "pass": true,
+   "total": "261080",
+   "encontradas": "0"
+  },
+  {
+   "name": "T4 2dis_no_1dis n=1",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=2",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=3",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=4",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=5",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=6",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=7",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=8",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis n=9",
+   "pass": true
+  },
+  {
+   "name": "T4 2dis_no_1dis 20 graphs of order 12",
+   "pass": true,
+   "found": 20
+  },
+  {
+   "name": "T5 traza I_S of special graphs",
+   "pass": true,
+   "v2": {
+    "G13_0": false,
+    "G13_1": false,
+    "G13_2": false,
+    "G14a": false,
+    "G14b": false,
+    "G14c": false,
+    "G14a+{0,1}": true,
+    "G14b+{0,3}": true,
+    "G14c+{2,3}": true,
+    "D15": false,
+    "D15+{9,12}": true
+   }
+  },
+  {
+   "name": "T5 traza: the 51 stuck graphs are not in I_S",
+   "pass": true,
+   "counts": {
+    "v1": 51,
+    "v2": 51,
+    "v2_weak": 51
+   }
+  },
+  {
+   "name": "T5 icert outcomes (special)",
+   "pass": true,
+   "v2": {
+    "NONE": 3,
+    "CERT": 8
+   }
+  },
+  {
+   "name": "T5 icert outcomes (stuck51)",
+   "pass": true,
+   "v2": {
+    "NONE": 48,
+    "CERT": 3
+   }
+  },
+  {
+   "name": "T5 cerradura G14a",
+   "pass": true,
+   "lines": 49,
+   "truncated": false,
+   "n_IS": 32,
+   "n_NOIS": 16
+  },
+  {
+   "name": "T5 cerradura G14b",
+   "pass": true,
+   "lines": 49,
+   "truncated": false,
+   "n_IS": 32,
+   "n_NOIS": 16
+  },
+  {
+   "name": "T5 cerradura G14c",
+   "pass": true,
+   "lines": 25,
+   "truncated": false,
+   "n_IS": 16,
+   "n_NOIS": 8
+  },
+  {
+   "name": "T5 cerradura D15",
+   "pass": true,
+   "lines": 2513,
+   "truncated": false,
+   "n_IS": 1884,
+   "n_NOIS": 628
+  },
+  {
+   "name": "T6 verificar n=1",
+   "pass": true,
+   "graphs": 1,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 0,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=2",
+   "pass": true,
+   "graphs": 1,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 0,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=3",
+   "pass": true,
+   "graphs": 2,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 0,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=4",
+   "pass": true,
+   "graphs": 6,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 0,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=5",
+   "pass": true,
+   "graphs": 21,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 4,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=6",
+   "pass": true,
+   "graphs": 112,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 70657,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=7",
+   "pass": true,
+   "graphs": 853,
+   "v2_weak_identical": true,
+   "v2_weak_hash_collisions": 364775904,
+   "v1_weak_misclassified": 0
+  },
+  {
+   "name": "T6 verificar n=8",
+   "pass": true,
+   "graphs": 11117
+  }
+ ],
+ "H01_demo": {
+  "graphs": 996,
+  "v1_with_6bit_hash_misclassified": 0
+ },
+ "finished": "2026-10-15T23:04:28-0700",
+ "all_pass": true
+}
