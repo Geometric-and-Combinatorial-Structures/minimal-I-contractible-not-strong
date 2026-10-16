@@ -1,0 +1,22 @@
+# Output of verification/check_table_B1_fig07.py, run 2026-10-16 06:29 UTC
+# python 3.11.17, networkx 3.6.1, pdftotext version 25.03.0
+# sha256: script 4e754ca74be960c2…, data/stuck_14_K4free.tsv 8483a15af60c08c2…, data/structure_84_graphs.csv 9cadf1023ce94554…
+# (1) repository copy: paper/tables/stuck51.tex (41c4c063425c4693…), paper/figures/fig07.pdf (3df3f052d827a361…)
+$ python3 verification/check_table_B1_fig07.py --table paper/tables/stuck51.tex --figure paper/figures/fig07.pdf
+table paper/tables/stuck51.tex: 51 rows; data/stuck_14_K4free.g6: 51 lines; TSV: 51 rows
+unfoldings: {'disc': 48, 'annulus': 2, 'annulus+disc': 1} | torsion by edges: {43: 25, 44: 18, 45: 4, 47: 1} | torsion discs by k: {4: 25, 5: 18, 6: 2}
+graphs with an edge in four triangles (row, edges): [(2, [(9, 13)]), (48, [(10, 11)]), (49, [(10, 13)])] | minimum edge multiplicity: 2
+non-disc rows: {48: 'annulus', 49: 'annulus', 51: 'annulus+disc'}
+figure paper/figures/fig07.pdf: page 499.8 x 724.3 pt, 446 words, max xMax 492.7, min xMin 10.7; legend lines: ['G14a: a = 5-cycle', 'G14b: a = 4-cycle + spur', 'G14c: a = 6-cycle', 'Red: edges in ≠ 2 triangles (identification cycle a).', '* cut complex is an annulus; ** cut edges form two 4-cycles.']
+RESULT: PASS (all checks)
+exit status 0
+
+# (2) manuscript v3 (Overleaf_v3_2026-10-16): tables/stuck51.tex (689481e0e6d5d0ce…; differs from (1) only in the escaping of the backtick), figures/fig07.pdf (3df3f052d827a361…, identical to (1))
+$ python3 verification/check_table_B1_fig07.py --table <v3>/tables/stuck51.tex --figure <v3>/figures/fig07.pdf
+table ../ms_v3/tables/stuck51.tex: 51 rows; data/stuck_14_K4free.g6: 51 lines; TSV: 51 rows
+unfoldings: {'disc': 48, 'annulus': 2, 'annulus+disc': 1} | torsion by edges: {43: 25, 44: 18, 45: 4, 47: 1} | torsion discs by k: {4: 25, 5: 18, 6: 2}
+graphs with an edge in four triangles (row, edges): [(2, [(9, 13)]), (48, [(10, 11)]), (49, [(10, 13)])] | minimum edge multiplicity: 2
+non-disc rows: {48: 'annulus', 49: 'annulus', 51: 'annulus+disc'}
+figure ../ms_v3/figures/fig07.pdf: page 499.8 x 724.3 pt, 446 words, max xMax 492.7, min xMin 10.7; legend lines: ['G14a: a = 5-cycle', 'G14b: a = 4-cycle + spur', 'G14c: a = 6-cycle', 'Red: edges in ≠ 2 triangles (identification cycle a).', '* cut complex is an annulus; ** cut edges form two 4-cycles.']
+RESULT: PASS (all checks)
+exit status 0

@@ -94,7 +94,7 @@ Las 19 claves citadas existen en `refs.bib` (0 faltantes); 24 entradas no citada
 
 ---
 
-## Correcciones aplicadas por el revisor tras la ronda 1 (sólo redacción/formato/citas; ningún número ni enunciado sustantivo fue alterado)
+## Correcciones aplicadas por el revisor tras las rondas 1 y 2 (en su mayoría redacción, formato y citas; R1-11, R1-18, R2-01 y R2-02 sí modifican enunciados: la descripción de «atascada» en la introducción, contenido nuevo en la fila 14 de la tabla, la Def. 3.1 con «al menos dos vértices» y la Prop. 3.6 con $2\le n\le 11$) [encabezado corregido el 2026-10-16: decía «sólo redacción/formato/citas; ningún número ni enunciado sustantivo fue alterado»]
 
 | # | archivo | cambio |
 |---|---|---|

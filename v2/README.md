@@ -1,7 +1,7 @@
 # Version 2 of the classifier and of the cluster pipeline
 
 Remediation of the external audit of commit `4a059b5` (verdict "not certified", 15–16 Oct 2026; 21 findings).
-Nothing in `src/`, `yuca/as_run/` or the historical result directories was changed: those are the records of what ran.
+Nothing in `src/` or in the historical result directories was changed: those are the records of what ran. Under `yuca/as_run/` the only change is the provenance correction H-05 (commit `892e41b`): the task script that the p011 front of the n = 14 search actually ran (array 2079156, SHA-256 `b95a125b…`) was added as `tarea_n14_p011.sh`, and the file previously stored under that name, which is the `tarea.sh` of the failed attempt 2079068, is kept byte for byte (SHA-256 `50477550…`) as `tarea_n14_p029_intento_fallido_2079068.sh`. No as-run file was edited.
 Version 2 is for **new** computations: the exact recomputations of rows 12–14 and the rerun of the order-14 search.
 
 ## Contents
