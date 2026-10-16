@@ -69,3 +69,6 @@ See `CITATION.cff`. Code is released under the MIT License; data, figures and te
 ## Acknowledgements
 
 Computations were carried out on the YUCA cluster of the Área de Cómputo de Alto Rendimiento de la Universidad de Sonora (ACARUS), projects p029 and p011. Graph enumeration used `geng` from B. D. McKay's nauty/Traces.
+
+## Independent verification code
+`verification/indep.py` is a from-scratch implementation (own graph6 parser, clique complex, exact integer Smith normal form, Z/2 acyclicity, exact strong-I-contractibility decision) used for the Phase-1 cross-check reported in `verification/VERIFICACION_INDEPENDIENTE.md`; `tools/ripser_z3_check.py` is a second, Ripser-based check (Betti numbers over Z/2 and Z/3). The third cross-check (Wolfram Language `SmithDecomposition`, key graphs only) was run through a Wolfram connector; the exact WL code sent and its full outputs are in `verification/wolfram_codigo_y_salidas.json`.
