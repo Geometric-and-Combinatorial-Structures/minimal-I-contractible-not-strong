@@ -10,7 +10,7 @@ A failed slice is kept as <r>.failed.<uuid>.json and never counts as done.
 
 Checks of one slice (function check_slice):
   * generator: exit 0; stderr is an optional '>A' header (with n and class=r/mod) and exactly one '>Z' line;
-  * classifier (v2/src/atascadas_v2.c): exit 0, stderr is exactly one summary line with the pinned version (v2.1), invalidos=0,
+  * classifier (v2/src/atascadas_v2.c): exit 0, stderr is exactly one summary line with the pinned version (v2.2), invalidos=0,
     errores=0 and the campaign order n (or n=0 for an empty slice);
   * number of graphs read by the classifier = N reported by the generator;
   * mode tabla: chain -1-Dis <= 0-Dis <= 1-Dis <= 2-Dis <= 3-Dis <= I_SV <= I_S <= I <= aciclicas <= chi1 <= conexas,
@@ -32,15 +32,38 @@ v2.1 (round 2 of the external audit: H-22, H-23, H-24, H-29):
     historical directories, stores the full `geng --version` output in config.json and the full `geng --help` output in
     bin/geng_help.txt, and pins the driver itself, the classifier, the source, geng, the help file and config.json
     (config.sha256); workers and aggregate refuse to run if any pinned file changed; a failure after ROOT was created
-    leaves ROOT/INIT_FAILED.txt with the reason and no config.json (nothing is deleted);
-  * aggregate refuses to run while a worker holds its lock, moves earlier outputs to aggregate_history/ before it
-    starts (a failed run never leaves an old ok=true behind), and compares references strictly: exactly one CSV row
+    leaves ROOT/INIT_FAILED.txt with the reason (nothing is deleted; v2.2 makes every subcommand refuse such a root);
+  * aggregate refuses to run while a worker holds its lock, moves earlier outputs to aggregate_history/ (v2.2: before
+    it takes any worker lock, so a failed run never leaves an old ok=true in place), and compares references strictly: exactly one CSV row
     with every column of the mode, unique --expect keys, any conflict between sources is fatal, and a requested
     comparison can never be empty; --labelg compares graph sets up to isomorphism;
   * status counts readable receipts and is explicitly not a certificate.
 
-Exit codes of the classifier (v2.1): 0 ok, 1 usage, 2 capacity, 3 invalid records, 4 inconsistency or read error,
-5 disconnected input or mixed orders, 6 write error on stdout/stderr.
+v2.2 (round 3 of the external audit: residues of H-22, H-23, H-24, H-29 and request S4), corrected by class:
+  * init writes nothing before every input has been validated: it parses --geng-args and --cflags (shlex) and
+    requires `geng --help` to exit 0 with some output before it creates ROOT;
+  * a campaign exists only once init has finished: the last step of init writes ROOT/INIT_COMPLETE.json with the
+    config hash; worker, status and aggregate refuse a root without it, or with ROOT/INIT_FAILED.txt, whatever
+    config.json contains;
+  * every JSON file the driver reads is parsed strictly (no NaN or Infinity, no repeated keys); JSON is written with
+    allow_nan=False;
+  * a receipt must have exactly the documented keys; its identities, exit codes and counters are integers of exact
+    type (a boolean is not an integer); seconds is finite and >= 0; utc_start and utc_end have this driver's own UTC
+    format, are ordered (5 s tolerance) and lie between the creation of the campaign and the validation (300 s
+    tolerance); stored counters, records and commands are compared canonically, so 1 and true differ;
+  * references: the CSV header must name each column once and every row must have as many fields as the header;
+    --expect is given once per KEY=VALUE (write --expect=-1-Dis=V for the key that starts with '-'), so a requested
+    comparison cannot be empty; the path and SHA-256 of every reference (CSV, graph6, labelg) go into aggregate.json;
+  * aggregate takes ROOT/aggregate.lock, records the attempt in aggregate_attempts/<id>.json and archives earlier
+    outputs to aggregate_history/<id>/ first; then it parses and checks every reference (CSV, --expect, graph6
+    file, labelg), takes the worker locks and sums.  Any failure (refused reference, busy worker, invalid receipt)
+    leaves aggregate.json with ok=false, status failed and the reason, and a failed attempt record; no earlier
+    ok=true stays in the normal location; aggregate.json names its attempt_id;
+  * status counts an unreadable or non-object receipt as unreadable instead of failing.
+
+Exit codes of the classifier (v2.2): 0 ok, 1 usage, 2 capacity, 3 invalid records, 4 inconsistency or read error,
+5 disconnected input or mixed orders, 6 write error on stdout/stderr; 6 takes priority over every other code in every
+exit of the program, early ones included (v2.2).
 
 Subcommands:
   init      --root R --n N --mod M --workers W --mode tabla|atascadas --geng PATH --geng-args="-c" --source atascadas_v2.c
@@ -51,17 +74,18 @@ Subcommands:
             compiles the classifier there and pins all SHA-256.
   worker    --config R/config.json --worker-id i [--procs P]     (P concurrent pipelines, one CPU each)
   status    --config R/config.json
-  aggregate --config R/config.json [--jobs J] [--reference-csv data/table_cardinalities.csv] [--expect KEY=VALUE ...]
+  aggregate --config R/config.json [--jobs J] [--reference-csv data/table_cardinalities.csv]
+            [--expect KEY=VALUE] ... (once per key; --expect=-1-Dis=V for the key that starts with '-')
             [--reference-g6 FILE [--labelg PATH]]   writes R/aggregate.json and R/<record class>.g6; exit 0 only if
             coverage is exact, all receipts validate, all invariants hold and all requested comparisons are equal.
 """
-import argparse, concurrent.futures, csv, datetime, fcntl, hashlib, json, os, re, shlex, shutil, subprocess, sys
+import argparse, concurrent.futures, csv, datetime, fcntl, hashlib, json, math, os, re, shlex, shutil, subprocess, sys
 import threading
 import time, uuid
 from pathlib import Path
 
 SCHEMA = "campana_v2/2"
-CLASSIFIER_VERSION = "v2.1"
+CLASSIFIER_VERSION = "v2.2"
 MAXN_CLASSIFIER = 16
 PROTECTED_DEFAULT = ["/lustre/proyectos/p029/busqueda_minimal"]   # historical experiment: read-only
 TABLE_KEYS = ["conexas", "chi1", "aciclicas", "I", "I_indecisas", "I_S", "I_SV", "3-Dis", "2-Dis", "1-Dis", "0-Dis",
@@ -75,6 +99,14 @@ SEARCH_SUMMARY = ["n"] + SEARCH_KEYS + ["invalidos", "errores"] + MEMO_KEYS + ["
 TABLE_CLASSES = ["I_NO_IS", "ACICLICA_NO_IS_INDECISA"]
 UINT = re.compile(r"0|[1-9][0-9]*")
 ZLINE = re.compile(r">Z ([0-9]+) graphs generated(?: in [0-9]+(?:\.[0-9]+)? sec)?")
+RECEIPT_KEYS = frozenset({
+    "schema", "r", "mod", "config_sha256", "cmd_geng", "cmd_classifier", "exit_geng", "exit_classifier", "seconds",
+    "utc_start", "utc_end", "host", "worker_id", "slurm_job_id", "slurm_array_job_id", "slurm_array_task_id", "status",
+    "geng_stderr", "geng_stderr_sha256", "classifier_stderr", "classifier_stderr_sha256", "result_stdout",
+    "result_stdout_sha256", "counts", "records", "memo"})          # the keys of a complete receipt (v2.2)
+UTC_RE = re.compile(r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\.[0-9]{6})?\+00:00")
+CLOCK_ORDER_TOLERANCE = 5.0      # s: utc_end may precede utc_start by at most this (wall-clock steps)
+CLOCK_WINDOW_TOLERANCE = 300.0   # s: receipt times lie between the creation of the campaign and the validation
 CSV_COLUMNS = {"conexas": "connected", "chi1": "chi=1", "aciclicas": "Z2-acyclic", "I": "I-contractible",
                "I_indecisas": "I-undecided", "I_S": "strong I-contractible (J_S)", "I_SV": "J_VS", "3-Dis": "3-Dis",
                "2-Dis": "2-Dis", "1-Dis": "1-Dis", "0-Dis": "0-Dis", "-1-Dis": "(-1)-Dis"}
@@ -105,12 +137,42 @@ def utcnow():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
+def _reject_constant(name):
+    raise ValueError(f"non-finite number {name} in JSON")
+
+
+def _unique_pairs(pairs):
+    d = {}
+    for k, v in pairs:
+        if k in d:
+            raise ValueError(f"repeated JSON key {k!r}")
+        d[k] = v
+    return d
+
+
+def strict_json(text):
+    """json.loads that refuses NaN, Infinity and repeated keys (v2.2)."""
+    return json.loads(text, parse_constant=_reject_constant, object_pairs_hook=_unique_pairs)
+
+
+def is_int(x):
+    """An integer of exact type: a boolean is not an integer here (v2.2)."""
+    return type(x) is int
+
+
+def parse_utc(s):
+    """This driver's own UTC timestamps (datetime.isoformat() with +00:00); anything else is refused (v2.2)."""
+    if not isinstance(s, str) or not UTC_RE.fullmatch(s):
+        raise ValueError(f"not a UTC timestamp of this driver: {str(s)[:40]!r}")
+    return datetime.datetime.fromisoformat(s)
+
+
 def atomic_json(path, obj):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(path.name + ".tmp." + uuid.uuid4().hex)
     with open(tmp, "x") as f:
-        json.dump(obj, f, sort_keys=True)
+        json.dump(obj, f, sort_keys=True, allow_nan=False)
         f.write("\n")
         f.flush()
         os.fsync(f.fileno())
@@ -135,10 +197,17 @@ def valid_g6(s, n):
 
 # ------------------------------------------------------------------------------------------------ config
 def load_config(path, verify=True):
-    cfg = json.loads(Path(path).read_text())
-    if cfg.get("schema") != SCHEMA:
+    path = Path(path)
+    cfg = strict_json(path.read_text())
+    if not isinstance(cfg, dict) or cfg.get("schema") != SCHEMA:
         raise ValueError("unknown config schema")
     cfgsha = sha_bytes(canonical(cfg))
+    root = Path(cfg["root"])
+    if path.resolve().parent != root.resolve():
+        raise ValueError(f"config.json is not in its campaign root {root}")
+    # v2.2 (H-23): a root exists as a campaign only once init has finished, and never after a failed init
+    if (root / "INIT_FAILED.txt").exists():
+        raise ValueError("init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one")
     if verify:
         pin = Path(path).with_name("config.sha256")
         if not pin.exists() or pin.read_text().strip() != cfgsha:
@@ -148,6 +217,12 @@ def load_config(path, verify=True):
                 raise ValueError(f"pinned file changed: {name} {item['path']}")
         if sha_file(Path(__file__).resolve()) != cfg["files"]["driver"]["sha256"]:
             raise ValueError("this driver differs from the one pinned at init: run " + cfg["files"]["driver"]["path"])
+    try:
+        mark = strict_json((root / "INIT_COMPLETE.json").read_text())
+    except (OSError, ValueError) as e:
+        raise ValueError("init of this campaign did not finish (INIT_COMPLETE.json missing or unreadable)") from e
+    if not isinstance(mark, dict) or mark.get("schema") != SCHEMA or mark.get("config_sha256") != cfgsha:
+        raise ValueError("INIT_COMPLETE.json does not certify this config.json")
     return cfg, cfgsha
 
 
@@ -273,29 +348,51 @@ def check_slice(cfg, geng_stderr, classifier_stderr, result_stdout, r=None):
     return counts, records, memo
 
 
-def validate_receipt(cfg, cfgsha, r, d):
-    if not isinstance(d, dict) or d.get("schema") != SCHEMA or d.get("status") != "complete":
+def validate_receipt(cfg, cfgsha, r, d, now=None):
+    """Strict schema (v2.2, H-24): exactly RECEIPT_KEYS; exact integer types; finite non-negative seconds; ordered UTC
+    times of this driver inside the life of the campaign; streams re-checked and summaries compared canonically."""
+    if not isinstance(d, dict):
+        raise SliceError("receipt is not a JSON object")
+    if set(d) != RECEIPT_KEYS:
+        raise SliceError(f"receipt keys differ from the schema: missing {sorted(RECEIPT_KEYS - set(d))}, "
+                         f"unexpected {sorted(set(d) - RECEIPT_KEYS)[:10]}")
+    if d["schema"] != SCHEMA or d["status"] != "complete":
         raise SliceError("receipt not complete")
-    if d.get("r") != r or d.get("mod") != cfg["mod"] or d.get("config_sha256") != cfgsha:
+    if not (is_int(d["r"]) and d["r"] == r and is_int(d["mod"]) and d["mod"] == cfg["mod"]
+            and d["config_sha256"] == cfgsha):
         raise SliceError("receipt identity mismatch")
-    for k, typ in (("worker_id", int), ("host", str), ("utc_start", str), ("utc_end", str)):
-        v = d.get(k)
-        if not isinstance(v, typ) or isinstance(v, bool) or (typ is str and not v):
-            raise SliceError("receipt provenance missing or malformed: " + k)
-    if not isinstance(d.get("seconds"), (int, float)) or isinstance(d.get("seconds"), bool) or d["seconds"] < 0:
+    w = d["worker_id"]
+    if not is_int(w) or not (0 <= w < cfg["workers"]) or r % cfg["workers"] != w:
+        raise SliceError(f"worker {w!r} does not own residue {r} (workers={cfg['workers']})")
+    if not isinstance(d["host"], str) or not d["host"]:
+        raise SliceError("receipt provenance missing or malformed: host")
+    for k in ("slurm_job_id", "slurm_array_job_id", "slurm_array_task_id"):
+        if d[k] is not None and (not isinstance(d[k], str) or not d[k]):
+            raise SliceError("receipt provenance malformed: " + k)
+    sec = d["seconds"]
+    if type(sec) not in (int, float) or not math.isfinite(sec) or sec < 0:
         raise SliceError("receipt provenance missing or malformed: seconds")
-    if not (0 <= d["worker_id"] < cfg["workers"]) or r % cfg["workers"] != d["worker_id"]:
-        raise SliceError(f"worker {d['worker_id']} does not own residue {r} (workers={cfg['workers']})")
+    try:
+        t0, t1, born = parse_utc(d["utc_start"]), parse_utc(d["utc_end"]), parse_utc(cfg.get("created_utc"))
+    except ValueError as e:
+        raise SliceError("receipt provenance malformed: " + str(e)) from e
+    now = now or datetime.datetime.now(datetime.timezone.utc)
+    if (t0 - t1).total_seconds() > CLOCK_ORDER_TOLERANCE:
+        raise SliceError("receipt times out of order (utc_end before utc_start)")
+    if (born - t0).total_seconds() > CLOCK_WINDOW_TOLERANCE or (t1 - now).total_seconds() > CLOCK_WINDOW_TOLERANCE:
+        raise SliceError("receipt times outside the life of the campaign")
     g, c = commands(cfg, r)
-    if d.get("cmd_geng") != g or d.get("cmd_classifier") != c:
+    if canonical(d["cmd_geng"]) != canonical(g) or canonical(d["cmd_classifier"]) != canonical(c):
         raise SliceError("receipt commands differ from config")
-    if d.get("exit_geng") != 0 or d.get("exit_classifier") != 0:
-        raise SliceError("nonzero exit status in receipt")
+    if not (is_int(d["exit_geng"]) and d["exit_geng"] == 0 and is_int(d["exit_classifier"])
+            and d["exit_classifier"] == 0):
+        raise SliceError("nonzero (or non-integer) exit status in receipt")
     for name in ("geng_stderr", "classifier_stderr", "result_stdout"):
-        if not isinstance(d.get(name), str) or sha_bytes(d[name].encode()) != d.get(name + "_sha256"):
+        if not isinstance(d[name], str) or sha_bytes(d[name].encode()) != d[name + "_sha256"]:
             raise SliceError("stored stream hash mismatch: " + name)
     counts, records, memo = check_slice(cfg, d["geng_stderr"], d["classifier_stderr"], d["result_stdout"], r)
-    if counts != d.get("counts") or records != d.get("records") or memo != d.get("memo"):
+    if (canonical(counts) != canonical(d["counts"]) or canonical(records) != canonical(d["records"])
+            or canonical(memo) != canonical(d["memo"])):
         raise SliceError("receipt summary differs from its stored streams")
     return counts, records, memo
 
@@ -304,7 +401,11 @@ def validate_receipt(cfg, cfgsha, r, d):
 def run_slice(cfg, cfgsha, r, worker_id):
     dst = receipt_path(cfg, r)
     if dst.exists():
-        validate_receipt(cfg, cfgsha, r, json.loads(dst.read_text()))
+        try:
+            old = strict_json(dst.read_text())
+        except ValueError as e:
+            raise SliceError(f"existing receipt unreadable: {e}") from e
+        validate_receipt(cfg, cfgsha, r, old)
         return "resumed"
     g, c = commands(cfg, r)
     t0 = time.monotonic()
@@ -322,8 +423,9 @@ def run_slice(cfg, cfgsha, r, worker_id):
     d = {"schema": SCHEMA, "r": r, "mod": cfg["mod"], "config_sha256": cfgsha, "cmd_geng": g, "cmd_classifier": c,
          "exit_geng": eg, "exit_classifier": ec, "seconds": round(time.monotonic() - t0, 3), "utc_start": start,
          "utc_end": utcnow(), "host": os.uname().nodename, "worker_id": worker_id,
-         "slurm_job_id": os.environ.get("SLURM_JOB_ID"), "slurm_array_job_id": os.environ.get("SLURM_ARRAY_JOB_ID"),
-         "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"), "status": "failed"}
+         "slurm_job_id": os.environ.get("SLURM_JOB_ID") or None,
+         "slurm_array_job_id": os.environ.get("SLURM_ARRAY_JOB_ID") or None,
+         "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID") or None, "status": "failed"}
     for name, data in (("geng_stderr", box.get("err", b"")), ("classifier_stderr", err), ("result_stdout", out)):
         d[name] = data.decode("utf-8", errors="replace")
         d[name + "_sha256"] = sha_bytes(d[name].encode())
@@ -372,6 +474,10 @@ def cmd_init(a):
         raise SystemExit("need mod >= 1 and 1 <= workers <= mod")
     if not re.fullmatch(r"[0-9a-fA-F]{64}", a.expect_geng_sha256):
         raise SystemExit("--expect-geng-sha256 must be 64 hexadecimal digits")
+    try:  # v2.2 (H-23): syntax errors are found before anything is written
+        geng_args, cflags = shlex.split(a.geng_args), shlex.split(a.cflags)
+    except ValueError as e:
+        raise SystemExit(f"--geng-args or --cflags cannot be parsed ({e}); nothing was written")
     gorig = Path(a.geng).resolve()
     if not gorig.is_file() or not os.access(gorig, os.X_OK):
         raise SystemExit(f"geng {gorig} is not an executable file")
@@ -385,6 +491,8 @@ def cmd_init(a):
                          f"--expect-geng-version must be its version token exactly, here {gtok!r}")
     gh = subprocess.run([str(gorig), "--help"], capture_output=True, text=True)
     ghelp = gh.stdout + gh.stderr
+    if gh.returncode != 0 or not ghelp.strip():  # v2.2 (H-23)
+        raise SystemExit(f"geng --help exited {gh.returncode} or printed nothing; refusing to pin this generator")
     if not Path(a.source).is_file():
         raise SystemExit(f"source {a.source} not found")
     if shutil.which("gcc") is None:
@@ -402,7 +510,7 @@ def cmd_init(a):
     except FileExistsError:
         raise SystemExit(f"{root} already exists: a campaign needs a new directory (workers resume from receipts)")
     try:
-        _init_populate(a, root, protected, gorig, gver, gtok, ghelp)
+        _init_populate(a, root, protected, gorig, gver, gtok, ghelp, geng_args, cflags)
     except BaseException as e:
         # nothing is deleted: the directory stays, without config.json (workers refuse it), with the reason
         with open(root / "INIT_FAILED.txt", "a") as f:
@@ -410,7 +518,7 @@ def cmd_init(a):
         raise
 
 
-def _init_populate(a, root, protected, gorig, gver, gtok, ghelp):
+def _init_populate(a, root, protected, gorig, gver, gtok, ghelp, geng_args, cflags):
     binr = root / "bin"
     os.mkdir(binr)
     geng, src, cls, drv = binr / "geng", binr / "atascadas_v2.c", binr / "atascadas_v2", binr / "campana_v2.py"
@@ -424,7 +532,7 @@ def _init_populate(a, root, protected, gorig, gver, gtok, ghelp):
     helpf = binr / "geng_help.txt"
     with open(helpf, "x") as f:
         f.write(ghelp)
-    cc = ["gcc"] + shlex.split(a.cflags) + ["-o", str(cls), str(src)]
+    cc = ["gcc"] + cflags + ["-o", str(cls), str(src)]
     p = subprocess.run(cc, capture_output=True, text=True)
     if p.returncode != 0:
         raise SystemExit("compilation failed:\n" + p.stderr)
@@ -437,7 +545,7 @@ def _init_populate(a, root, protected, gorig, gver, gtok, ghelp):
         raise SystemExit(f"classifier {cv.stdout.strip()!r} is not {CLASSIFIER_VERSION} or cannot take n={a.n}")
     ccv = subprocess.run(["gcc", "--version"], capture_output=True, text=True).stdout.splitlines()[0]
     cfg = {"schema": SCHEMA, "root": str(root), "n": a.n, "mod": a.mod, "workers": a.workers, "mode": a.mode,
-           "geng_args": shlex.split(a.geng_args), "compile_command": cc, "compiler": ccv,
+           "geng_args": geng_args, "compile_command": cc, "compiler": ccv,
            "geng_version": gver, "geng_version_token": gtok, "geng_help_sha256": sha_file(helpf),
            "classifier_version": cv.stdout.strip(), "classifier_summary_version": CLASSIFIER_VERSION,
            "protected": protected, "created_utc": utcnow(), "created_host": os.uname().nodename,
@@ -455,6 +563,10 @@ def _init_populate(a, root, protected, gorig, gver, gtok, ghelp):
             os.fsync(f.fileno())
         os.chmod(root / name, 0o444)
     print(json.dumps({"config": str(root / "config.json"), "config_sha256": cfgsha}))
+    sys.stdout.flush()
+    # v2.2 (H-23): the very last step.  Workers, status and aggregate require this marker, so a failure at any earlier
+    # point (INIT_FAILED.txt is then written by cmd_init) leaves a root that every subcommand refuses.
+    atomic_json(root / "INIT_COMPLETE.json", {"schema": SCHEMA, "config_sha256": cfgsha, "utc": utcnow()})
 
 
 def cmd_worker(a):
@@ -508,11 +620,11 @@ def cmd_status(a):
     for f in (sorted(rec.rglob("*")) if rec.exists() else []):
         if f.name.endswith(".ok.json"):
             try:
-                d = json.loads(f.read_text())
+                d = strict_json(f.read_text())
                 r = int(f.name.split(".")[0])
-                good = (d.get("schema") == SCHEMA and d.get("status") == "complete" and d.get("r") == r
-                        and f == receipt_path(cfg, r))
-            except (ValueError, OSError):
+                good = (isinstance(d, dict) and d.get("schema") == SCHEMA and d.get("status") == "complete"
+                        and is_int(d.get("r")) and d.get("r") == r and f == receipt_path(cfg, r))
+            except Exception:  # noqa: BLE001  (v2.2, H-29: anything that is not a readable receipt object counts as unreadable)
                 good = False
             ok += good
             unreadable += not good
@@ -531,7 +643,11 @@ def _validate_shard(args):
         r = int(Path(p).name.split(".")[0])
         if Path(p) != receipt_path(cfg, r):
             raise SliceError("receipt in wrong shard: " + p)
-        counts, records, memo = validate_receipt(cfg, cfgsha, r, json.loads(Path(p).read_text()))
+        try:
+            d = strict_json(Path(p).read_text())
+        except ValueError as e:
+            raise SliceError(f"receipt {p} unreadable: {e}") from e
+        counts, records, memo = validate_receipt(cfg, cfgsha, r, d)
         out.append((r, counts, records, memo))
     return out
 
@@ -561,17 +677,134 @@ def _canonical(labelg, graphs):
     return set(out)
 
 
+def _read_reference(path, what):
+    try:
+        data = path.read_bytes()
+    except OSError as e:
+        raise SystemExit(f"cannot read the {what} {path}: {e}")
+    try:
+        return data, data.decode("utf-8")
+    except UnicodeDecodeError as e:
+        raise SystemExit(f"the {what} {path} is not UTF-8 text ({e})")
+
+
+def _load_references(a, cfg):
+    """Parse and check every reference before any worker lock is taken or any count is summed (v2.2, H-22).
+    cmd_aggregate calls it after it has recorded the attempt and archived the earlier outputs, so a refused
+    reference leaves aggregate.json with ok=false.  Returns the expected values (key, value, source), the requested
+    comparisons, the graph6 reference, labelg and, for aggregate.json, the path and SHA-256 of every reference."""
+    keys = TABLE_KEYS if cfg["mode"] == "tabla" else SEARCH_KEYS
+    out = {"expected": [], "requested": [], "g6": None, "labelg": None, "records": []}
+    if a.reference_csv:
+        if cfg["mode"] != "tabla":
+            raise SystemExit("--reference-csv applies to mode tabla only")
+        path = Path(a.reference_csv).resolve()
+        data, text = _read_reference(path, "reference CSV")
+        lines = [l for l in text.splitlines() if l.strip() and not l.startswith("#")]
+        rows = list(csv.reader(lines))
+        if not rows:
+            raise SystemExit("reference CSV has no header")
+        header = [h.strip() for h in rows[0]]
+        repeated = sorted({h for h in header if header.count(h) > 1})
+        if repeated or any(not h for h in header):
+            raise SystemExit(f"reference CSV header must name each column once (repeated or empty: {repeated})")
+        if "n" not in header:
+            raise SystemExit("reference CSV has no column n")
+        uneven = [i + 2 for i, row in enumerate(rows[1:]) if len(row) != len(header)]
+        if uneven:
+            raise SystemExit(f"reference CSV rows {uneven[:5]} do not have as many fields as the header")
+        table = [dict(zip(header, (c.strip() for c in row))) for row in rows[1:]]
+        hits = [row for row in table if row["n"] == str(cfg["n"])]
+        if len(hits) != 1:
+            raise SystemExit(f"reference CSV must have exactly one row with n={cfg['n']} (found {len(hits)})")
+        for k in keys:
+            col = CSV_COLUMNS.get(k)
+            if col is None:
+                continue
+            v = hits[0].get(col, "")
+            if col not in header or not UINT.fullmatch(v):
+                raise SystemExit(f"reference CSV lacks a non-negative integer in column {col!r} (for {k})")
+            out["expected"].append((k, int(v), "csv:" + col))
+            out["requested"].append(k)
+        out["records"].append({"kind": "csv", "path": str(path), "sha256": sha_bytes(data), "row_n": cfg["n"]})
+    seen = set()
+    for e in a.expect or []:
+        k, sep, v = e.partition("=")
+        if not sep or k not in keys or not UINT.fullmatch(v):
+            raise SystemExit(f"bad --expect {e!r}: use KEY=VALUE with a counter of this mode and an integer >= 0 "
+                             "(write --expect=-1-Dis=V for the key that starts with '-')")
+        if k in seen:
+            raise SystemExit("repeated --expect key " + k)
+        seen.add(k)
+        out["expected"].append((k, int(v), "expect"))
+        out["requested"].append(k)
+    if a.labelg and not a.reference_g6:
+        raise SystemExit("--labelg needs --reference-g6")
+    if a.reference_g6:
+        path = Path(a.reference_g6).resolve()
+        data, text = _read_reference(path, "reference graph6 file")
+        ref = [l.split()[0] for l in text.splitlines() if l.strip() and not l.startswith("#")]
+        bad = [g for g in ref if not valid_g6(g, cfg["n"])]
+        if bad:
+            raise SystemExit(f"reference graph6 file has {len(bad)} invalid strings for n={cfg['n']}")
+        if len(set(ref)) != len(ref):
+            raise SystemExit("reference graph6 file repeats a string")
+        if not ref:
+            raise SystemExit("reference graph6 file is empty (state a zero count with --expect instead)")
+        out["g6"] = ref
+        out["records"].append({"kind": "graph6", "path": str(path), "sha256": sha_bytes(data), "graphs": len(ref)})
+        if a.labelg:
+            lp = Path(a.labelg).resolve()
+            if not lp.is_file() or not os.access(lp, os.X_OK):
+                raise SystemExit(f"labelg {lp} is not an executable file")
+            out["labelg"] = str(lp)
+            out["records"].append({"kind": "labelg", "path": str(lp), "sha256": sha_file(lp)})
+    return out
+
+
 def cmd_aggregate(a):
     cfg, cfgsha = load_config(a.config)
     root = Path(cfg["root"])
-    locks = _hold_worker_locks(cfg)  # noqa: F841  (held until the process exits)
-    earlier = [p for p in [root / "aggregate.json"] + sorted(root.glob("*.g6")) if p.exists()]
-    if earlier:  # a failed run must never leave an earlier ok=true in place
-        stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
-        hist = root / "aggregate_history" / stamp
-        hist.mkdir(parents=True)
-        for p in earlier:
-            os.replace(p, hist / p.name)
+    alock = open(root / "aggregate.lock", "a")
+    try:
+        fcntl.flock(alock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        raise SystemExit("another aggregate of this campaign is running (aggregate.lock)")
+    attempt = (datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ") + "-"
+               + uuid.uuid4().hex[:8])
+    record = {"attempt_id": attempt, "config_sha256": cfgsha, "status": "started", "utc_start": utcnow(),
+              "host": os.uname().nodename, "slurm_job_id": os.environ.get("SLURM_JOB_ID") or None,
+              "argv": sys.argv[1:], "references": None}
+    rec_path = root / "aggregate_attempts" / f"{attempt}.json"
+    atomic_json(rec_path, record)
+    try:
+        earlier = [p for p in [root / "aggregate.json"] + sorted(root.glob("*.g6")) if p.exists()]
+        if earlier:  # v2.2 (H-29): first of all, so a failed attempt never leaves an earlier ok=true in place
+            hist = root / "aggregate_history" / attempt
+            hist.mkdir(parents=True)
+            for p in earlier:
+                os.replace(p, hist / p.name)
+        refs = _load_references(a, cfg)          # v2.2 (H-22): every reference checked before any lock or sum
+        record["references"] = refs["records"]
+        atomic_json(rec_path, record)
+        locks = _hold_worker_locks(cfg)  # noqa: F841  (held until the process exits)
+        result = _aggregate(a, cfg, cfgsha, root, refs, attempt)
+    except BaseException as e:
+        msg = f"{type(e).__name__}: {e}"[:2000]
+        record.update(status="failed", error=msg, utc_end=utcnow())
+        try:  # the normal location says explicitly that this attempt failed
+            atomic_json(root / "aggregate.json", {"config_sha256": cfgsha, "attempt_id": attempt, "status": "failed",
+                                                  "ok": False, "problems": [msg], "utc": utcnow()})
+        finally:
+            atomic_json(rec_path, record)
+        raise
+    record.update(status="ok" if result["ok"] else "problems", problems=result["problems"], utc_end=utcnow())
+    atomic_json(rec_path, record)
+    print(json.dumps({k: result[k] for k in ("n", "mod", "coverage", "counts", "found_counts", "problems", "ok")}))
+    sys.exit(0 if result["ok"] else 1)
+
+
+def _aggregate(a, cfg, cfgsha, root, refs, attempt):
     paths = sorted(str(p) for p in (root / "receipts").rglob("*.ok.json")) if (root / "receipts").exists() else []
     chunks = [paths[i:i + 2000] for i in range(0, len(paths), 2000)]
     keys = TABLE_KEYS if cfg["mode"] == "tabla" else SEARCH_KEYS
@@ -617,55 +850,20 @@ def cmd_aggregate(a):
                             f"and {value} ({source})")
         c["sources"].append(source)
 
-    requested = []
-    if a.reference_csv:
-        if cfg["mode"] != "tabla":
-            raise SystemExit("--reference-csv applies to mode tabla only")
-        requested += [k for k in keys if k in CSV_COLUMNS]
-        lines = [l for l in Path(a.reference_csv).read_text().splitlines() if l.strip() and not l.startswith("#")]
-        reader = csv.DictReader(lines)
-        fields = reader.fieldnames or []
-        rows = list(reader)
-        hits = [row for row in rows if (row.get("n") or "").strip() == str(cfg["n"])]
-        if "n" not in fields or len(hits) != 1:
-            problems.append(f"reference CSV must have exactly one row with n={cfg['n']} (found {len(hits)})")
-        else:
-            for k in keys:
-                col = CSV_COLUMNS.get(k)
-                if col is None:
-                    continue
-                v = (hits[0].get(col) or "").strip()
-                if col not in fields or not UINT.fullmatch(v):
-                    problems.append(f"reference CSV lacks a non-negative integer in column {col!r} (for {k})")
-                    continue
-                expect(k, int(v), "csv:" + col)
-    seen_expect = set()
-    for e in a.expect or []:
-        k, sep, v = e.partition("=")
-        if not sep or k not in sums or not UINT.fullmatch(v):
-            raise SystemExit(f"bad --expect {e!r}: use KEY=VALUE with a counter of this mode and an integer >= 0")
-        if k in seen_expect:
-            raise SystemExit("repeated --expect key " + k)
-        seen_expect.add(k)
-        requested.append(k)
-        expect(k, int(v), "expect")
-    if a.reference_g6:
+    requested = list(refs["requested"])
+    for k, v, source in refs["expected"]:
+        expect(k, v, source)
+    if refs["g6"] is not None:
         cls = "ATASCADA" if cfg["mode"] == "atascadas" else "I_NO_IS"
         requested.append(cls + "_set")
-        ref_lines = [l.split()[0] for l in Path(a.reference_g6).read_text().splitlines()
-                     if l.strip() and not l.startswith("#")]
+        ref_lines = refs["g6"]
         ref = set(ref_lines)
         got = found.get(cls, set())
-        bad = [g for g in ref_lines if not valid_g6(g, cfg["n"])]
-        if bad:
-            problems.append(f"reference graph6 file has {len(bad)} invalid strings for n={cfg['n']}")
-        if len(ref) != len(ref_lines):
-            problems.append("reference graph6 file repeats a string")
-        entry = {"actual": len(got), "expected": len(ref),
-                 "sources": [f"g6:{Path(a.reference_g6).resolve()}@{sha_file(a.reference_g6)}"]}
-        if a.labelg and not bad:
-            rc, gc = _canonical(a.labelg, ref), _canonical(a.labelg, got)
-            entry.update(compared="up to isomorphism (labelg -q, SHA-256 " + sha_file(a.labelg) + ")",
+        g6rec = [x for x in refs["records"] if x["kind"] == "graph6"][0]
+        entry = {"actual": len(got), "expected": len(ref), "sources": [f"g6:{g6rec['path']}@{g6rec['sha256']}"]}
+        if refs["labelg"]:
+            rc, gc = _canonical(refs["labelg"], ref), _canonical(refs["labelg"], got)
+            entry.update(compared="up to isomorphism (labelg -q, SHA-256 " + sha_file(refs["labelg"]) + ")",
                          only_found=len(gc - rc), only_reference=len(rc - gc),
                          equal=rc == gc and len(rc) == len(ref) and len(gc) == len(got))
         else:
@@ -680,17 +878,16 @@ def cmd_aggregate(a):
         if not v["equal"]:
             problems.append(f"comparison failed: {k}")
     load_config(a.config)
-    result = {"config_sha256": cfgsha, "n": cfg["n"], "mod": cfg["mod"], "mode": cfg["mode"], "coverage": coverage,
-              "counts": sums, "memo_totals": memo, "found_counts": {k: len(v) for k, v in found.items()},
-              "comparison": comparison, "requested_comparisons": sorted(set(requested)), "problems": problems,
-              "ok": not problems, "utc": utcnow()}
+    result = {"config_sha256": cfgsha, "attempt_id": attempt, "n": cfg["n"], "mod": cfg["mod"], "mode": cfg["mode"],
+              "coverage": coverage, "counts": sums, "memo_totals": memo, "found_counts": {k: len(v) for k, v in found.items()},
+              "comparison": comparison, "requested_comparisons": sorted(set(requested)), "references": refs["records"],
+              "problems": problems, "ok": not problems, "utc": utcnow()}
     for k, gs in found.items():
         tmp = root / f"{k}.g6.tmp.{uuid.uuid4().hex}"
         tmp.write_text("".join(g + "\n" for g in sorted(gs)))
         os.replace(tmp, root / f"{k}.g6")
     atomic_json(root / "aggregate.json", result)
-    print(json.dumps({k: result[k] for k in ("n", "mod", "coverage", "counts", "found_counts", "problems", "ok")}))
-    sys.exit(0 if result["ok"] else 1)
+    return result
 
 
 def main():
@@ -720,7 +917,8 @@ def main():
     q.add_argument("--config", required=True)
     q.add_argument("--jobs", type=int, default=4)
     q.add_argument("--reference-csv")
-    q.add_argument("--expect", nargs="*")
+    q.add_argument("--expect", action="append", metavar="KEY=VALUE",
+                   help="once per key (v2.2); write --expect=-1-Dis=V for the key that starts with '-'")
     q.add_argument("--reference-g6")
     q.add_argument("--labelg", help="nauty labelg: compare --reference-g6 up to isomorphism")
     a = p.parse_args()

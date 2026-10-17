@@ -17,14 +17,18 @@ registries and keep their logs in `out_m/` (list in `listas_m_*.txt`), so the fi
 | n = 13, full table | `envoltorio_n13_tabla.sh`, `…_p011.sh` | `geng -c 13 r/200000` | 200,000 | 2084597 (p029), 2084636 (p011) | 896 | 21 h (12 Oct 21:04 – 13 Oct 17:59 MST); 483 slices processed twice, 0 missing; logs `n13_tabla_*` |
 | n = 12, full table v2 (all columns) | `envoltorio_n12_tabla_v2.sh` | `geng -c 12 r/4000` | 4,000 | 2084878 | 448 | 8 min; logs `n12_tabla_v2_*` (counters re-summed with the full key list) |
 | n = 12, 2-Dis ∖ 1-Dis extraction | `d21_n12_48cpu.sh` (single 48-core task) | `geng -c 12 r/4000` | 4,000 | 2084929 | 48 | 47 min; 20 graphs (`data/strictly_2dis_12.*`) |
-| n = 14 K₄-free, full table | `envoltorio_n14_K4libre_tabla_p029.sh`, `…_p011.sh`, `frente_medio_n14_p029_asc.sh`, `frente_medio_n14_p011_desc.sh` | `geng28 -k -c 14 r/2000000` | 2,000,000 | 2084887 (p029), 2085018 (p011), 2085231 + 2085232 (middle fronts, 51 CPU each; 2085232 stopped 14 Oct 22:51 to free cores for another p011 user and replaced by 2085623 + 2085624, 24 CPU each on GPU-partition nodes without GPUs, `frente_medio_n14_p011_gpu_{a,b}.sh`) | ≈1000 | in progress (started 13 Oct 18:52 MST; p011 front added 22:20 MST; two middle fronts from r = 640,000 added 14 Oct 16:16 MST, writing to `out_m/`) |
+| n = 14 K₄-free, full table | `envoltorio_n14_K4libre_tabla_p029.sh`, `…_p011.sh`, `frente_medio_n14_p029_asc.sh`, `frente_medio_n14_p011_desc.sh` | `geng28 -k -c 14 r/2000000` | 2,000,000 | 2084887 (p029), 2085018 (p011), 2085231 + 2085232 (middle fronts, 51 CPU each; 2085232 stopped 14 Oct 22:51 to free cores for another p011 user and replaced by 2085623 + 2085624, 24 CPU each on GPU-partition nodes without GPUs, `frente_medio_n14_p011_gpu_{a,b}.sh`; 2085231 finished 16 Oct 08:56 MST; 2089945, middle front m029b, 48 CPU, r = 290,000 → 172,000, `frente_medio_n14_p029_m029b.sh`, added 17 Oct 00:04 MST) | ≈1000 | in progress (started 13 Oct 18:52 MST; p011 front added 22:20 MST; two middle fronts from r = 640,000 added 14 Oct 16:16 MST, writing to `out_m/`; every middle front records its slices in its own `listas_m_<id>.txt`) |
 
-`geng28` is `geng` from nauty 2.8.x compiled in the project directory (the cluster's nauty 2.7r4 `geng` does not
-support `-k`).
+`geng28` is the `geng` binary of the conda-forge package nauty 2.9.3, copied into the project directory: its strings
+name the build tree `/usr/local/src/conda/nauty-2.9.3`, `geng28 --version` prints the token `2.9301`, and its SHA-256
+is `179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb` (probe P0 of round 3 of the external audit,
+17 Oct 2026).  The name is historical.  Earlier versions of this README, the comment in line 19 of
+`envoltorio_n14_K4libre.sh` (kept byte-identical to the script that ran) and the answer to round 2 of the audit
+called it nauty 2.8; that was wrong.  The cluster's nauty 2.7r4 `geng` does not support `-k`.
 
 ## Hardware and software (recorded on node amdcpu-hpc-01, 2026-10-13)
 
-CPU partition: 24 nodes, each with two AMD EPYC 9354 32-core processors (64 cores, 1 thread/core) and 1,031,112 MB of RAM; Rocky Linux 9.6, kernel 5.14; SLURM 24.11.1; gcc 11.5.0; nauty 2.7r4 (`geng`) and nauty 2.8 (`geng28`, built in the project directory). Full `lscpu`, `scontrol`, `sinfo`, `sacct` and `sacctmgr` dumps are archived in the project's Dropbox folder (`10_yuca_raw/sistema/`).
+CPU partition: 24 nodes, each with two AMD EPYC 9354 32-core processors (64 cores, 1 thread/core) and 1,031,112 MB of RAM; Rocky Linux 9.6, kernel 5.14; SLURM 24.11.1; gcc 11.5.0; nauty 2.7r4 (`geng`) and nauty 2.9.3 (`geng28`, the conda-forge binary copied into the project directory; see above). Full `lscpu`, `scontrol`, `sinfo`, `sacct` and `sacctmgr` dumps are archived in the project's Dropbox folder (`10_yuca_raw/sistema/`).
 
 ## `logs/`
 

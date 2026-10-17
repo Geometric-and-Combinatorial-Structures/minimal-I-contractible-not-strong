@@ -1,4 +1,6 @@
-# Minimal graphs that are I-contractible but NOT strong I-contractible (14 vertices, K4-free, stuck).
+# Three graphs on 14 vertices (K4-free, stuck) that are I-contractible but NOT strong I-contractible: G14a, G14b, G14c.
+# 14 is the minimum order of J \ J_S subject to the hypotheses H12, Hcasi and H13 of the paper; that they are the only
+# stuck K4-free members of J \ J_S on 14 vertices is subject to H12, Hcasi and H14.
 # graph6 | edges | triangles | |Aut| | edge e to add (graph6 vertex labels) with N(e) in J_S such that G+e is in J_S
 M?b@bFHNEk@~|k}U?	44	31	1	{0,1}	G14a
 M?B@thku?~Lylk}[?	45	32	2	{0,3}	G14b

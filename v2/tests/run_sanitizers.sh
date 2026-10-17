@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # AddressSanitizer + UBSan battery for atascadas_v2 (v2.1).  Usage: tests/run_sanitizers.sh [OUT]
-# Default OUT: tests/results/v2.1/sanitizer.txt.  Needs build/atascadas_v2_san (./build.sh), gcc, geng and python3.
+# Default OUT: tests/results/v2.2/sanitizer.txt.  Needs build/atascadas_v2_san (./build.sh), gcc, geng and python3.
 # Each line records the label (with the documented exit code expected), the exit code obtained, the number of
 # sanitizer reports in stderr and the last line of stderr.  Two positive controls (a heap overflow and a signed
 # overflow, compiled with the same sanitizers) must report; if they do not, the configuration is not detecting errors
@@ -9,7 +9,7 @@
 # some sandboxes preload a library (LD_PRELOAD), which is kept loaded rather than removed.
 set -u
 cd "$(dirname "$0")/.."
-OUT=${1:-tests/results/v2.1/sanitizer.txt}
+OUT=${1:-tests/results/v2.2/sanitizer.txt}
 mkdir -p "$(dirname "$OUT")"
 S=build/atascadas_v2_san
 [ -x "$S" ] || { echo "missing $S: run ./build.sh" >&2; exit 1; }

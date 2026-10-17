@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fault-injection tests of v2/pipeline/campana_v2.py (findings H-02, H-03, H-04 of the external audit).
 
-Usage: python3 test_pipeline.py --work /tmp/pipeline_tests --out results/v2.1/pipeline.json
+Usage: python3 test_pipeline.py --work /tmp/pipeline_tests --out results/v2.2/pipeline.json
 Requires geng on PATH and gcc.  Every case states what must happen; the script exits 0 only if all cases behave so.
 """
 import argparse, fcntl, json, os, shlex, shutil, subprocess, sys
@@ -51,10 +51,12 @@ def write_exec(path, text):
     return str(path)
 
 
+# v2.2: init requires `geng --help` to exit 0 (H-23), so every fake generator below answers --help like --version;
+# the cases still test failures of the producer DURING enumeration, which is what they were written for.
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", default="/tmp/pipeline_tests")
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.1" / "pipeline.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.2" / "pipeline.json"))
     a = ap.parse_args()
     W = Path(a.work)
     if W.exists():
@@ -92,6 +94,7 @@ def main():
     # P4 producer emits graphs and exits 42 (the auditor's synthetic failure): nothing is published
     fake = write_exec(W / "geng_exit42.sh",
                       "#!/bin/bash\nif [ \"$1\" = --version ]; then echo 'Nauty&Traces version 0.0000 (fake)'; exit 0; fi\n"
+                      "if [ \"$1\" = --help ]; then echo 'fake geng: help'; exit 0; fi\n"
                       f"{shlex.quote(GENG)} \"$@\"\nexit 42\n")
     cfg4 = init(W / "p4", 7, 4, 1, geng=fake)
     rcs = run_workers(cfg4, 1)
@@ -104,6 +107,7 @@ def main():
     # P5 producer prints an error line but exits 0
     fake = write_exec(W / "geng_E.sh",
                       "#!/bin/bash\nif [ \"$1\" = --version ]; then echo 'Nauty&Traces version 0.0000 (fake)'; exit 0; fi\n"
+                      "if [ \"$1\" = --help ]; then echo 'fake geng: help'; exit 0; fi\n"
                       f"{shlex.quote(GENG)} \"$@\"\necho '>E simulated error' >&2\nexit 0\n")
     cfg5 = init(W / "p5", 7, 2, 1, geng=fake)
     rcs = run_workers(cfg5, 1)
@@ -112,6 +116,7 @@ def main():
     # P6 producer without its count line (geng -q)
     fake = write_exec(W / "geng_q.sh",
                       "#!/bin/bash\nif [ \"$1\" = --version ]; then echo 'Nauty&Traces version 0.0000 (fake)'; exit 0; fi\n"
+                      "if [ \"$1\" = --help ]; then echo 'fake geng: help'; exit 0; fi\n"
                       f"{shlex.quote(GENG)} -q \"$@\"\n")
     cfg6 = init(W / "p6", 7, 2, 1, geng=fake)
     rcs = run_workers(cfg6, 1)
@@ -120,6 +125,7 @@ def main():
     # P7 producer truncates its output but reports the full count
     fake = write_exec(W / "geng_trunc.sh",
                       "#!/bin/bash\nif [ \"$1\" = --version ]; then echo 'Nauty&Traces version 0.0000 (fake)'; exit 0; fi\n"
+                      "if [ \"$1\" = --help ]; then echo 'fake geng: help'; exit 0; fi\n"
                       f"{shlex.quote(GENG)} \"$@\" 2> >(cat >&2) | head -n 5\n")
     cfg7 = init(W / "p7", 7, 1, 1, geng=fake)
     rcs = run_workers(cfg7, 1)
@@ -135,12 +141,14 @@ def main():
     rcs = run_workers(cfg8, 1)
     case("P8 unexpected classifier stderr rejected", rcs == [1]
          and not list((W / "p8" / "receipts").rglob("*.ok.json")))
-    src9 = W / "not_v21.c"
-    assert '#define VERSION "v2.1"' in s
-    src9.write_text(s.replace('#define VERSION "v2.1"', '#define VERSION "v1x"', 1))
+    src9 = W / "not_pinned_version.c"
+    import re
+    VER = re.search(r'#define VERSION "([^"]+)"', s).group(1)
+    assert f'#define VERSION "{VER}"' in s
+    src9.write_text(s.replace(f'#define VERSION "{VER}"', '#define VERSION "v1x"', 1))
     rc9, _, e9 = py("init", "--root", W / "p9", "--n", 7, "--mod", 2, "--workers", 1, "--mode", "tabla",
                     "--geng", GENG, "--geng-args=-c", "--source", src9, *geng_pins(GENG))
-    case("P9 classifier version other than v2.1 refused at init", rc9 != 0 and "is not v2.1" in e9
+    case(f"P9 classifier version other than {VER} refused at init", rc9 != 0 and f"is not {VER}" in e9
          and not (W / "p9" / "config.json").exists(), exit=rc9)
 
     # P10 pinned binary replaced after init
@@ -181,7 +189,7 @@ def main():
     # P12 stuck-graph search mode, n=9 (geng -C -d4 -D7 9): total equals the direct run
     cfg12 = init(W / "p12", 9, 5, 2, mode="atascadas", geng_args="-C -d4 -D7")
     rcs = run_workers(cfg12, 2)
-    rc, o, e = py("aggregate", "--config", cfg12, "--expect", "total=12881", "encontradas=0")
+    rc, o, e = py("aggregate", "--config", cfg12, "--expect", "total=12881", "--expect", "encontradas=0")
     agg = json.loads((W / "p12" / "aggregate.json").read_text())
     case("P12 search mode n=9 totals", rcs == [0, 0] and rc == 0 and agg["counts"]["total"] == 12881,
          counts=agg["counts"])

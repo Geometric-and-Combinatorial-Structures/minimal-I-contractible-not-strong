@@ -5,7 +5,7 @@ The cases reproduce the auditor's adversarial scripts (AUDIT_OUT/ronda2/scripts/
 r2_pipeline_adversarial2.py, r2_pipeline_extra.py) with the expected outcome of each one, adapted only where v2.1
 changes the interface on purpose (summary version v2.1, the icert_truncados key of mode tabla, new init options).
 
-Usage: python3 tests/test_regressions_r2.py --work DIR [--out results/v2.1/regressions_r2.json]
+Usage: python3 tests/test_regressions_r2.py --work DIR [--out results/v2.2/regressions_r2.json]
        [--bin BINARY] [--sections classifier,slice,receipt,campaign]
 Requires gcc, geng and labelg (nauty) on PATH, and build/atascadas_v2 from ./build.sh.
 Exit status 0 only if every case behaves as stated.
@@ -36,6 +36,7 @@ spec = importlib.util.spec_from_file_location("campana", DRIVER)
 M = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(M)
 RESULTS = []
+VER = M.CLASSIFIER_VERSION      # the version pinned by the driver (v2.2 since round 3)
 
 
 def case(group, name, ok, **info):
@@ -85,17 +86,20 @@ def classifier_cases(W):
         os.close(fd)
     case("classifier", "input read error", p.returncode == 4, exit=p.returncode)
     v = subprocess.run([str(BIN), "--version"], capture_output=True, text=True).stdout.split()
-    case("classifier", "version string is v2.1", len(v) > 1 and v[1] == "v2.1", version=" ".join(v[:2]))
+    case("classifier", f"version string is {VER}", len(v) > 1 and v[1] == VER, version=" ".join(v[:2]))
     b = (V2 / "build.sh").read_text()
     case("classifier", "build.sh compiles without -march=native", "-march=native" not in b.replace("no -march=native", ""))
 
 
 # --------------------------------------------------------------------------------------------- slice checks (H-24)
+# v2.2: the fixture config carries created_utc and the fixture receipt has exactly the keys and UTC format of a
+# receipt written by the driver (strict schema, H-24); the cases themselves are unchanged.
 CFG = {"geng_args": ["-c"], "n": 3, "mode": "atascadas", "mod": 1, "workers": 1, "root": "/fixture",
+       "created_utc": "2026-10-16T00:00:00+00:00",
        "files": {"geng": {"path": "/fixture/geng"}, "classifier": {"path": "/fixture/classifier"}}}
 BASE = {"n": "3", "total": "1", "pasa_cono": "0", "pasa_chi": "0", "pasa_vecindades": "0", "pasa_aristas": "0",
         "encontradas": "0", "invalidos": "0", "errores": "0", "memo_consultas": "0", "memo_aciertos": "0",
-        "memo_colisiones_hash": "0", "version": "v2.1"}
+        "memo_colisiones_hash": "0", "version": VER}
 GEN1 = ">Z 1 graphs generated in 0.00 sec\n"
 
 
@@ -119,7 +123,7 @@ def slice_cases():
     check("negative memo counter rejected", dict(BASE, memo_consultas="-4"), want=False)
     check("memo hits above queries rejected", dict(BASE, memo_aciertos="12"), want=False)
     check("collisions may exceed queries (one per probe)", dict(BASE, memo_consultas="2", memo_colisiones_hash="9"))
-    check("repeated version keys rejected", want=False, extra=" version=v1 version=v2.1")
+    check("repeated version keys rejected", want=False, extra=f" version=v1 version={VER}")
     check("repeated order keys rejected", want=False, extra=" n=99 n=3")
     check("unparsed trailing text rejected", want=False, extra=" CORRUPTED RECORD")
     check("summary of another mode rejected", want=False, extra=" modo=casi")
@@ -143,7 +147,7 @@ def slice_cases():
     check("graph of another order rejected", s, out="C~\nBw\n", gen=">Z 2 graphs generated\n", want=False)
     ct = dict(CFG, mode="tabla")
     st = {k: "0" for k in M.TABLE_KEYS}
-    st.update(n="3", conexas="1", invalidos="0", errores="0", icert_truncados="0", version="v2.1",
+    st.update(n="3", conexas="1", invalidos="0", errores="0", icert_truncados="0", version=VER,
               **{k: "0" for k in M.MEMO_KEYS})
     check("valid table summary accepted", st, c=ct)
     check("table summary without icert_truncados rejected", {k: v for k, v in st.items() if k != "icert_truncados"},
@@ -166,7 +170,8 @@ def receipt_cases():
     rec = {"schema": M.SCHEMA, "status": "complete", "r": 0, "mod": 1, "config_sha256": "fixture", "cmd_geng": g,
            "cmd_classifier": c, "exit_geng": 0, "exit_classifier": 0, "counts": co, "records": re_, "memo": me,
            "geng_stderr": GEN1, "classifier_stderr": summary(BASE), "result_stdout": "", "worker_id": 0,
-           "host": "fixture", "utc_start": "2026-10-16T00:00:00Z", "utc_end": "2026-10-16T00:00:01Z", "seconds": 1}
+           "host": "fixture", "utc_start": "2026-10-16T00:00:00+00:00", "utc_end": "2026-10-16T00:00:01+00:00",
+           "seconds": 1, "slurm_job_id": None, "slurm_array_job_id": None, "slurm_array_task_id": None}
     for k in ("geng_stderr", "classifier_stderr", "result_stdout"):
         rec[k + "_sha256"] = M.sha_bytes(rec[k].encode())
     mods = {"baseline": {}, "generator exit 42": {"exit_geng": 42}, "classifier exit 42": {"exit_classifier": 42},
@@ -239,7 +244,7 @@ def campaign_cases(W):
     f.write_text("n,connected\n3,999\n")
     rcr = drv("aggregate", "--config", cfg, "--jobs", 1, "--reference-csv", f, "--expect", "conexas=2")[0]
     case("reference", "--expect cannot override a conflicting reference", rcr != 0, exit=rcr)
-    rcr, _, er = drv("aggregate", "--config", cfg, "--jobs", 1, "--expect", "conexas=2", "conexas=2")
+    rcr, _, er = drv("aggregate", "--config", cfg, "--jobs", 1, "--expect", "conexas=2", "--expect", "conexas=2")
     case("reference", "repeated --expect key refused", rcr != 0 and "repeated" in er, exit=rcr)
     rcr, _, er = drv("aggregate", "--config", cfg, "--jobs", 1, "--expect", "conexas=-2")
     case("reference", "negative --expect value refused", rcr != 0, exit=rcr)
@@ -290,7 +295,7 @@ def campaign_cases(W):
     case("init", "geng SHA-256 pin required and exact; refused before touching the disk", rc5 != 0 and rc5b != 0
          and rc5c != 0 and not any((W / d).exists() for d in ("v5", "v5b", "v5c")), exits=[rc5, rc5b, rc5c])
     s2 = W / "v2src.c"
-    s2.write_text(Path(SOURCE).read_text(encoding="utf-8").replace('#define VERSION "v2.1"', '#define VERSION "v2"'),
+    s2.write_text(Path(SOURCE).read_text(encoding="utf-8").replace(f'#define VERSION "{VER}"', '#define VERSION "v2"'),
                   encoding="utf-8")
     rcf = init(W / "vfail", source=s2)[0]
     rcfw = drv("worker", "--config", W / "vfail" / "config.json", "--worker-id", 0)[0]
@@ -355,7 +360,7 @@ def main():
     global BIN
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", required=True)
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.1" / "regressions_r2.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.2" / "regressions_r2.json"))
     ap.add_argument("--bin", default=str(BIN),
                     help="classifier binary under test (default build/atascadas_v2); an older binary here shows "
                          "whether the classifier cases are sensitive to the v2.1 changes")

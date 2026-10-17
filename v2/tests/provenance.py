@@ -1,4 +1,4 @@
-"""Provenance record attached to every v2.1 test result.
+"""Provenance record attached to every v2.1/v2.2 test result.
 
 Each result file says which binaries, sources and tools it exercised: path, SHA-256, size, modification time
 and, for the classifier binaries and the nauty tools, the first line printed by --version.  Times are UTC.
@@ -28,8 +28,15 @@ def display_path(path):
 
 
 def _display_arg(arg):
+    """A command-line argument as it is recorded.  v2.2 (H-35 of round 3): besides an existing path, any absolute path
+    (also one that does not exist yet, e.g. a new --out file) and the value of --option=PATH are shown like
+    display_path, so the recorded argv never carries the directories of the machine and check_portable never refuses
+    a result only because of where it was asked to be written."""
+    if arg.startswith("--") and "=" in arg:
+        opt, _, val = arg.partition("=")
+        return opt + "=" + _display_arg(val)
     try:
-        if os.path.exists(arg):
+        if os.path.isabs(arg) or os.path.exists(arg):
             return display_path(arg)
     except (OSError, ValueError):
         pass

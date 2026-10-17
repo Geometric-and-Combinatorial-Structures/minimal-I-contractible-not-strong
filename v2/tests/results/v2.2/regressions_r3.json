@@ -1,0 +1,836 @@
+{
+ "all_pass": true,
+ "n_cases": 104,
+ "n_failed": 0,
+ "cases": [
+  {
+   "group": "init",
+   "case": "unclosed quote in --geng-args: refused before ROOT exists",
+   "pass": true,
+   "exit": 1,
+   "root_exists": false,
+   "said": "--geng-args or --cflags cannot be parsed (No closing quotation); nothing was written"
+  },
+  {
+   "group": "init",
+   "case": "unclosed quote in --cflags: refused before ROOT exists",
+   "pass": true,
+   "exit": 1,
+   "root_exists": false,
+   "said": "--geng-args or --cflags cannot be parsed (No closing quotation); nothing was written"
+  },
+  {
+   "group": "init",
+   "case": "geng --help exits 42: refused before ROOT exists",
+   "pass": true,
+   "exit": 1,
+   "root_exists": false,
+   "said": "geng --help exited 42 or printed nothing; refusing to pin this generator"
+  },
+  {
+   "group": "init",
+   "case": "geng --help prints nothing: refused before ROOT exists",
+   "pass": true,
+   "exit": 1,
+   "root_exists": false,
+   "said": "geng --help exited 0 or printed nothing; refusing to pin this generator"
+  },
+  {
+   "group": "init",
+   "case": "failure at the chmod of config.sha256: init fails late and leaves INIT_FAILED.txt and no marker",
+   "pass": true,
+   "exit": 1,
+   "init_failed": true,
+   "marker": false,
+   "config_written": true
+  },
+  {
+   "group": "init",
+   "case": "failure at the chmod of config.sha256: worker, status and aggregate refuse the root",
+   "pass": true,
+   "refusals": {
+    "worker": [
+     1,
+     "ValueError: init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one"
+    ],
+    "status": [
+     1,
+     "ValueError: init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one"
+    ],
+    "aggregate": [
+     1,
+     "ValueError: init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one"
+    ]
+   }
+  },
+  {
+   "group": "init",
+   "case": "failure writing the final marker: init fails late and leaves INIT_FAILED.txt and no marker",
+   "pass": true,
+   "exit": 1,
+   "init_failed": true,
+   "marker": false,
+   "config_written": true
+  },
+  {
+   "group": "init",
+   "case": "failure writing the final marker: worker, status and aggregate refuse the root",
+   "pass": true,
+   "refusals": {
+    "worker": [
+     1,
+     "ValueError: init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one"
+    ],
+    "status": [
+     1,
+     "ValueError: init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one"
+    ],
+    "aggregate": [
+     1,
+     "ValueError: init of this campaign failed (INIT_FAILED.txt): the root cannot be used; start a new one"
+    ]
+   }
+  },
+  {
+   "group": "init",
+   "case": "a finished init certifies its config in INIT_COMPLETE.json (= config.sha256) and the worker runs",
+   "pass": true,
+   "exit": 0,
+   "worker": 0
+  },
+  {
+   "group": "init",
+   "case": "a root without INIT_COMPLETE.json (init cut short) is refused by worker, status and aggregate",
+   "pass": true,
+   "refusals": {
+    "worker": [
+     1,
+     "ValueError: init of this campaign did not finish (INIT_COMPLETE.json missing or unreadable)"
+    ],
+    "status": [
+     1,
+     "ValueError: init of this campaign did not finish (INIT_COMPLETE.json missing or unreadable)"
+    ],
+    "aggregate": [
+     1,
+     "ValueError: init of this campaign did not finish (INIT_COMPLETE.json missing or unreadable)"
+    ]
+   }
+  },
+  {
+   "group": "init",
+   "case": "an INIT_COMPLETE.json that certifies another config is refused",
+   "pass": true,
+   "exit": 1,
+   "said": "ValueError: INIT_COMPLETE.json does not certify this config.json"
+  },
+  {
+   "group": "receipt",
+   "case": "baseline: the real receipt of slice 0 is accepted",
+   "pass": true,
+   "aggregate": 0,
+   "verdict": "accepted"
+  },
+  {
+   "group": "receipt",
+   "case": "auditor's patch nan_seconds rejected",
+   "pass": true,
+   "verdict": "rejected: receipt provenance missing or malformed: seconds"
+  },
+  {
+   "group": "receipt",
+   "case": "auditor's patch infinity_seconds rejected",
+   "pass": true,
+   "verdict": "rejected: receipt provenance missing or malformed: seconds"
+  },
+  {
+   "group": "receipt",
+   "case": "auditor's patch nonsense_utc rejected",
+   "pass": true,
+   "verdict": "rejected: receipt provenance malformed: not a UTC timestamp of this driver: 'yesterday'"
+  },
+  {
+   "group": "receipt",
+   "case": "auditor's patch reversed_utc rejected",
+   "pass": true,
+   "verdict": "rejected: receipt times out of order (utc_end before utc_start)"
+  },
+  {
+   "group": "receipt",
+   "case": "auditor's patch boolean_identity rejected",
+   "pass": true,
+   "verdict": "rejected: receipt identity mismatch"
+  },
+  {
+   "group": "receipt",
+   "case": "reversed times are rejected by the order check itself",
+   "pass": true,
+   "verdict": "rejected: receipt times out of order (utc_end before utc_start)"
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of classifier_stderr rejected (5 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of classifier_stderr_sha256 rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of cmd_classifier rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of cmd_geng rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of config_sha256 rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of counts rejected (52 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of exit_classifier rejected (9 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of exit_geng rejected (9 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of geng_stderr rejected (5 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of geng_stderr_sha256 rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of host rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of memo rejected (20 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of mod rejected (9 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of r rejected (9 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of records rejected (8 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of result_stdout rejected (5 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of result_stdout_sha256 rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of schema rejected (4 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of seconds rejected (10 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of slurm_array_job_id rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of slurm_array_task_id rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of slurm_job_id rejected (6 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of status rejected (5 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of utc_end rejected (11 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of utc_start rejected (11 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every wrong value of worker_id rejected (9 values)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "every single missing key rejected (26 keys; 241 wrong values above)",
+   "pass": true,
+   "not_rejected": []
+  },
+  {
+   "group": "receipt",
+   "case": "extra key 'extra' rejected",
+   "pass": true,
+   "verdict": "rejected: receipt keys differ from the schema: missing [], unexpected ['extra']"
+  },
+  {
+   "group": "receipt",
+   "case": "extra key 'error' rejected",
+   "pass": true,
+   "verdict": "rejected: receipt keys differ from the schema: missing [], unexpected ['error']"
+  },
+  {
+   "group": "receipt",
+   "case": "extra key 'comment' rejected",
+   "pass": true,
+   "verdict": "rejected: receipt keys differ from the schema: missing [], unexpected ['comment']"
+  },
+  {
+   "group": "receipt",
+   "case": "the schema keys are exactly the keys the worker writes",
+   "pass": true,
+   "keys": 26
+  },
+  {
+   "group": "receipt",
+   "case": "clock tolerance: utc_start 4 min before the campaign was created: accepted",
+   "pass": true,
+   "verdict": "accepted"
+  },
+  {
+   "group": "receipt",
+   "case": "clock tolerance: utc_start 6 min before the campaign was created: rejected",
+   "pass": true,
+   "verdict": "rejected: receipt times outside the life of the campaign"
+  },
+  {
+   "group": "receipt",
+   "case": "clock tolerance: utc_end 4 s before utc_start: accepted",
+   "pass": true,
+   "verdict": "accepted"
+  },
+  {
+   "group": "receipt",
+   "case": "clock tolerance: utc_end 6 s before utc_start: rejected",
+   "pass": true,
+   "verdict": "rejected: receipt times out of order (utc_end before utc_start)"
+  },
+  {
+   "group": "receipt",
+   "case": "clock tolerance: utc_end 4 min after the validation: accepted",
+   "pass": true,
+   "verdict": "accepted"
+  },
+  {
+   "group": "receipt",
+   "case": "clock tolerance: utc_end 6 min after the validation: rejected",
+   "pass": true,
+   "verdict": "rejected: receipt times outside the life of the campaign"
+  },
+  {
+   "group": "receipt",
+   "case": "NaN in the receipt file: status counts it unreadable, aggregate and the resuming worker refuse it",
+   "pass": true,
+   "unreadable": 1,
+   "aggregate": 1,
+   "worker": 1,
+   "receipt_untouched": true
+  },
+  {
+   "group": "receipt",
+   "case": "Infinity in the receipt file: status counts it unreadable, aggregate and the resuming worker refuse it",
+   "pass": true,
+   "unreadable": 1,
+   "aggregate": 1,
+   "worker": 1,
+   "receipt_untouched": true
+  },
+  {
+   "group": "receipt",
+   "case": "repeated key in the receipt file: status counts it unreadable, aggregate and the resuming worker refuse it",
+   "pass": true,
+   "unreadable": 1,
+   "aggregate": 1,
+   "worker": 1,
+   "receipt_untouched": true
+  },
+  {
+   "group": "receipt",
+   "case": "true written for r = 1: status counts it unreadable, aggregate and the resuming worker refuse it",
+   "pass": true,
+   "unreadable": 1,
+   "aggregate": 1,
+   "worker": 1,
+   "receipt_untouched": true
+  },
+  {
+   "group": "receipt",
+   "case": "with the receipts restored aggregate succeeds again",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "reference",
+   "case": "baseline campaign n=3 aggregates",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "reference",
+   "case": "repeated CSV column (first says 999, last the true value) refused",
+   "pass": true,
+   "exit": 1,
+   "said": "reference CSV header must name each column once (repeated or empty: ['connected'])"
+  },
+  {
+   "group": "reference",
+   "case": "CSV with a row longer than the header refused",
+   "pass": true,
+   "exit": 1,
+   "said": "reference CSV rows [2] do not have as many fields as the header"
+  },
+  {
+   "group": "reference",
+   "case": "CSV with a row shorter than the header refused",
+   "pass": true,
+   "exit": 1,
+   "said": "reference CSV rows [2] do not have as many fields as the header"
+  },
+  {
+   "group": "reference",
+   "case": "CSV with an empty column name refused",
+   "pass": true,
+   "exit": 1,
+   "said": "reference CSV header must name each column once (repeated or empty: [])"
+  },
+  {
+   "group": "reference",
+   "case": "CSV with a non-integer cell refused",
+   "pass": true,
+   "exit": 1,
+   "said": "reference CSV lacks a non-negative integer in column 'connected' (for conexas)"
+  },
+  {
+   "group": "reference",
+   "case": "non-UTF-8 CSV refused cleanly",
+   "pass": true,
+   "exit": 1,
+   "said": "the reference CSV <work>/latin1.csv is not UTF-8 text ('utf-8' codec can't de"
+  },
+  {
+   "group": "reference",
+   "case": "missing CSV refused cleanly",
+   "pass": true,
+   "exit": 1,
+   "said": "cannot read the reference CSV <work>/does_not_exist.csv: [Errno 2] No such fi"
+  },
+  {
+   "group": "reference",
+   "case": "--expect without a value is a usage error that starts no attempt",
+   "pass": true,
+   "exit": 2,
+   "new_attempts": 0
+  },
+  {
+   "group": "reference",
+   "case": "--expect=-1-Dis=V with the true value is compared and accepted",
+   "pass": true,
+   "exit": 0,
+   "value": 2
+  },
+  {
+   "group": "reference",
+   "case": "--expect=-1-Dis=V with a wrong value fails the comparison",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "the old batch form --expect K=V -1-Dis=V is a usage error",
+   "pass": true,
+   "exit": 2
+  },
+  {
+   "group": "reference",
+   "case": "repeated --expect key refused",
+   "pass": true,
+   "exit": 1,
+   "said": "repeated --expect key conexas"
+  },
+  {
+   "group": "reference",
+   "case": "unknown --expect key refused",
+   "pass": true,
+   "exit": 1,
+   "said": "bad --expect 'nada=1': use KEY=VALUE with a counter of this mode and an integer >= 0 (write --expect=-1-Dis=V for the key that starts with '-')"
+  },
+  {
+   "group": "reference",
+   "case": "negative --expect value refused",
+   "pass": true,
+   "exit": 1,
+   "said": "bad --expect 'conexas=-1': use KEY=VALUE with a counter of this mode and an integer >= 0 (write --expect=-1-Dis=V for the key that starts with '-')"
+  },
+  {
+   "group": "reference",
+   "case": "--expect value with a leading zero refused",
+   "pass": true,
+   "exit": 1,
+   "said": "bad --expect 'conexas=02': use KEY=VALUE with a counter of this mode and an integer >= 0 (write --expect=-1-Dis=V for the key that starts with '-')"
+  },
+  {
+   "group": "reference",
+   "case": "--expect value with a decimal point refused",
+   "pass": true,
+   "exit": 1,
+   "said": "bad --expect 'conexas=2.0': use KEY=VALUE with a counter of this mode and an integer >= 0 (write --expect=-1-Dis=V for the key that starts with '-')"
+  },
+  {
+   "group": "reference",
+   "case": "--expect with an empty value refused",
+   "pass": true,
+   "exit": 1,
+   "said": "bad --expect 'conexas=': use KEY=VALUE with a counter of this mode and an integer >= 0 (write --expect=-1-Dis=V for the key that starts with '-')"
+  },
+  {
+   "group": "reference",
+   "case": "--expect without '=' refused",
+   "pass": true,
+   "exit": 1,
+   "said": "bad --expect 'conexas': use KEY=VALUE with a counter of this mode and an integer >= 0 (write --expect=-1-Dis=V for the key that starts with '-')"
+  },
+  {
+   "group": "reference",
+   "case": "empty graph6 reference refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "--labelg without --reference-g6 refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "every reference recorded with path and SHA-256 in aggregate.json and the attempt (failed comparison)",
+   "pass": true,
+   "exit": 1,
+   "kinds": [
+    "csv",
+    "graph6",
+    "labelg"
+   ]
+  },
+  {
+   "group": "reference",
+   "case": "a successful comparison records the CSV with its SHA-256",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "aggregate",
+   "case": "a successful aggregate names its attempt, recorded with status ok",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "aggregate",
+   "case": "busy worker lock after an earlier ok=true: ok=false in place, earlier result archived, attempt failed",
+   "pass": true,
+   "exit": 1,
+   "archived_ok": true,
+   "attempt_status": "failed",
+   "said": "worker 0 holds its lock: aggregate refuses to sum while producers run"
+  },
+  {
+   "group": "aggregate",
+   "case": "a second aggregate while one runs is refused and touches nothing",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "aggregate",
+   "case": "status survives a receipt that contains null and counts it unreadable",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "aggregate",
+   "case": "status survives a receipt that contains [] and counts it unreadable",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "aggregate",
+   "case": "status survives a receipt that contains {} and counts it unreadable",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "aggregate",
+   "case": "status survives a receipt that contains \"text\" and counts it unreadable",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "aggregate",
+   "case": "status survives a receipt that contains 1 and counts it unreadable",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "aggregate",
+   "case": "with the receipt restored aggregate succeeds again and no attempt is left in state started",
+   "pass": true,
+   "exit": 0,
+   "attempt_states": [
+    "failed",
+    "ok"
+   ]
+  },
+  {
+   "group": "classifier",
+   "case": "unknown option: status 1, and 6 when stderr cannot be written",
+   "pass": true,
+   "normal": 1,
+   "dev_full": 6
+  },
+  {
+   "group": "classifier",
+   "case": "option without its value: status 1, and 6 when stderr cannot be written",
+   "pass": true,
+   "normal": 1,
+   "dev_full": 6
+  },
+  {
+   "group": "classifier",
+   "case": "unknown mode: status 1, and 6 when stderr cannot be written",
+   "pass": true,
+   "normal": 1,
+   "dev_full": 6
+  },
+  {
+   "group": "classifier",
+   "case": "invalid --prof: status 1, and 6 when stderr cannot be written",
+   "pass": true,
+   "normal": 1,
+   "dev_full": 6
+  },
+  {
+   "group": "classifier",
+   "case": "--version: status 0, and 6 when stdout cannot be written",
+   "pass": true,
+   "normal": 0,
+   "dev_full": 6
+  },
+  {
+   "group": "classifier",
+   "case": "lack of memory (address-space limit): status 2, and 6 when stderr cannot be written",
+   "pass": true,
+   "limit_mib": 96,
+   "dev_full": 6
+  },
+  {
+   "group": "harness",
+   "case": "argv entry recorded as 'new.json (outside the repository)'",
+   "pass": true,
+   "got": "new.json (outside the repository)"
+  },
+  {
+   "group": "harness",
+   "case": "argv entry recorded as '--out=y.json (outside the repository)'",
+   "pass": true,
+   "got": "--out=y.json (outside the repository)"
+  },
+  {
+   "group": "harness",
+   "case": "argv entry recorded as 'v2/tests/results/not_yet.json'",
+   "pass": true,
+   "got": "v2/tests/results/not_yet.json"
+  },
+  {
+   "group": "harness",
+   "case": "argv entry recorded as 'relative/new.json'",
+   "pass": true,
+   "got": "relative/new.json"
+  },
+  {
+   "group": "harness",
+   "case": "argv entry recorded as '-c'",
+   "pass": true,
+   "got": "-c"
+  },
+  {
+   "group": "harness",
+   "case": "a result asked to be written to a new absolute path is portable",
+   "pass": true,
+   "argv": [
+    "v2/tests/test_regressions_r3.py",
+    "--out",
+    "new.json (outside the repository)",
+    "--work=tmp/w"
+   ]
+  }
+ ],
+ "tools": {
+  "geng": "geng (outside the repository)",
+  "labelg": "labelg (outside the repository)",
+  "python": "3.11.17"
+ },
+ "binary_under_test": "v2/build/atascadas_v2",
+ "driver_under_test": "v2/pipeline/campana_v2.py",
+ "source_under_test": "v2/src/atascadas_v2.c",
+ "classifier_version_pinned_by_driver": "v2.2",
+ "sections": [
+  "init",
+  "receipt",
+  "reference",
+  "aggregate",
+  "classifier",
+  "harness"
+ ],
+ "started_utc": "2026-10-17T07:49:59Z",
+ "finished_utc": "2026-10-17T07:50:09Z",
+ "provenance": {
+  "recorded_utc": "2026-10-17T07:49:59Z",
+  "python": "3.11.17",
+  "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+  "argv": [
+   "v2/tests/test_regressions_r3.py",
+   "--work",
+   "work_v22_r3 (outside the repository)"
+  ],
+  "binaries": {
+   "atascadas_v2": {
+    "path": "v2/build/atascadas_v2",
+    "sha256": "0c8a6e11f6faf47a33d6d67204c9c5e03ac7d85fb9e6d948fffb83e5ab620438",
+    "bytes": 39080,
+    "mtime_utc": "2026-10-17T07:42:24Z",
+    "version": {
+     "exit": 0,
+     "first_line": "atascadas v2.2 MAXN=16 MAXF=16384 HBITS=22 QMAX=200000"
+    }
+   }
+  },
+  "sources": {
+   "atascadas_v2.c": {
+    "path": "v2/src/atascadas_v2.c",
+    "sha256": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+    "bytes": 36708,
+    "mtime_utc": "2026-10-17T07:15:31Z"
+   },
+   "campana_v2.py": {
+    "path": "v2/pipeline/campana_v2.py",
+    "sha256": "f01fdb5ed609d356ba3d441b0f744c0ee943d9cd1e3bc638d14bbf7c71808cab",
+    "bytes": 50896,
+    "mtime_utc": "2026-10-17T07:28:42Z"
+   },
+   "build.sh": {
+    "path": "v2/build.sh",
+    "sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+    "bytes": 868,
+    "mtime_utc": "2026-10-17T07:10:25Z"
+   },
+   "test_regressions_r3.py": {
+    "path": "v2/tests/test_regressions_r3.py",
+    "sha256": "a0957aaf2220bc8c819077da79da9fcd944ecde83371216e20459574e547ec0d",
+    "bytes": 33695,
+    "mtime_utc": "2026-10-17T07:35:53Z"
+   }
+  },
+  "tools": {
+   "geng": {
+    "path": "geng (outside the repository)",
+    "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+    "bytes": 395424,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (32 bits)"
+    }
+   },
+   "labelg": {
+    "path": "labelg (outside the repository)",
+    "sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+    "bytes": 1275072,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (64 bits)"
+    }
+   }
+  },
+  "gcc": {
+   "exit": 0,
+   "first_line": "gcc (Debian 14.2.0-19) 14.2.0"
+  }
+ }
+}

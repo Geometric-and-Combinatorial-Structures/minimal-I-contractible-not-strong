@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Equivalence and regression tests: src/atascadas.c (v1) versus v2/src/atascadas_v2.c (v2).
 
-Usage:  python3 test_equivalence.py --build ../build --out results/v2.1/equivalence.json [--nmax-table 10] [--procs 8]
+Usage:  python3 test_equivalence.py --build ../build --out results/v2.2/equivalence.json [--nmax-table 10] [--procs 8]
 The report records the SHA-256 and --version of every binary and source it exercised (key "provenance").
 
 Binaries expected in --build: atascadas_v1, atascadas_v2, atascadas_v2_weak (v2 with a 6-bit hash, -DHASH_WEAK_BITS=6),
@@ -132,7 +132,7 @@ def csv_from_fields(t):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--build", default=str(HERE.parent / "build"))
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.1" / "equivalence.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.2" / "equivalence.json"))
     ap.add_argument("--nmax-table", type=int, default=10)
     ap.add_argument("--procs", type=int, default=8)
     ap.add_argument("--weak-nmax", type=int, default=7)

@@ -53,7 +53,7 @@ The 48 remaining stuck K₄-free graphs on 14 vertices all have H₁(ℤ) = ℤ/
 |---|---|---|---|---|---|
 | 12 | connected (`-c`) | 164,059,830,476 | 8 min | 448 | full table row; no ℤ/2-acyclic graph outside 𝔍_S |
 | 13 | connected, 4 ≤ δ, Δ ≤ 11 (`-C -d4 -D11`) | 21,011,415,992,470 | 7 h 10 min | 448 | exactly 1 stuck graph (G13); its I₄-closure adds 2 graphs; all have H₁ = ℤ/3 |
-| 14 | K₄-free, connected, 4 ≤ δ, Δ ≤ 12 (`-k -C -d4 -D12`, nauty 2.8) | 64,856,470,381,820 | ≈ 33 h | 896 (two accounts) | exactly 51 stuck graphs: 3 contractible (G14a,b,c) + 48 with H₁ = ℤ/3 |
+| 14 | K₄-free, connected, 4 ≤ δ, Δ ≤ 12 (`-k -C -d4 -D12`, nauty 2.9.3) | 64,856,470,381,820 | ≈ 33 h | 896 (two accounts) | exactly 51 stuck graphs: 3 contractible (G14a,b,c) + 48 with H₁ = ℤ/3 |
 
 The last column reports what the recorded runs returned; the 𝔍_S decisions in them carry the memo qualification of the status note above. The restriction to minimum degree ≥ 4, maximum degree ≤ n − 2 and 2-connectivity is justified by the reduction lemma in the paper (Section 3; the "almost-stuck" pieces are enumerated by `--modo casi` and shown not to exist for ≤ 11 vertices, so every stuck counterexample with ≤ 22 vertices is 2-connected). The search for n = 14 was split into 2,000,000 `res/mod` slices; `yuca/logs/n14_listas_distintas.txt.gz` lists every slice processed (2,000,000 distinct, 0 missing). 692 slices were processed by both fronts; both wrote to the same per-slice paths, so the archive keeps one copy per slice and the identity of the two outputs is not established (audit finding H-03; see `yuca/README.md`).
 

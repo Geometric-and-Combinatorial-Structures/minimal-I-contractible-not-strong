@@ -1,4 +1,4 @@
-# Version 2 of the classifier and of the cluster pipeline (current release: v2.1)
+# Version 2 of the classifier and of the cluster pipeline (current release: v2.2)
 
 Remediation of the external audit of commit `4a059b5` (verdict "not certified", 15–16 Oct 2026; 21 findings).
 Nothing in `src/` or in the historical result directories was changed: those are the records of what ran. Under `yuca/as_run/` the only change is the provenance correction H-05 (commit `892e41b`): the task script that the p011 front of the n = 14 search actually ran (array 2079156, SHA-256 `b95a125b…`) was added as `tarea_n14_p011.sh`, and the file previously stored under that name, which is the `tarea.sh` of the failed attempt 2079068, is kept byte for byte (SHA-256 `50477550…`) as `tarea_n14_p029_intento_fallido_2079068.sh`. No as-run file was edited.
@@ -6,8 +6,13 @@ Version 2 is for **new** computations: the exact recomputations of rows 12–14 
 
 **Version 2.1** (16 Oct 2026) answers round 2 of the external audit (verdict "not certified", 16 Oct 2026): findings
 H-18 (extended), H-22, H-23, H-24, H-25 and H-29, and the pinning requests of Q9; see the section on v2.1 below. The
-algorithms did not change. Neither v2 nor v2.1 has been used for a production run. The rerun of the order-14 search
-(F3) waits for the auditor's review of v2.1, for the end of the historical producers and for the author's decision.
+algorithms did not change.
+
+**Version 2.2** (17 Oct 2026) answers round 3 of the external audit (verdict "not certified", 17 Oct 2026): the
+partial closures H-22, H-23, H-24 and H-29, the new finding H-35 and request S4, closed by class and not only for the
+auditor's examples; see the section on v2.2 below. The algorithms did not change. No version 2.x has been used for a
+production run. The rerun of the order-14 search (F3) waits for the auditor's review of v2.2, for the end of the
+historical producers and for the author's decision.
 
 ## Contents
 
@@ -20,9 +25,11 @@ algorithms did not change. Neither v2 nor v2.1 has been used for a production ru
 | `tests/test_pipeline.py` | fault injection into the pipeline |
 | `tests/test_regressions_r2.py` | v2.1: the round-2 adversarial cases (classifier, slice, receipt, campaign, references, aggregate, init) |
 | `tests/run_sanitizers.sh` | v2.1: AddressSanitizer + UBSan battery with two positive controls |
-| `tests/provenance.py` | v2.1: SHA-256 and `--version` of every binary, source and tool, recorded in each result file |
+| `tests/test_regressions_r3.py` | v2.2: the round-3 counterexamples extended to their classes (init, receipt, reference, aggregate, classifier, harness); `--driver`, `--source`, `--bin` run it against older files |
+| `tests/provenance.py` | v2.1: SHA-256 and `--version` of every binary, source and tool, recorded in each result file (v2.2: argv paths normalized, H-35) |
 | `tests/results/*.json`, `sanitizer.txt` | results of the **v2** runs of 16 Oct 2026, kept as they ran |
-| `tests/results/v2.1/` | results of the **v2.1** runs reported below |
+| `tests/results/v2.1/` | results of the **v2.1** runs of 16 Oct 2026, kept as they ran |
+| `tests/results/v2.2/` | results of the **v2.2** runs reported below |
 
 ## Findings and fixes
 
@@ -41,6 +48,29 @@ algorithms did not change. Neither v2 nor v2.1 has been used for a production ru
 Additional checks in v2: connected input required in `tabla` (exit 5 otherwise); one order per counting run; table
 invariants checked at the end (exit 4 if violated); `icert` queue overflow counted (`icert_truncados`) and never
 treated as a certificate.
+
+## Version 2.2: round 3 of the external audit
+
+| finding | defect in v2.1 | fix in v2.2 | regression cases (`test_regressions_r3.py`) |
+|---|---|---|---|
+| H-22 | `csv.DictReader` kept the last of two equal column names, so a CSV whose first `connected` column said 999 passed; `--expect` without a value compared nothing and exited 0; the key `-1-Dis` could not be given | the CSV header must name each column once and every row must have as many fields as the header; unreadable or non-UTF-8 references are refused; `--expect` takes one `KEY=VALUE` per occurrence (`--expect=-1-Dis=V` for that key); repeated keys and malformed values are refused; an empty graph6 reference and `--labelg` without `--reference-g6` are refused; the path and SHA-256 of every reference (CSV, graph6, labelg) are recorded in `aggregate.json` and in the attempt record | reference: 23 |
+| H-23 | an unclosed quote in `--geng-args` or `--cflags`, or a `geng --help` that fails, was found after the root existed; a failure after `config.sha256` was written left a root that workers accepted | `--geng-args` and `--cflags` are parsed (shlex) and `geng --help` must exit 0 with output before the `mkdir`; the last step of `init` writes `INIT_COMPLETE.json` with the config hash; `worker`, `status` and `aggregate` refuse a root with `INIT_FAILED.txt`, without the marker, or with a marker for another config | init: 11 (two late failures injected: at the chmod of `config.sha256` and at the marker) |
+| H-24 | receipts accepted NaN or Infinity seconds, times in any format or order, booleans for integers, extra keys and repeated JSON keys | receipts are read by a strict JSON reader (no NaN or Infinity, no repeated keys) and written with `allow_nan=False`; a receipt has exactly the schema keys (SLURM ids included); integers of exact type (a boolean is not an integer); finite non-negative seconds; UTC times in the driver's own format, ordered (tolerance 5 s) and inside the life of the campaign (tolerance 300 s); summaries compared in canonical form; a resumed slice is validated by the same rules | receipt: 49 (the auditor's five patches; 241 wrong values over the 26 keys; every missing key; extra keys; both sides of each clock tolerance; NaN, Infinity, a repeated key and `true` for 1 in the files) |
+| H-29 | an attempt that failed before archiving (busy worker lock, refused reference) left the earlier `aggregate.json` with `ok=true` in place; `status` crashed on a receipt containing `null` or `[]` | `aggregate` takes `aggregate.lock`, records the attempt in `aggregate_attempts/<id>.json` and archives earlier outputs first; then it checks the references, takes the worker locks and sums; any failure writes `aggregate.json` with `ok=false`, `status=failed` and the reason; a successful `aggregate.json` names its `attempt_id`; `status` counts anything that is not a readable receipt object as unreadable | aggregate: 9 |
+| S4 | the early exits of the classifier (usage errors, lack of memory) did not check their streams | `finish_streams` (flush and error check, exit 6) on every early exit, `--version` and lack of memory included | classifier: 6 |
+| H-35 | the test harness recorded a new absolute `--out` path verbatim, so `check_portable` refused the result after the run | absolute paths that do not exist yet and `--option=PATH` are recorded like existing paths (relative to the repository, or file name only) | harness: 6 |
+
+A usage error of `aggregate` (for example `--expect` without a value) stops in the argument parser with exit 2,
+before any attempt starts; it touches no output and records no attempt.
+
+Documentation changes made with v2.2 (not code changes):
+- H-31: the comment headers of `data/acyclic_not_strong_13.g6`, `data/strictly_2dis_12.g6`,
+  `data/stuck_14_K4free.tsv` and `data/minimal_I_not_strong_14.g6` state the reservations of `data/README.md`; the
+  data lines are byte-identical. The recorded output of `verification/check_table_B1_fig07.py` was regenerated: same
+  body, new SHA-256 of the TSV.
+- Provenance: `geng28` on YUCA is the conda-forge binary of nauty 2.9.3, not nauty 2.8 (`yuca/README.md`,
+  `README.md`, `verification/VERIFICACION_INDEPENDIENTE.md`). The manuscript keeps the wrong statement until its
+  next version.
 
 ## Version 2.1: round 2 of the external audit
 
@@ -62,10 +92,35 @@ No conversion to a dotted release name is attempted (an earlier draft of v2.1 di
 
 Exit codes of `atascadas_v2`: 0 correct; 1 usage; 2 internal capacity exceeded; 3 invalid records; 4 internal
 inconsistency, violated invariant or read error; 5 disconnected input (`tabla`) or mixed orders (counting modes);
-6 write error on stdout or stderr (takes priority).
+6 write error on stdout or stderr (takes priority; since v2.2 also on the early exits: usage errors, `--version` and
+lack of memory).  A stream that received no output cannot produce a 6.
 
 Data correction made with v2.1 (not a code change): in `data/table_cardinalities.csv` the I-undecided entry of row 13
 is now the raw counter of the run, 3 (`yuca/logs/n13_tabla_resumen.txt`); see `data/README.md`.
+
+## Test results of v2.2 (17 Oct 2026, local machine, gcc 14.2, nauty 2.9.3; `results/v2.2/`)
+
+Every result file records the SHA-256 of the binaries, sources and tools it exercised (key `provenance`). The v2.2
+binaries were built from `src/atascadas_v2.c` with SHA-256 `bd18224f907971e2…` (`build/atascadas_v2`:
+`0c8a6e11f6faf47a…`); the driver `pipeline/campana_v2.py` has SHA-256 `f01fdb5ed609d356…`.
+
+- **Equivalence** (`equivalence.json`): 49/49 pass, 403 s; the same T1–T6 checks, now between v1 and v2.2.
+- **Robustness** (`robustness.json`): 25/25 pass.
+- **Pipeline** (`pipeline.json`): 12/12 pass.
+- **Round-2 regressions** (`regressions_r2.json`): 89/89 pass. The fixture receipt of the receipt cases now has the
+  keys and UTC format of a v2.2 receipt (strict schema); the cases are unchanged.
+- **Round-3 regressions** (`regressions_r3.json`): 104/104 pass (init 11, receipt 49, reference 23, aggregate 9,
+  classifier 6, harness 6).
+- **Sensitivity** (`regressions_r3_sensitivity_v2.1.json`): the same suite run against the v2.1 driver, source and
+  binary (`git show da46581:v2/pipeline/campana_v2.py` and `…/src/atascadas_v2.c`, built with the flags of
+  `build.sh`) fails in 68 of 104 cases: init 10 of 11, receipt 31 of 49, reference 15 of 23, aggregate 7 of 9,
+  classifier 5 of 6, harness 0 of 6. The harness group exercises `tests/provenance.py`, the same file in both runs;
+  the v2.1 harness, checked separately, keeps the local path in both H-35 probes. The cases that pass against v2.1
+  are behaviours v2.1 already had (checks of streams, hashes, commands and identity; uneven CSV rows; exit 6 of
+  `--version`). This exit status 1 is the expected outcome.
+- **Sanitizers** (`sanitizer.txt`): 19 of 19 runs checked; both positive controls report; no report in the other 17
+  runs; every exit code is the documented one.
+- **`verify.sh`** (repository root): 39/39.
 
 ## Test results of v2.1 (16 Oct 2026, local machine, gcc 14.2, nauty 2.9.3; `results/v2.1/`)
 
@@ -103,8 +158,8 @@ the older binary named below on purpose.
 
 ## Not yet done
 
-- Not evaluated: exclusion between nodes or accounts through `flock` on Lustre. Only local exclusion was verified; a
-  preflight on YUCA must precede a two-account campaign.
+- Not evaluated: exclusion between nodes or accounts through `flock` on Lustre. Only local exclusion was verified; the
+  preflight P1 requested in round 3 must pass on YUCA before a two-account campaign.
 - Receipts are not authenticated: a receipt rewritten coherently (streams, counts and hashes together) is accepted;
   the regression suite documents this. The defences are the re-validation of every receipt from its stored streams
   and the archived hashes.
@@ -143,6 +198,9 @@ python3 tests/test_pipeline.py --work /tmp/pt
 python3 tests/test_regressions_r2.py --work /tmp/reg
 python3 tests/test_regressions_r2.py --work /tmp/sens --sections classifier --bin OLD_BINARY \
         --out tests/results/v2.1/regressions_r2_sensitivity_f6ab7e4.json      # expected to fail (exit 1)
+python3 tests/test_regressions_r3.py --work /tmp/reg3
+python3 tests/test_regressions_r3.py --work /tmp/sens3 --driver OLD_DRIVER --source OLD_SOURCE --bin OLD_BINARY \
+        --out tests/results/v2.2/regressions_r3_sensitivity_v2.1.json        # expected to fail (exit 1)
 tests/run_sanitizers.sh
 ```
 

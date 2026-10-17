@@ -1,5 +1,7 @@
-# The 51 stuck Z/2-acyclic K4-free graphs on 14 vertices (exhaustive search: geng -k -C -d4 -D12 14,
-# 64,856,470,381,820 graphs, 2,000,000/2,000,000 res/mod slices, 0 missing).  Pairwise non-isomorphic.
+# The 51 stuck Z/2-acyclic K4-free graphs on 14 vertices found by the recorded search over the K4-free class
+# (geng -k -C -d4 -D12 14, 64,856,470,381,820 graphs, 2,000,000/2,000,000 res/mod slices, 0 missing); pairwise
+# non-isomorphic.  That there are no others is subject to the hypotheses H12, Hcasi and H14 of the paper and to the
+# pending re-run of the search with pipeline v2.
 # Columns (tab-separated): graph6 | edges | triangles | H_1(clique complex; Z) | I-contractible? (certifying I4 edge) | |Aut| | disc vertices | boundary length | boundary word (vertex labels of the graph6 string)
 # "trivial" = integer homology of the clique complex vanishes (contractible disc with identified boundary); Z/3 = Moore space M(Z/3,1).
 M?b@bFHNEk@~|k}U?	44	31	trivial	yes ({0,1})	1	24	15	10 5 12 5 10 13 9 12 9 13 10 5 12 9 13

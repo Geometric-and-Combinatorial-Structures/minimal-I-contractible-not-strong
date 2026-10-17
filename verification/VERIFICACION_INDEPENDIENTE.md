@@ -4,7 +4,7 @@ Todas las comprobaciones de este documento se hicieron con **`indep.py`**, un m�
 
 **Resultado global: ninguna discrepancia con los resultados previos del proyecto.** La única observación que corrige el plan de trabajo es la cota de 2-conexidad del Lema 2 (§3: n ≤ 22, no 21), y un matiz estructural sobre las 48 atascadas de torsión (§4).
 
-Entorno: conda `grafos` (python 3.11, networkx, numpy, sympy, nauty 2.8 `geng`/`labelg`, gcc). Compilación: `gcc -O3 -march=native -std=c11 -o atascadas atascadas.c` (sin avisos).
+Entorno: conda `grafos` (python 3.11, networkx, numpy, sympy, nauty 2.9.3 `geng`/`labelg`, gcc; hasta el 17 oct 2026 esta línea decía «nauty 2.8», por error: el entorno tiene nauty 2.9.3 de conda-forge desde su creación el 11 oct 2026, según su `conda-meta/history`). Compilación: `gcc -O3 -march=native -std=c11 -o atascadas atascadas.c` (sin avisos).
 
 ## 1. Homología entera H_*(Δ(G); ℤ) (archivo `homologia_Z_independiente.csv`)
 
