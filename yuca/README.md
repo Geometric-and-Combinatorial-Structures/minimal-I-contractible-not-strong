@@ -22,7 +22,10 @@ registries and keep their logs in `out_m/` (list in `listas_m_*.txt`), so the fi
 `geng28` is the `geng` binary of the conda-forge package nauty 2.9.3, copied into the project directory: its strings
 name the build tree `/usr/local/src/conda/nauty-2.9.3`, `geng28 --version` prints the token `2.9301`, and its SHA-256
 is `179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb` (probe P0 of round 3 of the external audit,
-17 Oct 2026).  The name is historical.  Earlier versions of this README, the comment in line 19 of
+17 Oct 2026).  It is byte-identical to `bin/geng` of the conda-forge package nauty-2.9.3-hb03c661_0 (linux-64,
+package SHA-256 `63228fa3f782c80c4730d5e42ec6d39c89d2940835325d52fe79b92da890ed2e`): the chain from the channel's
+index to these bytes, and the record of how the file reached YUCA on 11 Oct 2026, are in `geng28_provenance.md`.
+The name is historical.  Earlier versions of this README, the comment in line 19 of
 `envoltorio_n14_K4libre.sh` (kept byte-identical to the script that ran) and the answer to round 2 of the audit
 called it nauty 2.8; that was wrong.  The cluster's nauty 2.7r4 `geng` does not support `-k`.
 

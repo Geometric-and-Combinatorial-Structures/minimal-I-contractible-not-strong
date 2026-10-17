@@ -1,0 +1,23 @@
+{
+ "name": "nauty",
+ "version": "2.9.3",
+ "build": "hb03c661_0",
+ "build_number": 0,
+ "channel": "conda-forge",
+ "subdir": "linux-64",
+ "url": "https://conda.anaconda.org/conda-forge/linux-64/nauty-2.9.3-hb03c661_0.conda",
+ "sha256": "63228fa3f782c80c4730d5e42ec6d39c89d2940835325d52fe79b92da890ed2e",
+ "md5": "7bc7f0947d5c9ba0d576beeb9156cea3",
+ "size": 6707226,
+ "timestamp": 1784756952,
+ "paths_data_bin_geng": [
+  {
+   "_path": "bin/geng",
+   "path_type": "hardlink",
+   "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+   "sha256_in_prefix": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+   "size_in_bytes": 395424
+  }
+ ],
+ "note": "fields of conda-meta/nauty-2.9.3-hb03c661_0.json of the local environment 'grafos', written by the installer on 11 Oct 2026"
+}

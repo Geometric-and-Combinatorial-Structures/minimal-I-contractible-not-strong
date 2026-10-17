@@ -1,0 +1,4 @@
+# Excerpt of conda-meta/history of the local conda environment 'grafos' (lines that create it and install nauty)
+1:==> 2026-10-11 01:12:58 <==
+2:# cmd: <conda>/bin/micromamba --no-rc create -y -p <conda>/envs/grafos -c conda-forge python=3.11 pip nauty networkx numpy gcc_linux-64 gxx_linux-
+41:+https://conda.anaconda.org/conda-forge/linux-64::nauty-2.9.3-hb03c661_0

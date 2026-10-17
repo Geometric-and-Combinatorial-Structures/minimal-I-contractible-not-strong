@@ -1,0 +1,15 @@
+{
+  "arch": "x86_64",
+  "build": "hb03c661_0",
+  "build_number": 0,
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14"
+  ],
+  "license": "Apache-2.0",
+  "name": "nauty",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1784756952210,
+  "version": "2.9.3"
+}

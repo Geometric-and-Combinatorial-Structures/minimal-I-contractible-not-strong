@@ -1,0 +1,19 @@
+{
+ "paths_version": 1,
+ "note": "entries of info/paths.json of nauty-2.9.3-hb03c661_0.conda for bin/geng and bin/labelg (the full file lists every path of the package)",
+ "paths": [
+  {
+   "_path": "bin/geng",
+   "path_type": "hardlink",
+   "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+   "size_in_bytes": 395424
+  },
+  {
+   "_path": "bin/labelg",
+   "path_type": "hardlink",
+   "sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+   "size_in_bytes": 1275072
+  }
+ ],
+ "total_paths_in_package": 78
+}

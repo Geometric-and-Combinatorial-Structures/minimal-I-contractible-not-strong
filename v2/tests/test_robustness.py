@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Input-robustness tests of atascadas_v2 (findings H-18, H-19, H-20 of the external audit).
 
-Usage: python3 test_robustness.py --build ../build --out results/v2.2/robustness.json
+Usage: python3 test_robustness.py --build ../build --out results/v2.3/robustness.json
 Each case fixes the expected exit status of v2 and, where relevant, the counted totals or a required substring of the
 output.  The behaviour of v1 (src/atascadas.c) on the same input is recorded for the report but is not checked.
 """
@@ -59,7 +59,7 @@ def summary(err):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--build", default=str(HERE.parent / "build"))
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.2" / "robustness.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.3" / "robustness.json"))
     a = ap.parse_args()
     v1 = str(Path(a.build) / "atascadas_v1")
     v2 = str(Path(a.build) / "atascadas_v2")

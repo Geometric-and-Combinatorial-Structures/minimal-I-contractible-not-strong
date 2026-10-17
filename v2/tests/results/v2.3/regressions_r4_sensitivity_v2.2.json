@@ -1,0 +1,377 @@
+{
+ "all_pass": false,
+ "n_cases": 25,
+ "n_failed": 18,
+ "cases": [
+  {
+   "group": "init",
+   "case": "copy of geng modified after its check, before the marker: init fails and the worker refuses the root",
+   "pass": false,
+   "exit": 0,
+   "init_failed": false,
+   "marker": true,
+   "worker": 0,
+   "said": ""
+  },
+  {
+   "group": "init",
+   "case": "control: a normal init pins the SHA-256 given in --expect-geng-sha256 and certifies the campaign",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "labelg",
+   "case": "fixture: the relabelled G14a differs from G14a as a string",
+   "pass": true,
+   "relabelled": "MDxdJdwjEqXWtgtK?"
+  },
+  {
+   "group": "labelg",
+   "case": "real labelg: G14a against a relabelling of itself is accepted",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "labelg",
+   "case": "real labelg: G14a against K14 is refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "labelg",
+   "case": "auditor's race (given labelg replaced by a constant canonizer at its first use): G14a against K14 refused",
+   "pass": false,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "labelg",
+   "case": "... and the change of the given labelg during the attempt is reported",
+   "pass": false,
+   "problems": []
+  },
+  {
+   "group": "labelg",
+   "case": "frozen copy replaced before its first run: the attempt is refused",
+   "pass": false,
+   "exit": 0,
+   "said": "NOT APPLICABLE: this driver has no frozen copy"
+  },
+  {
+   "group": "labelg",
+   "case": "frozen copy replaced at the moment of a run: its output is refused",
+   "pass": false,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "labelg",
+   "case": "constant canonizer given from the start: refused by the self-test",
+   "pass": false,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "labelg",
+   "case": "identity 'canonizer' given from the start: refused by the self-test",
+   "pass": false,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "labelg",
+   "case": "graph6 reference changed during the attempt: refused",
+   "pass": false,
+   "exit": 0
+  },
+  {
+   "group": "labelg",
+   "case": "recorded labelg: SHA-256 of the given file; a read-only frozen copy with those bytes ran the comparison",
+   "pass": false,
+   "exit": 0,
+   "keys": [
+    "kind",
+    "path",
+    "sha256"
+   ]
+  },
+  {
+   "group": "labelg",
+   "case": "CSV reference changed during the attempt: refused",
+   "pass": false,
+   "exit": 0
+  },
+  {
+   "group": "transaction",
+   "case": "success: exit 0, ok=true, the attempt is ok and names the SHA-256 of aggregate.json",
+   "pass": false,
+   "exit": 0,
+   "attempt": "ok"
+  },
+  {
+   "group": "transaction",
+   "case": "auditor's fault (the final write of the attempt record fails): exit != 0, ok=false, attempt failed",
+   "pass": false,
+   "exit": 1,
+   "aggregate_ok": true,
+   "attempt": "started"
+  },
+  {
+   "group": "transaction",
+   "case": "a successful aggregate performs 15 write operations (fsync, rename, file write)",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "transaction",
+   "case": "one write failure at each of the 15 operations: never ok=true; the attempt ends failed",
+   "pass": false,
+   "failures": [
+    {
+     "k": 1,
+     "exit": 1,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 2,
+     "exit": 1,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 14,
+     "exit": 1,
+     "ok": true,
+     "attempt": "started",
+     "certified_new": true
+    },
+    {
+     "k": 15,
+     "exit": 1,
+     "ok": true,
+     "attempt": "started",
+     "certified_new": true
+    }
+   ]
+  },
+  {
+   "group": "transaction",
+   "case": "persistent write failure from each of the 15 operations on: the attempt is never certified",
+   "pass": false,
+   "failures": [
+    {
+     "k": 1,
+     "exit": 1,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 2,
+     "exit": 1,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 3,
+     "exit": 1,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 14,
+     "exit": 1,
+     "ok": true,
+     "attempt": "started",
+     "certified_new": true
+    },
+    {
+     "k": 15,
+     "exit": 1,
+     "ok": true,
+     "attempt": "started",
+     "certified_new": true
+    }
+   ]
+  },
+  {
+   "group": "transaction",
+   "case": "crash at each of the 15 operations: the attempt is never certified; an ok=true left in place belongs to a terminal attempt that names its hash",
+   "pass": false,
+   "failures": [
+    {
+     "k": 1,
+     "exit": 137,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 2,
+     "exit": 137,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 3,
+     "exit": 137,
+     "ok": true,
+     "attempt": "ok",
+     "certified_new": false
+    },
+    {
+     "k": 14,
+     "exit": 137,
+     "ok": true,
+     "attempt": "started",
+     "certified_new": true
+    },
+    {
+     "k": 15,
+     "exit": 137,
+     "ok": true,
+     "attempt": "started",
+     "certified_new": true
+    }
+   ]
+  },
+  {
+   "group": "transaction",
+   "case": "the summary cannot be printed (stdout on a full device): exit != 0, no ok=true, attempt failed",
+   "pass": false,
+   "exit": 120,
+   "aggregate_ok": true,
+   "attempt": "ok"
+  },
+  {
+   "group": "worker",
+   "case": "the pinned classifier modified after the first slice: no receipt from the changed executable and the worker fails",
+   "pass": false,
+   "exit": 1,
+   "ok_receipts": 2,
+   "said": "ValueError: pinned file changed: classifier <work>/wk_classifier/bin/atasca"
+  },
+  {
+   "group": "worker",
+   "case": "the pinned classifier modified after the first slice: once restored, the worker completes and the campaign aggregates",
+   "pass": true,
+   "exit": 0,
+   "aggregate": 0
+  },
+  {
+   "group": "worker",
+   "case": "the pinned geng modified while a slice runs: no receipt from the changed executable and the worker fails",
+   "pass": false,
+   "exit": 1,
+   "ok_receipts": 2,
+   "said": "ValueError: pinned file changed: geng <work>/wk_geng/bin/geng"
+  },
+  {
+   "group": "worker",
+   "case": "the pinned geng modified while a slice runs: once restored, the worker completes and the campaign aggregates",
+   "pass": true,
+   "exit": 0,
+   "aggregate": 0
+  }
+ ],
+ "tools": {
+  "geng": "geng (outside the repository)",
+  "labelg": "labelg (outside the repository)",
+  "python": "3.11.17"
+ },
+ "driver_under_test": "campana_v2.py (outside the repository)",
+ "source_under_test": "v2/src/atascadas_v2.c",
+ "sections": [
+  "init",
+  "labelg",
+  "transaction",
+  "worker"
+ ],
+ "started_utc": "2026-10-17T14:01:44Z",
+ "finished_utc": "2026-10-17T14:02:00Z",
+ "provenance": {
+  "recorded_utc": "2026-10-17T14:01:44Z",
+  "python": "3.11.17",
+  "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+  "argv": [
+   "v2/tests/test_regressions_r4.py",
+   "--work",
+   "work_v23f_r4s (outside the repository)",
+   "--driver",
+   "campana_v2.py (outside the repository)",
+   "--out",
+   "tests/results/v2.3/regressions_r4_sensitivity_v2.2.json"
+  ],
+  "binaries": {
+   "atascadas_v2": {
+    "path": "v2/build/atascadas_v2",
+    "sha256": "0c8a6e11f6faf47a33d6d67204c9c5e03ac7d85fb9e6d948fffb83e5ab620438",
+    "bytes": 39080,
+    "mtime_utc": "2026-10-17T07:42:24Z",
+    "version": {
+     "exit": 0,
+     "first_line": "atascadas v2.2 MAXN=16 MAXF=16384 HBITS=22 QMAX=200000"
+    }
+   }
+  },
+  "sources": {
+   "atascadas_v2.c": {
+    "path": "v2/src/atascadas_v2.c",
+    "sha256": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+    "bytes": 36708,
+    "mtime_utc": "2026-10-17T07:15:31Z"
+   },
+   "campana_v2.py": {
+    "path": "campana_v2.py (outside the repository)",
+    "sha256": "f01fdb5ed609d356ba3d441b0f744c0ee943d9cd1e3bc638d14bbf7c71808cab",
+    "bytes": 50896,
+    "mtime_utc": "2026-10-17T13:49:16Z"
+   },
+   "build.sh": {
+    "path": "v2/build.sh",
+    "sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+    "bytes": 868,
+    "mtime_utc": "2026-10-17T07:10:25Z"
+   },
+   "test_regressions_r4.py": {
+    "path": "v2/tests/test_regressions_r4.py",
+    "sha256": "6ed868e1b70509138d75f5aa0a9bf78effd5ebaef00243fabeb7a091e4b70770",
+    "bytes": 25255,
+    "mtime_utc": "2026-10-17T13:55:26Z"
+   }
+  },
+  "tools": {
+   "geng": {
+    "path": "geng (outside the repository)",
+    "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+    "bytes": 395424,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (32 bits)"
+    }
+   },
+   "labelg": {
+    "path": "labelg (outside the repository)",
+    "sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+    "bytes": 1275072,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (64 bits)"
+    }
+   }
+  },
+  "gcc": {
+   "exit": 0,
+   "first_line": "gcc (Debian 14.2.0-19) 14.2.0"
+  }
+ }
+}

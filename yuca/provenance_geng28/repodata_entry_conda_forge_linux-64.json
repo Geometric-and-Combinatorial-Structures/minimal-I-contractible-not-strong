@@ -1,0 +1,21 @@
+{
+ "repodata_url": "https://conda.anaconda.org/conda-forge/linux-64/repodata.json.zst",
+ "key": "nauty-2.9.3-hb03c661_0.conda",
+ "entry": {
+  "build": "hb03c661_0",
+  "build_number": 0,
+  "depends": [
+   "__glibc >=2.17,<3.0.a0",
+   "libgcc >=14"
+  ],
+  "license": "Apache-2.0",
+  "license_family": "APACHE",
+  "md5": "7bc7f0947d5c9ba0d576beeb9156cea3",
+  "name": "nauty",
+  "sha256": "63228fa3f782c80c4730d5e42ec6d39c89d2940835325d52fe79b92da890ed2e",
+  "size": 6707226,
+  "subdir": "linux-64",
+  "timestamp": 1784756952210,
+  "version": "2.9.3"
+ }
+}

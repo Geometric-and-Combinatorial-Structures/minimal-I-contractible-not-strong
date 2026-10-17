@@ -61,6 +61,21 @@ v2.2 (round 3 of the external audit: residues of H-22, H-23, H-24, H-29 and requ
     ok=true stays in the normal location; aggregate.json names its attempt_id;
   * status counts an unreadable or non-object receipt as unreadable instead of failing.
 
+v2.3 (round 4 of the external audit: residues of H-22 and H-29), driver only (the classifier stays v2.2):
+  * an executable is run only as the bytes that were hashed: aggregate copies labelg into a private read-only
+    file of the attempt (aggregate_attempts/<id>.tools/), checks its SHA-256 before and after every run and
+    refuses any difference; labelg must pass a self-test (P4 and a relabelled P4 coincide, P4 and K1,3 differ)
+    and return graph6 strings of the right order; the reference files (CSV, graph6, labelg) are hashed again at
+    the end and any change fails the attempt; workers check the SHA-256 of the pinned geng and classifier before
+    and after every slice and publish nothing on a difference; init pins the SHA-256 of geng that it compared with
+    --expect-geng-sha256 (computed once) and verifies every pinned file again before it writes INIT_COMPLETE.json;
+  * every write of aggregate is inside its transaction, the first record of the attempt included; the attempt
+    record becomes terminal (status ok or problems, with the SHA-256 of the aggregate it is about to
+    publish) before aggregate.json is published, and the summary is printed before as well; publishing
+    aggregate.json is the last operation, so aggregate.json with ok=true always belongs to an attempt whose record
+    is terminal and names its hash.  A modification restored to the same bytes between two checks, or a change of
+    the bytes of a running process, is not detected (the auditor's stated limit).
+
 Exit codes of the classifier (v2.2): 0 ok, 1 usage, 2 capacity, 3 invalid records, 4 inconsistency or read error,
 5 disconnected input or mixed orders, 6 write error on stdout/stderr; 6 takes priority over every other code in every
 exit of the program, early ones included (v2.2).
@@ -167,16 +182,24 @@ def parse_utc(s):
     return datetime.datetime.fromisoformat(s)
 
 
-def atomic_json(path, obj):
+def json_bytes(obj):
+    """The exact bytes atomic_json writes: sorted keys, ASCII, no NaN or Infinity, final newline."""
+    return (json.dumps(obj, sort_keys=True, allow_nan=False) + "\n").encode()
+
+
+def atomic_bytes(path, data):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(path.name + ".tmp." + uuid.uuid4().hex)
-    with open(tmp, "x") as f:
-        json.dump(obj, f, sort_keys=True, allow_nan=False)
-        f.write("\n")
+    with open(tmp, "xb") as f:
+        f.write(data)
         f.flush()
         os.fsync(f.fileno())
     os.replace(tmp, path)
+
+
+def atomic_json(path, obj):
+    atomic_bytes(path, json_bytes(obj))
 
 
 def valid_g6(s, n):
@@ -196,6 +219,12 @@ def valid_g6(s, n):
 
 
 # ------------------------------------------------------------------------------------------------ config
+def _verify_files(cfg):
+    for name, item in cfg["files"].items():
+        if sha_file(item["path"]) != item["sha256"]:
+            raise ValueError(f"pinned file changed: {name} {item['path']}")
+
+
 def load_config(path, verify=True):
     path = Path(path)
     cfg = strict_json(path.read_text())
@@ -212,9 +241,7 @@ def load_config(path, verify=True):
         pin = Path(path).with_name("config.sha256")
         if not pin.exists() or pin.read_text().strip() != cfgsha:
             raise ValueError("config.json differs from its pinned hash config.sha256 (a campaign cannot be edited)")
-        for name, item in cfg["files"].items():
-            if sha_file(item["path"]) != item["sha256"]:
-                raise ValueError(f"pinned file changed: {name} {item['path']}")
+        _verify_files(cfg)
         if sha_file(Path(__file__).resolve()) != cfg["files"]["driver"]["sha256"]:
             raise ValueError("this driver differs from the one pinned at init: run " + cfg["files"]["driver"]["path"])
     try:
@@ -398,6 +425,14 @@ def validate_receipt(cfg, cfgsha, r, d, now=None):
 
 
 # ------------------------------------------------------------------------------------------------ run one slice
+def _check_pinned(cfg, when):
+    """v2.3 (class of H-22, round 4): the executables a slice runs are the pinned bytes, before and after it runs."""
+    for key in ("geng", "classifier"):
+        f = cfg["files"][key]
+        if sha_file(f["path"]) != f["sha256"]:
+            raise SliceError(f"pinned {key} {f['path']} changed {when} the slice: nothing is published")
+
+
 def run_slice(cfg, cfgsha, r, worker_id):
     dst = receipt_path(cfg, r)
     if dst.exists():
@@ -408,6 +443,7 @@ def run_slice(cfg, cfgsha, r, worker_id):
         validate_receipt(cfg, cfgsha, r, old)
         return "resumed"
     g, c = commands(cfg, r)
+    _check_pinned(cfg, "before")
     t0 = time.monotonic()
     start = utcnow()
     pg = subprocess.Popen(g, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -430,6 +466,7 @@ def run_slice(cfg, cfgsha, r, worker_id):
         d[name] = data.decode("utf-8", errors="replace")
         d[name + "_sha256"] = sha_bytes(d[name].encode())
     try:
+        _check_pinned(cfg, "while running")
         if eg != 0 or ec != 0:
             raise SliceError(f"nonzero exit status (geng {eg}, classifier {ec})")
         d["counts"], d["records"], d["memo"] = check_slice(cfg, d["geng_stderr"], d["classifier_stderr"],
@@ -527,7 +564,8 @@ def _init_populate(a, root, protected, gorig, gver, gtok, ghelp, geng_args, cfla
         shutil.copy2(orig, dst)
         if sha_file(dst) != sha_file(orig):
             raise SystemExit("copy differs from original: " + str(orig))
-    if sha_file(geng) != a.expect_geng_sha256.lower():
+    gsha = sha_file(geng)            # v2.3 (class of H-22): hashed once; this value is the one pinned
+    if gsha != a.expect_geng_sha256.lower():
         raise SystemExit("copied geng differs from --expect-geng-sha256 (the original changed during init)")
     helpf = binr / "geng_help.txt"
     with open(helpf, "x") as f:
@@ -549,7 +587,7 @@ def _init_populate(a, root, protected, gorig, gver, gtok, ghelp, geng_args, cfla
            "geng_version": gver, "geng_version_token": gtok, "geng_help_sha256": sha_file(helpf),
            "classifier_version": cv.stdout.strip(), "classifier_summary_version": CLASSIFIER_VERSION,
            "protected": protected, "created_utc": utcnow(), "created_host": os.uname().nodename,
-           "files": {"geng": {"path": str(geng), "sha256": sha_file(geng), "original": str(gorig)},
+           "files": {"geng": {"path": str(geng), "sha256": gsha, "original": str(gorig)},
                      "geng_help": {"path": str(helpf), "sha256": sha_file(helpf)},
                      "source": {"path": str(src), "sha256": sha_file(src),
                                 "original": str(Path(a.source).resolve())},
@@ -564,6 +602,10 @@ def _init_populate(a, root, protected, gorig, gver, gtok, ghelp, geng_args, cfla
         os.chmod(root / name, 0o444)
     print(json.dumps({"config": str(root / "config.json"), "config_sha256": cfgsha}))
     sys.stdout.flush()
+    try:                             # v2.3: every pinned file is still the pinned bytes when init certifies
+        _verify_files(cfg)
+    except ValueError as e:
+        raise SystemExit(f"{e} during init: the campaign is not certified")
     # v2.2 (H-23): the very last step.  Workers, status and aggregate require this marker, so a failure at any earlier
     # point (INIT_FAILED.txt is then written by cmd_init) leaves a root that every subcommand refuses.
     atomic_json(root / "INIT_COMPLETE.json", {"schema": SCHEMA, "config_sha256": cfgsha, "utc": utcnow()})
@@ -668,13 +710,53 @@ def _hold_worker_locks(cfg):
     return held
 
 
-def _canonical(labelg, graphs):
-    p = subprocess.run([labelg, "-q"], input="".join(g + "\n" for g in sorted(graphs)), capture_output=True,
-                       text=True)
+CANON_CONTROLS = ("Ch", "Cp", "Cs")   # graph6 of order 4: P4, a relabelled P4, the star K1,3 (also 3 edges)
+
+
+def _freeze_tool(src, dest_dir, name):
+    """v2.3 (H-22, round 4): a private read-only copy of an external tool, made from the bytes that are hashed."""
+    data = Path(src).read_bytes()
+    dest_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+    dest = dest_dir / name
+    with open(dest, "xb") as f:
+        f.write(data)
+        f.flush()
+        os.fsync(f.fileno())
+    os.chmod(dest, 0o500)
+    return {"kind": name, "path": str(Path(src).resolve()), "sha256": sha_bytes(data), "frozen_copy": str(dest)}
+
+
+def _run_frozen(tool, args, text):
+    """Run the frozen copy only if its bytes are the hashed ones, and accept its output only if they still are."""
+    if sha_file(tool["frozen_copy"]) != tool["sha256"]:
+        raise SystemExit(f"the frozen copy of {tool['kind']} changed before it was run: refusing")
+    p = subprocess.run([tool["frozen_copy"], *args], input=text, capture_output=True, text=True)
+    if sha_file(tool["frozen_copy"]) != tool["sha256"]:
+        raise SystemExit(f"the frozen copy of {tool['kind']} changed while it ran: refusing its output")
+    return p
+
+
+def _canonical_list(tool, graphs):
+    p = _run_frozen(tool, ["-q"], "".join(g + "\n" for g in graphs))
     out = p.stdout.split()
     if p.returncode != 0 or len(out) != len(graphs):
         raise SystemExit("labelg failed or returned a different number of graphs: " + p.stderr[:300])
+    return out
+
+
+def _canonical(tool, graphs, n):
+    out = _canonical_list(tool, sorted(graphs))
+    bad = [x for x in out if not valid_g6(x, n)]
+    if bad:
+        raise SystemExit(f"labelg returned {len(bad)} strings that are not graph6 of order {n}")
     return set(out)
+
+
+def _canonizer_selftest(tool):
+    """A canonizer identifies a graph with a relabelling of it and separates non-isomorphic graphs (v2.3)."""
+    a, b, c = _canonical_list(tool, list(CANON_CONTROLS))
+    if not (a == b and a != c and all(valid_g6(x, 4) for x in (a, b, c))):
+        raise SystemExit("labelg failed its self-test (P4, a relabelled P4 and the star K1,3): not a canonizer")
 
 
 def _read_reference(path, what):
@@ -688,7 +770,7 @@ def _read_reference(path, what):
         raise SystemExit(f"the {what} {path} is not UTF-8 text ({e})")
 
 
-def _load_references(a, cfg):
+def _load_references(a, cfg, tools_dir):
     """Parse and check every reference before any worker lock is taken or any count is summed (v2.2, H-22).
     cmd_aggregate calls it after it has recorded the attempt and archived the earlier outputs, so a refused
     reference leaves aggregate.json with ok=false.  Returns the expected values (key, value, source), the requested
@@ -757,8 +839,10 @@ def _load_references(a, cfg):
             lp = Path(a.labelg).resolve()
             if not lp.is_file() or not os.access(lp, os.X_OK):
                 raise SystemExit(f"labelg {lp} is not an executable file")
-            out["labelg"] = str(lp)
-            out["records"].append({"kind": "labelg", "path": str(lp), "sha256": sha_file(lp)})
+            tool = _freeze_tool(lp, tools_dir, "labelg")   # v2.3: run from a frozen copy, never from lp
+            _canonizer_selftest(tool)
+            out["labelg"] = tool
+            out["records"].append(tool)
     return out
 
 
@@ -776,19 +860,29 @@ def cmd_aggregate(a):
               "host": os.uname().nodename, "slurm_job_id": os.environ.get("SLURM_JOB_ID") or None,
               "argv": sys.argv[1:], "references": None}
     rec_path = root / "aggregate_attempts" / f"{attempt}.json"
-    atomic_json(rec_path, record)
     try:
+        atomic_json(rec_path, record)    # v2.3: inside the transaction, so even this write failing publishes ok=false
         earlier = [p for p in [root / "aggregate.json"] + sorted(root.glob("*.g6")) if p.exists()]
         if earlier:  # v2.2 (H-29): first of all, so a failed attempt never leaves an earlier ok=true in place
             hist = root / "aggregate_history" / attempt
             hist.mkdir(parents=True)
             for p in earlier:
                 os.replace(p, hist / p.name)
-        refs = _load_references(a, cfg)          # v2.2 (H-22): every reference checked before any lock or sum
+        refs = _load_references(a, cfg, root / "aggregate_attempts" / f"{attempt}.tools")  # (H-22) before locks
         record["references"] = refs["records"]
         atomic_json(rec_path, record)
         locks = _hold_worker_locks(cfg)  # noqa: F841  (held until the process exits)
         result = _aggregate(a, cfg, cfgsha, root, refs, attempt)
+        data = json_bytes(result)
+        # v2.3 (H-29, round 4): the attempt record becomes terminal, with the SHA-256 of the aggregate, BEFORE the
+        # aggregate is published; the summary is printed before as well; publishing aggregate.json is the last
+        # operation, so a failure anywhere leaves no ok=true for this attempt.
+        record.update(status="ok" if result["ok"] else "problems", problems=result["problems"], utc_end=utcnow(),
+                      aggregate_sha256=sha_bytes(data))
+        atomic_json(rec_path, record)
+        print(json.dumps({k: result[k] for k in ("n", "mod", "coverage", "counts", "found_counts", "problems", "ok")}))
+        sys.stdout.flush()
+        atomic_bytes(root / "aggregate.json", data)
     except BaseException as e:
         msg = f"{type(e).__name__}: {e}"[:2000]
         record.update(status="failed", error=msg, utc_end=utcnow())
@@ -798,9 +892,6 @@ def cmd_aggregate(a):
         finally:
             atomic_json(rec_path, record)
         raise
-    record.update(status="ok" if result["ok"] else "problems", problems=result["problems"], utc_end=utcnow())
-    atomic_json(rec_path, record)
-    print(json.dumps({k: result[k] for k in ("n", "mod", "coverage", "counts", "found_counts", "problems", "ok")}))
     sys.exit(0 if result["ok"] else 1)
 
 
@@ -862,8 +953,9 @@ def _aggregate(a, cfg, cfgsha, root, refs, attempt):
         g6rec = [x for x in refs["records"] if x["kind"] == "graph6"][0]
         entry = {"actual": len(got), "expected": len(ref), "sources": [f"g6:{g6rec['path']}@{g6rec['sha256']}"]}
         if refs["labelg"]:
-            rc, gc = _canonical(refs["labelg"], ref), _canonical(refs["labelg"], got)
-            entry.update(compared="up to isomorphism (labelg -q, SHA-256 " + sha_file(refs["labelg"]) + ")",
+            rc, gc = _canonical(refs["labelg"], ref, cfg["n"]), _canonical(refs["labelg"], got, cfg["n"])
+            entry.update(compared="up to isomorphism (labelg -q run from a frozen copy with SHA-256 "
+                                  + refs["labelg"]["sha256"] + ", checked before and after each run)",
                          only_found=len(gc - rc), only_reference=len(rc - gc),
                          equal=rc == gc and len(rc) == len(ref) and len(gc) == len(got))
         else:
@@ -877,6 +969,13 @@ def _aggregate(a, cfg, cfgsha, root, refs, attempt):
         v.setdefault("equal", v["actual"] == v["expected"])
         if not v["equal"]:
             problems.append(f"comparison failed: {k}")
+    for rec in refs["records"]:      # v2.3 (H-22): the references are still the hashed bytes at the end
+        try:
+            now = sha_file(rec["path"])
+        except OSError:
+            now = None
+        if now != rec["sha256"]:
+            problems.append(f"reference {rec['kind']} {rec['path']} changed during the attempt (SHA-256 now {now})")
     load_config(a.config)
     result = {"config_sha256": cfgsha, "attempt_id": attempt, "n": cfg["n"], "mod": cfg["mod"], "mode": cfg["mode"],
               "coverage": coverage, "counts": sums, "memo_totals": memo, "found_counts": {k: len(v) for k, v in found.items()},
@@ -886,7 +985,6 @@ def _aggregate(a, cfg, cfgsha, root, refs, attempt):
         tmp = root / f"{k}.g6.tmp.{uuid.uuid4().hex}"
         tmp.write_text("".join(g + "\n" for g in sorted(gs)))
         os.replace(tmp, root / f"{k}.g6")
-    atomic_json(root / "aggregate.json", result)
     return result
 
 
@@ -920,7 +1018,8 @@ def main():
     q.add_argument("--expect", action="append", metavar="KEY=VALUE",
                    help="once per key (v2.2); write --expect=-1-Dis=V for the key that starts with '-'")
     q.add_argument("--reference-g6")
-    q.add_argument("--labelg", help="nauty labelg: compare --reference-g6 up to isomorphism")
+    q.add_argument("--labelg", help="nauty labelg: compare --reference-g6 up to isomorphism (run from a frozen "
+                                    "private copy checked by SHA-256 before and after each run, after a self-test)")
     a = p.parse_args()
     {"init": cmd_init, "worker": cmd_worker, "status": cmd_status, "aggregate": cmd_aggregate}[a.cmd](a)
 
