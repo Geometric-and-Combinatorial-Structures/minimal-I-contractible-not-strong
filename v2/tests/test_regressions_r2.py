@@ -5,7 +5,7 @@ The cases reproduce the auditor's adversarial scripts (AUDIT_OUT/ronda2/scripts/
 r2_pipeline_adversarial2.py, r2_pipeline_extra.py) with the expected outcome of each one, adapted only where v2.1
 changes the interface on purpose (summary version v2.1, the icert_truncados key of mode tabla, new init options).
 
-Usage: python3 tests/test_regressions_r2.py --work DIR [--out results/v2.3/regressions_r2.json]
+Usage: python3 tests/test_regressions_r2.py --work DIR [--out results/v2.4/regressions_r2.json]
        [--bin BINARY] [--sections classifier,slice,receipt,campaign]
 Requires gcc, geng and labelg (nauty) on PATH, and build/atascadas_v2 from ./build.sh.
 Exit status 0 only if every case behaves as stated.
@@ -360,7 +360,7 @@ def main():
     global BIN
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", required=True)
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.3" / "regressions_r2.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.4" / "regressions_r2.json"))
     ap.add_argument("--bin", default=str(BIN),
                     help="classifier binary under test (default build/atascadas_v2); an older binary here shows "
                          "whether the classifier cases are sensitive to the v2.1 changes")

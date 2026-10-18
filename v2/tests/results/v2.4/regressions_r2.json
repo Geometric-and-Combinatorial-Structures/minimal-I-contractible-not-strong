@@ -1,0 +1,729 @@
+{
+ "all_pass": true,
+ "n_cases": 89,
+ "n_failed": 0,
+ "cases": [
+  {
+   "group": "classifier",
+   "case": "NUL without final newline 00",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "NUL without final newline 0067617262616765",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "NUL without final newline 00ff",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "NUL inside a terminated line",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "valid line without final newline",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "inline header without final newline",
+   "pass": true,
+   "exit": 3,
+   "expected": 3
+  },
+  {
+   "group": "classifier",
+   "case": "stdout write error (/dev/full)",
+   "pass": true,
+   "exit": 6,
+   "expected": 6
+  },
+  {
+   "group": "classifier",
+   "case": "stderr write error (/dev/full)",
+   "pass": true,
+   "exit": 6,
+   "expected": 6
+  },
+  {
+   "group": "classifier",
+   "case": "--prof empty",
+   "pass": true,
+   "exit": 1,
+   "expected": 1
+  },
+  {
+   "group": "classifier",
+   "case": "--prof with a blank",
+   "pass": true,
+   "exit": 1,
+   "expected": 1
+  },
+  {
+   "group": "classifier",
+   "case": "--prof 2 accepted",
+   "pass": true,
+   "exit": 0,
+   "expected": 0
+  },
+  {
+   "group": "classifier",
+   "case": "valid input accepted",
+   "pass": true,
+   "exit": 0,
+   "expected": 0
+  },
+  {
+   "group": "classifier",
+   "case": "header-only line accepted",
+   "pass": true,
+   "exit": 0,
+   "expected": 0
+  },
+  {
+   "group": "classifier",
+   "case": "input read error",
+   "pass": true,
+   "exit": 4
+  },
+  {
+   "group": "classifier",
+   "case": "version string is v2.2",
+   "pass": true,
+   "version": "atascadas v2.2"
+  },
+  {
+   "group": "classifier",
+   "case": "build.sh compiles without -march=native",
+   "pass": true
+  },
+  {
+   "group": "slice",
+   "case": "baseline accepted",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "empty slice accepted",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "negative search counter rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "summary value is not a non-negative integer: pasa_aristas='-1'"
+  },
+  {
+   "group": "slice",
+   "case": "negative memo counter rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "summary value is not a non-negative integer: memo_consultas='-4'"
+  },
+  {
+   "group": "slice",
+   "case": "memo hits above queries rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "memo_aciertos > memo_consultas"
+  },
+  {
+   "group": "slice",
+   "case": "collisions may exceed queries (one per probe)",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "repeated version keys rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "repeated summary key: version"
+  },
+  {
+   "group": "slice",
+   "case": "repeated order keys rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "repeated summary key: n"
+  },
+  {
+   "group": "slice",
+   "case": "unparsed trailing text rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "summary token is not KEY=VALUE: 'CORRUPTED'"
+  },
+  {
+   "group": "slice",
+   "case": "summary of another mode rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "summary keys differ: missing [], unexpected ['modo']"
+  },
+  {
+   "group": "slice",
+   "case": "another classifier version rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "classifier version 'v2', expected 'v2.2'"
+  },
+  {
+   "group": "slice",
+   "case": "repeated generator count rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "generator stderr is not '[>A header] >Z count': '>Z 1 graphs generated\\n>Z 1 graphs generated\\n'"
+  },
+  {
+   "group": "slice",
+   "case": "generator error line rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "generator stderr is not '[>A header] >Z count': '>Z 1 graphs generated\\n>E fault\\n'"
+  },
+  {
+   "group": "slice",
+   "case": "indented generator error rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "generator stderr is not '[>A header] >Z count': '>Z 1 graphs generated\\n >E fault\\n'"
+  },
+  {
+   "group": "slice",
+   "case": "generator count mismatch rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "classifier read 1 graphs, generator produced 2"
+  },
+  {
+   "group": "slice",
+   "case": "generator header of the right slice accepted",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "generator header of another slice rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "generator header names another slice than 1/2: >A /x/geng -cX0x100d1D2 n=3 e=2-3 class=0/2"
+  },
+  {
+   "group": "slice",
+   "case": "generator header of another order rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "generator header names another order: >A /x/geng -cX0x100d1D2 n=4 e=2-3 class=0/2"
+  },
+  {
+   "group": "slice",
+   "case": "generator error before the count rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "generator stderr is not '[>A header] >Z count': '>E fault\\n>Z 1 graphs generated in 0.00 sec\\n'"
+  },
+  {
+   "group": "slice",
+   "case": "order of an empty but labelled slice accepted",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "duplicate graph record rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "repeated graph in ATASCADA"
+  },
+  {
+   "group": "slice",
+   "case": "invalid graph6 padding rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "unrecognised result line: Bv"
+  },
+  {
+   "group": "slice",
+   "case": "graph of another order rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "unrecognised result line: C~"
+  },
+  {
+   "group": "slice",
+   "case": "valid table summary accepted",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "table summary without icert_truncados rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "summary keys differ: missing ['icert_truncados'], unexpected []"
+  },
+  {
+   "group": "slice",
+   "case": "negative table counter rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "summary value is not a non-negative integer: -1-Dis='-8'"
+  },
+  {
+   "group": "slice",
+   "case": "broken acyclic identity rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "inclusion violated: I > aciclicas"
+  },
+  {
+   "group": "slice",
+   "case": "broken inclusion rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "inclusion violated: 0-Dis > 1-Dis"
+  },
+  {
+   "group": "slice",
+   "case": "missing I_NO_IS record rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "number of I_NO_IS records != I - I_S"
+  },
+  {
+   "group": "slice",
+   "case": "present I_NO_IS record accepted",
+   "pass": true,
+   "accepted": true,
+   "expected": true,
+   "reason": ""
+  },
+  {
+   "group": "slice",
+   "case": "same graph in two classes rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "graph in two classes"
+  },
+  {
+   "group": "slice",
+   "case": "unknown record class rejected",
+   "pass": true,
+   "accepted": false,
+   "expected": false,
+   "reason": "unrecognised result line: UNKNOWN Bw"
+  },
+  {
+   "group": "receipt",
+   "case": "baseline accepted",
+   "pass": true,
+   "accepted": true
+  },
+  {
+   "group": "receipt",
+   "case": "generator exit 42 rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "classifier exit 42 rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "both exit 42 rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "wrong residue rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "wrong modulus rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "wrong config hash rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "wrong command rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "altered stream rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "altered counts rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "worker 99 of 1 rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "worker id as boolean rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "negative seconds rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "missing provenance rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "worker that does not own the residue rejected",
+   "pass": true,
+   "accepted": false
+  },
+  {
+   "group": "receipt",
+   "case": "coherently rewritten receipt is not authenticated (documented limitation)",
+   "pass": true,
+   "accepted": true
+  },
+  {
+   "group": "campaign",
+   "case": "real campaign n=3 aggregates",
+   "pass": true
+  },
+  {
+   "group": "reference",
+   "case": "reference without the requested row refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "reference without the requested columns refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "reference with two conflicting rows refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "reference with an empty cell refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "published row n=3 compared on all 12 columns",
+   "pass": true,
+   "exit": 0
+  },
+  {
+   "group": "reference",
+   "case": "--expect cannot override a conflicting reference",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "repeated --expect key refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "reference",
+   "case": "negative --expect value refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "aggregate",
+   "case": "empty receipt fails and leaves no earlier ok=true",
+   "pass": true,
+   "exit": 1,
+   "history": 10
+  },
+  {
+   "group": "aggregate",
+   "case": "status counts the empty receipt as unreadable and says it is not a certificate",
+   "pass": true,
+   "status": {
+    "mod": 2,
+    "ok_receipts": 1,
+    "ok_receipts_unreadable": 1,
+    "failed_files": 0,
+    "fraction": 0.5,
+    "note": "progress indicator, not a certificate: only aggregate validates receipts"
+   }
+  },
+  {
+   "group": "aggregate",
+   "case": "aggregate refused while a worker holds its lock",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "campaign",
+   "case": "classifier exit 42 publishes no receipt",
+   "pass": true,
+   "failed": 2
+  },
+  {
+   "group": "init",
+   "case": "geng version token compared exactly: 2.9301 accepted; 2.9.3, 1.0.0 and a missing option refused before touching the disk",
+   "pass": true,
+   "exits": [
+    0,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "group": "init",
+   "case": "geng SHA-256 pin required and exact; refused before touching the disk",
+   "pass": true,
+   "exits": [
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "group": "init",
+   "case": "failure after mkdir leaves INIT_FAILED.txt, no config, and a worker that refuses",
+   "pass": true,
+   "exits": [
+    1,
+    1
+   ]
+  },
+  {
+   "group": "init",
+   "case": "order 99 refused before touching the disk",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "init",
+   "case": "unknown mode refused before touching the disk",
+   "pass": true
+  },
+  {
+   "group": "init",
+   "case": "existing root refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "init",
+   "case": "root inside a protected directory refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "init",
+   "case": "CAMPANA_PROTECT honoured",
+   "pass": true
+  },
+  {
+   "group": "init",
+   "case": "two concurrent inits on one new root: exactly one succeeds",
+   "pass": true,
+   "exits": [
+    0,
+    1
+   ]
+  },
+  {
+   "group": "init",
+   "case": "edited config refused by the worker",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "init",
+   "case": "a driver other than the pinned one refused",
+   "pass": true
+  },
+  {
+   "group": "reference",
+   "case": "graph sets: labelled strings differ, labelg makes them equal",
+   "pass": true,
+   "exits": [
+    0,
+    0,
+    1,
+    0
+   ]
+  }
+ ],
+ "tools": {
+  "geng": "geng (outside the repository)",
+  "labelg": "labelg (outside the repository)",
+  "python": "3.11.17"
+ },
+ "binary_under_test": "v2/build/atascadas_v2",
+ "sections": [
+  "campaign",
+  "classifier",
+  "receipt",
+  "slice"
+ ],
+ "started_utc": "2026-10-18T00:28:29Z",
+ "finished_utc": "2026-10-18T00:28:38Z",
+ "provenance": {
+  "recorded_utc": "2026-10-18T00:28:29Z",
+  "python": "3.11.17",
+  "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+  "argv": [
+   "v2/tests/test_regressions_r2.py",
+   "--work",
+   "work_v24f_r2 (outside the repository)"
+  ],
+  "binaries": {
+   "atascadas_v2": {
+    "path": "v2/build/atascadas_v2",
+    "sha256": "0c8a6e11f6faf47a33d6d67204c9c5e03ac7d85fb9e6d948fffb83e5ab620438",
+    "bytes": 39080,
+    "mtime_utc": "2026-10-17T07:42:24Z",
+    "version": {
+     "exit": 0,
+     "first_line": "atascadas v2.2 MAXN=16 MAXF=16384 HBITS=22 QMAX=200000"
+    }
+   }
+  },
+  "sources": {
+   "atascadas_v2.c": {
+    "path": "v2/src/atascadas_v2.c",
+    "sha256": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+    "bytes": 36708,
+    "mtime_utc": "2026-10-17T07:15:31Z"
+   },
+   "campana_v2.py": {
+    "path": "v2/pipeline/campana_v2.py",
+    "sha256": "d417c200bb4a9e7d8274899332f44a7a9890003310f1bc6d8b7d5b640cd362a3",
+    "bytes": 59904,
+    "mtime_utc": "2026-10-18T00:19:17Z"
+   },
+   "build.sh": {
+    "path": "v2/build.sh",
+    "sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+    "bytes": 868,
+    "mtime_utc": "2026-10-17T07:10:25Z"
+   },
+   "test_regressions_r2.py": {
+    "path": "v2/tests/test_regressions_r2.py",
+    "sha256": "cf13a4f7cdf169654be883bf538aa69388e15a6e257edf4d2ea243fa3a6ecf65",
+    "bytes": 25108,
+    "mtime_utc": "2026-10-17T23:32:03Z"
+   }
+  },
+  "tools": {
+   "geng": {
+    "path": "geng (outside the repository)",
+    "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+    "bytes": 395424,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (32 bits)"
+    }
+   },
+   "labelg": {
+    "path": "labelg (outside the repository)",
+    "sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+    "bytes": 1275072,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (64 bits)"
+    }
+   }
+  },
+  "gcc": {
+   "exit": 0,
+   "first_line": "gcc (Debian 14.2.0-19) 14.2.0"
+  }
+ }
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fault-injection tests of v2/pipeline/campana_v2.py (findings H-02, H-03, H-04 of the external audit).
 
-Usage: python3 test_pipeline.py --work /tmp/pipeline_tests --out results/v2.3/pipeline.json
+Usage: python3 test_pipeline.py --work /tmp/pipeline_tests --out results/v2.4/pipeline.json
 Requires geng on PATH and gcc.  Every case states what must happen; the script exits 0 only if all cases behave so.
 """
 import argparse, fcntl, json, os, shlex, shutil, subprocess, sys
@@ -56,7 +56,7 @@ def write_exec(path, text):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", default="/tmp/pipeline_tests")
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.3" / "pipeline.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.4" / "pipeline.json"))
     a = ap.parse_args()
     W = Path(a.work)
     if W.exists():

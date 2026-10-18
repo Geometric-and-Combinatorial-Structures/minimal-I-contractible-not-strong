@@ -1,0 +1,221 @@
+{
+ "all_pass": true,
+ "n_cases": 14,
+ "n_failed": 0,
+ "cases": [
+  {
+   "group": "preserve",
+   "case": "a successful aggregate goes through 81 file-system events (final rename of aggregate.json: event 81)",
+   "pass": true,
+   "exit": 0,
+   "first_record_open": 4
+  },
+  {
+   "group": "preserve",
+   "case": "auditor's counterexample (the open of the first record fails): the attempt fails and the earlier aggregate's bytes are kept",
+   "pass": true,
+   "exit": 1,
+   "kept_at": [
+    "aggregate_history/20261018T003842.139572Z-4ca4fd7d/aggregate.json"
+   ],
+   "said": "OSError: injected single failure at event 4 open.before"
+  },
+  {
+   "group": "preserve",
+   "case": "single fault at each of the 81 events: earlier aggregate kept, ok=true only with a terminal ok record naming its digest, certificate contract holds",
+   "pass": true,
+   "failing_events": 0,
+   "failing_event_numbers": [],
+   "failures": []
+  },
+  {
+   "group": "preserve",
+   "case": "persistent fault at each of the 81 events: earlier aggregate kept, ok=true only with a terminal ok record naming its digest, certificate contract holds",
+   "pass": true,
+   "failing_events": 0,
+   "failing_event_numbers": [],
+   "failures": []
+  },
+  {
+   "group": "preserve",
+   "case": "crash fault at each of the 81 events: earlier aggregate kept, ok=true only with a terminal ok record naming its digest, certificate contract holds",
+   "pass": true,
+   "failing_events": 0,
+   "failing_event_numbers": [],
+   "failures": []
+  },
+  {
+   "group": "preserve",
+   "case": "the only coherent success with a nonzero exit comes after the final rename took effect",
+   "pass": true,
+   "after_final_rename": [
+    [
+     "persistent",
+     81
+    ],
+    [
+     "crash",
+     81
+    ]
+   ]
+  },
+  {
+   "group": "preserve",
+   "case": "two faults: an error just after the final rename, then the failed aggregate.json cannot be written: ok=true stays with a record that says failed (the invariant needs the fault model); the contract rejects",
+   "pass": true,
+   "exit": 1,
+   "record_status": "failed",
+   "said": "OSError: injected stage 2 failure at event 83 open.before aggregate.json.tmp.9bbdc0a830ae4f5aa46dfef54484d6de"
+  },
+  {
+   "group": "preserve",
+   "case": "two faults: the move to the history fails in the attempt and again in the handler: the earlier aggregate.json stays in place byte for byte, nothing replaces it, the record keeps preservation_error",
+   "pass": true,
+   "exit": 1,
+   "records": [
+    {
+     "status": "failed",
+     "preservation_error": "OSError: injected stage 1 failure at event 20 replace.before aggregate_history/20261018T003929.382501Z-f18af040/aggregate.json"
+    }
+   ],
+   "said": "OSError: injected stage 1 failure at event 18 replace.before aggregate_history/20261018T003929.382501Z-f18af040/aggregate.json"
+  },
+  {
+   "group": "labelpin",
+   "case": "the right --expect-labelg-sha256 is accepted and recorded",
+   "pass": true,
+   "exit": 0,
+   "said": ""
+  },
+  {
+   "group": "labelpin",
+   "case": "a wrong --expect-labelg-sha256 refuses the attempt before labelg is used",
+   "pass": true,
+   "exit": 1,
+   "said": "labelg SHA-256 b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4 differs from --expect-labelg-sha256 0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+   "group": "labelpin",
+   "case": "a malformed --expect-labelg-sha256 is refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "labelpin",
+   "case": "--expect-labelg-sha256 without --labelg is refused",
+   "pass": true,
+   "exit": 1
+  },
+  {
+   "group": "harness",
+   "case": "run_sanitizers.sh with TMPDIR containing spaces, parentheses and brackets: 19 runs, PASS",
+   "pass": true,
+   "exit": 0,
+   "verdict": [
+    "SANITIZERS: 19 of 19 runs checked; PASS (controls detected; no reports; every exit code as labelled)"
+   ],
+   "script_sha256": "d3467d339b76a04a8f561a80f25aba862ca4ebc924335e72bb54d882a464fb3c"
+  },
+  {
+   "group": "harness",
+   "case": "... and its log records no local path, in any form",
+   "pass": true,
+   "log_bytes": 4443,
+   "leaked_forms": []
+  }
+ ],
+ "tools": {
+  "geng": "geng (outside the repository)",
+  "labelg": "labelg (outside the repository)",
+  "python": "3.11.17"
+ },
+ "driver_under_test": "v2/pipeline/campana_v2.py",
+ "sanitizer_script_under_test": "v2/tests/run_sanitizers.sh",
+ "sections": [
+  "preserve",
+  "labelpin",
+  "harness"
+ ],
+ "started_utc": "2026-10-18T00:38:40Z",
+ "finished_utc": "2026-10-18T00:39:33Z",
+ "provenance": {
+  "recorded_utc": "2026-10-18T00:38:40Z",
+  "python": "3.11.17",
+  "platform": "Linux-6.12.111+deb13-amd64-x86_64-with-glibc2.41",
+  "argv": [
+   "v2/tests/test_regressions_r5.py",
+   "--work",
+   "work_v24f_r5 (outside the repository)"
+  ],
+  "binaries": {
+   "atascadas_v2": {
+    "path": "v2/build/atascadas_v2",
+    "sha256": "0c8a6e11f6faf47a33d6d67204c9c5e03ac7d85fb9e6d948fffb83e5ab620438",
+    "bytes": 39080,
+    "mtime_utc": "2026-10-17T07:42:24Z",
+    "version": {
+     "exit": 0,
+     "first_line": "atascadas v2.2 MAXN=16 MAXF=16384 HBITS=22 QMAX=200000"
+    }
+   }
+  },
+  "sources": {
+   "atascadas_v2.c": {
+    "path": "v2/src/atascadas_v2.c",
+    "sha256": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+    "bytes": 36708,
+    "mtime_utc": "2026-10-17T07:15:31Z"
+   },
+   "campana_v2.py": {
+    "path": "v2/pipeline/campana_v2.py",
+    "sha256": "d417c200bb4a9e7d8274899332f44a7a9890003310f1bc6d8b7d5b640cd362a3",
+    "bytes": 59904,
+    "mtime_utc": "2026-10-18T00:19:17Z"
+   },
+   "run_sanitizers.sh": {
+    "path": "v2/tests/run_sanitizers.sh",
+    "sha256": "d3467d339b76a04a8f561a80f25aba862ca4ebc924335e72bb54d882a464fb3c",
+    "bytes": 6425,
+    "mtime_utc": "2026-10-17T23:32:03Z"
+   },
+   "build.sh": {
+    "path": "v2/build.sh",
+    "sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+    "bytes": 868,
+    "mtime_utc": "2026-10-17T07:10:25Z"
+   },
+   "test_regressions_r5.py": {
+    "path": "v2/tests/test_regressions_r5.py",
+    "sha256": "2854f03f0b78d1f563d01f32cec4a12ddd7151e1ef8f0ef30519363979ae36fd",
+    "bytes": 23371,
+    "mtime_utc": "2026-10-18T00:38:40Z"
+   }
+  },
+  "tools": {
+   "geng": {
+    "path": "geng (outside the repository)",
+    "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+    "bytes": 395424,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (32 bits)"
+    }
+   },
+   "labelg": {
+    "path": "labelg (outside the repository)",
+    "sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+    "bytes": 1275072,
+    "mtime_utc": "2026-07-22T21:49:11Z",
+    "version": {
+     "exit": 0,
+     "first_line": "Nauty&Traces version 2.9301 (64 bits)"
+    }
+   }
+  },
+  "gcc": {
+   "exit": 0,
+   "first_line": "gcc (Debian 14.2.0-19) 14.2.0"
+  }
+ }
+}

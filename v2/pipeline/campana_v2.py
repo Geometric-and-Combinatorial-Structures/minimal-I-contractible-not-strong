@@ -3,7 +3,8 @@
 
 Standard library only.  One campaign = one directory ROOT with an immutable config.json.  The residues r = 0..mod-1 of
 `geng [args] n r/mod` are partitioned STATICALLY among `workers` worker ids (r ≡ id mod workers), so no two workers can
-ever process the same slice; a worker id is protected by an exclusive lock, so it cannot run twice at the same time.
+ever process the same slice; a worker id is protected by an exclusive lock (flock), so it cannot run twice at the same
+time wherever that lock excludes (between nodes on Lustre this is what the preflight P1 checks).
 Each slice is published as receipts/<r//1000>/<r>.ok.json only after BOTH processes of the pipeline exit with status 0
 and every check below passes; the file is written to a unique temporary name, fsync'ed and renamed atomically.
 A failed slice is kept as <r>.failed.<uuid>.json and never counts as done.
@@ -34,7 +35,8 @@ v2.1 (round 2 of the external audit: H-22, H-23, H-24, H-29):
     (config.sha256); workers and aggregate refuse to run if any pinned file changed; a failure after ROOT was created
     leaves ROOT/INIT_FAILED.txt with the reason (nothing is deleted; v2.2 makes every subcommand refuse such a root);
   * aggregate refuses to run while a worker holds its lock, moves earlier outputs to aggregate_history/ (v2.2: before
-    it takes any worker lock, so a failed run never leaves an old ok=true in place), and compares references strictly: exactly one CSV row
+    it takes any worker lock, so a refused lock, reference or sum no longer leaves an old ok=true in place; v2.4
+    states what a failed invocation can still leave), and compares references strictly: exactly one CSV row
     with every column of the mode, unique --expect keys, any conflict between sources is fatal, and a requested
     comparison can never be empty; --labelg compares graph sets up to isomorphism;
   * status counts readable receipts and is explicitly not a certificate.
@@ -73,8 +75,25 @@ v2.3 (round 4 of the external audit: residues of H-22 and H-29), driver only (th
     record becomes terminal (status ok or problems, with the SHA-256 of the aggregate it is about to
     publish) before aggregate.json is published, and the summary is printed before as well; publishing
     aggregate.json is the last operation, so aggregate.json with ok=true always belongs to an attempt whose record
-    is terminal and names its hash.  A modification restored to the same bytes between two checks, or a change of
-    the bytes of a running process, is not detected (the auditor's stated limit).
+    is terminal and names its hash (it may be an earlier attempt: see v2.4 for the exact contract).  A
+    modification restored to the same bytes between two checks, or a change of the bytes of a running process, is
+    not detected (the auditor's stated limit).
+
+v2.4 (round 5 of the external audit: residue of H-29), driver only (the classifier stays v2.2):
+  * aggregate lists the earlier outputs (aggregate.json, *.g6) before it writes anything, and nothing in the normal
+    location is replaced before its bytes are preserved in aggregate_history/<attempt>/; the failure handler
+    preserves what is still in place before it writes the failed aggregate.json, and writes nothing there if it
+    cannot preserve it.  The bytes of an earlier aggregate are therefore never lost: they stay in place or move,
+    unchanged, to the history of the attempt that displaced them;
+  * --expect-labelg-sha256 pins labelg by its SHA-256 (the self-test does not authenticate a canonizer).
+  The certificate of an attempt is the conjunction: real exit status 0 of the invocation, aggregate.json naming
+  the attempt that invocation created, that attempt's record terminal with status ok, and its aggregate_sha256
+  equal to the SHA-256 of aggregate.json.  aggregate.json alone is never a certificate: an earlier success can
+  stay in place after a failed invocation that could write nothing or crashed before preserving it, and a failure
+  or a crash after the final rename of aggregate.json took effect can leave a coherent current success with a
+  nonzero exit status.  The fault model is that of the process (an error of any file-system call, or the end of the
+  process, at any point); the directory is not fsync'ed after a rename, so a rename is not guaranteed to be
+  durable across a crash of the operating system or a power loss.
 
 Exit codes of the classifier (v2.2): 0 ok, 1 usage, 2 capacity, 3 invalid records, 4 inconsistency or read error,
 5 disconnected input or mixed orders, 6 write error on stdout/stderr; 6 takes priority over every other code in every
@@ -822,6 +841,8 @@ def _load_references(a, cfg, tools_dir):
         out["requested"].append(k)
     if a.labelg and not a.reference_g6:
         raise SystemExit("--labelg needs --reference-g6")
+    if a.expect_labelg_sha256 and not (a.labelg and re.fullmatch(r"[0-9a-fA-F]{64}", a.expect_labelg_sha256)):
+        raise SystemExit("--expect-labelg-sha256 needs --labelg and 64 hexadecimal digits")
     if a.reference_g6:
         path = Path(a.reference_g6).resolve()
         data, text = _read_reference(path, "reference graph6 file")
@@ -840,6 +861,10 @@ def _load_references(a, cfg, tools_dir):
             if not lp.is_file() or not os.access(lp, os.X_OK):
                 raise SystemExit(f"labelg {lp} is not an executable file")
             tool = _freeze_tool(lp, tools_dir, "labelg")   # v2.3: run from a frozen copy, never from lp
+            want = (a.expect_labelg_sha256 or "").lower()
+            if want and tool["sha256"] != want:            # v2.4: the self-test does not authenticate; the pin does
+                raise SystemExit(f"labelg SHA-256 {tool['sha256']} differs from --expect-labelg-sha256 {want}")
+            tool["expected_sha256"] = want or None
             _canonizer_selftest(tool)
             out["labelg"] = tool
             out["records"].append(tool)
@@ -860,14 +885,24 @@ def cmd_aggregate(a):
               "host": os.uname().nodename, "slurm_job_id": os.environ.get("SLURM_JOB_ID") or None,
               "argv": sys.argv[1:], "references": None}
     rec_path = root / "aggregate_attempts" / f"{attempt}.json"
-    try:
-        atomic_json(rec_path, record)    # v2.3: inside the transaction, so even this write failing publishes ok=false
-        earlier = [p for p in [root / "aggregate.json"] + sorted(root.glob("*.g6")) if p.exists()]
-        if earlier:  # v2.2 (H-29): first of all, so a failed attempt never leaves an earlier ok=true in place
-            hist = root / "aggregate_history" / attempt
-            hist.mkdir(parents=True)
-            for p in earlier:
+    # v2.4 (H-29, round 5): the earlier outputs are listed BEFORE anything is written (reads only), and nothing in the
+    # normal location is replaced before its bytes are preserved in aggregate_history/<attempt>/ (atomic renames).
+    hist = root / "aggregate_history" / attempt
+    earlier = [p for p in [root / "aggregate.json"] + sorted(root.glob("*.g6")) if p.exists()]
+    preserved = {"done": not earlier}
+
+    def preserve_earlier():
+        if preserved["done"]:
+            return
+        hist.mkdir(parents=True, exist_ok=True)
+        for p in earlier:
+            if p.exists():
                 os.replace(p, hist / p.name)
+        preserved["done"] = True
+
+    try:
+        atomic_json(rec_path, record)    # v2.3: inside the transaction
+        preserve_earlier()               # v2.2 (H-29): before references, locks and sums
         refs = _load_references(a, cfg, root / "aggregate_attempts" / f"{attempt}.tools")  # (H-22) before locks
         record["references"] = refs["records"]
         atomic_json(rec_path, record)
@@ -876,7 +911,8 @@ def cmd_aggregate(a):
         data = json_bytes(result)
         # v2.3 (H-29, round 4): the attempt record becomes terminal, with the SHA-256 of the aggregate, BEFORE the
         # aggregate is published; the summary is printed before as well; publishing aggregate.json is the last
-        # operation, so a failure anywhere leaves no ok=true for this attempt.
+        # operation, so a failure before it leaves no ok=true for this attempt (v2.4: a failure or a crash after that
+        # rename took effect can leave this attempt's coherent success with a nonzero exit status; see the contract).
         record.update(status="ok" if result["ok"] else "problems", problems=result["problems"], utc_end=utcnow(),
                       aggregate_sha256=sha_bytes(data))
         atomic_json(rec_path, record)
@@ -886,9 +922,15 @@ def cmd_aggregate(a):
     except BaseException as e:
         msg = f"{type(e).__name__}: {e}"[:2000]
         record.update(status="failed", error=msg, utc_end=utcnow())
-        try:  # the normal location says explicitly that this attempt failed
-            atomic_json(root / "aggregate.json", {"config_sha256": cfgsha, "attempt_id": attempt, "status": "failed",
-                                                  "ok": False, "problems": [msg], "utc": utcnow()})
+        try:
+            try:      # v2.4: whatever earlier output is still in place is preserved before anything replaces it
+                preserve_earlier()
+            except OSError as pe:
+                record["preservation_error"] = f"{type(pe).__name__}: {pe}"[:500]
+            if preserved["done"]:    # only then does the normal location say explicitly that this attempt failed
+                atomic_json(root / "aggregate.json", {"config_sha256": cfgsha, "attempt_id": attempt,
+                                                      "status": "failed", "ok": False, "problems": [msg],
+                                                      "utc": utcnow()})
         finally:
             atomic_json(rec_path, record)
         raise
@@ -1020,6 +1062,8 @@ def main():
     q.add_argument("--reference-g6")
     q.add_argument("--labelg", help="nauty labelg: compare --reference-g6 up to isomorphism (run from a frozen "
                                     "private copy checked by SHA-256 before and after each run, after a self-test)")
+    q.add_argument("--expect-labelg-sha256", help="SHA-256 that --labelg must have (e.g. the labelg approved in P0); "
+                                                  "the self-test does not authenticate labelg, this pin does")
     a = p.parse_args()
     {"init": cmd_init, "worker": cmd_worker, "status": cmd_status, "aggregate": cmd_aggregate}[a.cmd](a)
 

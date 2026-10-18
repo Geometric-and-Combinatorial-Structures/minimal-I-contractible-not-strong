@@ -1,4 +1,4 @@
-# Version 2 of the classifier and of the cluster pipeline (current release: v2.3)
+# Version 2 of the classifier and of the cluster pipeline (current release: v2.4)
 
 Remediation of the external audit of commit `4a059b5` (verdict "not certified", 15–16 Oct 2026; 21 findings).
 Nothing in `src/` or in the historical result directories was changed: those are the records of what ran. Under `yuca/as_run/` the only change is the provenance correction H-05 (commit `892e41b`): the task script that the p011 front of the n = 14 search actually ran (array 2079156, SHA-256 `b95a125b…`) was added as `tarea_n14_p011.sh`, and the file previously stored under that name, which is the `tarea.sh` of the failed attempt 2079068, is kept byte for byte (SHA-256 `50477550…`) as `tarea_n14_p029_intento_fallido_2079068.sh`. No as-run file was edited.
@@ -15,8 +15,15 @@ auditor's examples; see the section on v2.2 below. The algorithms did not change
 **Version 2.3** (17 Oct 2026) answers round 4 of the external audit (verdict "not certified"; H-23, H-24, H-31 and
 H-35 closed): the residues of H-22 and H-29, closed by class in the driver. The classifier is unchanged (its source,
 binary and version string are those of v2.2). The conda-forge origin of `geng28` (request S4) is now shown by bytes in
-`../yuca/geng28_provenance.md`. No version 2.x has been used for a production run. The rerun of the order-14 search
-(F3) waits for the auditor's review of v2.3, for the end of the historical producers and for the author's decision.
+`../yuca/geng28_provenance.md`.
+
+**Version 2.4** (17 Oct 2026) answers round 5 of the external audit (verdict "not certified"; H-22 closed): the residue
+of H-29 (an attempt whose first record could not be written replaced the earlier `aggregate.json` without keeping its
+bytes) and the observation H-37 (the sanitizer battery failed with a `TMPDIR` containing spaces), closed by class. It
+adds the optional pin `--expect-labelg-sha256` and states the certificate contract exactly. The classifier is
+unchanged (its source, binary and version string are those of v2.2). No version 2.x has been used for a production
+run. The rerun of the order-14 search (F3) waits for the auditor's review of v2.4, for the end of the historical
+producers and for the author's decision.
 
 ## Contents
 
@@ -28,14 +35,16 @@ binary and version string are those of v2.2). The conda-forge origin of `geng28`
 | `tests/test_robustness.py` | graph6 input validation and exit codes |
 | `tests/test_pipeline.py` | fault injection into the pipeline |
 | `tests/test_regressions_r2.py` | v2.1: the round-2 adversarial cases (classifier, slice, receipt, campaign, references, aggregate, init) |
-| `tests/run_sanitizers.sh` | v2.1: AddressSanitizer + UBSan battery with two positive controls |
+| `tests/run_sanitizers.sh` | v2.1: AddressSanitizer + UBSan battery with two positive controls (v2.4: every path quoted, H-37) |
 | `tests/test_regressions_r3.py` | v2.2: the round-3 counterexamples extended to their classes (init, receipt, reference, aggregate, classifier, harness); `--driver`, `--source`, `--bin` run it against older files |
 | `tests/test_regressions_r4.py` | v2.3: the round-4 counterexamples extended to their classes (labelg, transaction, worker), with systematic fault injection; `--driver` runs it against an older driver |
+| `tests/test_regressions_r5.py` | v2.4: the round-5 counterexample extended to its class (preserve: fault injection at every file-system event of a successful `aggregate`), the `labelg` pin (labelpin) and the sanitizer battery under a `TMPDIR` with spaces (harness); `--driver` and `--sanitizer-script` run it against older files |
 | `tests/provenance.py` | v2.1: SHA-256 and `--version` of every binary, source and tool, recorded in each result file (v2.2: argv paths normalized, H-35) |
 | `tests/results/*.json`, `sanitizer.txt` | results of the **v2** runs of 16 Oct 2026, kept as they ran |
 | `tests/results/v2.1/` | results of the **v2.1** runs of 16 Oct 2026, kept as they ran |
 | `tests/results/v2.2/` | results of the **v2.2** runs of 17 Oct 2026, kept as they ran |
-| `tests/results/v2.3/` | results of the **v2.3** runs reported below |
+| `tests/results/v2.3/` | results of the **v2.3** runs of 17 Oct 2026, kept as they ran |
+| `tests/results/v2.4/` | results of the **v2.4** runs reported below |
 
 ## Findings and fixes
 
@@ -55,6 +64,40 @@ Additional checks in v2: connected input required in `tabla` (exit 5 otherwise);
 invariants checked at the end (exit 4 if violated); `icert` queue overflow counted (`icert_truncados`) and never
 treated as a certificate.
 
+## Version 2.4: round 5 of the external audit
+
+| finding | defect in v2.3 | fix in v2.4 | regression cases (`test_regressions_r5.py`) |
+|---|---|---|---|
+| H-29 | `aggregate` archived the earlier outputs only after the first record of the new attempt had been written; when that write failed (the auditor's counterexample: the open of the first record), the error handler replaced the earlier `aggregate.json` by the failed one without keeping its bytes | the earlier outputs (`aggregate.json`, `*.g6`) are listed before anything is written, and nothing in the normal location is replaced before its bytes have been moved, unchanged (`os.replace`), to `aggregate_history/<attempt>/`; the error handler first moves whatever is still in place and writes the failed `aggregate.json` only if every earlier output has been moved; otherwise it writes nothing in the normal location and records `preservation_error`, so each earlier file is either still in place or already, unchanged, in the history; the attempt record is written in a `finally` block | preserve: 8 (the auditor's counterexample; one failure, a persistent failure and a crash at each of the 81 file-system events of a successful `aggregate`, 243 runs, with the auditor's event model: open, write, flush, close, fsync, rename and mkdir, before and after each; two cases with two faults in sequence) |
+| H-37 | `tests/run_sanitizers.sh` expanded the sanitizer binary and the temporary paths without quotes (lines 44 and 46), so the battery failed with a `TMPDIR` containing spaces | every command receives the binary and the paths as positional parameters of `sh -c` (`"$1"`, `"$2"`); local paths are replaced in the report literally (`${msg//"$W"/<tmp>}`), not as patterns | harness: 2 (`TMPDIR` = `tmp dir (with parens) [and brackets]`: 19 of 19 runs checked, both positive controls report, no report in the other 17, no local path in the report) |
+| — | `labelg` was accepted on its self-test, which does not authenticate a canonizer | optional `aggregate --labelg PATH --expect-labelg-sha256 HEX` (64 hexadecimal digits, `--labelg` required): the SHA-256 is checked before any use of `labelg`, and the attempt record keeps `expected_sha256` | labelpin: 4 |
+
+**The certificate contract.** An invocation of `aggregate` certifies its result if and only if all four hold:
+
+1. its real exit status is 0;
+2. `aggregate.json` names the attempt that this invocation created;
+3. the record `aggregate_attempts/<attempt>.json` of that attempt is terminal, with status `ok`;
+4. the `aggregate_sha256` of that record is the SHA-256 of the `aggregate.json` that is read.
+
+Parts 1 and 2 cannot be dropped. An earlier success stays in place after an invocation that failed before its
+attempt existed (for example on a busy worker lock) or that crashed before archiving it. A failure or a crash after
+the final rename of `aggregate.json` took effect leaves a coherent success of the current attempt with a nonzero exit
+status (exit 1 and 137 in the sweep). Parts 3 and 4 check that the files read are the ones the attempt wrote.
+
+Two statements hold for any pattern of failures of the process, by the structure of the code. Exit 0 is reached only
+after the record became terminal and `aggregate.json` was renamed into place, and nothing is written after that, so
+the contract cannot certify a failed invocation. Nothing in the normal location is replaced before every earlier
+output has been moved by a rename, so the bytes of an earlier aggregate are never rewritten. The sweep checks both in
+its 243 runs, and also checks that `aggregate.json` with `ok=true` names an attempt whose record is terminal `ok` with
+its SHA-256. That last property holds only in the fault model of the sweep (one failure, a persistent failure or a
+crash at one event): with two faults in sequence, an error just after the final rename followed by a failure to write
+the failed `aggregate.json` leaves `ok=true` with a record that says `failed` (tested), which the contract rejects.
+
+Limits. The fault model is that of the process: an error of any file-system call made by `aggregate` inside the
+campaign, or the end of the process, at any point. The directory is not fsync'ed after a rename, so a rename is not
+guaranteed to be durable across a crash of the operating system or a power loss. The limits stated for v2.3 still
+apply.
+
 ## Version 2.3: round 4 of the external audit
 
 | finding | defect in v2.2 | fix in v2.3 | regression cases (`test_regressions_r4.py`) |
@@ -62,8 +105,12 @@ treated as a certificate.
 | H-22 | `labelg` was hashed at one moment and run from the given path at another; replacing it in between (the auditor put a constant canonizer there at its first use) made `aggregate` accept G14a against K14; a changed hash was recorded without invalidating anything | `labelg` is copied, from the bytes that are hashed, to a private read-only file of the attempt (`aggregate_attempts/<id>.tools/`); that copy is checked by SHA-256 before and after every run and any difference fails the attempt; `labelg` must pass a self-test (P4 and a relabelled P4 coincide, P4 and the star K1,3 differ) and return graph6 strings of the right order; every reference (CSV, graph6, `labelg`) is hashed again at the end and a change fails the attempt. The same rule for the workers: the pinned `geng` and classifier are checked before and after every slice, and nothing is published on a difference | labelg: 12; worker: 4 |
 | H-29 | the final write of the attempt record came after `aggregate.json` had been published with `ok=true`, outside the block that reverts success: its failure left `ok=true` with an attempt in state `started` (exit 1) | every write of `aggregate`, the first record of the attempt included, is inside its transaction; the attempt record becomes terminal, with the SHA-256 of the aggregate, before `aggregate.json` is published; the summary is printed before as well; publishing `aggregate.json` is the last operation | transaction: 7 (the auditor's fault; one write failure, a persistent failure and a crash at each of the 15 write operations of a successful `aggregate`; stdout on a full device) |
 
-So `aggregate.json` with `ok=true` always belongs to an attempt whose record is terminal (`ok`) and names its SHA-256,
-and a failing attempt never leaves `ok=true`.  A consumer should still require exit 0 and the attempt it launched.
+So, in the fault model of the tests (one failure, a persistent failure or a crash), `aggregate.json` with `ok=true`
+belongs to an attempt whose record is terminal (`ok`) and names its SHA-256; with two faults in sequence the record
+can say `failed` (see v2.4). In v2.3 this paragraph also said that a failing attempt never leaves `ok=true`. That is not exact (round 5): an
+invocation that fails can leave an earlier attempt's `ok=true` in place, and one that fails or crashes after the final
+rename leaves its own coherent success. The exact contract is stated in the v2.4 section; a consumer must require
+exit 0 and the attempt it launched.
 Limits stated by the auditor: a modification restored to the same bytes between two checks, or a change of the
 bytes of a running process, is not detected.
 
@@ -120,6 +167,38 @@ lack of memory).  A stream that received no output cannot produce a 6.
 
 Data correction made with v2.1 (not a code change): in `data/table_cardinalities.csv` the I-undecided entry of row 13
 is now the raw counter of the run, 3 (`yuca/logs/n13_tabla_resumen.txt`); see `data/README.md`.
+
+## Test results of v2.4 (17 Oct 2026, local machine, gcc 14.2, nauty 2.9.3; `results/v2.4/`)
+
+The classifier is the v2.2 one (source `bd18224f907971e2…`, `build/atascadas_v2` `0c8a6e11f6faf47a…`); the driver
+`pipeline/campana_v2.py` has SHA-256 `d417c200bb4a9e7d…` and `tests/run_sanitizers.sh` `d3467d339b76a04a…`. Every
+result file records its provenance.
+
+- **Equivalence** (`equivalence.json`): 49/49 pass, 438 s.
+- **Robustness** (`robustness.json`): 25/25 pass.
+- **Pipeline** (`pipeline.json`): 12/12 pass.
+- **Round-2 regressions** (`regressions_r2.json`): 89/89 pass.
+- **Round-3 regressions** (`regressions_r3.json`): 104/104 pass.
+- **Round-4 regressions** (`regressions_r4.json`): 25/25 pass (init 2, labelg 12, transaction 7, worker 4).
+- **Round-5 regressions** (`regressions_r5.json`): 14/14 pass (preserve 8, labelpin 4, harness 2). The sweep injects
+  one failure, a persistent failure and a crash at each of the 81 file-system events of a successful `aggregate`
+  (243 runs); no event fails in any mode.
+- **Sensitivity** (`regressions_r5_sensitivity_v2.3.json`): the same suite run against the v2.3 driver and sanitizer
+  script (`git show 33641f9:v2/pipeline/campana_v2.py` and `33641f9:v2/tests/run_sanitizers.sh`) fails in 7 of 14
+  cases. This exit status 1 is the expected outcome.
+  - preserve, 3 of 8: the auditor's counterexample; the single-fault sweep, where the earlier bytes are lost at 15 of
+    the 81 events (4 to 18: from the open of the first record until the earlier outputs are archived); and the
+    two-fault case of the move to the history. The persistent and crash sweeps pass against v2.3, which keeps the
+    earlier file when it can write nothing or crashes; so do the event count, the case after the final rename and the
+    other two-fault case.
+  - labelpin, 2 of 4: v2.3 has no `--expect-labelg-sha256`. The two usage-error cases pass because v2.3 refuses the
+    unknown option as a usage error, so they do not discriminate.
+  - harness, 2 of 2: under the `TMPDIR` with spaces, 14 of the 19 runs end in a shell syntax error (exit 2), and the
+    log records the temporary path with HOME shown as `~`.
+- **Sanitizers** (`sanitizer.txt`): 19 of 19 runs checked; both positive controls report; no report in the other 17.
+  With `TMPDIR` = `tmp dir (with parens) [and brackets]` (`sanitizer_tmpdir_spaces.txt`): the same, and nothing is
+  left in `TMPDIR`.
+- **`verify.sh`** (repository root): 39/39.
 
 ## Test results of v2.3 (17 Oct 2026, local machine, gcc 14.2, nauty 2.9.3; `results/v2.3/`)
 
@@ -228,6 +307,8 @@ python3 pipeline/campana_v2.py init --root /scratch/run_n12 --n 12 --mod 4000 --
 python3 /scratch/run_n12/bin/campana_v2.py worker --config /scratch/run_n12/config.json --worker-id $SLURM_ARRAY_TASK_ID
 python3 /scratch/run_n12/bin/campana_v2.py aggregate --config /scratch/run_n12/config.json \
         --reference-csv ../data/table_cardinalities.csv
+# a graph6 reference is compared up to isomorphism; labelg is pinned by its SHA-256 (v2.4):
+#   ... aggregate --config ... --reference-g6 FOUND.g6 --labelg "$LG" --expect-labelg-sha256 HEX
 ```
 
 The workers and the aggregation run the driver copy pinned in `bin/`; another copy is refused unless it is
@@ -248,7 +329,11 @@ python3 tests/test_regressions_r3.py --work /tmp/sens3 --driver OLD_DRIVER --sou
 python3 tests/test_regressions_r4.py --work /tmp/reg4
 python3 tests/test_regressions_r4.py --work /tmp/sens4 --driver OLD_DRIVER \
         --out tests/results/v2.3/regressions_r4_sensitivity_v2.2.json        # expected to fail (exit 1)
+python3 tests/test_regressions_r5.py --work /tmp/reg5
+python3 tests/test_regressions_r5.py --work /tmp/sens5 --driver OLD_DRIVER --sanitizer-script OLD_SCRIPT \
+        --out tests/results/v2.4/regressions_r5_sensitivity_v2.3.json        # expected to fail (exit 1)
 tests/run_sanitizers.sh
+TMPDIR="/tmp/dir with spaces (x)" tests/run_sanitizers.sh tests/results/v2.4/sanitizer_tmpdir_spaces.txt   # H-37
 ```
 
 The equivalence test needs the four binaries in `build/`:

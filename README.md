@@ -28,7 +28,7 @@ The certificates of the individual graphs above (homology, stuck test, deletion 
 | `yuca/` | SLURM wrapper scripts and the sources compiled for each run (`as_run/`), as archived (SLURM keeps no copy of submitted scripts, so their provenance is corroborated from file times and logs, audit finding H-05), and the logs: per-slice coverage registry, `sacct` accounting, duplicate-slice list, summaries. |
 | `figures/` | Figures of the paper (PDF/SVG/PNG) and the script that regenerates them. |
 | `paper/` | LaTeX sources of the manuscript (version 4, 16 Oct 2026); `make_tables.py` regenerates its tables from `data/` byte for byte. |
-| `v2/` | Version 2 of the classifier and of the campaign pipeline, written after the external audit (exact-key memo, strict graph6 parsing, per-slice receipts), with its tests; release v2.1 answers round 2 of the audit (stricter input and summary parsing, write-error detection, pinned campaign initialisation, strict reference comparisons). Not yet used for a production run; see `v2/README.md`. |
+| `v2/` | Version 2 of the classifier and of the campaign pipeline, written after the external audit (exact-key memo, strict graph6 parsing, per-slice receipts), with its tests; releases v2.1 to v2.4 answer rounds 2 to 5 of the audit (stricter input and summary parsing, write-error detection, pinned campaign initialisation, strict reference comparisons; pinned tools checked around every use; a transactional aggregation that keeps the bytes of every earlier aggregate, with an exact certificate contract). Not yet used for a production run; see `v2/README.md`. |
 | `verification/` | Independent re-implementations and cross-checks (see the last section). |
 | `verify.sh` | One-command re-verification (see below). |
 

@@ -28,7 +28,7 @@ Groups
   harness     H-35  the argv recorded in a result never carries local directories (absolute paths that do not
                     exist yet and --option=PATH are normalized), so check_portable accepts it.
 
-Usage: python3 tests/test_regressions_r3.py --work DIR [--out results/v2.3/regressions_r3.json] [--bin BINARY]
+Usage: python3 tests/test_regressions_r3.py --work DIR [--out results/v2.4/regressions_r3.json] [--bin BINARY]
        [--driver DRIVER --source SOURCE] [--sections init,receipt,reference,aggregate,classifier,harness]
 --bin, --driver and --source run the same cases against an older classifier, driver and source (sensitivity
 check: with the v2.1 files most cases must fail).  Requires gcc, geng and labelg (nauty) on PATH and build/atascadas_v2 (./build.sh).
@@ -574,7 +574,7 @@ def main():
     global BIN, DRIVER, SOURCE, M, W
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", required=True)
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.3" / "regressions_r3.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.4" / "regressions_r3.json"))
     ap.add_argument("--bin", default=str(BIN), help="classifier under test (default build/atascadas_v2)")
     ap.add_argument("--driver", default=str(DRIVER), help="driver under test (default pipeline/campana_v2.py)")
     ap.add_argument("--source", default=str(SOURCE),

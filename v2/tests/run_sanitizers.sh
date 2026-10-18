@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# AddressSanitizer + UBSan battery for atascadas_v2 (v2.1).  Usage: tests/run_sanitizers.sh [OUT]
-# Default OUT: tests/results/v2.3/sanitizer.txt.  Needs build/atascadas_v2_san (./build.sh), gcc, geng and python3.
+# AddressSanitizer + UBSan battery for atascadas_v2 (v2.1; paths quoted since v2.4, H-37).  Usage: tests/run_sanitizers.sh [OUT]
+# Default OUT: tests/results/v2.4/sanitizer.txt.  Needs build/atascadas_v2_san (./build.sh), gcc, geng and python3.
 # Each line records the label (with the documented exit code expected), the exit code obtained, the number of
 # sanitizer reports in stderr and the last line of stderr.  Two positive controls (a heap overflow and a signed
 # overflow, compiled with the same sanitizers) must report; if they do not, the configuration is not detecting errors
@@ -9,7 +9,7 @@
 # some sandboxes preload a library (LD_PRELOAD), which is kept loaded rather than removed.
 set -u
 cd "$(dirname "$0")/.."
-OUT=${1:-tests/results/v2.3/sanitizer.txt}
+OUT=${1:-tests/results/v2.4/sanitizer.txt}
 mkdir -p "$(dirname "$OUT")"
 S=build/atascadas_v2_san
 [ -x "$S" ] || { echo "missing $S: run ./build.sh" >&2; exit 1; }
@@ -29,7 +29,9 @@ run() {
   rep=$(grep -c -E "ERROR: AddressSanitizer|runtime error" "$W/err")
   local msg
   msg=$(grep -m1 -E "ERROR: AddressSanitizer|runtime error" "$W/err" || grep -v '^ *$' "$W/err" | tail -1)
-  msg=$(printf '%s' "$msg" | sed -e "s|$W|<tmp>|g" -e "s|$PWD|.|g" -e "s|$HOME|~|g" | cut -c1-110)
+  local t='~'            # literal replacements (v2.4, H-37): paths with spaces, brackets or parentheses are not patterns
+  msg=${msg//"$W"/<tmp>}; msg=${msg//"$PWD"/.}; msg=${msg//"$HOME"/$t}
+  msg=$(printf '%s' "$msg" | cut -c1-110)
   printf '%-50s exit=%-3s sanitizer_reports=%s %6.1f s | %s\n' "$label" "$rc" "$rep" "$(echo "$e - $s" | bc)" "$msg"
 }
 {
@@ -37,25 +39,25 @@ run() {
   echo "# ASAN_OPTIONS=$ASAN_OPTIONS  UBSAN_OPTIONS=$UBSAN_OPTIONS"
   echo "# expected exit codes as documented in src/atascadas_v2.c: 0 ok, 1 usage, 2 capacity, 3 invalid records, 4 internal inconsistency, 6 write error"
   echo "# $(date -u '+%Y-%m-%d %H:%M UTC'); src/atascadas_v2.c SHA-256 $(sha256sum src/atascadas_v2.c | cut -d' ' -f1)"
-  echo "# $S SHA-256 $(sha256sum $S | cut -d' ' -f1); reports: $($S --version)"
+  echo "# $S SHA-256 $(sha256sum "$S" | cut -d' ' -f1); reports: $("$S" --version)"
   run "POSITIVE CONTROL heap overflow (must report)" "$W/ovf"
   run "POSITIVE CONTROL signed overflow (must report)" "$W/ub"
-  geng -cq 9 > "$W/n9.g6"; run "tabla, all 261080 connected n=9 (exit 0)" sh -c "$S --modo tabla < $W/n9.g6"
+  geng -cq 9 > "$W/n9.g6"; run "tabla, all 261080 connected n=9 (exit 0)" sh -c '"$1" --modo tabla < "$2"' sh "$S" "$W/n9.g6"
   geng -cq 8 > "$W/n8.g6"
-  for m in atascadas casi 2dis_no_1dis; do run "$m, all 11117 connected n=8 (exit 0)" sh -c "$S --modo $m < $W/n8.g6"; done
-  run "verificar K16 (exit 0)" sh -c "printf 'O~~~~~~~~~~~~~~~~~~~~\n' | $S --modo verificar"
+  for m in atascadas casi 2dis_no_1dis; do run "$m, all 11117 connected n=8 (exit 0)" sh -c '"$1" --modo "$2" < "$3"' sh "$S" "$m" "$W/n8.g6"; done
+  run "verificar K16 (exit 0)" sh -c 'printf "O~~~~~~~~~~~~~~~~~~~~\n" | "$1" --modo verificar' sh "$S"
   cat ../data/acyclic_not_strong_13.g6 ../data/stuck_14_K4free.g6 ../data/dunce_hat_15.g6 | grep -v '^#' | awk 'NF{print $1}' > "$W/special.g6"
   echo "# special graphs: $(wc -l < "$W/special.g6") (data/acyclic_not_strong_13.g6, stuck_14_K4free.g6, dunce_hat_15.g6)"
-  for m in verificar icert traza; do run "$m, special graphs (exit 0)" sh -c "$S --modo $m < $W/special.g6"; done
-  run "cerradura G14a (exit 0)" sh -c "printf 'M?b@bFHNEk@~|k}U?\n' | $S --modo cerradura"
-  printf 'Bw\0' > "$W/a1"; run "adversarial: NUL, no final newline (exit 3)" sh -c "$S --modo tabla < $W/a1"
-  printf 'Bw\0bad\nBw\n' > "$W/a2"; run "adversarial: NUL inside a line (exit 3)" sh -c "$S --modo tabla < $W/a2"
-  printf 'Bw' > "$W/a3"; run "adversarial: unterminated last line (exit 3)" sh -c "$S --modo tabla < $W/a3"
-  printf '>>graph6<<Bw' > "$W/a4"; run "adversarial: unterminated header line (exit 3)" sh -c "$S --modo tabla < $W/a4"
-  python3 -c "print('B'+'w'*5000)" > "$W/a5"; run "adversarial: 5001-byte line (exit 3)" sh -c "$S --modo tabla < $W/a5"
-  printf 'Bw\n' > "$W/a6"; run "adversarial: --prof 12x (usage, exit 1)" sh -c "$S --modo tabla --prof 12x < $W/a6"
-  run "stdout to /dev/full, verificar (exit 6)" sh -c "$S --modo verificar < $W/a6 > /dev/full"
-  run "stdout to /dev/full, --version (exit 6)" sh -c "$S --version > /dev/full"
+  for m in verificar icert traza; do run "$m, special graphs (exit 0)" sh -c '"$1" --modo "$2" < "$3"' sh "$S" "$m" "$W/special.g6"; done
+  run "cerradura G14a (exit 0)" sh -c 'printf "%s\n" "M?b@bFHNEk@~|k}U?" | "$1" --modo cerradura' sh "$S"
+  printf 'Bw\0' > "$W/a1"; run "adversarial: NUL, no final newline (exit 3)" sh -c '"$1" --modo tabla < "$2"' sh "$S" "$W/a1"
+  printf 'Bw\0bad\nBw\n' > "$W/a2"; run "adversarial: NUL inside a line (exit 3)" sh -c '"$1" --modo tabla < "$2"' sh "$S" "$W/a2"
+  printf 'Bw' > "$W/a3"; run "adversarial: unterminated last line (exit 3)" sh -c '"$1" --modo tabla < "$2"' sh "$S" "$W/a3"
+  printf '>>graph6<<Bw' > "$W/a4"; run "adversarial: unterminated header line (exit 3)" sh -c '"$1" --modo tabla < "$2"' sh "$S" "$W/a4"
+  python3 -c "print('B'+'w'*5000)" > "$W/a5"; run "adversarial: 5001-byte line (exit 3)" sh -c '"$1" --modo tabla < "$2"' sh "$S" "$W/a5"
+  printf 'Bw\n' > "$W/a6"; run "adversarial: --prof 12x (usage, exit 1)" sh -c '"$1" --modo tabla --prof 12x < "$2"' sh "$S" "$W/a6"
+  run "stdout to /dev/full, verificar (exit 6)" sh -c '"$1" --modo verificar < "$2" > /dev/full' sh "$S" "$W/a6"
+  run "stdout to /dev/full, --version (exit 6)" sh -c '"$1" --version > /dev/full' sh "$S"
   echo "# runs: $RUNS"
 } > "$OUT" 2>&1
 if grep -q -F -e "$PWD" -e "$HOME" "$OUT"; then echo "SANITIZERS: the log would record a local path; refusing" >&2; exit 1; fi

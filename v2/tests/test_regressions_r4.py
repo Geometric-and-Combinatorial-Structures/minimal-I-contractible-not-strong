@@ -16,7 +16,7 @@ Groups
   worker       class of H-22 for the workers: the pinned classifier modified between two slices and the pinned
                      geng modified while a slice runs publish no receipt; once restored, the worker resumes.
 
-Usage: python3 tests/test_regressions_r4.py --work DIR [--out results/v2.3/regressions_r4.json]
+Usage: python3 tests/test_regressions_r4.py --work DIR [--out results/v2.4/regressions_r4.json]
        [--driver DRIVER] [--source SOURCE] [--bin BINARY] [--sections init,labelg,transaction,worker]
 --driver runs the same cases against an older driver (sensitivity: with v2.2 most cases must fail).
 Requires gcc, geng and labelg (nauty) on PATH and build/atascadas_v2 (./build.sh).  Exit status 0 only if every case
@@ -471,7 +471,7 @@ def main():
     global BIN, DRIVER, SOURCE, W
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", required=True)
-    ap.add_argument("--out", default=str(HERE / "results" / "v2.3" / "regressions_r4.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.4" / "regressions_r4.json"))
     ap.add_argument("--bin", default=str(BIN), help="classifier recorded in the provenance (default build/atascadas_v2)")
     ap.add_argument("--driver", default=str(DRIVER), help="driver under test (default pipeline/campana_v2.py)")
     ap.add_argument("--source", default=str(SOURCE), help="classifier source compiled by init")
