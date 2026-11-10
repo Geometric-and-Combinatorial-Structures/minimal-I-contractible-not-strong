@@ -30,7 +30,7 @@ jobs:
             if test -f "$f"; then cat "$f"; fi
           done
   documents:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -38,8 +38,12 @@ jobs:
           fetch-depth: 0
       - name: Install TeX dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended texlive-science
+          # Avoid the runner's regional mirror, which can stall large TeX downloads.
+          if test -f /etc/apt/apt-mirrors.txt; then
+            printf '%s\n' 'https://archive.ubuntu.com/ubuntu' | sudo tee /etc/apt/apt-mirrors.txt > /dev/null
+          fi
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended texlive-science
       - name: Compile both mathematical documents in temporary copies
         run: |
           python3 tools/build_paper.py --output build/paper
