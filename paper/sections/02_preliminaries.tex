@@ -1,0 +1,176 @@
+\section{Graph reductions and homology}\label{sec:prelim}
+
+The graph operations below are determined by induced neighbourhoods.
+For a vertex $v$ of $G$, we write $N_G(v)$ for the subgraph induced by
+its neighbours. For distinct vertices $u,v$, the common neighbourhood
+$N_G(u,v)$ is induced by the vertices adjacent to both. We write $G-v$
+for a vertex deletion, $G-uv$ for an edge deletion, and $G+uv$ for the
+addition of a missing edge. The clique complex $\cl(G)$ consists of the
+cliques of $G$; a complex of this form is called \defi{flag}.
+The clique complexes of $N_G(v)$ and $N_G(u,v)$ are the links of $v$
+and, when $uv$ is an edge, of $uv$ in $\cl(G)$.
+
+\subsection{Contractible and strong contractible graphs}
+\label{sec:contractible}
+The two classes differ in the permitted operations and in the
+condition imposed on neighbourhoods.
+
+\begin{definition}[{\cite[Definition~1]{DEFH2023}}]\label{def:I}
+The class $\I$ of \defi{I-contractible graphs} is the least class
+containing $K_1$ and closed under the following operations:
+\begin{enumerate}[label=(\roman*),leftmargin=2.5em]
+\item delete a vertex $v$ when $N_G(v)\in\I$;
+\item add a new vertex whose neighbourhood is an induced subgraph
+of $G$ belonging to $\I$;
+\item delete an edge $uv$ when $N_G(u,v)\in\I$;
+\item add a missing edge $uv$ when $N_G(u,v)\in\I$.
+\end{enumerate}
+The empty graph does not belong to $\I$.
+\end{definition}
+
+The operations in Definition~\ref{def:I} preserve the simple homotopy
+type of the clique complex \cite[Theorem~2.8]{DochtermannMatsushita2025};
+the graph formulation goes back to Ivashchenko and to Chen, Yau and Yeh
+\cite{Ivashchenko1994a,ChenYauYeh2001}. In particular, every member
+of $\I$ has contractible clique complex. The converse holds as well
+\cite[Corollary~1.5]{DochtermannMatsushita2025}.
+
+\begin{definition}[{\cite[Definition~3 and Lemma~1]{EFH2022};
+\cite[Definitions~4--5]{DEFH2023}}]\label{def:IS}
+The class $\IS$ of \defi{strong I-contractible graphs} contains $K_1$
+and is defined recursively, for graphs of order at least two, by
+\[
+ G\in\IS\quad\Longleftrightarrow\quad
+ \begin{cases}
+ G-v,\ N_G(v)\in\IS&\text{for some }v\in V(G),\quad\text{or}\\
+ G-uv,\ N_G(u,v)\in\IS&\text{for some }uv\in E(G).
+ \end{cases}
+\]
+The class $\ISV$ of \defi{strong vertex I-contractible graphs} has the
+same base case and uses only the first alternative, with both smaller
+graphs required to belong to $\ISV$. Neither class contains the empty
+graph.
+\end{definition}
+
+Each recursive argument has smaller $|V|+|E|$, so these definitions are
+well founded. Reversing a successful reduction gives the equivalent
+definitions by gluings in the cited papers. Induction on $|V|+|E|$
+gives
+\begin{equation}\label{eq:strong-inclusions}
+ \ISV\subseteq\IS\subseteq\I.
+\end{equation}
+For the second inclusion, the remaining graph and the tested
+neighbourhood lie in $\I$ by induction, and the inverse operation
+reconstructs the original graph by an allowed gluing.
+
+An operation is \defi{$\IS$-admissible} if its tested neighbourhood
+belongs to $\IS$. Unless a different class is named, admissibility
+will mean $\IS$-admissibility. A \defi{strong reduction} is a sequence
+of admissible deletions ending at $K_1$. The empty-neighbourhood
+convention means that neither an isolated vertex nor an edge with empty
+common neighbourhood can be deleted. Every nonempty tree belongs to
+$\ISV$: deleting a leaf tests the neighbourhood $K_1$ and reduces the
+order. Conversely, a triangle-free member of $\I$ is a tree, since
+its clique complex is connected, contractible and of dimension at most one.
+
+Membership in $\IS$ requires the existence of a successful reduction.
+A different admissible first deletion can destroy that possibility,
+as the examples for Conjecture~15 will show. Thus the recursive test
+must consider all possible first deletions.
+
+\subsection{Dismantling levels}
+Vertex reductions also give a hierarchy in which the condition on the
+neighbourhood changes with the level.
+
+\begin{definition}[{\cite[Definition~1]{FieuxJouve2020}}]\label{def:kdis}
+A \defi{cone} is a nonempty graph with a vertex adjacent to every other
+vertex. Cones form the class $(-1)$-Dis. For $k\geq0$, a vertex $v$
+is \defi{$k$-dismantlable} when $N_G(v)$ belongs to $(k-1)$-Dis.
+A graph is \defi{$k$-dismantlable}, or belongs to $k$-Dis, if it can
+be reduced to $K_1$ by successive deletions of $k$-dismantlable
+vertices. The singleton belongs to every level, and the empty graph
+to none.
+\end{definition}
+
+At level zero, the condition says that some neighbour $u$ of $v$ is
+adjacent to all the other neighbours of $v$. Equivalently,
+$N_G[v]\subseteq N_G[u]$, where brackets denote closed neighbourhoods.
+The hierarchy satisfies
+\begin{equation}\label{eq:dismantling-inclusions}
+ (-1)\text{-Dis}\subseteq0\text{-Dis}\subseteq1\text{-Dis}
+ \subseteq\cdots\subseteq\ISV\subseteq\IS\subseteq\I;
+\end{equation}
+see \cite[Proposition~2]{FieuxJouve2020} and
+\cite[Lemma~19 and Theorem~23]{DEFH2023}.
+The union of the finite dismantling levels is $\ISV$
+\cite[Theorem~23]{DEFH2023}.
+
+\subsection{Coefficient choices}
+We use homology to distinguish graphs whose clique complexes are
+contractible from graphs with the same homology over $\mathbb F_2$.
+Write $\widetilde H_i(G;R)=\widetilde H_i(\cl(G);R)$.
+For $R=\ZZ$ or $\mathbb F_2$, let $\mathcal A_R$ be the class of
+nonempty graphs for which $\widetilde H_i(G;R)=0$ for every $i\geq0$.
+The Euler characteristic is
+\[
+ \chi(G)=\sum_{i\geq0}(-1)^if_i(G),
+\]
+where $f_i(G)$ counts the cliques with $i+1$ vertices.
+
+For a nonempty finite complex $K$, the universal coefficient theorem
+\cite[Theorem~3A.3]{Hatcher2002} gives, for $i\geq0$,
+\begin{equation}\label{eq:uct}
+ 0\longrightarrow\widetilde H_i(K;\ZZ)\otimes\mathbb F_2
+ \longrightarrow\widetilde H_i(K;\mathbb F_2)
+ \longrightarrow\operatorname{Tor}^{\ZZ}_1
+       (\widetilde H_{i-1}(K;\ZZ),\mathbb F_2)
+ \longrightarrow0.
+\end{equation}
+We use the augmented convention $\widetilde H_{-1}(K;\ZZ)=0$.
+Consequently,
+\begin{equation}\label{eq:homology-inclusions}
+ \IS\subseteq\I\subseteq\mathcal A_{\ZZ}
+ \subseteq\mathcal A_{\mathbb F_2}.
+\end{equation}
+For a connected finite complex, $\mathbb F_2$-acyclicity allows finite
+integral homology of odd order. In particular, both
+$(\ZZ/3)\otimes\mathbb F_2$ and
+$\operatorname{Tor}^{\ZZ}_1(\ZZ/3,\mathbb F_2)$ vanish.
+This accounts for the different hypotheses in the two assertions of
+Conjecture~14. Throughout the article, unqualified acyclicity means
+membership in $\mathcal A_{\mathbb F_2}$.
+
+\subsection{A disc with boundary identifications}\label{sec:discs}
+The first construction is most easily understood by obtaining its
+clique complex from a triangulated disc. The following criterion
+determines the homotopy type from the boundary identifications.
+
+\begin{proposition}\label{prop:disc}
+Let $D$ be a triangulated closed disc and $q:D\to X$ a simplicial
+map. Suppose that $q$ is injective on the interior of $D$ and identifies
+$X$ with the quotient of $D$ obtained solely by identifying boundary
+points having the same image. If $S=q(\partial D)$ is a connected
+graph with exactly one cycle, then
+\[
+ X\simeq S^1\cup_d D^2,
+\]
+where $d$ is the degree of the boundary map after contracting a maximal
+tree in $S$. For $|d|=1$ the complex is contractible. For $|d|=3$
+it is homotopy equivalent to $M(\ZZ/3,1)$ and has
+$\widetilde H_1(X;\ZZ)\cong\ZZ/3$ and zero reduced homology in all
+other degrees.
+\end{proposition}
+\begin{proof}
+The hypotheses identify $X$ with the adjunction space $S\cup_fD^2$.
+Collapsing a maximal tree $T$ in $S$ is a homotopy equivalence, since
+$T$ is a contractible subcomplex \cite[Propositions~0.16--0.17]{Hatcher2002}.
+The quotient is $(S/T)\cup_{pf}D^2$, with $S/T\cong S^1$.
+Maps $S^1\to S^1$ are classified up to homotopy by their degree
+\cite[Theorem~1.7]{Hatcher2002}, and homotopic attaching maps have
+homotopy equivalent adjunction spaces
+\cite[Proposition~0.18]{Hatcher2002}. This proves the asserted
+homotopy type. For $|d|=1$ the map is homotopic to a homeomorphism,
+whose mapping cone is contractible. For $|d|=3$ this is the defining
+adjunction space of $M(\ZZ/3,1)$, and its cellular chain complex in
+positive degrees is $0\to\ZZ\xrightarrow{d}\ZZ\to0$.
+\end{proof}

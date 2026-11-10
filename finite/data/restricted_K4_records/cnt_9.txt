@@ -1,0 +1,1 @@
+total=1232 after_vertex=119 after_edge=40 after_euler=1

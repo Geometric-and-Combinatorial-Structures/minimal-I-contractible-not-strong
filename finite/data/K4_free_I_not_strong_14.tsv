@@ -1,0 +1,9 @@
+graph6	edges	seed	added_edges	certifying_edge	strong_I_contractible
+M?b@bFHNEk@~|k}U?	44	G14a	[]	[0,1]	no
+M?b@bFXNEk@~|k}U?	45	G14a	[[3,8]]	[0,1]	no
+M?b@rFHNEk@~|k}U?	45	G14a	[[4,6]]	[0,1]	no
+M?b@rFXNEk@~|k}U?	46	G14a	[[3,8],[4,6]]	[0,1]	no
+M?B@thku?~Lylk}[?	45	G14b	[]	[0,3]	no
+M?BDthku?~Lylk}[?	46	G14b	[[0,6]]	[0,3]	no
+M?BFthku?~Lylk}[?	47	G14b	[[0,6],[1,6]]	[0,3]	no
+M?r@d`ifbiFfo}~o?	45	G14c	[]	[2,3]	no

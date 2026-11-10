@@ -1,0 +1,43 @@
+{
+  "status": "historical source identities checked locally; no census rerun",
+  "project_classifier_sha256": "db40ce4ff30b23e4d68444f594acf43761bfc808c4556dd006305306652f9089",
+  "D2_instrumentation_only": true,
+  "order11_instrumentation_only": true,
+  "files": [
+    {
+      "file": "exact_n11_capture.c",
+      "sha256": "dad7a247f4b0da465135a3988120041e148211dc7d73f4d98b7c7bf469e17187",
+      "source_record": "exact_n11_capture.c"
+    },
+    {
+      "file": "atascadas_classify.c",
+      "sha256": "23b25abb68faddeb6aa64e87f720111a5b8723884673694cfbaebb0c633b7abe",
+      "source_record": "atascadas_classify.c"
+    },
+    {
+      "file": "cleanroom.cpp",
+      "sha256": "1c3f2acee15ff31c8b836b8aa3bcb398647fd0f999afc5aee69aa27fa3fd1eea",
+      "source_record": "cleanroom.cpp"
+    }
+  ],
+  "historical_drivers": [
+    {
+      "original_file": "run_D2.py",
+      "sha256": "05f699b9ed33e444b2624b17a4ed9f44707c088a1f8e9684cc32231b09504411",
+      "included": false,
+      "reason": "archival local orchestration paths; production C inputs and selected output records are included"
+    },
+    {
+      "original_file": "root_experiments.py",
+      "sha256": "13bc1737cb8ccd5562eb387178a635415d0dd247d28cc82a95935e5e540b726b",
+      "included": false,
+      "reason": "archival local orchestration paths; production C inputs and selected output records are included"
+    },
+    {
+      "original_file": "run_exact_n11.py",
+      "sha256": "f536cdefa26d1da77580fb02fc30575a8549ceb6a064225157b310418e31bfab",
+      "included": false,
+      "reason": "archival local orchestration paths; production C inputs and selected output records are included"
+    }
+  ]
+}

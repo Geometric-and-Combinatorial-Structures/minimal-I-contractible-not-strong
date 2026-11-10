@@ -1,0 +1,213 @@
+old_path	old_blob	old_mode	disposition	new_path	reason
+.gitignore	2d4e7fb6c59e3329ef25321cbbcdf22928fa10e1	100644	superseded	.gitignore	Current reviewed source, data view or documentation
+CITATION.cff	92d5f168318b8dce9a84973438c326d9660a8b5f	100644	superseded	CITATION.cff	Current reviewed source, data view or documentation
+LICENSE	28d9a5b8fa182ad7c8c8affab9397abb089e5ef7	100644	superseded	LICENSE	Current reviewed source, data view or documentation
+LICENSE-DATA	9a420a63d070294147717ac02013236c23eb967d	100644	superseded	LICENSE-DATA	Current reviewed source, data view or documentation
+README.md	d079838c166f32a4bff8a25a83ddaa5ad20a608d	100644	superseded	README.md	Current reviewed source, data view or documentation
+certificates/atascadas_verificar_report.txt	e7f1104807bf4a9dffacfa0723e4727bdac52c99	100644	superseded	finite/certificates	Structured, replayable finite evidence replaces historical text output
+certificates/integer_homology.txt	913a1f5d979cda730d02211e70e085371412645b	100644	superseded	finite/certificates	Structured, replayable finite evidence replaces historical text output
+certificates/strictly_2dis_12_traces.txt	5571c02b4cb287087a4f1731d75f479937663e4d	100644	superseded	finite/certificates	Structured, replayable finite evidence replaces historical text output
+certificates/strong_contractible_status.txt	4d4534d32680425c8e1a816836b79da15bd9562f	100644	superseded	finite/certificates	Structured, replayable finite evidence replaces historical text output
+certificates/traces_strong_contractible.txt	f02781b4b224cdc2345a23e6544d7467ec9faa01	100644	superseded	finite/certificates	Structured, replayable finite evidence replaces historical text output
+data/I_not_strong_14_closure.tsv	5ffc6eb2688d617924f5e8ab7c7691b635eb9019	100644	superseded	finite/data/I_not_strong_14_closure.tsv	Canonical reviewed catalog replaces the historical table view
+data/README.md	56d01cb077154feb7f6d936c9254f62edcd70973	100644	superseded	finite/data/README.md	Canonical reviewed catalog replaces the historical table view
+data/acyclic_not_strong_13.g6	3b0096d6344ac7fc4f7ff1600b610a2cd69249ac	100644	superseded	data/acyclic_not_strong_13.g6	Current reviewed source, data view or documentation
+data/acyclic_not_strong_14_closure.tsv	3fa300b314fc626a927c8d160a9a549f88f70474	100644	superseded	finite/data/acyclic_not_strong_14_closure.tsv	Canonical reviewed catalog replaces the historical table view
+data/closure_G14a.tsv	b4f4b94edfc51376a493c23879733ac1ba8c8306	100644	superseded	finite/data/closure_G14a.tsv	Canonical reviewed catalog replaces the historical table view
+data/dunce_hat_15.g6	5b35638eeb9851fe7c41a95d2dc763566b98f18c	100644	kept	data/dunce_hat_15.g6	Identical Git blob
+data/minimal_I_not_strong_14.g6	b5fc6b37ed125d732a85d8d0841eca208aaac947	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+data/strictly_2dis_12.g6	01d5ec9520b8e813c322f79f6edbe7d49f4e7978	100644	superseded	data/strictly_2dis_12.g6	Current reviewed source, data view or documentation
+data/strictly_2dis_12.tsv	4ad1fe6f6177e13aba4786a77cb84a61a3647958	100644	superseded	finite/data/strictly_2dis_12.tsv	Canonical reviewed catalog replaces the historical table view
+data/structure_84_graphs.csv	09f6c3a7aa38f2dbb58342aa749ae69566d23984	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+data/stuck_14_K4free.g6	993f2255941ebee9f3cf53193f4890fca947031b	100644	kept	data/stuck_14_K4free.g6	Identical Git blob
+data/stuck_14_K4free.tsv	0976dc65a5d5388848c4ad77cebc6edc01b649a2	100644	superseded	finite/data/stuck_14_K4free.tsv	Canonical reviewed catalog replaces the historical table view
+data/table_cardinalities.csv	88465f30efb2b8dbf73a3f03ed2f6e6abd4dec67	100644	superseded	data/table_cardinalities.csv	Current reviewed source, data view or documentation
+data/table_cardinalities_raw.txt	176c14232ccedf05251d747f32de63ca266c41cd	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+figures/captions.md	25c0d2908f5bbe7c2fc8b65d1a86bae632c90ffa	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/deck_all_figures.pdf	f01d68c2b8005647855c874330e4cfd49f593e89	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/dibujo.py	4d306ede328a5d306abce173c6e78db560829e35	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/discos.py	108de1d9ea5db270097f71250891e8f6fa80fcbe	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig01.pdf	03a6802cdf816a1441c77e11179b2a357ed293a8	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig01.png	018d79bb91ae5051fbab97054e3b642fde498399	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig01.svg	8bc26ae9dc394d19a5f7bd069d0f13720549e709	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig02.pdf	16a8914606b6e1c441dd28fae6d37290bb1dd383	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig02.png	c93a2db8e8735e7dfc9292f4da400d63ad5260ef	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig02.svg	b8bc8c10b807b100c5b40f15b21dfa561c5d4396	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig03.pdf	53569fcf7ee8a88609f31acdd39f588a37a07d74	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig03.png	a99970fd32c48d12846eeb885dd316a854ea4b3f	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig03.svg	717516cd00aa56d0eff4445a4b10ec3b58a3e1b6	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig04.pdf	13eb4218469b1fad6ba0916536568a4a292166e0	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig04.png	0a2444336dc59cc9a5925c819c7519da34eb0f5b	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig04.svg	2fbd907bd8426e1cf5931f31c0981c4890405d30	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig05.pdf	ecf417bb208b0d81b4fa1b1ea0179cf35121c585	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig05.png	5a051e9fc2846b75b363345b9f43ab70c143bd6c	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig05.svg	214b7d4f4e0222b8fc3bf825d94503fe31ba960c	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06.pdf	29ff5e810100e59024ffa16816daf9da0962cd94	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06.png	4fa4571f43be98c35370fafe8c6657b9818cae98	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06.svg	c9843efbd1124a8873b7165dc93d7e45c6dca980	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06b.pdf	979d15b910329637531833d1ab2729d49bda6636	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06b.png	6f78f591ffc74edd9d55ca8e80b49c8682ee825e	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06b.svg	8169aff0ceb8dcf7dc45292b943a1bccd974e6ba	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06c.pdf	8fd7888945a893ca7cd5cdc363a4c9ef1c246431	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06c.png	d2b5840bb11c3f9664cb486f448ee15b3b2328a6	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig06c.svg	de29b838b19ff01aacd359938199f03a8d3956ef	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig07.pdf	1b899bdfd327b457b78289eaec9223ab227fb26b	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig07.png	574cb0ee5c0a377cbaafc86296d95a309f2532c9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig07.svg	c6a29780b585ec4c4f2598765c698e42aea346c8	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig08.pdf	89c4ec25b59d57adba0bc9600b1fd9e67b7bf5b1	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig08.png	9160c5743e9c776f873f36302cf785159393a479	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig08.svg	2c7afcd39c689fce33462deb1fc66602538b553d	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig09.pdf	f7c3d3fc4a75022d28f6f9cbd42466274f3f2cf6	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig09.png	59c57426d96b2e63c524ae860d43645d4900cae9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/fig09.svg	e724de9db645ed68ba618a87b3f403a6b8bcbd47	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/make_figures.py	c8e55dcaa4d01aa7c55a99b1ed7ff0d090e025b9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/narrative_review.md	9f6a403a22fb3a0cf782b67846d400317bc6d9e4	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+figures/verify_log.txt	31a0da8c34a9bad468775db3069af3fc66e09ca9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/CAMBIOS_v3.md	5f9c0b04aec94c9ff11e88524135bf2bdaa609c9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/COMPILAR_EN_OVERLEAF.md	2194e16f00db7787e494b6ec247a71680253d02f	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/NUMERIC_CHECK.md	b6fee9247eaca331ec74470cff6993fe21be9bf1	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/README.md	f82221b060d9fae9755bcbc34dc52ee5931e410a	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/REVISION_LOG_round1-2.md	e82ab5d695711fe3f9df1a65b4aa48482cce9c18	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/appendix_data/tarea_n14_p011_correct.sh	7ac2f66ed62fadcc14de5d41d117319090cf8465	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/appendix_data/traces.txt	21cddeaf728dd53abca1a4f17497b7f369f026b1	100644	superseded	finite/certificates/certificate_replay.json	Structured replayable reductions replace the historical trace text
+paper/build.sh	0f4861819bcb5445ce2157eb9732e4887ef98828	100755	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/elsarticle-num.bst	855a14e4281af05797f7bec10a26206afd06a70b	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig01.pdf	03a6802cdf816a1441c77e11179b2a357ed293a8	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig02.pdf	16a8914606b6e1c441dd28fae6d37290bb1dd383	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig03.pdf	53569fcf7ee8a88609f31acdd39f588a37a07d74	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig04.pdf	13eb4218469b1fad6ba0916536568a4a292166e0	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig05.pdf	ecf417bb208b0d81b4fa1b1ea0179cf35121c585	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig06.pdf	29ff5e810100e59024ffa16816daf9da0962cd94	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig06b.pdf	979d15b910329637531833d1ab2729d49bda6636	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig06c.pdf	8fd7888945a893ca7cd5cdc363a4c9ef1c246431	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig07.pdf	1b899bdfd327b457b78289eaec9223ab227fb26b	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig08.pdf	89c4ec25b59d57adba0bc9600b1fd9e67b7bf5b1	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/figures/fig09.pdf	f7c3d3fc4a75022d28f6f9cbd42466274f3f2cf6	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/main.pdf	177c95733efab8fad9affaf82a8c50447ef4955c	100644	superseded	paper/main.pdf	Current reviewed source, data view or documentation
+paper/main.tex	f211120b31dfc8aaf142a5b52b3971c0aae74023	100644	superseded	paper/main.tex	Current reviewed source, data view or documentation
+paper/make_tables.py	966e83d4a2c579e87a99f17e1acd8a80866748a5	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/refs.bib	a62cf590a5fe5453fd844f085845b8adcdfb3c94	100644	superseded	paper/refs.bib	Current reviewed source, data view or documentation
+paper/sections/01_intro.tex	e72adde35653eccc398359a682d646d85c5a98b9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/02_prelim.tex	43c910cd5ac761e8b71aca834b6d976fb1aec0d2	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/03_reduction.tex	0e29b43723b708d5ee3ef25a22800b60ff898de9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/04_algorithms.tex	35aba82ef1803dbb3c00ab5918aba03e60968ab4	100644	superseded	paper/sections/04_algorithms.tex	Current reviewed source, data view or documentation
+paper/sections/05_table.tex	608ad49ef59dc57b1dcc33d339ed25f2308e72f0	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/06_examples.tex	5a886ef0e3b1f9290c43859fdb91c2c508fa9ab2	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/07_consequences.tex	f2a593b0eadb6426f5f036648c994dc2cc9ac46f	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/08_data.tex	7cadcf91d19366b7680638ffef20fa999d3d277d	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/A_proofs.tex	4ba1cc76d9b2d3de0b536de3feb3b1a6f34c611e	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/B_tables.tex	0a786d9e06616518c7c6ae2d74a88cf7b38edbd1	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/C_certificates.tex	29465328e202a992682d31e93923c17616185054	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/sections/D_cluster.tex	e1cb2fcc4ea8138cc7351aa843812031187cef9e	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/tables/strictly2dis12.tex	240749ebd21b82236c8943003a4605e321b9d5c8	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/tables/stuck51.tex	99e6af701eb520603c58676d923520dc98d1cad9	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+paper/tables/table_cardinalities.tex	a224fbff34e9d62d3995461c986594bff92ad003	100644	superseded	paper/main.pdf	Current manuscript and checked figure sources replace historical presentation
+src/README.md	b5e5f9cfff5b4ea42b534f4c7a61e954d0eafca5	100644	superseded	src/README.md	Current reviewed source, data view or documentation
+src/atascadas.c	8b780583fe855213ee9d02ffb598530e8c4fdc21	100644	kept	src/atascadas.c	Identical Git blob
+tools/clique_homology.py	6fae218f9435bbfa0a5f3774cdc4099310690b2d	100644	kept	tools/clique_homology.py	Identical Git blob
+tools/dunce_hat.py	205846797176a7b30e3a939c02c9e09e28a0cef9	100644	kept	tools/dunce_hat.py	Identical Git blob
+tools/kdismantlable.py	28d8b432422f67b74b9ea4a8b8711374affeb58a	100644	kept	tools/kdismantlable.py	Identical Git blob
+tools/ripser_z3_check.py	b38a718af103fed607d9177834fe2381131fce8e	100644	kept	tools/ripser_z3_check.py	Identical Git blob
+tools/strong_contractible.py	8a96baefd5c9922612c90c52d2582c8b338850b6	100644	kept	tools/strong_contractible.py	Identical Git blob
+v2/.gitignore	3d43339293004eaa6de63cf66c6ef986a0922141	100644	kept	v2/.gitignore	Identical Git blob
+v2/README.md	5ebcf5a7c0db8daa6b3343e64c99056e3d3157ba	100644	superseded	v2/README.md	Current reviewed source, data view or documentation
+v2/build.sh	b5b20ab37574f85cc6b4455d4a366c006921466c	100755	superseded	v2/build.sh	Current reviewed source, data view or documentation
+v2/pipeline/campana_v2.py	a182919b98e7d0b354ef62ddef4ce1eb153f6c47	100644	superseded	v2/pipeline/campana_v2.py	Current reviewed source, data view or documentation
+v2/src/atascadas_v2.c	3075a923daf1ed749e5c693210049aa9386c2648	100644	superseded	v2/src/atascadas_v2.c	Current reviewed source, data view or documentation
+v2/tests/results/equivalence.json	3460cfffd7b5934df1a675bb4645b12a17578519	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+v2/tests/results/equivalence.stderr.txt	6d7494eb0f826977058cf3a1eb5bf607113fe2b2	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+v2/tests/results/equivalence.stdout.txt	04f81f3188d5484f2839c0ee02d92bed6a240597	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+v2/tests/results/pipeline.json	ade830cc24ef02a3cf2df25912a09acbaa5d758e	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+v2/tests/results/robustness.json	ab8249374293910e2e045ffa7a2db6c80bc5c9e8	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+v2/tests/results/sanitizer.txt	fbd176e002a75fc093dad22ca672f1cd6939f345	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+v2/tests/test_equivalence.py	08baf63255b8a43ae667abb90cfd5cb7695d7c60	100644	superseded	v2/tests/test_equivalence.py	Current reviewed source, data view or documentation
+v2/tests/test_pipeline.py	b2f152a7541223ca07699d737e579ec0399ebc3f	100644	superseded	v2/tests/test_pipeline.py	Current reviewed source, data view or documentation
+v2/tests/test_robustness.py	8c2494011b06c4d24fe287c952daeb2fb5101be4	100644	superseded	v2/tests/test_robustness.py	Current reviewed source, data view or documentation
+verification/README_memo_exacto.md	f8e07048673f902c5b768499bab19955b6fb28b7	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+verification/VERIFICACION_INDEPENDIENTE.md	6ab723bb79ff8bff08c23926d6a2ce36943688a4	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+verification/atascadas_memo_exacto.c	358a9b25eb622114c2f7f42d9240e8fbfce796b5	100644	kept	verification/atascadas_memo_exacto.c	Identical Git blob
+verification/check_table_B1_fig07.py	47bacfdeda8fa79dc7692b12c19cbc7411afd090	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+verification/check_table_B1_fig07_output.txt	57823cb3f3e8bf9d60badb542f48b803a3330aa5	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+verification/indep.py	d12cc20dc142f7d1b64dad5372f34fb9642fb754	100644	kept	verification/indep.py	Identical Git blob
+verification/wolfram_codigo_y_salidas.json	614f7890b2af4f3167e6c2944e365f957572da78	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+verify.sh	2ef7d4e4948360d2f0d0ee0dbc36551df4ad4ee4	100755	superseded	verify.sh	Current reviewed source, data view or documentation
+yuca/README.md	8cd2e0104968b6282de0de2f2c4c49bdb04249c9	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/atascadas_n12.c	e32cf87a4a3fd99946c599322a58cbf954774b6c	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/atascadas_n13.c	e32cf87a4a3fd99946c599322a58cbf954774b6c	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/atascadas_n13_tabla.c	b10ba0c82d139336957c5dd4ec1f6fc4468614f6	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/atascadas_n14.c	71b046cd2605a40fa7016514645899be19a8b835	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/atascadas_n14_tabla.c	b10ba0c82d139336957c5dd4ec1f6fc4468614f6	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n12.sh	5c4ad87d6894f566caef41e09f19a7b9989d936d	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n12_tabla_v2.sh	eeb468a8dc5e4f979434fe6f3e1d9db7c0d12587	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n13.sh	4957c36720ee34adf8e6a48de9e5c14c0b19db0f	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n13_tabla.sh	ca3cd2e41edfcf525e7c8aacbf289c19afcf689a	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n14_p011.sh	7ac2f66ed62fadcc14de5d41d117319090cf8465	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n14_p029.sh	bc390cab9262838a78828f5171f1e5eba8a5009b	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n14_p029_intento_fallido_2079068.sh	bfb5bedf92d34d82495689e8070294d461ca57e5	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n14_tabla_p011.sh	fbcae2db0c596d18a0ecfb3140b043c0713e935a	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/as_run/tarea_n14_tabla_p029.sh	bd126966bf8fb3b9136ab7866f8f488a101549fd	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/d21_n12_48cpu.sh	e0b8abd43245285eee5a9a3699de1cc2990dcc9d	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n12_2dis_no_1dis.sh	fb497d6727ed4f919332947d4b209edc5f85dd85	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n12_tabla.sh	508b5b0f751d9494ee4d2e3b725dba7a8d89b386	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n12_tabla_v2.sh	26e4600918ec693a1e3e07268600e4c24f7d839b	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n13_atascadas.sh	84b4a779f203b3d12bdd24741f68d7ad59bb5ea3	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n13_tabla.sh	dd789e8ed3b928b22deb18782708c071c0e4bf4e	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n13_tabla_p011.sh	a17f963c43123a4e2bd3288f5a49e9301ff93e02	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n14_K4libre.sh	0ec1f55a3e0e66d7b1823989fc6f8a2238792c7e	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n14_K4libre_p011.sh	b183d4425911374de1d99ad7a0d68b3cbbb0c9d3	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n14_K4libre_tabla.sh	b6eed520a67134692251d026650e40e925957093	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n14_K4libre_tabla_p011.sh	76476b761b88081ae18ccf89e723d3a7d6a4d285	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/envoltorio_n14_K4libre_tabla_p029.sh	c2b8d8c2be1922643b07bdd0856ca88d0b54456a	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/frente_medio_n14_p011_desc.sh	6ec5fd181473089b18a1b211d63876340cc41616	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/frente_medio_n14_p011_gpu_a.sh	8b8d8d7f5ab7b43b68c8f4c1601f7d9066dc25b2	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/frente_medio_n14_p011_gpu_b.sh	cce9abdaded7fa25f9e43c4586ef8abeac3204f5	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/frente_medio_n14_p029_asc.sh	2321810b23fdd5b9e4868306c0134295e415b95b	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/casi_n03-11.txt	0786921cc47cd42b0f7c7fc87ebfaded3c49db83	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_2dis_no_1dis_bitacora.txt	3c3f3b55f9dcb9f309298e645773a4613c8fe64d	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_2dis_no_1dis_encontradas.txt	f14c39eee6026a246df36bf090267038c7042d47	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_2dis_no_1dis_resumen.txt	3ce5ce96c9ece93d0850b379395e8515286a695a	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_bitacora.txt	5f600711ce285ecc66517d1b88f95b5335bb4ba1	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_encontradas_n12.txt	e69de29bb2d1d6434b8b29ae775ad8c2e48c5391	100644	removed		Empty historical operational record; unrelated to the empty small-graph survivor files; retained in Git history
+yuca/logs/n12_resumen_n12.txt	b84491db6ae7e133f2ccdc5f6c416453fb22ea01	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_tabla_v2_bitacora.txt	9afc570f23a4073e5ba50bd392c771660b5d39c4	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n12_tabla_v2_resumen.txt	68839596b5506b3d36f299f004c9e1e6b7cdff6f	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n13_bitacora.txt	c8b7215e9e202196354fa207cd5fbe9a1510668c	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n13_encontradas.txt	7f0beb5424aafaca328b4dfb583d5fc4dbbf340e	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n13_resumen.txt	01803c40c6a1e3c0b0c74d1cf5672f31ecd93d94	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n13_sacct_2079059.txt	cc71158f3fa24049bf51d7e5217d8677a00396af	100644	moved	finite/provenance/order13_elapsed.txt	Identical Git blob at canonical location
+yuca/logs/n13_tabla_bitacora.txt	2d5bbf1206a338145cac087a359fde5a9b0ffebe	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n13_tabla_indecisas.txt	7043a6013f340bc95c41566e0abdb6310f61a7a5	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n13_tabla_resumen.txt	efa9d5183d9efaf4477d6c671cfa60c285171902	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_bitacora_failed_geng27_array2079068.txt	92a7dc76ce9cf16b6c8e81ff3d0d21e3d81fdcd5	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_bitacora_p029.txt	a3507c4a54aa32cd01b0d2f36a5dc816b00d0e6a	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_cobertura_n14.txt	1a5de2a5d24ebf75e567513ec840f1fbecff7628	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_duplicadas.txt	f9d19248441f9ada27eafcffb048c6f59605b120	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_encontradas_n14_final.txt	3d0b34ab2d12d358edb492783522a84c0a7d5505	100644	moved	data/census/F3_stuck.g6	Identical Git blob at canonical location
+yuca/logs/n14_faltantes_n14.txt	e69de29bb2d1d6434b8b29ae775ad8c2e48c5391	100644	removed		Empty historical operational record; unrelated to the empty small-graph survivor files; retained in Git history
+yuca/logs/n14_listas_distintas.txt.gz	a79c2f3eba692836aafee11ef21fbca2cd25d563	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_pordir_n14.txt	e996e88d8d93690e6983f44a1e4326ea71a24671	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_resumen_n14_total.txt	f0f1b7a7f38a7be8212cfa2af33d2d595b082b6f	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_sacct_n14.txt	34f6230a79eecc564619e7ed73ee251787f9b471	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/logs/n14_tabla_muestreo_32_rebanadas.txt	f2399ef48b2b81d109e8311ce42406d8ffb4d8e4	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/conteo_k4libres_conexas.sh	2d16c78dc00bfb4cf534c42b3ba7936e1bcdf49d	100755	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/muestreo_rebanadas_n14.sh	2e6c0c9e6467127b39dedf24e1395313af75f70a	100755	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/preauditoria_yuca.sh	77500e0d304aefa46d18b049fb01e2bc4b7ed5fe	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/recolectar_n14_tabla.py	848cf795bfd9c0a73579b417df3f44c9405b636d	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/suma_incremental_n14.sh	d791da90824289f6c7529bae57acdb02943cbf8b	100755	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/suma_por_directorio_n14.sh	35e3104655fa1be4a0b9549109cb638cc5870712	100755	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/monitoring/verificar_encontradas_n14.sh	539f2e4c6cb139a0e1c78163c28d3003eecc168b	100755	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/not_run/README.md	f857007a51c6dc9c1e814b54ee4f442d59400536	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/not_run/frente_medio_n14_p011_desc_27.sh	294f561a64f2c49844bd8fb7011b8ba40836c85d	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/not_run/frente_medio_n14_p011_desc_gpu.sh	ae4afa12c43e2fbb947127bc307e8332fa2c6221	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/gcc_version.txt	972c9d1f8595b08d20762eff6ffebe9dbad3878e	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/geng27r4_help.txt	c46e8b475257a717a76808208ee0acf2665356db	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/geng28_help.txt	1643e6a3bed2697be58761fc036799280b946cc3	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/geng_sha256.txt	84005f74dbd6b319ac7bfd78770d2f7d801a33d7	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/lscpu.txt	f39cbba17c6f4f6485a64eb1080d05b935ba54c1	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/meminfo_head.txt	350c9fe4ee368e9e67da0856152d88860bca2810	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/os-release.txt	ac2837b11ece8df47e1edc60fcc0ff330ffe1cc6	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/sacctmgr_qos.txt	53f5f4167cc6ede95cbc6e21cd8dc21069024ee2	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/scontrol_node_amdcpu-hpc-01.txt	827d3eada8ea215b319fdb6d4fcead317b2ba0df	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/sinfo_nodos.txt	055df1ee452019e30c2bd5616312644bcc404f0b	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/slurm_version.txt	f0b5dbfb3a34ca556917c1a2f1e1527da888c30e	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history
+yuca/system/uname.txt	631d3e708332140ac9649e3ead31f1e4a9ee2604	100644	removed		Historical operation record, duplicate or obsolete artifact; retained in Git history

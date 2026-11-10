@@ -1,0 +1,11 @@
+# Review and verification of the companion
+
+Repository preparation on 10 November 2026 used six completed adversarial reviews through the direct Anthropic API, all with `claude-opus-5-5` and reasoning effort `xhigh`. The [snapshot record](../verification/review/snapshots.json) identifies the files or diffs supplied to each review and the completion status. Two interrupted or truncated attempts produced no completed assessment and are excluded.
+
+The reviews covered selection, the mathematical supplement, repository interfaces and subsequent focal corrections. They prompted explicit seed inclusion and label checks, clearer computational scope, and corrections to clean-copy table generation, output locations, Git history checks, notebook use, bibliography builds and process deadlines. Findings were checked against the actual data and code before changes were adopted. Some alleged missing mathematical checks were already enforced in other mandatory verifiers; those were confirmed by direct inspection and execution.
+
+The mathematical proofs and executable checks are the evidence for the results. Model responses are review records, not certificates. The snapshots distinguish complete files from supplied diffs and do not imply that the reviewer ran the programs or read the entire repository.
+
+Local validation included the required finite route and current-C recurrence comparison, generated tables and drawings, both document builds, a source archive, the example notebook, semantic certificate mutations and byte-integrity checks. The historical implementation and pipeline suite also passed: 47 equivalence checks, 25 robustness cases, 12 pipeline cases, and 89, 104, 25 and 14 later regression cases. The last suite included 19 ASan/UBSan runs with positive controls. The 51-seed closure was regenerated and matched the deposited 2,271-class set.
+
+The [reproduction guide](reproduction.md) gives executable checks. GitHub Actions applies the finite route on Python 3.11 and 3.13, builds both documents, and checks figure regeneration. The [verification scope](verification-scope.md) separates these finite checks from the historical large enumerations; a complete independent recount remains deferred.

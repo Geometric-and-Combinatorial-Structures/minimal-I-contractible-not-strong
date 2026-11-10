@@ -1,0 +1,83 @@
+{
+  "source_type": "preserved separate computation",
+  "scope": "counters, every preserved survivor, and local filter contract checked; generating large universes was not repeated",
+  "runs": [
+    {
+      "order": 5,
+      "total": 0,
+      "after_vertex": 0,
+      "after_edge": 0,
+      "after_euler": 0,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "order": 6,
+      "total": 1,
+      "after_vertex": 1,
+      "after_edge": 1,
+      "after_euler": 0,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "order": 7,
+      "total": 5,
+      "after_vertex": 2,
+      "after_edge": 2,
+      "after_euler": 0,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "order": 8,
+      "total": 51,
+      "after_vertex": 11,
+      "after_edge": 9,
+      "after_euler": 0,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "order": 9,
+      "total": 1232,
+      "after_vertex": 119,
+      "after_edge": 40,
+      "after_euler": 1,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "c388cac06eac6ccd63fc7414d5def1a3f02d0d5b7b648f89a116a588a27d0a93"
+    },
+    {
+      "order": 10,
+      "total": 66084,
+      "after_vertex": 3315,
+      "after_edge": 355,
+      "after_euler": 12,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "327655d64fc702aec9d65f851bce352b4a4633bfd32314a9feac074db00bcb7e"
+    },
+    {
+      "order": 11,
+      "total": 6248939,
+      "after_vertex": 231916,
+      "after_edge": 5200,
+      "after_euler": 142,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "ff37f92184260bb0afe36eeca826453dd3f8bbb09a1ea28d9d16c5dd41dad1d2"
+    },
+    {
+      "order": 12,
+      "total": 914568002,
+      "after_vertex": 31068946,
+      "after_edge": 156872,
+      "after_euler": 3582,
+      "Z2_acyclic_survivors": 0,
+      "survivor_stream_sha256": "1536189fa0c0766aed986984e410cb55b9fd1b1fe3480e5b7e2dd7d906eef872"
+    }
+  ],
+  "origin_archive_sha256": "eec38676d6c324d883dd1124cec0b39fde4e728b2170c81f9b88cbdf2c495e8e",
+  "generator": "nauty 2.9.3, conda-forge hb03c661_0",
+  "generator_sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+  "generator_options": "-k -C -d4 -D(n-2) n",
+  "partition_order12": "eight residue files; their ordered concatenation matches the aggregate"
+}

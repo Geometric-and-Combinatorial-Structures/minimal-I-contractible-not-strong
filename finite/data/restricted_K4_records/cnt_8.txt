@@ -1,0 +1,1 @@
+total=51 after_vertex=11 after_edge=9 after_euler=0

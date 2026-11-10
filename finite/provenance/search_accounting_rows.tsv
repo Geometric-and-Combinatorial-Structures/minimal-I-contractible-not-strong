@@ -1,0 +1,22 @@
+job_id	job_name	account	partition	qos	state	submit	start	end	elapsed	time_limit	nodes	cpus	allocated_cpus	memory	reason	exit_code	node_list
+2079059_0	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:50:56	07:10:11	7-00:00:00	1	64	64	32G		0:0	<node>
+2079059_1	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:46:51	07:06:06	7-00:00:00	1	64	64	32G		0:0	<node>
+2079059_2	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:43:30	07:02:45	7-00:00:00	1	64	64	32G		0:0	<node>
+2079059_3	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:42:41	07:01:56	7-00:00:00	1	64	64	32G		0:0	<node>
+2079059_4	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:43:04	07:02:19	7-00:00:00	1	64	64	32G		0:0	<node>
+2079059_5	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:42:24	07:01:39	7-00:00:00	1	64	64	32G		0:0	<node>
+2079059_6	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T01:40:43	2026-10-11T01:40:45	2026-10-11T08:44:07	07:03:22	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_0	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:46	2026-10-12T20:48:42	1-09:24:56	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_1	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:46	2026-10-12T20:52:50	1-09:29:04	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_2	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:46	2026-10-12T21:41:00	1-10:17:14	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_3	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:47	2026-10-12T21:04:22	1-09:40:35	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_4	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:47	2026-10-12T20:28:35	1-09:04:48	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_5	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:47	2026-10-12T20:31:17	1-09:07:30	7-00:00:00	1	64	64	32G		0:0	<node>
+2079102_6	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T11:23:44	2026-10-11T11:23:47	2026-10-12T21:05:53	1-09:42:06	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_0	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:11	2026-10-12T21:00:49	1-05:20:38	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_1	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:11	2026-10-12T20:10:12	1-04:30:01	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_2	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:11	2026-10-12T21:18:26	1-05:38:15	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_3	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:11	2026-10-12T20:21:20	1-04:41:09	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_4	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:12	2026-10-12T20:00:03	1-04:19:51	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_5	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:12	2026-10-12T20:11:54	1-04:31:42	7-00:00:00	1	64	64	32G		0:0	<node>
+2079156_6	restricted_search	<account>	cpu	<qos>	COMPLETED	2026-10-11T15:40:09	2026-10-11T15:40:12	2026-10-12T22:26:34	1-06:46:22	7-00:00:00	1	64	64	32G		0:0	<node>

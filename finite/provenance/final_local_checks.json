@@ -1,0 +1,125 @@
+{
+  "n10_almost_stuck": {
+    "generator": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-cq",
+      "10"
+    ],
+    "classifier": [
+      "<deposit>/classifier",
+      "--mode",
+      "almost_stuck"
+    ],
+    "exit": [
+      0,
+      0
+    ],
+    "seconds": 4.74553947604727,
+    "stderr": "n=10 total=11716571 passed_cone=0 passed_euler=2571263 passed_vertex_neighbourhoods=29414 passed_edge_neighbourhoods=152 found=0\n"
+  },
+  "n11_almost_stuck_sum": {
+    "total": 1006700565,
+    "passed_cone": 0,
+    "passed_euler": 204131202,
+    "passed_vertex_neighbourhoods": 2078699,
+    "passed_edge_neighbourhoods": 1644,
+    "found": 0
+  },
+  "n11_exact_comparison": {
+    "connected": {
+      "ours": 1006700565,
+      "csv": 1006700565,
+      "match": true
+    },
+    "chi1": {
+      "ours": 204131202,
+      "csv": 204131202,
+      "match": true
+    },
+    "acyclic": {
+      "ours": 166978401,
+      "csv": 166978401,
+      "match": true
+    },
+    "I": {
+      "ours": 166978401,
+      "csv": 166978401,
+      "match": true
+    },
+    "I_undecided": {
+      "ours": 0,
+      "csv": 0,
+      "match": true
+    },
+    "I_S": {
+      "ours": 166978401,
+      "csv": 166978401,
+      "match": true
+    },
+    "I_SV": {
+      "ours": 166978389,
+      "csv": 166978389,
+      "match": true
+    },
+    "3-Dis": {
+      "ours": 166978389,
+      "csv": 166978389,
+      "match": true
+    },
+    "2-Dis": {
+      "ours": 166978389,
+      "csv": 166978389,
+      "match": true
+    },
+    "1-Dis": {
+      "ours": 166978389,
+      "csv": 166978389,
+      "match": true
+    },
+    "0-Dis": {
+      "ours": 151084672,
+      "csv": 151084672,
+      "match": true
+    },
+    "-1-Dis": {
+      "ours": 12005168,
+      "csv": 12005168,
+      "match": true
+    }
+  },
+  "n11_exact_memo": {
+    "per_residue": [
+      {
+        "queries": 376,
+        "hits": 145,
+        "actual_collisions": 0,
+        "estimated_false_hash63_hits": 4.84e-15
+      },
+      {
+        "queries": 32,
+        "hits": 5,
+        "actual_collisions": 0,
+        "estimated_false_hash63_hits": 4.564e-17
+      },
+      {
+        "queries": 0,
+        "hits": 0,
+        "actual_collisions": 0,
+        "estimated_false_hash63_hits": 0.0
+      },
+      {
+        "queries": 410,
+        "hits": 184,
+        "actual_collisions": 0,
+        "estimated_false_hash63_hits": 5.083e-15
+      }
+    ],
+    "sum": {
+      "queries": 818,
+      "hits": 334,
+      "actual_collisions": 0,
+      "estimated_false_hash63_hits": 9.96864e-15
+    },
+    "note": "Four independent memo lifetimes, not same query count as one unpartitioned run; heuristic expectation not collision probability proof."
+  }
+}

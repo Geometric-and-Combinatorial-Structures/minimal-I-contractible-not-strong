@@ -1,0 +1,208 @@
+\section{Counterexamples on thirteen and fourteen vertices}\label{sec:examples}
+
+The two assertions in Conjecture~14 are refuted at different orders.
+Odd integral torsion supplies a graph with trivial homology over
+$\Ztwo$ outside $\IS$. A second construction belongs to $\I$ but admits
+no first strong deletion. Adding one edge to that construction also
+gives a counterexample to Conjecture~15.
+
+Throughout this section, $\Gt$ has vertex set $\{0,\ldots,12\}$ and
+$\Ga,\Gb,\Gc$ have vertex set $\{0,\ldots,13\}$. Their edges are defined
+by Table~\ref{tab:witness-adjacency}. The figures use these same labels.
+
+\subsection{Odd torsion on thirteen vertices}\label{sec:thirteen}
+
+The clique complex of $\Gt$ is obtained from a triangulated disc by
+wrapping its boundary three times around a four-cycle. This description accounts
+for the torsion and gives a direct proof of the first refutation.
+
+\begin{theorem}\label{thm:A}
+Let $\Gt'=\Gt+\{4,7\}$ and $\Gt''=\Gt'+\{5,6\}$.
+The graphs $\Gt,\Gt',\Gt''$ have $40$, $41$ and $42$ edges, respectively,
+and their clique complexes are homotopy equivalent to $M(\ZZ/3,1)$.
+In particular, they are $\Ztwo$-acyclic and none belongs to $\I$.
+They refute the first assertion of Conjecture~14.
+\end{theorem}
+
+\begin{proof}
+The graph $\Gt$ is $K_4$-free and has $28$ triangles. Each of its edges
+lies in two triangles, except for the four edges of
+$8\text{--}10\text{--}9\text{--}11\text{--}8$, which lie in three.
+Cutting along that cycle gives the triangulated disc on the left of
+Figure~\ref{fig:G13}. An explicit triangle list and an order of attachment
+proving that it is a disc are given in
+Appendix~\ref{app:disc-certificates}.
+Its boundary labels, starting at the top and read clockwise, are
+\[
+ 10,9,11,8\mid10,9,11,8\mid10,9,11,8.
+\]
+Each interior vertex occurs once. Identifying equally labelled boundary
+vertices and their corresponding boundary edges recovers precisely
+$\cl(\Gt)$.
+Proposition~\ref{prop:disc}, with attaching degree $3$, therefore gives
+\[
+ \cl(\Gt)\simeq M(\ZZ/3,1),\qquad
+ \widetilde H_1(\Gt;\ZZ)\cong\ZZ/3,
+ \qquad \widetilde H_i(\Gt;\ZZ)=0\quad(i\ne1).
+\]
+The universal coefficient theorem gives vanishing reduced homology
+over $\Ztwo$ in every degree.
+
+For each of the two specified edge additions, the common neighbourhood
+at the time of addition is the singleton $\{12\}$. Both additions are
+admissible and preserve the homotopy type of the clique complex.
+Nonzero integral homology excludes all three graphs from $\I$, hence
+also from $\IS$. Since they have fewer than the $15$ vertices of the
+graph in Conjecture~14, they refute its first assertion.
+\end{proof}
+
+\begin{figure}[tbp]
+\centering
+\input{figures/G13_disc}\hspace{6mm}\input{figures/G13_graph}
+\caption{On the left, a triangulated disc whose equally labelled boundary
+vertices and corresponding boundary edges are identified to obtain
+$\cl(\Gt)$. The boundary traverses
+$10$--$9$--$11$--$8$ three times. The $28$ small triangular regions are
+its faces. On the right, the graph $\Gt$; the four edges in three
+triangles are highlighted. The highlighted boundary on the left maps
+to the highlighted four-cycle on the right.}\label{fig:G13}
+\end{figure}
+
+The construction also attains the least possible order for odd torsion
+in the first homology of a flag complex. This conclusion uses the
+earlier classification of torsion graphs, without an acyclicity
+assumption.
+
+\begin{proposition}\label{rem:adamaszek}
+The minimum number of vertices of a flag complex whose first integral
+homology has odd torsion is $13$.
+\end{proposition}
+
+\begin{proof}
+A torsion graph is called irreducible if every vertex deletion removes
+all torsion from its first homology. Adamaszek's classification
+\cite[Theorem~1.1 and Section~4]{Adamaszek2014} gives no torsion through
+ten vertices, four torsion graphs on eleven vertices, each with first
+homology $\ZZ/2$, and $363$ irreducible torsion graphs on twelve vertices,
+each with torsion subgroup $\ZZ/2$. The absence of torsion through ten vertices and the four torsion
+graphs on eleven vertices also follow from Katzman
+\cite[Theorem~4.1 and Section~5]{Katzman2006}.
+
+If a twelve-vertex torsion graph $G$ is not irreducible, it has a vertex
+$v$ such that $G-v$ is one of the four eleven-vertex graphs. If $v$ is
+isolated, then $H_1(\cl(G);\ZZ)=H_1(\cl(G-v);\ZZ)\cong\ZZ/2$.
+Otherwise, apply the Mayer--Vietoris sequence to
+\[
+ \cl(G)=\cl(G-v)\cup\bigl(v*\cl(\Nb_G(v))\bigr).
+\]
+It gives an exact sequence
+$0\to Q\to H_1(\cl(G);\ZZ)\to F\to0$, where $Q$ is a quotient of
+$\ZZ/2$ and $F$ is a subgroup of
+$\widetilde H_0(\cl(\Nb_G(v));\ZZ)$. The group $F$ is free abelian,
+so the sequence splits. Thus $H_1(\cl(G);\ZZ)$ has no odd torsion.
+Theorem~\ref{thm:A} attains the lower bound.
+\end{proof}
+
+\subsection{A non-strong I-contractible graph on fourteen vertices}
+\label{sec:fourteen}
+
+For the second assertion of Conjecture~14, nonzero homology cannot
+provide the obstruction: an I-contractible graph is integrally
+acyclic. Instead, we show that every possible first strong deletion
+is obstructed, and then establish I-contractibility by an edge addition.
+
+\begin{theorem}\label{thm:B}
+The graph $\Ga$ is $K_4$-free, has $14$ vertices and $44$ edges, and
+belongs to $\I\setminus\IS$. Its one-edge extension $\Ga+\{0,1\}$ belongs to
+$\IS$, and deletion of that edge is $\IS$-admissible.
+Consequently, $\Ga$ refutes the second assertion of Conjecture~14,
+and $\Ga+\{0,1\}$ refutes Conjecture~15.
+\end{theorem}
+
+\begin{proof}
+The common neighbourhood of $0$ and $1$ in $\Ga$ is the induced path
+\[
+ 8\text{--}12\text{--}5\text{--}10\text{--}13.
+\]
+Since nonempty trees belong to $\IS$ (Section~\ref{sec:contractible}),
+adding $\{0,1\}$ is admissible.
+Starting from $\Ga+\{0,1\}$, perform the following deletions in the
+displayed order:
+\[
+\begin{gathered}
+ e(0,5),\ e(0,10),\ e(0,12),\ e(8,12),\ e(1,12),\\
+ v(5),\ v(10),\ v(3),\ v(6),\ v(2),\ v(7),\ v(1),\ v(0),\\
+ v(4),\ v(8),\ v(11),\ v(12),\ v(9).
+\end{gathered}
+\]
+Here $e(u,w)$ deletes an edge and $v(u)$ deletes a vertex; labels do
+not change after a deletion. Every tested neighbourhood is a nonempty
+tree, as the explicit lists in Table~\ref{tab:Ga-reduction} show.
+The final graph is the singleton $13$. Hence $\Ga+\{0,1\}\in\IS$.
+Deleting the added edge is an I-admissible transformation, with the
+same common neighbourhood as before its addition, so $\Ga\in\I$.
+
+To prove $\Ga\notin\IS$, consider its links. Each vertex neighbourhood
+is a connected triangle-free graph; its first Betti number is positive
+in every case, as recorded in Table~\ref{tab:witness-links}.
+Every edge has two or three common neighbours, and those neighbours
+form an independent set because $\Ga$ is $K_4$-free.
+Thus neither a vertex neighbourhood nor an edge neighbourhood is
+acyclic. None belongs to $\IS$, so no first strong deletion is possible.
+
+The two graphs have $14$ vertices, whereas both examples conjectured
+to be smallest in the earlier paper have $15$ vertices. This proves
+the stated refutations. The global lower bounds are established from
+the complete census below.
+\end{proof}
+
+\begin{figure}[tbp]
+\centering
+\input{figures/Ga_extension}
+\caption{The graph $\Ga$ consists of the solid edges. Adding the dashed
+edge $\{0,1\}$ gives a strong I-contractible graph. The common
+neighbourhood of its endpoints is the highlighted induced path
+$8$--$12$--$5$--$10$--$13$. Deleting the dashed edge is admissible but
+leaves a graph outside $\IS$.}\label{fig:G14}
+\end{figure}
+
+The order-$14$ classification also uses $\Gb$ and $\Gc$, two further
+members of $\I\setminus\IS$ that become strong I-contractible after
+one admissible edge addition. Table~\ref{tab:witness-adjacency} defines
+them and Table~\ref{tab:variant-reductions} supplies their reductions.
+
+\begin{proposition}\label{prop:other-seeds}
+The graphs $\Gb$ and $\Gc$ are $K_4$-free members of
+$\I\setminus\IS$, each with $14$ vertices and $45$ edges.
+The extensions $\Gb+\{0,3\}$ and $\Gc+\{2,3\}$ belong to $\IS$,
+and the added edges are admissible.
+\end{proposition}
+
+\begin{proof}
+The common neighbourhoods for the two additions are the induced paths
+$7\text{--}13\text{--}9\text{--}12$ and
+$6\text{--}13\text{--}7\text{--}10\text{--}11$, respectively.
+In each column of Table~\ref{tab:variant-reductions}, every tested
+neighbourhood is a nonempty tree and the last vertex is $13$.
+This proves membership of both extensions in $\IS$ and of the original
+graphs in $\I$. Table~\ref{tab:witness-links} excludes every possible
+first strong deletion from $\Gb$ and $\Gc$, just as for $\Ga$.
+The graph $\Gb$ has an edge with four common neighbours, whereas
+$\Gc$ has none. Together with their edge counts, this shows that
+$\Ga,\Gb,\Gc$ are pairwise non-isomorphic.
+\end{proof}
+
+The same local structure also obstructs simplicial collapses.
+
+\begin{proposition}\label{prop:noncollapsible}
+The clique complexes of $\Ga,\Gb,\Gc$ are contractible and
+non-collapsible.
+\end{proposition}
+
+\begin{proof}
+Their I-contractibility implies contractibility of their clique
+complexes. Each complex is two-dimensional. By
+Table~\ref{tab:witness-links}, every edge lies in at least two triangles,
+and every vertex lies in a triangle. There is therefore no free face
+with which to start an elementary collapse.
+\end{proof}

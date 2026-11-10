@@ -1,0 +1,25 @@
+n=3 total=2 passed_cone=0 passed_euler=2 passed_vertex_neighbourhoods=0 passed_edge_neighbourhoods=0 found=0
+n=3 almost_stuck=0
+n=4 total=6 passed_cone=0 passed_euler=5 passed_vertex_neighbourhoods=0 passed_edge_neighbourhoods=0 found=0
+n=4 almost_stuck=0
+n=5 total=21 passed_cone=0 passed_euler=16 passed_vertex_neighbourhoods=0 passed_edge_neighbourhoods=0 found=0
+n=5 almost_stuck=0
+n=6 total=112 passed_cone=0 passed_euler=68 passed_vertex_neighbourhoods=0 passed_edge_neighbourhoods=0 found=0
+n=6 almost_stuck=0
+n=7 total=853 passed_cone=0 passed_euler=404 passed_vertex_neighbourhoods=0 passed_edge_neighbourhoods=0 found=0
+n=7 almost_stuck=0
+n=8 total=11117 passed_cone=0 passed_euler=3837 passed_vertex_neighbourhoods=17 passed_edge_neighbourhoods=3 found=0
+n=8 almost_stuck=0
+n=9 total=261080 passed_cone=0 passed_euler=68458 passed_vertex_neighbourhoods=1094 passed_edge_neighbourhoods=21 found=0
+n=9 almost_stuck=0
+n=10 total=11716571 passed_cone=0 passed_euler=2571263 passed_vertex_neighbourhoods=29414 passed_edge_neighbourhoods=152 found=0
+n=10 almost_stuck=0
+n=11 total=117940313 passed_cone=0 passed_euler=24063253 passed_vertex_neighbourhoods=222373 passed_edge_neighbourhoods=151 found=0
+n=11 total=120209801 passed_cone=0 passed_euler=22574412 passed_vertex_neighbourhoods=223077 passed_edge_neighbourhoods=265 found=0
+n=11 total=118214050 passed_cone=0 passed_euler=25057172 passed_vertex_neighbourhoods=256465 passed_edge_neighbourhoods=202 found=0
+n=11 total=122907891 passed_cone=0 passed_euler=24947030 passed_vertex_neighbourhoods=258306 passed_edge_neighbourhoods=234 found=0
+n=11 total=126652309 passed_cone=0 passed_euler=26346308 passed_vertex_neighbourhoods=280261 passed_edge_neighbourhoods=191 found=0
+n=11 total=126704482 passed_cone=0 passed_euler=26845212 passed_vertex_neighbourhoods=278939 passed_edge_neighbourhoods=192 found=0
+n=11 total=132683590 passed_cone=0 passed_euler=26522119 passed_vertex_neighbourhoods=275409 passed_edge_neighbourhoods=218 found=0
+n=11 total=141388129 passed_cone=0 passed_euler=27775696 passed_vertex_neighbourhoods=283869 passed_edge_neighbourhoods=191 found=0
+n=11 almost_stuck=0

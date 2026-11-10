@@ -1,0 +1,106 @@
+\section{Introduction}\label{sec:intro}
+
+A contractible graph can be transformed into a single vertex by adding
+and deleting vertices and edges whose corresponding neighbourhoods are
+contractible. Requiring a reduction by deletions alone, and imposing the
+same requirement recursively on the neighbourhoods, gives the class of
+strong I-contractible graphs. What is the least order of an I-contractible graph that is not strong
+I-contractible? Does replacing contractibility by acyclicity over
+$\mathbb F_2$ lower this minimum?
+
+Ivashchenko introduced contractible transformations of graphs
+\cite{Ivashchenko1993,Ivashchenko1994a}. The clique complex $\cl(G)$ has
+the cliques of $G$ as its simplices. The class $\I$ of I-contractible
+graphs is precisely the class of graphs with contractible clique complex
+\cite[Corollary~1.5]{DochtermannMatsushita2025}.
+Strong I-contractible graphs, denoted by $\IS$, have collapsible clique
+complexes \cite[Theorem~1]{EFH2022}; hence $\IS\subseteq\I$.
+
+Dochtermann, Espinoza, Fr\'ias-Armenta and Hern\'andez
+\cite{DEFH2023} counted several contractible and dismantlable families
+through order $11$. They also exhibited a $15$-vertex graph $\Dunce$ whose
+clique complex is a flag triangulation of the dunce hat, with
+$\Dunce\in\I\setminus\IS$, and a one-edge extension $\Dunce^+\in\IS$.
+In our notation, their conjectures assert that these examples have
+minimum order:
+
+\begin{quote}
+\textbf{Conjecture 14 of \cite[p.~8]{DEFH2023}.}
+The graph $\Dunce$ is smallest by number of vertices among graphs with
+trivial reduced $\mathbb F_2$-homology that are not strong
+I-contractible. In particular, it is smallest among the graphs in
+$\I\setminus\IS$.
+
+\smallskip
+\textbf{Conjecture 15 of \cite[p.~9]{DEFH2023}.}
+The graph $\Dunce^+$ is smallest by number of vertices among graphs
+$G\in\IS$ having an edge $uv$ for which the common neighbourhood
+$N_G(u,v)$ belongs to $\IS$ but $G-uv\notin\IS$.
+\end{quote}
+
+We refute both conjectures. Three graphs on $13$ vertices have clique
+complexes homotopy equivalent to the Moore space $M(\ZZ/3,1)$.
+Their reduced homology vanishes over $\mathbb F_2$, whereas their first
+integral homology is $\ZZ/3$. They therefore lie outside $\I$ and
+refute the first assertion of Conjecture~14. A graph on $14$ vertices
+belongs to $\I\setminus\IS$ and refutes its second assertion. Its
+membership in $\I$ follows from one admissible edge addition followed
+by a strong reduction. The same extension refutes Conjecture~15.
+Section~\ref{sec:examples} gives the constructions and their proofs.
+
+Our second contribution is an extension of the cardinality table,
+together with algorithms and proofs that justify its computation.
+We count connected graphs up to isomorphism in the contractible and
+dismantlable families through order $13$, and in the connected
+$K_4$-free universe at order $14$. Integral and $\mathbb F_2$
+acyclicity are recorded separately. The integral and I-contractible
+columns are derived from the $\mathbb F_2$ census and the classification
+of its non-strong graphs. The three torsion examples are
+exactly the $\mathbb F_2$-acyclic graphs outside $\IS$ through order
+$13$. Consequently, the minimum order for the first assertion of
+Conjecture~14 is $13$, while the minimum for its second assertion and
+for the property in Conjecture~15 is $14$. At order $14$ there are
+exactly eight $K_4$-free members of $\I\setminus\IS$; the fewest
+edges among these eight is $44$.
+
+The table also records the hierarchy of $k$-dismantlable graphs
+introduced by Fieux and Jouve \cite{FieuxJouve2020}.
+Throughout the listed universes, $2$-Dis and $3$-Dis coincide with
+the strong vertex I-contractible class $\ISV$. The first separation
+between $1$-Dis and $2$-Dis occurs at order $12$, with $20$ graphs.
+
+The computation uses exact recursions for the strong classes and the
+dismantling levels. At each stage these recursions consider all possible
+first deletions. The remaining acyclic graphs are classified by explicit
+contractible transformations and integral homology. For $K_4$-free
+graphs, vertex neighbourhoods have clique complexes of dimension at most one and
+edge neighbourhoods are discrete; this gives local admissibility criteria
+and reduces the order-$14$ classification to graphs with no
+admissible deletion.
+
+The $13$-vertex construction also attains the minimum order for odd
+torsion in the first integral homology of a flag complex, by comparison
+with Adamaszek's classification \cite{Adamaszek2014}.
+The three $14$-vertex graphs constructed below have contractible,
+non-collapsible clique complexes. The computer-assisted classification through order
+$13$ shows that $14$ is the minimum number of vertices of such a
+flag complex (Corollary~\ref{cor:minimality}). Earlier examples arise
+from Bing's house \cite{ChenYauYeh2001} and from flag triangulations
+of the dunce hat \cite{FieuxJouve2020,DEFH2023}.
+Our classification of order-$14$
+graphs is restricted to the $K_4$-free class; the minimum by number
+of vertices follows from the unrestricted census through order $13$.
+
+\medskip\noindent\textbf{Organization.}
+Section~\ref{sec:prelim} fixes the graph operations and homological
+conventions. Section~\ref{sec:examples} proves the refutations using
+explicit examples. Sections~\ref{sec:algorithms} and~\ref{sec:searches}
+justify the enumeration and derive the table and the minimum orders.
+The appendix supplies the finite mathematical data used in the
+constructions.
+
+\medskip\noindent\textbf{Conventions and notation.}
+Graphs are finite and simple. Their order is their number of vertices.
+Homology refers to the clique complex and is reduced unless stated
+otherwise. The empty graph belongs to none of the contractible or
+acyclic classes considered here. Cardinalities count isomorphism classes.

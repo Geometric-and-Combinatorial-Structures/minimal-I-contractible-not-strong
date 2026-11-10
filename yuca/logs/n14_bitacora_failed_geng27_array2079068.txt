@@ -1,3 +1,0 @@
-inicio Sun Oct 11 02:12:22 MST 2026  nodo amdcpu-hpc-05  N=14 MOD=2000000 NT=7 GOPTS=-k -C -d4 -D12 MODE=atascadas
-array interno: 2079068
-array terminado Sun Oct 11 09:44:36 MST 2026

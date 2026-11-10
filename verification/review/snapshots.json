@@ -1,0 +1,547 @@
+{
+  "date": "2026-11-10",
+  "completed_reviews": [
+    {
+      "id": "R0_selection",
+      "scope": "Selection",
+      "provider": "Anthropic direct API",
+      "reported_model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "answer_complete": true,
+      "stream_complete": true,
+      "stop_reason": "end_turn",
+      "response_sha256": "d7ff6fa999ccb50b5d14b4fe5f78f3e130140a5395400a90f20c6791a46fde5c",
+      "prompt_sha256": "a11704fa91afcf3da0d1e399bd20117056438250e34259e139247d0b1100f1fd",
+      "inputs": [
+        {
+          "path": "README.md",
+          "sha256": "62f910a6ee01ce5a7ec7dfb0aa43a5c1de3118805ac4d1a8da828abef0aa4473",
+          "bytes": 4722
+        },
+        {
+          "path": "docs/secondary-results.md",
+          "sha256": "f2b7730ee1c60470ad4d0af6fe867d65b7b29d2b196ba4a09bb956027ee9454f",
+          "bytes": 3710
+        },
+        {
+          "path": "docs/verification-scope.md",
+          "sha256": "a15e6721fbadbdb86b4cf4980b53706e122a77e4503b480361c60231855ea1cf",
+          "bytes": 10807
+        },
+        {
+          "path": "docs/full-reproduction.md",
+          "sha256": "226313e214dc3ea90454fe8698d702cfa37b9864a2a9553a68f3ea4db1b3a21d",
+          "bytes": 16548
+        },
+        {
+          "path": "docs/small-order-provenance.md",
+          "sha256": "4e2f36d7af44bb0c7ca868bc985a1f4eeb0844bcfe296389eddf5d682d43de94",
+          "bytes": 7861
+        },
+        {
+          "path": "v2/README.md",
+          "sha256": "41cf0374f40637203206e3b8fd780c0739a30f6474695630c6cec32fee834c4b",
+          "bytes": 4594
+        },
+        {
+          "path": "tools/verify_quick.py",
+          "sha256": "e82fce87a01527c559f6691b000e0beb66ba079d2a5d964c6482c369220bbcf7",
+          "bytes": 2085
+        },
+        {
+          "path": "finite/data/check_small_closures.py",
+          "sha256": "9cec49bd9f85d74a6b3caf7272c7db3013394eff19aec7c6853f4556c6507009",
+          "bytes": 7299
+        },
+        {
+          "path": "finite/data/check_unfoldings.py",
+          "sha256": "b45208e2f05341cdbd8b5abba82529e2db97a41f4e1832cd0c454b16883e2cf0",
+          "bytes": 6014
+        }
+      ]
+    },
+    {
+      "id": "R1_mathematics",
+      "scope": "Mathematical candidate",
+      "provider": "Anthropic direct API",
+      "reported_model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "answer_complete": true,
+      "stream_complete": true,
+      "stop_reason": "end_turn",
+      "response_sha256": "2d551e5f5b152e33dc3978858f967a69f4a995b67c860efaa2e38232d7f703a7",
+      "prompt_sha256": "4a25ed655fcddebd9bbc795e92e9bf46e055c1f20bd4635e283abfba96864fc7",
+      "inputs": [
+        {
+          "path": "supplement/main.tex",
+          "bytes": 20355,
+          "sha256": "e95e9b9fe8fa1c693ac57adfbe155d83d83de53f5745cf498fb4663da950d43c"
+        },
+        {
+          "path": "supplement/tables/seeds.tex",
+          "bytes": 3812,
+          "sha256": "6a14e417509b132a1763482bd22948bbcd7a607e2f7abc9419c2fd6f8fa9f266"
+        },
+        {
+          "path": "supplement/tables/strict12.tex",
+          "bytes": 1795,
+          "sha256": "9db26c5c2bb621c02160b82bc2207ee8ebd5e6cf5fed0de3c28a5199bcdf8ff3"
+        },
+        {
+          "path": "supplement/tables/d15.tex",
+          "bytes": 1480,
+          "sha256": "aeff4c1d77ccc866b5debc73a9285481b2524b450bb97dc6b850a70f18c577ff"
+        },
+        {
+          "path": "supplement/refs.bib",
+          "bytes": 9459,
+          "sha256": "126c21571705d0567366a4dd391b63403baeafc248a5e15877f9455d437dd853"
+        },
+        {
+          "path": "docs/results.md",
+          "bytes": 3761,
+          "sha256": "e2ec27b76f31361e245cd1979f4222958a3dc06bc8080b6fdd8ee39ae263d8fa"
+        },
+        {
+          "path": "docs/secondary-results.md",
+          "bytes": 3542,
+          "sha256": "c970f291d716eeab169325ea004459b4dfbb50021e1e927fd08d0aa624e4930b"
+        },
+        {
+          "path": "tools/check_secondary_results.py",
+          "bytes": 3912,
+          "sha256": "04b203667dafad5c9b650bbc6ff3059b8dbb898a7ec0fc84ae4c531ede141130"
+        },
+        {
+          "path": "tools/reproduce_closures.py",
+          "bytes": 4802,
+          "sha256": "6a9b76b3d843a62a7f199ec1ef3e011a8468727ea07daca66b022e41fc153402"
+        },
+        {
+          "path": "verification/closures51/run.json",
+          "bytes": 1314,
+          "sha256": "e554b6ca0941957d65726d58091c45fe783891b2b284997ed41249049093dbb0"
+        },
+        {
+          "path": "finite/data/check_small_closures.py",
+          "bytes": 7299,
+          "sha256": "9cec49bd9f85d74a6b3caf7272c7db3013394eff19aec7c6853f4556c6507009"
+        },
+        {
+          "path": "finite/data/check_tables.py",
+          "bytes": 5258,
+          "sha256": "35e2ad7acabebad44beb2da9e4b804414f6b76ae858ef4710185239fc04a9859"
+        },
+        {
+          "path": "finite/data/check_unfoldings.py",
+          "bytes": 6014,
+          "sha256": "b45208e2f05341cdbd8b5abba82529e2db97a41f4e1832cd0c454b16883e2cf0"
+        },
+        {
+          "path": "finite/certificates/finite_checks.py",
+          "bytes": 4411,
+          "sha256": "82e8b00137d8a78c49b65c6a0ae819db77983a3908e004c455844a3ec45453e3"
+        },
+        {
+          "path": "finite/certificates/check_certificates.py",
+          "bytes": 4309,
+          "sha256": "c47658ca4db72a4d418add6b8d0d713da1d8ff954ada2a52af0498da1cee3b0a"
+        },
+        {
+          "path": "finite/certificates/check_disc_hypotheses.py",
+          "bytes": 6044,
+          "sha256": "78ea57d8feb463a56348a75d515dfb4402ccf4ff5e1d399c898463be502c2320"
+        },
+        {
+          "path": "paper/sections/02_preliminaries.tex",
+          "bytes": 8236,
+          "sha256": "5f02ba3e51a107eda882dc47bc88ae5771ecade1dd77f8c8703ac291f3302d22"
+        },
+        {
+          "path": "paper/sections/04_algorithms.tex",
+          "bytes": 16044,
+          "sha256": "21164726972051f30801119631b881d61a78e44377b1034af143c90434984d03"
+        },
+        {
+          "path": "paper/sections/05_enumeration.tex",
+          "bytes": 12352,
+          "sha256": "07e24e4c141a4fea9d1bb293ff32695532cf286a419c5c39bcb103c50e3c8c87"
+        }
+      ]
+    },
+    {
+      "id": "R1_repository",
+      "scope": "Repository candidate",
+      "provider": "Anthropic direct API",
+      "reported_model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "answer_complete": true,
+      "stream_complete": true,
+      "stop_reason": "end_turn",
+      "response_sha256": "0849d049ac19591f4a6670897f2da13c486a94181762ebdaa17c079bad3dcdaf",
+      "prompt_sha256": "858fccb5ab0b6ab9e5e59506aa5aef1bf39389db61a757de4ad275dd005e83d4",
+      "inputs": [
+        {
+          "path": "README.md",
+          "bytes": 5259,
+          "sha256": "acd290407ddc5cceb2131aab11f3f112dcd13192a686f4659cc076970a25b1f9"
+        },
+        {
+          "path": "ARTICLE.md",
+          "bytes": 2695,
+          "sha256": "bd1de2b8c2aa535c59763f268316bbe33b05b68f63cfabaa418022160ee2b859"
+        },
+        {
+          "path": "reproduce.py",
+          "bytes": 5884,
+          "sha256": "f7df0efe4ca11c196097ea5c5f816fa866ad176c5af8fe22f7eced922847bcaa"
+        },
+        {
+          "path": "generate.py",
+          "bytes": 2286,
+          "sha256": "64f7fe425e9cb342df0699b742a7b330e57786f685b130cb1e73d3f6bc191817"
+        },
+        {
+          "path": "tools/integrity.py",
+          "bytes": 2845,
+          "sha256": "1028312ef25b572f4fc95f62ba8dd0008262a8f6c58862002404157ea4703503"
+        },
+        {
+          "path": "tools/check_repository.py",
+          "bytes": 3668,
+          "sha256": "77a5f117e2b8048f9d622696541e099839bb2cc4265369b9b95d6f09b993b5aa"
+        },
+        {
+          "path": "tools/check_secondary_results.py",
+          "bytes": 3912,
+          "sha256": "04b203667dafad5c9b650bbc6ff3059b8dbb898a7ec0fc84ae4c531ede141130"
+        },
+        {
+          "path": "tools/verify_quick.py",
+          "bytes": 2287,
+          "sha256": "655eeddd12c24dc5a29e5be6b920e6e5d17ebc3f722913238cdebf09c8ecfbca"
+        },
+        {
+          "path": "tools/reproduce_closures.py",
+          "bytes": 4802,
+          "sha256": "6a9b76b3d843a62a7f199ec1ef3e011a8468727ea07daca66b022e41fc153402"
+        },
+        {
+          "path": "tools/build_paper.py",
+          "bytes": 2006,
+          "sha256": "36803b173eee81b65f125d255ea8ef1deec2f33894b797e11e453e751795877f"
+        },
+        {
+          "path": "tools/build_supplement_tables.py",
+          "bytes": 4884,
+          "sha256": "d8a64294934c4ef1c182d6afb83cb75542cd749b42c771689105b2b6c70e1a76"
+        },
+        {
+          "path": "tools/check_document_logs.py",
+          "bytes": 743,
+          "sha256": "202a8b1b4b4fb7f7db01a589f10da68c39a73ff05a545f18ed732c20b8f2188c"
+        },
+        {
+          "path": "tools/check_cardinalities.py",
+          "bytes": 9077,
+          "sha256": "88bb6b78f0a652eb604988a190e081297e46da1b3c55071ad1439589b26705c9"
+        },
+        {
+          "path": "tests/test_reproduction.py",
+          "bytes": 6801,
+          "sha256": "e3ab8467da49c99d7a0acb70a657659a3700303b25d442718378f13469465fd3"
+        },
+        {
+          "path": "tests/run_notebook.py",
+          "bytes": 645,
+          "sha256": "52588f0895aa8d9636b289585d35dbfa78ea6efbd30b2c202bbb559926040491"
+        },
+        {
+          "path": "notebooks/reproduce.ipynb",
+          "bytes": 5020,
+          "sha256": "ea7c7ca47c7be0c2b5f2ab0d36c3081df8ff8418e2ffa268e90307a4684ae989"
+        },
+        {
+          "path": ".github/workflows/reproduce.yml",
+          "bytes": 1637,
+          "sha256": "32ef6650574c752b44a9a6393e125a6ae2aa24094660c16718daf036e9369049"
+        },
+        {
+          "path": ".gitattributes",
+          "bytes": 109,
+          "sha256": "8d3010c37b0cfd02a6bb412649230624abd48040a5d1f5104b2281735c7e93a9"
+        },
+        {
+          "path": ".gitignore",
+          "bytes": 429,
+          "sha256": "334cd814b97ba443df49a9db12aab2c576896f90f701ecbe2bb387ae07bcabd6"
+        },
+        {
+          "path": "docs/reproduction.md",
+          "bytes": 5551,
+          "sha256": "9b59be7290cf09ef0a53141057bf63e5e1ca27ecee168f39c84d898f727ffca9"
+        },
+        {
+          "path": "docs/full-reproduction.md",
+          "bytes": 16334,
+          "sha256": "aef4f3ddce2061b5e1fb649779747772ae5b20a5a3a8d6be0a02b49688139065"
+        },
+        {
+          "path": "docs/examples.md",
+          "bytes": 2852,
+          "sha256": "bc3cf111d976acd26d83eed4b310fc8149931a46c2a14e71e4db06e67f0ae8aa"
+        },
+        {
+          "path": "docs/verification-scope.md",
+          "bytes": 12431,
+          "sha256": "dbd9ae1051d344d828902e527b384742f960fa5e3fe52593ba091433f3c824dd"
+        },
+        {
+          "path": "docs/provenance/README.md",
+          "bytes": 2553,
+          "sha256": "61e5e251753499fb194af17bbdb1bfa82ddd250a13a2894a166d4e80344c9e32"
+        },
+        {
+          "path": "PROVENANCE.json",
+          "bytes": 801,
+          "sha256": "b789231102db56ae2b04021b2350c2375dfa98dbc190d98402bd1245c180ccbf"
+        },
+        {
+          "path": "docs/provenance/article-r01.json",
+          "bytes": 2207,
+          "sha256": "ce53dce72c43082b948301f491b085cfb8e98cd8f4c1db558cddf63ec1c6a48c"
+        },
+        {
+          "path": "docs/provenance/migration-inventory.tsv",
+          "bytes": 36041,
+          "sha256": "c5e1d7a1b516f58f722188110ba04efb347aca5fd83bed50c16a65208e558e3b"
+        },
+        {
+          "path": "v2/README.md",
+          "bytes": 3150,
+          "sha256": "560a8905b49068fd7b62024a7f6925d2b38ccbdcf65325c9d7e0212b3e75b2f6"
+        },
+        {
+          "path": "tools/figures/README.md",
+          "bytes": 1308,
+          "sha256": "8fc98e6dd1b28a871e468cd52d8755afb0d629113985fdc1d03138e821a6b589"
+        }
+      ]
+    },
+    {
+      "id": "R2_math_focal",
+      "scope": "Mathematical corrections",
+      "provider": "Anthropic direct API",
+      "reported_model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "answer_complete": true,
+      "stream_complete": true,
+      "stop_reason": "end_turn",
+      "response_sha256": "b71b21434a7cd91c7d2889a5722a9f8e50cf94005502aa3bbe6128618bc3d8f2",
+      "prompt_sha256": "671f6370a5e411bad6594a9ca9f3298169149e4021103c2e3cff6fca1c8be3e3",
+      "inputs": [
+        {
+          "path": "supplement/main.tex",
+          "bytes": 21043,
+          "sha256": "f93e51877b46f67d15ffe8af8f08708b2687076fd3be7c583e1e1c4aa7e2875d",
+          "provided": "full"
+        },
+        {
+          "path": "tools/check_secondary_results.py",
+          "bytes": 5866,
+          "sha256": "20d5c0a98daf31aa03bcacbc2c6513e0ee2ca3881f99a456981108d01d39b8f9",
+          "provided": "full"
+        },
+        {
+          "path": "tools/finite_isomorphism.py",
+          "bytes": 1934,
+          "sha256": "6c92ccc2bd66177adb7a04c92c94da8115a68c48890ab500ddba3cb71f6eaea9",
+          "provided": "full"
+        },
+        {
+          "path": "tools/build_supplement_tables.py",
+          "bytes": 5365,
+          "sha256": "20b873d9e56800a8a073e7eabc4bd07cf42d3b7d1e71a4c9954576847bfc101e",
+          "provided": "full"
+        },
+        {
+          "path": "finite/data/check_small_closures.py",
+          "bytes": 7299,
+          "sha256": "9cec49bd9f85d74a6b3caf7272c7db3013394eff19aec7c6853f4556c6507009",
+          "provided": "full"
+        },
+        {
+          "path": "finite/data/D15_published_triangles.json",
+          "bytes": 1596,
+          "sha256": "b4fd4bd4e66a17d38d7635e68d5be548c6fedca5e834692bb9edaf30d36ddd60",
+          "provided": "full"
+        },
+        {
+          "path": "verification/closures51/run.json",
+          "bytes": 1396,
+          "sha256": "bb0bf946fda3c624e94a7ee504bfc53e17aa8bfefe2978b30f74dc5fef622162",
+          "provided": "full"
+        },
+        {
+          "path": "verification/closures51/README.md",
+          "bytes": 1400,
+          "sha256": "1ea96a340e99ef74164728d8d8a5118593279763249b30a11063a9dd91ae7c5a",
+          "provided": "full"
+        }
+      ]
+    },
+    {
+      "id": "R2_technical_focal",
+      "scope": "Operational corrections",
+      "provider": "Anthropic direct API",
+      "reported_model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "answer_complete": true,
+      "stream_complete": true,
+      "stop_reason": "end_turn",
+      "response_sha256": "ed49a912f7fc18df8d63da8c9937ab51a81fb704518ce3f7810bb122bc11005f",
+      "prompt_sha256": "f1225595e126bf4bfe35434d1ff1e16e4ee51fe2429a057718db188093b696d8",
+      "inputs": [
+        {
+          "path": "reproduce.py",
+          "bytes": 6285,
+          "sha256": "490ef010d6b567f77ed8113e7310ddb55703bc80f3d87e8df9b73f7d19add4f7",
+          "provided": "full"
+        },
+        {
+          "path": "tools/integrity.py",
+          "bytes": 3322,
+          "sha256": "ea5756624b18b1c9e412064f808d564a7efde671f9ad40e278c23c47c7e53f28",
+          "provided": "full"
+        },
+        {
+          "path": "tools/check_repository.py",
+          "bytes": 5382,
+          "sha256": "2ff0b6cd1d7485cce3218eba6d1cd01c41ce7122f9478d441c850e68f80c4da2",
+          "provided": "full"
+        },
+        {
+          "path": "tools/build_paper.py",
+          "bytes": 4174,
+          "sha256": "dadc0afce04eca8518d887f026f64d0e63c4a2bca56ed177898bae751430d713",
+          "provided": "full"
+        },
+        {
+          "path": "tools/copy_notebook.py",
+          "bytes": 825,
+          "sha256": "002b68eb62779355d22068665b8b8e95062a241b3093b5895282e463c3b7f0ae",
+          "provided": "full"
+        },
+        {
+          "path": ".github/workflows/reproduce.yml",
+          "bytes": 2516,
+          "sha256": "3ab1d4f8c428d1974f2046ccec307d52574882050ab32baf30f415fe614a6545",
+          "provided": "full"
+        },
+        {
+          "path": "tests/test_reproduction.py",
+          "bytes": 8813,
+          "sha256": "ba7b598a00b69214200fe4aaeb00131b0313cdf421207159bd0847886cf00a70",
+          "provided": "full"
+        },
+        {
+          "path": "notebooks/reproduce.ipynb",
+          "bytes": 5137,
+          "sha256": "5be6480d64acc92ae4a2906c29cfe73c2cf880491cb5ee74805a59f121aa9bea",
+          "provided": "full"
+        },
+        {
+          "path": "tools/figures/make_witness_figures.py",
+          "sha256": "e05518f13fc963e64f7ff0dccd1078b452c3f9fa4c97dc2957fabcc2560298f1",
+          "provided": "interface diff",
+          "excerpt_sha256": "7e019f4a5377597aadbaffeb428b79c5561ca1f1a98566dafc1767f1e3880770"
+        },
+        {
+          "path": "tools/figures/make_witness_tables.py",
+          "sha256": "400c893bbfb5e3e94b684c2967c910f23c8c798ec456b1a1202dc48aafebc8af",
+          "provided": "interface diff",
+          "excerpt_sha256": "33d6bf9a16c7e653dc65908508be7a28b4481a6460c2f178dea1ac9ecc056db7"
+        }
+      ]
+    },
+    {
+      "id": "R3_focal",
+      "scope": "Final focal corrections",
+      "provider": "Anthropic direct API",
+      "reported_model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "answer_complete": true,
+      "stream_complete": true,
+      "stop_reason": "end_turn",
+      "response_sha256": "2a1e131205a6c952b61891200a50f6c7ee8a73a71fbef91fc17256d088f68039",
+      "prompt_sha256": "911bf51995be0c8462f7d315380f1f3fcb17f6188afb15f587dc2856c0280a28",
+      "inputs": [
+        {
+          "path": "tools/processes.py",
+          "sha256": "566932e2073dc5d3ad2764979f7f8da746fc22c8ac6b9837c2d92e8b5324952a",
+          "provided": "full"
+        },
+        {
+          "path": "tools/output_paths.py",
+          "sha256": "c2cb67ed9613874cb02565213ff7e3c24caddf62500c00d651fa9b580e4d164a",
+          "provided": "full"
+        },
+        {
+          "path": "finite/data/check_tables.py",
+          "sha256": "35e2ad7acabebad44beb2da9e4b804414f6b76ae858ef4710185239fc04a9859",
+          "provided": "full"
+        },
+        {
+          "path": "reproduce.py",
+          "sha256": "6d45f6af303ca7e76a4adf4e72ca8a667de5ad73f5dc1c025ad34784518511fb",
+          "provided": "diff",
+          "diff_sha256": "28dfc9d6b1e736368362b53c5410534b4916ebec87d2337c372586ffaa28f3e1"
+        },
+        {
+          "path": "tools/integrity.py",
+          "sha256": "db3057cae962348a4d31fca1c2e64ff45724dde3f4c3814f616c25a22c7db5a3",
+          "provided": "diff",
+          "diff_sha256": "41b703c3b4c2070a01c0106f75bad93f76be884d029970b341c1e7ae077d1bb3"
+        },
+        {
+          "path": "tools/check_repository.py",
+          "sha256": "057dc46299704d770f9394a87a07c9aa96e97960ad1222fa02b73ff6b55928e0",
+          "provided": "diff",
+          "diff_sha256": "a5e6654c725bc769c9cb74885e66703dfaad9dbe3949f30158727747fbea9f92"
+        },
+        {
+          "path": "tools/check_secondary_results.py",
+          "sha256": "2893a513d5c14c1f745bb75729770c40744fb3b128a75e57dbf75bf55f4f6684",
+          "provided": "diff",
+          "diff_sha256": "14de51d3ca1a0cc1c9459bd9001631555852a04f6823f90d049351db8812a3b7"
+        },
+        {
+          "path": "tools/build_paper.py",
+          "sha256": "789ca5586d6852c2897a0d6c7f6f82e80330f1a78ea8b6af9a9df2ec6f68ca31",
+          "provided": "diff",
+          "diff_sha256": "71ebf35842c790576f06ab974d0aec0043905ed490dbc88c0151e11496e432b3"
+        },
+        {
+          "path": "tests/test_reproduction.py",
+          "sha256": "84f69aa8760161b588e2ba79ec0b7d175760d5179b9c0f3154d507489ff32e2c",
+          "provided": "diff",
+          "diff_sha256": "bd63a83f1db962c1ab7eb44124d4ab059741f90afb64e99dee46825f0fc23f68"
+        },
+        {
+          "path": "supplement/main.tex",
+          "sha256": "b0ebdff28bb415ff74d1e5b8a4e7bcc7914457c8a2e50468dcab012b7f996de0",
+          "provided": "diff",
+          "diff_sha256": "7eed2f184dabc39819023be1863ea186cdfd77829972d41f1e6f8d5ec37923bc"
+        },
+        {
+          "path": ".github/workflows/reproduce.yml",
+          "sha256": "0c44e49f172807920c30734e77e89576d780f8191f448452a101a8d6c8de4091",
+          "provided": "diff",
+          "diff_sha256": "30e126e204889380fcb7ba037a4a1610a4c85e7d4e556a5857194609e602935b"
+        }
+      ]
+    }
+  ],
+  "incomplete_attempts_excluded": 2,
+  "model_review_executes_no_local_tests": true
+}

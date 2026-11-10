@@ -1,0 +1,5 @@
+# Connected K4-free graphs of order 14 only; approved F4 certificate, 2026-11-06.
+# Certificate SHA-256: 575b96785c15765669641e1c1b1ae54bafdede874bd9c7e47494b8d517046495
+# Counts are final classifications; there is no raw undecided column here.
+n,connected,chi1,Z2_acyclic,I,I_S,I_SV,3_Dis,2_Dis,1_Dis,0_Dis,cones
+14,309317860269934,6112638767338,755877673752,755877673127,755877673119,755266302709,755266302709,755266302709,755266302709,81156275851,20797002

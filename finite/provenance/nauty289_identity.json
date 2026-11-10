@@ -1,0 +1,13 @@
+{
+  "sha256": "7d3e7c585e52445c1e3ab4d1d19abcaf8b45fbb351ea15663e7e2307370846f5",
+  "version_stdout": "Nauty&Traces version 2.8090 (32 bits)\n",
+  "version_stderr": "",
+  "exit_code": 0,
+  "build_record": "nauty_build.json",
+  "flags": "-O4 -mpopcnt -march=native",
+  "limitation": "Digests were computed from preserved source-archive and executable bytes, not recorded at the historical build time.",
+  "archive_name": "nauty2_8_9.tar.gz",
+  "archive_sha256": "c97ab42bf48796a86a598bce3e9269047ca2b32c14fc23e07208a244fe52c4ee",
+  "binary_name": "geng",
+  "hash_observation_date": "2026-10-18"
+}

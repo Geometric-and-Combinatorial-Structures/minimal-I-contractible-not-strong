@@ -1,4 +1,0 @@
-total=164059830476
-rebanadas_listas=4000/4000
-faltantes=0
-encontradas=20

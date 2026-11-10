@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "repository": "Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong",
+  "base_commit": "c66e0399bc864e4e0147aa14d01ac9fb24db5028",
+  "source_selection_sha256": "ed18084aefa07458c33277d5fb186e38c63ef9a18f96f350c80d4e1facab87b4",
+  "current_inventory": "SHA256SUMS.txt",
+  "git_migration": "docs/provenance/migration-inventory.tsv",
+  "selection_migration": "docs/provenance/selection-migration.json",
+  "article_identity": "docs/provenance/article-r01.json",
+  "historical_selection": "docs/provenance/manuscript-r01-selection.json",
+  "status": "Companion to manuscript r01; no arXiv identifier or archive DOI assigned",
+  "source_policy": "Current file hashes are in SHA256SUMS.txt. Historical selection hashes identify that prior snapshot, not later edits."
+}

@@ -1,2 +1,0 @@
-inicio Tue Oct 13 19:36:05 MST 2026 nodo amdcpu-hpc-04 cpus=48
-fin Tue Oct 13 20:22:59 MST 2026

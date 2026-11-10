@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "PASS": true,
+  "date_utc": "2026-11-10T15:18:57.553370+00:00",
+  "full_census_rerun": false,
+  "classifier": "current C core v2.2",
+  "inputs": {
+    "v2/src/atascadas_v2.c": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+    "data/stuck_14_K4free.g6": "2f3f8701313179d59d9f653487287bcf7ee074c1e8d157a6f8ed4cecd33c24c5",
+    "finite/data/acyclic_not_strong_14_closure.tsv": "3a37e23ea93c48890f4264636e097269700b71d7bd0ece261f3e3a11d7fa754a"
+  },
+  "labelg_sha256": "b54cbdde9ba802e1732569012d34a2c6721ee63b02f7cd79e4a042621d6285a4",
+  "errors": [],
+  "classifier_version": "atascadas v2.2 MAXN=16 MAXF=16384 HBITS=22 QMAX=200000",
+  "classifier_exit": 0,
+  "seeds": 51,
+  "generated_non_strong_records": 8084,
+  "non_strong_isomorphism_classes": 2271,
+  "reference_classes": 2271,
+  "inputs_unchanged": true,
+  "exact_class_sets_equal": true,
+  "classifier_sha256": "0c8a6e11f6faf47a33d6d67204c9c5e03ac7d85fb9e6d948fffb83e5ab620438",
+  "output_sha256": {
+    "closures.raw": "2679a69374c02e0a7440ccaafba280cecc1ef3751a04dfaf28531d84aa140df6",
+    "closures.stderr": "d675cb2051338ea48cc4af31844463a60b926d4c3ecf97c881f50f3d4f018f09",
+    "generated.canonical.g6": "3f063f9b5953d2a2bbedcd88a223ad419597f21c3e7476bd5931f2c9854dc677",
+    "reference.canonical.g6": "50fb0948c583b00d19674af9517fbba658bcd26eb53397f3101c31b60fab7ba0"
+  },
+  "seconds": 3.764
+}

@@ -1,0 +1,104 @@
+{
+  "runs": [
+    {
+      "res": 0,
+      "mod": 4,
+      "generator": [
+        "<deposit>/environment/nauty2_8_9/geng",
+        "-cq",
+        "11",
+        "0/4"
+      ],
+      "classifier": [
+        "<deposit>/scratch/exact_n11_capture",
+        "--mode",
+        "table"
+      ],
+      "exit_geng": 0,
+      "exit_classifier": 0,
+      "seconds": 474.6022048230516
+    },
+    {
+      "res": 1,
+      "mod": 4,
+      "generator": [
+        "<deposit>/environment/nauty2_8_9/geng",
+        "-cq",
+        "11",
+        "1/4"
+      ],
+      "classifier": [
+        "<deposit>/scratch/exact_n11_capture",
+        "--mode",
+        "table"
+      ],
+      "exit_geng": 0,
+      "exit_classifier": 0,
+      "seconds": 447.58005713194143
+    },
+    {
+      "res": 2,
+      "mod": 4,
+      "generator": [
+        "<deposit>/environment/nauty2_8_9/geng",
+        "-cq",
+        "11",
+        "2/4"
+      ],
+      "classifier": [
+        "<deposit>/scratch/exact_n11_capture",
+        "--mode",
+        "table"
+      ],
+      "exit_geng": 0,
+      "exit_classifier": 0,
+      "seconds": 506.6842025149381
+    },
+    {
+      "res": 3,
+      "mod": 4,
+      "generator": [
+        "<deposit>/environment/nauty2_8_9/geng",
+        "-cq",
+        "11",
+        "3/4"
+      ],
+      "classifier": [
+        "<deposit>/scratch/exact_n11_capture",
+        "--mode",
+        "table"
+      ],
+      "exit_geng": 0,
+      "exit_classifier": 0,
+      "seconds": 523.0554379220121
+    }
+  ],
+  "sum": {
+    "connected": 1006700565,
+    "chi1": 204131202,
+    "acyclic": 166978401,
+    "I": 166978401,
+    "I_undecided": 0,
+    "I_S": 166978401,
+    "I_SV": 166978389,
+    "3-Dis": 166978389,
+    "2-Dis": 166978389,
+    "1-Dis": 166978389,
+    "0-Dis": 151084672,
+    "-1-Dis": 12005168
+  },
+  "non_ISV": [
+    "JCpfnq{^Rt?",
+    "JCpvTzw\\bf?",
+    "JCpvTzw^bf?",
+    "JCZJfRtnfs?",
+    "JCZJepvnd]?",
+    "JCZJfJZn`}?",
+    "JCZJfi}}fq?",
+    "JCpdtzs^br?",
+    "JCpvbu}~FY?",
+    "JEhfczeNVw?",
+    "JEhfczeN^w?",
+    "JEhf`z{yq}?"
+  ]
+}

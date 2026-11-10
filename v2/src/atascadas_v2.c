@@ -1,5 +1,8 @@
 /*
- atascadas_v2.c — clasificador de gráficas (versión 2, remediación de la auditoría externa del 15-16 oct 2026).
+ atascadas_v2.c — clasificador de gráficas, versión 2.2: la versión 2 (remediación de la ronda 1 de la auditoría
+ externa, 15-16 oct 2026), las correcciones de la ronda 2 (16 oct 2026: H-18 ampliado y H-25) y, en v2.2
+ (17 oct 2026, solicitud S4 de la ronda 3), la prioridad del código 6 en todas las salidas; ver abajo.  Los
+ algoritmos y los conteos no cambian respecto de v2.1.
 
  Proyecto: Gráficas desmantelables (Espinoza, Frías-Armenta, Hernández-Amador, Hernández-Hernández).
  Referencia: Dochtermann, Espinoza, Frías-Armenta, Hernández, Discrete Math. 346 (2023) 113516 [DEFH].
@@ -37,29 +40,45 @@
    2dis_no_1dis imprime las gráficas 2-desmantelables que no son 1-desmantelables.
    verificar    reporte detallado por gráfica (diagnóstico).
    icert        certificado de I-contraibilidad por pegados I4 (BFS, profundidad <= --prof, por omisión 3).
+                --prof acepta sólo dígitos decimales (v2.1); cualquier otro valor es error de uso (código 1).
    cerradura    supergráficas alcanzables pegando aristas con N(u,v) ∈ I_S (etiquetadas) y su estatus I_S.
    traza        sucesión explícita de borrados I_S hasta K1.
  En los modos de conteo (tabla, atascadas, casi, 2dis_no_1dis) todo renglón debe ser un graph6 válido (se admite
- un renglón que sea sólo la cabecera ">>graph6<<") y todas las gráficas deben tener el mismo orden.  En los modos de
+ un renglón que sea sólo la cabecera ">>graph6<<") y todas las gráficas deben tener el mismo orden.  En todos los
+ modos cada renglón debe terminar en salto de línea y no puede contener bytes NUL (v2.1, hallazgo H-18): un último
+ renglón sin salto de línea cuenta como inválido, porque puede ser un flujo truncado.  En los modos de
  diagnóstico se ignoran renglones vacíos y comentarios "#", y puede seguir texto tras el graph6 (separado por blanco).
 
  Resumen en stderr (un renglón).  Modo tabla:
    n=.. conexas=.. chi1=.. aciclicas=.. I=.. I_indecisas=.. I_S=.. I_SV=.. 3-Dis=.. 2-Dis=.. 1-Dis=.. 0-Dis=.. -1-Dis=..
-   invalidos=.. errores=.. icert_truncados=.. memo_consultas=.. memo_aciertos=.. memo_colisiones_hash=.. version=v2
+   invalidos=.. errores=.. icert_truncados=.. memo_consultas=.. memo_aciertos=.. memo_colisiones_hash=.. version=v2.2
  (los 13 primeros campos son los de v1, en el mismo orden).
- Códigos de salida: 0 correcto; 1 uso; 2 capacidad interna excedida; 3 registros inválidos; 4 inconsistencia interna
- o invariante violado; 5 entrada no conexa (tabla) u órdenes mezclados (modos de conteo).
+ Códigos de salida: 0 correcto; 1 uso; 2 capacidad interna excedida; 3 registros inválidos; 4 inconsistencia interna,
+ invariante violado o error de lectura; 5 entrada no conexa (tabla) u órdenes mezclados (modos de conteo); 6 error de
+ escritura en stdout o stderr (v2.1, hallazgo H-25).  El 6 tiene prioridad sobre cualquier otro código en TODA salida
+ del programa, también en las tempranas (uso 1, capacidad 2, --version; v2.2, solicitud S4 de la ronda 3): si una
+ salida no se escribió completa, la corrida no sirve aunque los conteos sean correctos.
 
- Compilar: gcc -O3 -march=native -std=c11 -Wall -Wextra -Wpedantic -o atascadas_v2 atascadas_v2.c
+ Compilar (portable, sin -march=native): gcc -O3 -std=c11 -Wall -Wextra -Wpedantic -Werror -o atascadas_v2 atascadas_v2.c
 */
+#define _POSIX_C_SOURCE 200809L   /* getline */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <sys/types.h>
 
-#define VERSION "v2"
+#define VERSION "v2.2"
 #define MAXN 16
 typedef uint32_t msk;
+
+/* v2.2 (S4, ronda 3): toda salida del programa pasa por aquí; si stdout o stderr no se escribieron completos, el
+   código es 6, sea cual sea el que se pedía. */
+static int finish_streams(int code) {
+  int werr = (fflush(stdout) != 0) | (ferror(stdout) != 0);
+  werr |= (fflush(stderr) != 0) | (ferror(stderr) != 0);
+  return werr ? 6 : code;
+}
 
 static int n;      /* vértices de la gráfica actual */
 static msk FULL;   /* máscara de todos sus vértices */
@@ -224,7 +243,7 @@ static void enum_cliques(const msk *A, msk cur, msk cand) {
   if (k > 0) {
     if (nf[k - 1] >= MAXF) {
       fprintf(stderr, "ERROR capacidad: overflow caras (dimension %d)\n", k - 1);
-      exit(2);
+      exit(finish_streams(2));
     }
     faces[k - 1][nf[k - 1]++] = cur;
     if (k - 1 > maxdim) {
@@ -926,21 +945,22 @@ int main(int argc, char **argv) {
     if (!strcmp(argv[i], "--modo") && i + 1 < argc) {
       modo = argv[++i];
     } else if (!strcmp(argv[i], "--prof") && i + 1 < argc) {
+      const char *arg = argv[++i];
       char *end = NULL;
-      long d = strtol(argv[++i], &end, 10);
-      if (!end || *end || d < 0 || d > 60) {
+      long d = strtol(arg, &end, 10);
+      if (!*arg || strspn(arg, "0123456789") != strlen(arg) || !end || *end || d < 0 || d > 60) {
         usage();
-        return 1;
+        return finish_streams(1);
       }
       maxd = (int)d;
     } else if (!strcmp(argv[i], "--cert")) {
       want_cert = 1;
     } else if (!strcmp(argv[i], "--version")) {
       printf("atascadas %s MAXN=%d MAXF=%d HBITS=%d QMAX=%d\n", VERSION, MAXN, MAXF, HBITS, QMAX);
-      return 0;
+      return finish_streams(0);
     } else {
       usage();
-      return 1;
+      return finish_streams(1);
     }
   }
   int M_AT = !strcmp(modo, "atascadas");
@@ -954,7 +974,7 @@ int main(int argc, char **argv) {
   if (!(M_AT || M_CASI || M_TAB || M_VER || M_IC || M_CE || M_TR || M_D21)) {
     fprintf(stderr, "modo desconocido: %s\n", modo);
     usage();
-    return 1;
+    return finish_streams(1);
   }
   int counting = is_counting_mode(modo);
   htab = calloc((size_t)HSIZE, sizeof(uint64_t));
@@ -965,7 +985,7 @@ int main(int argc, char **argv) {
   }
   if (!htab || !hkey || !hval || !memo_kdis[0] || !memo_kdis[1] || !memo_kdis[2] || !memo_kdis[3]) {
     fprintf(stderr, "ERROR capacidad: sin memoria\n");
-    return 2;
+    return finish_streams(2);
   }
 
   char line[4096];
@@ -977,17 +997,27 @@ int main(int argc, char **argv) {
   int n_first = 0;
   int have_first = 0;
 
-  while (fgets(line, sizeof line, stdin)) {
-    size_t L = strlen(line);
-    int complete = (L > 0 && line[L - 1] == '\n') || feof(stdin);
-    if (!complete) {                 /* renglón más largo que el búfer: inválido; se consume el resto */
-      int ch;
-      while ((ch = getchar()) != EOF && ch != '\n') {
-      }
+  char *buf = NULL;
+  size_t cap = 0;
+  ssize_t got;
+  while ((got = getline(&buf, &cap, stdin)) != -1) {
+    size_t L = (size_t)got;
+    if (L >= sizeof line) {          /* renglón más largo que el búfer: inválido */
       invalid++;
       fprintf(stderr, "g6 inválido (renglón demasiado largo)\n");
       continue;
     }
+    if (memchr(buf, '\0', L)) {      /* un NUL ocultaría el resto del renglón (H-18) */
+      invalid++;
+      fprintf(stderr, "g6 inválido (byte NUL en el renglón)\n");
+      continue;
+    }
+    if (buf[L - 1] != '\n') {        /* último renglón sin salto de línea: posible truncamiento (H-18) */
+      invalid++;
+      fprintf(stderr, "g6 inválido (último renglón sin salto de línea)\n");
+      continue;
+    }
+    memcpy(line, buf, L + 1);
     while (L && (line[L - 1] == '\n' || line[L - 1] == '\r')) {
       line[--L] = 0;
     }
@@ -1196,6 +1226,13 @@ int main(int argc, char **argv) {
             "version=%s\n",
             nprint, total, pasa_cono, pasa_chi, pasa_links, pasa_aristas, encontradas, invalid,
             errors + mixed, memo_q, memo_hit, memo_coll, VERSION);
+  }
+  free(buf);
+  int werr = (fflush(stdout) != 0) | (ferror(stdout) != 0);
+  werr |= (fflush(stderr) != 0) | (ferror(stderr) != 0);
+  if (werr) {
+    fprintf(stderr, "ERROR de escritura en stdout o stderr\n");
+    return 6;
   }
   if (invalid) {
     return 3;

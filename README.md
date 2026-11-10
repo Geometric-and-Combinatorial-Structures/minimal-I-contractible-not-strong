@@ -1,78 +1,71 @@
-# Minimal I-contractible graphs that are not strong I-contractible
+# Counterexamples and enumeration for contractible graphs
 
-Data, code and machine-checkable certificates accompanying the paper
+Can every I-contractible graph be reduced to a point by strong contractible deletions? The accompanying article answers this question negatively and separates integral acyclicity from acyclicity over the field with two elements. It refutes Conjectures 14 and 15 of [Dochtermann, Espinoza, Frías-Armenta and Hernández (2023)](https://doi.org/10.1016/j.disc.2023.113516) and establishes a table of cardinalities by exact graph algorithms.
 
-> J. F. Espinoza, M. E. Frías-Armenta, R. G. Hernández-Amador, H. A. Hernández-Hernández, *Small non-strong I-contractible graphs and odd torsion in flag complexes* (in preparation, 2026), Universidad de Sonora. The manuscript sources (version 3, 16 Oct 2026) are in `paper/`.
+This repository contains the examples, algorithms, data and proofs that support the article, together with a mathematical supplement on finite closures and auxiliary catalogs.
 
-The repository documents explicit examples and an exhaustive computer search, run on the YUCA cluster of ACARUS (Universidad de Sonora), that
+- [Read the article](paper/main.pdf) · [LaTeX sources](paper/) · [Article and citation information](ARTICLE.md)
+- [Read the mathematical supplement](supplement/main.pdf) · [Supplement sources](supplement/main.tex)
+- [Explore examples](docs/examples.md) · [Notebook guide](docs/reproduction.md) · [Understand the results](docs/results.md)
 
-* **refute Conjectures 14 and 15** of Dochtermann, Espinoza, Frías-Armenta and Hernández, *Discrete Math.* 346 (2023) 113516, with explicit graphs whose certificates are finite and checked independently: the three K₄-free 14-vertex graphs G14a, G14b, G14c are I-contractible but not strong I-contractible; their one-edge extensions G14a + {0,1}, G14b + {0,3}, G14c + {2,3} are strong I-contractible, and deleting that edge is a legal strong deletion whose result is not strong I-contractible; and three 13-vertex ℤ/2-acyclic graphs (G13 and its two I₄-closure supergraphs) are not strong I-contractible. In particular the 15-vertex flag dunce hat is not the smallest example;
-* show that the clique complexes of the three 13-vertex graphs have **H₁ = ℤ/3**; with Adamaszek's classification of flag complexes on at most 12 vertices they attain the minimum order 13 for odd torsion in H₁ of a flag complex;
-* subject to the computational hypotheses H12, Hcasi, H13 and H14 stated in the paper (Section 3), show that 13 is the minimum order of a ℤ/2-acyclic graph outside 𝔍_S, that 14 is the minimum order in 𝔍 ∖ 𝔍_S and for Conjecture 15, and that exactly **eight** K₄-free graphs on 14 vertices lie in 𝔍 ∖ 𝔍_S: the three stuck (minimal-edge) ones G14a, G14b, G14c and five obtained from them by I₄ edge additions (`data/I_not_strong_14_closure.tsv`);
-* extend the cardinality table of that paper (classes 𝔍, 𝔍_S, 𝔍_VS, k-Dis, …) through n = 13, with |𝔍_VS(12)| = 22,666,525,713 and |𝔍_VS(13)| = 5,619,007,241,580. The strong-membership entries of rows 12 and 13 carry the implementation qualification of the paper (Section 4); the K₄-free row 14 is a computation in progress.
+## One edge makes the difference
 
-**Status (16 Oct 2026).** An external audit found that the memo of the 𝔍_S decision in `src/atascadas.c` identifies a state by a hash that is not collision-free (finding H-01). No misclassification has been observed, but the affected computations will be recomputed with an exact key (`v2/`, `verification/atascadas_memo_exacto.c`) before the hypotheses above are replaced by verified statements; see `v2/README.md`.
+The graph $G_{14}^a$ has 14 vertices and 44 edges. It belongs to $\mathfrak I$ but not to $\mathfrak I_S$. Adding the edge $\{0,1\}$ gives a strong I-contractible graph. The reverse deletion is admissible and leaves the strong class: this is the counterexample to Conjecture 15.
 
-The certificates of the individual graphs above (homology, stuck test, deletion and gluing sequences) can be re-verified on a laptop in under a minute with `./verify.sh` (Python 3 only; the C and `geng` levels are optional). The exhaustive searches need a cluster (see below).
+Export the pair, preserving the labels in the article:
 
-## Layout
+```bash
+python3 generate.py --graph G14a --format json
+python3 generate.py --graph G14a --extension --format json
+```
 
-| Path | Content |
+The 13-vertex witness `G13` instead has first integral homology $\mathbb Z/3$ and vanishing reduced homology over $\mathbb F_2$. Its disc construction explains the torsion. The [examples guide](docs/examples.md) connects each construction to its certificate and proof.
+
+## Reproduce the finite results
+
+Clone the repository, enter its directory, and run:
+
+```bash
+python3 reproduce.py
+```
+
+On a POSIX system (tested on Linux), Python 3.11 or later and its standard library are sufficient. The command creates a new directory under `results/` containing `report.txt`, `report.json` and the check outputs. It checks the witnesses, reduction traces, finite closures, unfoldings, homology, table-source correspondence, notebook and input hashes. A failed or incomplete required check returns a nonzero exit code.
+
+To include a comparison of the current C classifier with direct mathematical recurrences on every labelled graph of order at most five:
+
+```bash
+python3 reproduce.py --extended --cc gcc
+```
+
+This additional check requires a C11 compiler. Neither command repeats the large census. [Reproduction](docs/reproduction.md) describes both routes, their requirements and expected outputs. [Full reproduction](docs/full-reproduction.md) gives the generation, classification and aggregation procedure for the table, with its substantially larger resource requirements.
+
+## What is counted
+
+All entries count connected graphs up to isomorphism. Rows **3–13 are unrestricted**. **Every column of row 14 counts only K4-free graphs**. The table separates acyclicity over $\mathbb Z$ from acyclicity over $\mathbb F_2$.
+
+| Result | Scope |
 |---|---|
-| `src/atascadas.c` | The C program used for the search (filter cascade + exact deciders for 𝔍_S, 𝔍_VS, k-Dis; modes `atascadas`, `casi`, `tabla`, `verificar`, `cerradura`, `traza`, `icert`). Comments are in Spanish ("atascada" = *stuck*); `src/README.md` documents every mode in English. |
-| `tools/clique_homology.py` | Dependency-free exact integer homology (Smith normal form) of clique complexes from graph6. Detects odd torsion. |
-| `tools/strong_contractible.py` | Dependency-free exact decision procedure for 𝔍_S with explicit deletion traces and stuck test. Independent of the C code. |
-| `tools/dunce_hat.py` | Builds the 15-vertex flag dunce hat of DEFH 2023, Fig. 2, and records the label map to graph6. |
-| `data/` | All graphs found, in graph6 with English headers (see `data/README.md`). |
-| `certificates/` | Human-readable certificates regenerated by the tools: deletion traces, homology groups, stuck/𝔍_S status, C-program reports. |
-| `yuca/` | SLURM wrapper scripts exactly as submitted, the source as compiled on the cluster for each run (`as_run/`), and the complete logs: per-slice coverage registry, `sacct` accounting, duplicate-slice list, summaries. |
-| `figures/` | Figures of the paper (PDF/SVG/PNG) and the script that regenerates them. |
-| `paper/` | LaTeX sources of the manuscript (version 3, 16 Oct 2026); `make_tables.py` regenerates its tables from `data/` byte for byte. |
-| `v2/` | Version 2 of the classifier and of the campaign pipeline, written after the external audit (exact-key memo, strict graph6 parsing, per-slice receipts), with its tests; see `v2/README.md`. |
-| `verification/` | Independent re-implementations and cross-checks (see the last section). |
-| `verify.sh` | One-command re-verification (see below). |
+| Minimum order for $\mathbb F_2$-acyclic graphs outside $\mathfrak I_S$: 13 | All connected graphs |
+| Minimum order for $\mathfrak I\setminus\mathfrak I_S$: 14 | All graphs |
+| Eight classes in $\mathfrak I\setminus\mathfrak I_S$, with minimum 44 edges | K4-free graphs of order 14 |
+| Equality of integral acyclicity and I-contractibility | Only the classified universes above |
+| 2,271 non-strong classes from the 51 stuck seeds | The stated admissible-edge closures |
 
-## Main objects
+The complete large enumerations are represented by selected historical aggregate records and their finite exceptional sets. The finite verifiers use code separate from the census classifier; they do not constitute an independent recount of its entire input universes. [Verification scope](docs/verification-scope.md) connects each assertion to its evidence and states the limits of the retained production records.
 
-Vertex labels below are those of the graph6 strings (0-based).
+## Find the material
 
-| Name | graph6 | n | m | triangles | status |
-|---|---|---|---|---|---|
-| G13 | `L?qa``{wttym~o` | 13 | 40 | 28 | stuck, ℤ/2-acyclic, **H₁(ℤ) = ℤ/3**, not in 𝔍 |
-| G13 + {4,7}, G13 + {4,7} + {5,6} (I₄-closure) | `L?qa`p{wttym~o`, `L?qahp{wttym~o` | 13 | 41, 42 | 29, 30 | ℤ/2-acyclic, not in 𝔍_S, H₁(ℤ) = ℤ/3 |
-| **G14a** | `M?b@bFHNEk@~|k}U?` | 14 | 44 | 31 | stuck, contractible, **𝔍 ∖ 𝔍_S**; G14a + {0,1} ∈ 𝔍_S (18 deletions) |
-| **G14b** | `M?B@thku?~Lylk}[?` | 14 | 45 | 32 | stuck, contractible, **𝔍 ∖ 𝔍_S**; G14b + {0,3} ∈ 𝔍_S |
-| **G14c** | `M?r@d`ifbiFfo}~o?` | 14 | 45 | 32 | stuck, contractible, **𝔍 ∖ 𝔍_S**; G14c + {2,3} ∈ 𝔍_S |
-| Dunce hat (DEFH Fig. 2A) | `N|thHsL`sHoI`RPOwLG` | 15 | 46 | 32 | stuck, contractible, 𝔍 ∖ 𝔍_S; + {9,12} (= Fig. 2B edge) ∈ 𝔍_S |
+| Location | Contents |
+|---|---|
+| [`data/cardinalities.csv`](data/cardinalities.csv) | Table with universes and coefficient columns |
+| [`finite/certificates/`](finite/certificates/) | Witnesses, disc presentations, links and reductions |
+| [`finite/data/`](finite/data/) | The 51 seeds, eight K4-free positive exceptions, 20 strictly 2-dismantlable graphs, and closure catalogs |
+| [`data/census/`](data/census/) | Selected aggregates, all residuals and their homology adjudications |
+| [`v2/`](v2/) | Current complete-state classifier and partition driver |
+| [`verification/`](verification/) | Bounded implementation checks and historical source comparisons |
+| [`tools/figures/`](tools/figures/) | Exact witness data, TikZ generators and drawing verification |
+| [`docs/provenance/`](docs/provenance/) | Selection and migration records |
 
-The 48 remaining stuck K₄-free graphs on 14 vertices all have H₁(ℤ) = ℤ/3 (`data/stuck_14_K4free.tsv`).
+[Review and verification](docs/review.md) records the adversarial review scope and local validation.
 
-## Searches performed on YUCA
-
-| n | class enumerated (`geng` flags) | graphs processed | wall time | cores | result |
-|---|---|---|---|---|---|
-| 12 | connected (`-c`) | 164,059,830,476 | 8 min | 448 | full table row; no ℤ/2-acyclic graph outside 𝔍_S |
-| 13 | connected, 4 ≤ δ, Δ ≤ 11 (`-C -d4 -D11`) | 21,011,415,992,470 | 7 h 10 min | 448 | exactly 1 stuck graph (G13); its I₄-closure adds 2 graphs; all have H₁ = ℤ/3 |
-| 14 | K₄-free, connected, 4 ≤ δ, Δ ≤ 12 (`-k -C -d4 -D12`, nauty 2.8) | 64,856,470,381,820 | ≈ 33 h | 896 (two accounts) | exactly 51 stuck graphs: 3 contractible (G14a,b,c) + 48 with H₁ = ℤ/3 |
-
-The last column reports what the recorded runs returned; the 𝔍_S decisions in them carry the memo qualification of the status note above. The restriction to minimum degree ≥ 4, maximum degree ≤ n − 2 and 2-connectivity is justified by the reduction lemma in the paper (Section 3; the "almost-stuck" pieces are enumerated by `--modo casi` and shown not to exist for ≤ 11 vertices, so every stuck counterexample with ≤ 22 vertices is 2-connected). The search for n = 14 was split into 2,000,000 `res/mod` slices; `yuca/logs/n14_listas_distintas.txt.gz` lists every slice processed (2,000,000 distinct, 0 missing). 692 slices were processed by both fronts; both wrote to the same per-slice paths, so the archive keeps one copy per slice and the identity of the two outputs is not established (audit finding H-03; see `yuca/README.md`).
-
-## Re-verification
-
-```
-./verify.sh                 # Python level (always) + C level (if gcc) + table n <= 9 (if geng)
-./verify.sh --full-table    # also re-derives the table rows n = 10, 11 (about one hour on 8 cores)
-```
-
-Reproducing the n = 12–14 rows requires a cluster; the wrapper scripts in `yuca/` are self-contained SLURM array jobs and only need `geng` (nauty ≥ 2.8 for the `-k` flag) and `gcc`.
-
-## Citing
-
-See `CITATION.cff`. Code is released under the MIT License; data, figures and text under CC BY 4.0 (`LICENSE`, `LICENSE-DATA`).
-
-## Acknowledgements
-
-Computations were carried out on the YUCA cluster of the Área de Cómputo de Alto Rendimiento de la Universidad de Sonora (ACARUS), projects p029 and p011. Graph enumeration used `geng` from B. D. McKay's nauty/Traces.
-
-## Independent verification code
-`verification/indep.py` is a from-scratch implementation (own graph6 parser, clique complex, exact integer Smith normal form, Z/2 acyclicity, exact strong-I-contractibility decision) used for the Phase-1 cross-check reported in `verification/VERIFICACION_INDEPENDIENTE.md`; `tools/ripser_z3_check.py` is a second, Ripser-based check (Betti numbers over Z/2 and Z/3). The third cross-check (Wolfram Language `SmithDecomposition`, key graphs only) was run through a Wolfram connector; the exact WL code sent and its full outputs are in `verification/wolfram_codigo_y_salidas.json`.
+The paper is a complete draft for author review. It has no assigned arXiv identifier or publication DOI. The [citation file](CITATION.cff) records the authors and manuscript title. Original code is under the [MIT License](LICENSE); original mathematical notes, data and figures are under [CC BY 4.0](LICENSE-DATA). Third-party works retain their own licenses and attribution.

@@ -1,0 +1,33 @@
+{
+  "source_sha256": "36c9019dee6106b807d1f974dbc87358ba4f1ed0a94b0bc3560fa919e111427d",
+  "executable_sha256": "3816b5d17d14ee44c766e0ed7fb729d69e1c378c16c5d387d0f73ed88a418348",
+  "compile_exit": 0,
+  "runs": [
+    {
+      "order": 5,
+      "empty_degree_range": true,
+      "counter": "total=0 after_vertex=0 after_edge=0 after_euler=0",
+      "survivor_stream_equal": true
+    },
+    {
+      "order": 6,
+      "empty_degree_range": false,
+      "counter": "total=1 after_vertex=1 after_edge=1 after_euler=0",
+      "survivor_stream_equal": true
+    },
+    {
+      "order": 7,
+      "empty_degree_range": false,
+      "counter": "total=5 after_vertex=2 after_edge=2 after_euler=0",
+      "survivor_stream_equal": true
+    },
+    {
+      "order": 8,
+      "empty_degree_range": false,
+      "counter": "total=51 after_vertex=11 after_edge=9 after_euler=0",
+      "survivor_stream_equal": true
+    }
+  ],
+  "known_stuck_seeds_retained": 51,
+  "large_universes_recomputed": false
+}

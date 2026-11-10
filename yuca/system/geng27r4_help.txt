@@ -1,8 +1,0 @@
-
-Usage: geng [-cCmtfbd#D#] [-uygsnh] [-lvq] 
-              [-x#X#] n [mine[:maxe]] [res/mod] [file]
-
- Generate all graphs of a specified class.
-
-      n    : the number of vertices
- mine:maxe : a range for the number of edges

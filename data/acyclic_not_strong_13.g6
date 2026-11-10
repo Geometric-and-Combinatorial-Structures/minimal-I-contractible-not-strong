@@ -1,6 +1,8 @@
-# All Z/2-acyclic graphs on 13 vertices that are NOT strong I-contractible (exhaustive: geng -C -d4 -D11 13, 21,011,415,992,470 graphs).
-# The first is the unique stuck one (40 edges, 28 triangles, |Aut| = 8); the other two are its I4-closure (41 and 42 edges).
-# All three have H_1(clique complex; Z) = Z/3, H_2 = 0: Moore spaces M(Z/3,1); hence none is I-contractible.
+# The three Z/2-acyclic graphs of order 13 outside strong I-contractibility.
+# The first is the unique stuck graph G13; the others are its two edge-addition variants.
+# All three are K4-free with H_1(clique complex; Z) = Z/3 and H_2 = 0.
+# Exhaustiveness and minimum order are established in the v5 classification theorem.
+# Vertex labels follow graph6 order; the edge counts are 40, 41 and 42.
 L?qa``{wttym~o
 L?qa`p{wttym~o
 L?qahp{wttym~o

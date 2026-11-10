@@ -1,0 +1,1 @@
+total=0 after_vertex=0 after_edge=0 after_euler=0

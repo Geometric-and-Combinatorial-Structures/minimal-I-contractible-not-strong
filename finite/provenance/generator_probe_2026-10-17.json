@@ -1,0 +1,39 @@
+{
+  "schema": "tool_probe/1",
+  "utc": "2026-10-17T07:07:59.781568+00:00",
+  "job_id": "2089946",
+  "tools": {
+    "geng27": {
+      "path": "<cluster>/geng",
+      "sha256": "4c7d127ad7ee2f531c431bdc536f0753df84d4f5b04beb6f4aa81f696d707ddb",
+      "version_exit": 0,
+      "version_text": "Nauty&Traces version 2.7000 (32 bits)\n",
+      "help_exit": 0,
+      "help_text": "\nUsage: geng [-cCmtfbd#D#] [-uygsnh] [-lvq] \n              [-x#X#] n [mine[:maxe]] [res/mod] [file]\n\n Generate all graphs of a specified class.\n\n      n    : the number of vertices\n mine:maxe : a range for the number of edges\n              #:0 means '# or more' except in the case 0:0\n   res/mod : only generate subset res out of subsets 0..mod-1\n\n     -c    : only write connected graphs\n     -C    : only write biconnected graphs\n     -t    : only generate triangle-free graphs\n     -f    : only generate 4-cycle-free graphs\n     -b    : only generate bipartite graphs\n                (-t, -f and -b can be used in any combination)\n     -m    : save memory at the expense of time (only makes a\n                difference in the absence of -b, -t, -f and n <= 28).\n     -d#   : a lower bound for the minimum degree\n     -D#   : an upper bound for the maximum degree\n     -v    : display counts by number of edges\n     -l    : canonically label output graphs\n\n     -u    : do not output any graphs, just generate and count them\n     -g    : use graph6 output (default)\n     -s    : use sparse6 output\n     -h    : for graph6 or sparse6 format, write a header too\n\n     -q    : suppress auxiliary output (except from -v)\n\n  See program text for much more information.\n",
+      "version_token": "2.7000",
+      "PASS": true
+    },
+    "geng28": {
+      "path": "<cluster>/geng28",
+      "sha256": "179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb",
+      "version_exit": 0,
+      "version_text": "Nauty&Traces version 2.9301 (32 bits)\n",
+      "help_exit": 0,
+      "help_text": "\nUsage: geng [-cCmtfkbd#D#] [-kTSPF] [-uygsnh] [-lvq] \n              [-x#X#] n [mine[:maxe]] [res/mod] [file]\n\n Generate all graphs of a specified class.\n\n      n    : the number of vertices\n mine:maxe : a range for the number of edges\n              #:0 means '# or more' except in the case 0:0\n   res/mod : only generate subset res out of subsets 0..mod-1 (see below)\n\n     -c    : only write connected graphs\n     -C    : only write biconnected graphs\n     -t    : only generate triangle-free graphs\n     -f    : only generate 4-cycle-free graphs\n     -p    : only generate 5-cycle-free graphs\n     -k    : only generate K4-free graphs\n     -T    : only generate chordal graphs\n     -S    : only generate split graphs\n     -P    : only generate perfect graphs\n     -F    : only generate claw-free graphs\n     -b    : only generate bipartite graphs\n                (-t, -f and -b can be used in any combination)\n\t\tThe combination -bT gives bipartite graphs with no\n                  induced cycles longer than 4-cycles.\n     -m    : save memory at the expense of time (only makes a\n                difference in the absence of -b, -t, -f and n <= 28).\n     -d#   : a lower bound for the minimum degree\n     -D#   : an upper bound for the maximum degree\n     -v    : display counts by number of edges\n     -l    : canonically label output graphs\n\n     -u    : do not output any graphs, just generate and count them\n     -g    : use graph6 output (default)\n     -s    : use sparse6 output\n     -h    : for graph6 or sparse6 format, write a header too\n\n     -q    : suppress auxiliary output (except from -v)\n\n res/mod splitting is controlled by two parameters -X# and -x# whose default\n values are displayed when splitting is used. Increasing them will make the\n division into parts more even at the expense of more overhead, but you must\n use the same values for all parts. Splitting obeys the laws of modular\n arithmetic, for example 3/7 is the union of 3/14 and 10/14, but when\n subdividing like this you must manually provide the same -X and -x values\n to the smaller parts.\n",
+      "version_token": "2.9301",
+      "PASS": true
+    },
+    "labelg": {
+      "path": "<cluster>/labelg",
+      "sha256": "f6a1ded5fcabc96a075090dd9992da1c7115862fc1d6cdcfb99c1643106b8f33",
+      "version_exit": 0,
+      "version_text": "Nauty&Traces version 2.7000 (64 bits)\n",
+      "help_exit": 0,
+      "help_text": "\nUsage: labelg [-q] [-sgz | -C#W#] [-fxxx] [-S|-t] \n                          [-i# -I#:# -K#] [infile [outfile]]\n\n Canonically label a file of graphs or digraphs.\n\n    -s  force output to sparse6 format\n    -g  force output to graph6 format\n    -z  force output to digraph6 format\n        If neither -s, -g or -z are given, the output format is\n        determined by the header or, if there is none, by the\n        format of the first input graph. As an exception, digraphs\n        are always written in digraph6 format.\n    -S  Use sparse representation internally.\n         Note that this changes the canonical labelling.\n         Multiple edges are not supported.  One loop per vertex is ok.\n    -t  Use Traces.\n         Note that this changes the canonical labelling.\n         Multiple edges and loops are not supported, nor invariants.\n\n    -C# Make an invariant in 0..#-1 and output the number of graphs\n\twith each value of the invariant.  Don't write graphs unless\n        -W too.\n    -W# (requires -C) Output the graphs with this invariant value,\n        in their original labelling.  Don't write the table.\n\n    The output file will have a header if and only if the input file does.\n\n    -fxxx  Specify a partition of the point set.  xxx is any\n        string of ASCII characters except nul.  This string is\n        considered extended to infinity on the right with the\n        character 'z'.  One character is associated with each point,\n        in the order given.  The labelling used obeys these rules:\n         (1) the new order of the points is such that the associated\n        characters are in ASCII ascending order\n         (2) if two graphs are labelled using the same string xxx,\n        the output graphs are identical iff there is an\n        associated-character-preserving isomorphism between them.\n        No option can be concatenated to the right of -f.\n\n    -i#  select an invariant (1 = twopaths, 2 = adjtriang(K), 3 = triples,\n        4 = quadruples, 5 = celltrips, 6 = cellquads, 7 = cellquins,\n        8 = distances(K), 9 = indsets(K), 10 = cliques(K), 11 = cellcliq(K),\n       12 = cellind(K), 13 = adjacencies, 14 = cellfano, 15 = cellfano2,\n       16 = refinvar(K))\n    -I#:#  select mininvarlevel and maxinvarlevel (default 1:1)\n    -K#   select invararg (default 3)\n\n    -q  suppress auxiliary information\n",
+      "version_token": "2.7000",
+      "PASS": true
+    }
+  },
+  "PASS": true,
+  "limitation": "The digests identify the executables observed by this probe. They do not authenticate the executable bytes used by an earlier invocation, or the script submitted to the scheduler."
+}

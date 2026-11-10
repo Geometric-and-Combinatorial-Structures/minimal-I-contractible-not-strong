@@ -1,0 +1,98 @@
+{
+  "generated_utc": "2026-11-10T09:12:02.588126+00:00",
+  "universe": "all connected K4-free graphs of each order 2 through 7, up to isomorphism",
+  "generator": "nauty geng",
+  "geng_sha256": "7d3e7c585e52445c1e3ab4d1d19abcaf8b45fbb351ea15663e7e2307370846f5",
+  "same_generator_digest_as_retained_record": true,
+  "catalogue": "connected_n2_7.g6",
+  "catalogue_sha256": "4190865d7edcfec7d21a8c7ff8e09d9ff47faa6c10972153c9889bc59b324266",
+  "classes": 643,
+  "runs": [
+    {
+      "order": 2,
+      "options": [
+        "-kc",
+        "2"
+      ],
+      "exit": 0,
+      "connected_K4_free_graphs": 1,
+      "stream_sha256": "fae4bfc454bd04363dcd5222772f2973b1193e1ff6f676e822a427323a677ef9",
+      "generator_stderr": ">A <PROJECT>/11_Auditoria_externa_2026-10/AUDIT_OUT/environment/nauty2_8_9/geng -ckd1D1 n=2 e=1\n>Z 1 graphs generated in 0.00 sec",
+      "matches_retained_historical_stream": true
+    },
+    {
+      "order": 3,
+      "options": [
+        "-kc",
+        "3"
+      ],
+      "exit": 0,
+      "connected_K4_free_graphs": 2,
+      "stream_sha256": "5966edf890849db6cb03626431916231a81a30c9db9a4781a4a8f2e5dc7e6129",
+      "generator_stderr": ">A <PROJECT>/11_Auditoria_externa_2026-10/AUDIT_OUT/environment/nauty2_8_9/geng -ckd1D2 n=3 e=2-3\n>Z 2 graphs generated in 0.00 sec",
+      "matches_retained_historical_stream": true
+    },
+    {
+      "order": 4,
+      "options": [
+        "-kc",
+        "4"
+      ],
+      "exit": 0,
+      "connected_K4_free_graphs": 5,
+      "stream_sha256": "a69bebc1c15bd24d0284700a64bfce1a3a8db68435cdbafa5b176717592c4324",
+      "generator_stderr": ">A <PROJECT>/11_Auditoria_externa_2026-10/AUDIT_OUT/environment/nauty2_8_9/geng -ckd1D3 n=4 e=3-6\n>Z 5 graphs generated in 0.00 sec",
+      "matches_retained_historical_stream": true
+    },
+    {
+      "order": 5,
+      "options": [
+        "-kc",
+        "5"
+      ],
+      "exit": 0,
+      "connected_K4_free_graphs": 17,
+      "stream_sha256": "f630a092fc217ab1cd09ce74f11cae0ab95d3652451c99724a5ff7a4b547a705",
+      "generator_stderr": ">A <PROJECT>/11_Auditoria_externa_2026-10/AUDIT_OUT/environment/nauty2_8_9/geng -ckd1D4 n=5 e=4-10\n>Z 17 graphs generated in 0.00 sec",
+      "matches_retained_historical_stream": true
+    },
+    {
+      "order": 6,
+      "options": [
+        "-kc",
+        "6"
+      ],
+      "exit": 0,
+      "connected_K4_free_graphs": 82,
+      "stream_sha256": "c88316c8f3a8fbd5184b5b961f3a0e8ce165a5a073277afa521ea93ee9035d80",
+      "generator_stderr": ">A <PROJECT>/11_Auditoria_externa_2026-10/AUDIT_OUT/environment/nauty2_8_9/geng -ckd1D5 n=6 e=5-15\n>Z 82 graphs generated in 0.00 sec",
+      "matches_retained_historical_stream": true
+    },
+    {
+      "order": 7,
+      "options": [
+        "-kc",
+        "7"
+      ],
+      "exit": 0,
+      "connected_K4_free_graphs": 536,
+      "stream_sha256": "74b796a16d6c2e5098107a9ac670459842d333fbcd8c865a71e66ec6b3ce5a6a",
+      "generator_stderr": ">A <PROJECT>/11_Auditoria_externa_2026-10/AUDIT_OUT/environment/nauty2_8_9/geng -ckd1D6 n=7 e=6-21\n>Z 536 graphs generated in 0.00 sec",
+      "matches_retained_historical_stream": true
+    }
+  ],
+  "scope": "Fresh bounded generation, not a large-census rerun. A stored catalogue alone does not prove exhaustive coverage.",
+  "normalisation": {
+    "fields": [
+      "runs.0.generator_stderr",
+      "runs.1.generator_stderr",
+      "runs.2.generator_stderr",
+      "runs.3.generator_stderr",
+      "runs.4.generator_stderr",
+      "runs.5.generator_stderr"
+    ],
+    "rule": "The absolute project-directory prefix in generator stderr is replaced by <PROJECT>/.",
+    "original_sha256": "971f14bb407e6c549447a0c2d433c1a60d23119946bf218dafc72b9c71654a67",
+    "unchanged": "All numerical results, existing digests, arguments, timestamps and other record fields are unchanged."
+  }
+}

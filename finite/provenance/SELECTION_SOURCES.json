@@ -1,0 +1,189 @@
+[
+  {
+    "file": "nauty_build.json",
+    "private_record": "record-001",
+    "original_sha256": "401fa54598e45bf405671b21d74137b2f2ac30c3fbc0e988716e4867489d8f1d",
+    "sha256": "ac855bddde7026026bfbcef79805b038d3e1e685880551eb190dc0f17cdf80e7",
+    "transformation": "neutral paths, removed personal fields, English field names",
+    "referenced_source_archive_sha256": "c97ab42bf48796a86a598bce3e9269047ca2b32c14fc23e07208a244fe52c4ee"
+  },
+  {
+    "file": "almost_stuck_n11_runs.json",
+    "private_record": "record-002",
+    "original_sha256": "b1869afb3f3c30d36b39264996de3a0ebbe77d76c480344dd8168cd244a1f816",
+    "sha256": "3abde23f7455bdcab4feb4a89ef962d2003c3104c964de3a31f82424ab2f99d1",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "search_task_intervals.tsv",
+    "private_record": "record-003",
+    "original_sha256": "76e320ad280f0a0ac9abeab8391e27f898a9e68a41d017891a1c0269cf42689d",
+    "sha256": "76e320ad280f0a0ac9abeab8391e27f898a9e68a41d017891a1c0269cf42689d",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "final_local_checks.json",
+    "private_record": "record-004",
+    "original_sha256": "6b9434e685792d4473be3fc0fd0e87a6970c3967cb807ca3f5c6ded4528a99eb",
+    "sha256": "4fe4bbf9436766add001df2694152ad408219b7ca9a44d8f6aaff01950ba86e2",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "order13_elapsed.txt",
+    "private_record": "record-005",
+    "original_sha256": "f760a66003d1af26b6edd616fc29021d0156a8e55021e586fe22ff5889ae6201",
+    "sha256": "f760a66003d1af26b6edd616fc29021d0156a8e55021e586fe22ff5889ae6201",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "order13_wrapper_log.txt",
+    "private_record": "record-006",
+    "original_sha256": "b12f0114300ba3cc0b1ee4263f6a2f5e1678700ce190367d2b0d6536e6d420d9",
+    "sha256": "185615d80e49f952c60c66dc066983c3d53e4b6d2e0231815d1e472b0863646c",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "exact_n11_summary.json",
+    "private_record": "record-007",
+    "original_sha256": "73902aad4c15000ffd15cd54b96ff7bf92d3bd9d7057c86d317dd022888956d6",
+    "sha256": "19e1bad8556762998f6b364e0b8171fa425b667f918b551cf99f722bc1ae2bd5",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "separate_order10_census.txt",
+    "private_record": "record-008",
+    "original_sha256": "1de628fab0b371f964ad687276e2d14fac070154cce66f4ed59b703e5f5fe4c1",
+    "sha256": "b75e263b19cef042a195a60d36dbf2eb55c451a881dd5351cdf5031c829abfed",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "generator_probe_2026-10-17.json",
+    "private_record": "record-009",
+    "original_sha256": "41428f3a8f5aa3bba2c71ba57810ca065ec6d47d45a6b1aa5f23fc4ef272c494",
+    "sha256": "cd6ceb6996ef756995e79c58ed2aa19be6011704d9b4b86d76cc9eb5d4254593",
+    "transformation": "neutral paths, removed personal fields, English field names; limitation restated as executable-identity scope"
+  },
+  {
+    "file": "search_elapsed_comparison.json",
+    "private_record": "record-010",
+    "original_sha256": "f9cd52f5a9a7aa25a437618b7d60835821bb1fc136dda438a60941662ec47553",
+    "sha256": "52bfa36ad64c74608280301c4a0100911f4085254e28b2af08c66374d86d34b3",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "separate_order10_commands.jsonl",
+    "private_record": "record-011",
+    "original_sha256": "91e618f46071856989b84a57a0b85371cf0e2393258e721f4e887fce3701932b",
+    "sha256": "02485f14b7a7231e94302e6a4e36f76457e042c5a40a4c55c58182e502b831ab",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "project_almost_stuck_orders3-11.txt",
+    "private_record": "record-012",
+    "original_sha256": "34138df9981fc841a92ed55be4bda2328a560905ef05abf0548fa5ef60c487ff",
+    "sha256": "ff08ee4fb286488441617b0417f4c9dacff40b64c72ebd1d0c9311f5c10dd7e8",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "small_order_counts.json",
+    "private_record": "record-013",
+    "original_sha256": "42674f5849066b886371226532f4138740395a70ee64caeae3cf094b8c6e33c3",
+    "sha256": "03d7fe1c32e0f126fd0e93b6547a8703472b20c528dda5fda14acb193cdc32c1",
+    "transformation": "neutral paths, removed personal fields, English field names"
+  },
+  {
+    "file": "nauty289_identity.json",
+    "private_record": "record-014",
+    "original_sha256": "e7e733168e8126d45e80c0a4de6457589b7b15d49460ee25bafaa25e7cbad7c9",
+    "sha256": "49f142b1c4fffa5252f2286e585d258a6e4340e03c288e9e9ee4d5ff34922fd5",
+    "transformation": "neutral paths, removed personal fields, English field names",
+    "referenced_executable_sha256": "7d3e7c585e52445c1e3ab4d1d19abcaf8b45fbb351ea15663e7e2307370846f5"
+  },
+  {
+    "file": "exact_n11_r0.stderr.txt",
+    "private_record": "record-015",
+    "original_sha256": "64fd2fa243cd26a55a94b060a3125a769829b7040bf07301f6599ccd0c08ee44",
+    "sha256": "4a8f5cbbd9a7c227067f6ea20a4b5101568220085a41ca214d068d21fff70aa4",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "exact_n11_r1.stderr.txt",
+    "private_record": "record-016",
+    "original_sha256": "e299aa733f511d614f27bbc2912948f7f894d2a5017a77ed6dfb7456dc3cb03b",
+    "sha256": "a56a75045f2ea691b5fa407b594c0bee905fbfd9274c63bf43867cd64ba9c0cd",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "exact_n11_r2.stderr.txt",
+    "private_record": "record-017",
+    "original_sha256": "72720d9e1ad1c7d65209174efff9375bb581d6c4ad62bef381301a1f9084f793",
+    "sha256": "c7fbbf0f83c27d3adf10f9decdfd4a32958f39f8f3b537f78f445a179c51b801",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "exact_n11_r3.stderr.txt",
+    "private_record": "record-018",
+    "original_sha256": "400194da5e58ab96776d0e34823c460b6383099b86e17d42a30e116ddbe909f3",
+    "sha256": "63b3f457814086b2f76eb1709754f389aa2559016a85661d6f62817996ef6b2d",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "almost_stuck_n11_r0.stderr.txt",
+    "private_record": "record-019",
+    "original_sha256": "9cb172859f9e14001159db8525e0de1b4b84890f899bdb5c3970413c0db93dcf",
+    "sha256": "b628a027847a0a0713158e058be17af99c1fba12d17ca14a552a5a259491a54c",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "almost_stuck_n11_r1.stderr.txt",
+    "private_record": "record-020",
+    "original_sha256": "b51a7a29fa6a0eb65711fa018886a8e01e31ca79da9fc248a4d2161847f5ae74",
+    "sha256": "09b17a0a9814d5d00a581460e0a45f90cde8c23fc9e719b62b156306af0a97a7",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "almost_stuck_n11_r2.stderr.txt",
+    "private_record": "record-021",
+    "original_sha256": "2fb7a69e5ba13c277f18bdf22c0d1b9c29017c3b92aaa0ef67157e9c2803eded",
+    "sha256": "d8cf43c39f04adc546f67a4a4bc82092e02a3cecdb61457c86dbc74f034913a2",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "almost_stuck_n11_r3.stderr.txt",
+    "private_record": "record-022",
+    "original_sha256": "d7ef48316591d2ab970e96fe90f561587a4d4191d3d9ac1270099115531692fd",
+    "sha256": "b4cc8cd249a87c56709e602fa32d435f44683407897545f8b81ffb9c456a0272",
+    "transformation": "English diagnostic labels; numerical values unchanged"
+  },
+  {
+    "file": "search_accounting_rows.tsv",
+    "private_record": "record-025",
+    "original_sha256": "b5be09b73eb2cbcd3bb46cf030b29537a9fee5fd7ff09dfb08b0ff71d2d84ece",
+    "sha256": "29169f7c0e20e06a767009af0ee7be115222f1b128b1579767fe4a9ab2d88117",
+    "transformation": "21 rows; identity columns normalised, numerical and timing columns unchanged",
+    "selected_original_lines_sha256": "a829774f03f3dba55f9a8f3de18ee9775f451a07e0f3baf3b1c63faca3e17d0f",
+    "source_lines": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81
+    ]
+  }
+]

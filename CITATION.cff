@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or data, please cite the repository and the accompanying paper."
-title: "Minimal I-contractible graphs that are not strong I-contractible: code, data and certificates"
+title: "Counterexamples and enumeration for contractible and dismantlable graphs: code, data and certificates"
 type: software
 authors:
   - family-names: Espinoza
@@ -16,11 +16,9 @@ authors:
     given-names: Héctor A.
     affiliation: Universidad de Sonora
 repository-code: https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong
-license: MIT
-# Development snapshot after the external audit; the certified release will be tagged once the
-# exact-key recomputations are finished.
-version: 1.1.0-dev
-date-released: 2026-10-16
+license:
+  - MIT
+  - CC-BY-4.0
 keywords:
   - I-contractible graphs
   - strong I-contractible graphs
@@ -30,7 +28,7 @@ keywords:
   - exhaustive graph enumeration
 preferred-citation:
   type: article
-  title: "Small non-strong I-contractible graphs and odd torsion in flag complexes"
+  title: "Counterexamples and enumeration for contractible and dismantlable graphs"
   status: in-preparation
   year: 2026
   authors:

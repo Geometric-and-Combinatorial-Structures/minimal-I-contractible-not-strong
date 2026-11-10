@@ -1,107 +1,337 @@
-\section{Algorithms and the computation on YUCA}\label{sec:algorithms}
+\section{Algorithms and the enumeration of graph classes}\label{sec:algorithms}
 
-The graph-search routines are implemented in a C program (\protect\path{src/atascadas.c} in the repository; \emph{atascada} is Spanish for \emph{stuck}) that reads graphs in \texttt{graph6} format from the output of \texttt{geng}~\cite{McKayPiperno2014}. Graphs have at most $15$ vertices, so vertex sets are bitmasks and neighbourhoods are arrays of bitmasks; cliques are enumerated by recursive extension. Independent re-implementations in pure Python of the exact $\IS$ decision and of integer homology (\protect\path{tools/}) are used for the certificates (Section~\ref{sec:data}).
+The table requires decisions about a graph and about the neighbourhoods
+that occur during its reductions. We first give exact procedures for
+these decisions. We then describe how to enumerate isomorphism classes
+and how to reduce the classification at order $14$ to a smaller family.
 
-\subsection{Homology and the stuck filter}
+\subsection{Cliques and homology}
 
-$\Ztwo$-homology of $\cl(H)$ for a small graph $H$ is computed by Gaussian elimination over $\mathrm{GF}(2)$ of the boundary matrices, with simplices up to dimension $\omega(H)-1$. The Euler characteristic $\chi(H)=\sum_k(-1)^{k-1}c_k(H)$ is obtained from the clique enumeration and is a much cheaper necessary condition ($\chi=1$) for $\Ztwo$-acyclicity. Integer homology of the candidates is computed by exact Smith normal forms over $\ZZ$. For the $51$ stuck graphs on $14$ vertices, the largest edge--triangle boundary matrix is $47\times34$. The torsion of $H_k$ equals that of the cokernel of $\partial_{k+1}$, since the quotient by $H_k$ is the free abelian group $\operatorname{im}\partial_k$; the free rank is obtained from the two adjacent boundary ranks.
+Fix an ordering of the vertices of a nonempty graph $G$. Starting with
+each vertex, extend an increasing clique by adjoining a larger vertex
+adjacent to all its members, recording each clique as it is formed.
+Continue until no extension is possible.
+Every clique has a unique increasing order and a unique sequence of
+initial segments, so this procedure lists it exactly once. In particular,
+it determines all dimensions of $\cl(G)$, not only its triangles.
 
-Under $\mathrm{H12}$ of Section~\ref{sec:reduction}, Algorithm~\ref{alg:stuck} decides whether a graph in the stated search range is stuck by a cascade of tests of increasing cost; the tests are ordered so that the overwhelming majority of graphs is rejected early.
+For an increasing clique $[v_0,\ldots,v_i]$, use the boundary
+\[
+ \partial_i[v_0,\ldots,v_i]
+   =\sum_{j=0}^i(-1)^j[v_0,\ldots,\widehat v_j,\ldots,v_i].
+\]
+Adjoin the augmentation $\partial_0:C_0\to\ZZ$, which sends every
+vertex to $1$. Write $f_i=\operatorname{rank} C_i$ and let $r_i(R)$
+denote the rank of $\partial_i$ over the field $R$. Since consecutive
+boundaries compose to zero, elementary linear algebra gives
+\begin{equation}\label{eq:betti}
+ \dim_R\widetilde H_i(G;R)=f_i-r_i(R)-r_{i+1}(R)
+ \qquad(i\ge0),
+\end{equation}
+where $r_0(R)=1$ and the rank above the highest dimension is zero.
+Thus elimination over $\mathbb F_2$ decides membership in
+$\mathcal A_{\mathbb F_2}$.
+The equality $\chi(G)=1$ is a necessary preliminary condition, but is
+not a substitute for the homology calculation.
 
-\begin{algorithm}[t]
-\caption{\textsc{Stuck}$(G)$ --- filter cascade}\label{alg:stuck}
-\KwIn{a connected graph $G$ with $2\le n\le14$, no universal vertex, and hypothesis $\mathrm{H12}$}
-\KwOut{\textbf{true} iff $G$ is stuck}
-\ForEach{vertex $v$}{\lIf{$|\Nb(v)|<2$ \textbf{or} $\Nb(v)$ is a cone}{\Return \textbf{false}}}
-\lIf{$\chi(G)\neq 1$}{\Return \textbf{false}}
-\ForEach{vertex $v$}{\lIf{$\Nb(v)$ is $\Ztwo$-acyclic}{\Return \textbf{false}}}
-\ForEach{edge $uv$}{\lIf{$\Nb(u,v)\neq\emptyset$ \textbf{and} $\Nb(u,v)$ is $\Ztwo$-acyclic}{\Return \textbf{false}}}
-\lIf{$G$ is not $\Ztwo$-acyclic}{\Return \textbf{false}}
-\Return \textbf{true}
-\end{algorithm}
+Integral homology also requires torsion information. If $d_{i+1,j}$
+are the nonzero Smith factors of $\partial_{i+1}$, then
+\begin{equation}\label{eq:integral-homology}
+ \widetilde H_i(G;\ZZ)\cong
+ \ZZ^{\,f_i-r_i(\mathbb Q)-r_{i+1}(\mathbb Q)}
+ \oplus\bigoplus_{d_{i+1,j}>1}\ZZ/d_{i+1,j}.
+\end{equation}
+Indeed, the augmented chain complex gives a short exact sequence
+\[
+ 0\longrightarrow\widetilde H_i(G;\ZZ)
+ \longrightarrow C_i/\operatorname{im}\partial_{i+1}
+ \longrightarrow\operatorname{im}\partial_i\longrightarrow0.
+\]
+Its last term is free abelian, so the sequence splits. The Smith
+factors describe the middle term, and the two adjacent rational ranks
+give the displayed free rank. Formula~\eqref{eq:integral-homology},
+in every dimension present, therefore decides integral acyclicity.
 
-The acyclicity test for a neighbourhood $H$ is itself a cascade: $H$ disconnected $\Rightarrow$ not acyclic; $H$ $0$-dismantlable (greedy cone-vertex removal) $\Rightarrow$ acyclic; $\chi(H)\ne1$ $\Rightarrow$ not acyclic; otherwise compute $\widetilde H_*(H;\Ztwo)$. The \emph{almost stuck} variant used for Proposition~\ref{prop:almost} omits the initial cone/degree rejection and permits universal vertices. It tests $\chi=1$, counts vertices with acyclic neighbourhood and accepts exactly one, then applies the edge-neighbourhood and full homology tests.
+\subsection{Strong and vertex reductions}
 
-\subsection{Exact decision of $\IS$, $\IVS$ and $k$-Dis}
+Let $S(G)$ be a truth value. Set $S(\emptyset)=\mathrm{false}$ and
+$S(K_1)=\mathrm{true}$. For a graph with at least two vertices evaluate
+\begin{align}
+ S(G)={}&\bigvee_{v\in V(G)}
+ \bigl(S(\Nb_G(v))\land S(G-v)\bigr)\notag\\
+ &{}\lor\bigvee_{uv\in E(G)}
+ \bigl(S(\Nb_G(u,v))\land S(G-uv)\bigr).
+ \label{eq:strong-rec}
+\end{align}
+Evaluation may stop when one conjunction is true; a negative answer
+requires every conjunction to be false. The argument of $S$ is always
+the current graph, including the edges that remain after earlier
+deletions.
 
-Since the one-edge certificates of Section~\ref{sec:fourteen} show that a legal strong edge deletion can leave $\IS$, we decide $\IS$ by exhaustive search over deletion sequences (Algorithm~\ref{alg:IS}). The mathematical algorithm memoises the complete pair (vertex set, edge set) of the current graph; a $0$-dismantlable graph is accepted immediately (\cite[Lemma~19]{DEFH2023}); the neighbourhood conditions are decided recursively by the same procedure. $\IVS$ and $k$-Dis are decided by dynamic programming over the $2^n$ induced subgraphs: a set $S$ is reducible if $|S|=1$ or some $v\in S$ has $\Nb_{G[S]}(v)$ in the relevant class and $S\setminus\{v\}$ reducible.
+\begin{proposition}\label{prop:IS-correct}
+The evaluation of~\eqref{eq:strong-rec} terminates and returns true
+exactly when $G\in\IS$. A true answer determines a reduction to $K_1$
+and reductions of the neighbourhoods that justify its steps.
+\end{proposition}
+\begin{proof}
+Induct on $|V(G)|+|E(G)|$. Every neighbourhood and every remaining
+graph in~\eqref{eq:strong-rec} has smaller measure, and there are
+finitely many alternatives. This proves termination, starting from
+the two stated bases. If a conjunction is true, induction supplies
+the two reductions that make the corresponding first deletion valid;
+prepending that deletion proves $G\in\IS$. Conversely, a strong
+reduction of a non-singleton graph has a first vertex or edge deletion.
+Its neighbourhood and remainder are in $\IS$, so induction makes
+the corresponding conjunction true. Recording a successful choice
+at each occurrence gives the asserted reductions.
+\end{proof}
 
-\begin{algorithm}[t]
-\caption{{\normalfont\scshape InIS}$(G)$ --- exact membership in $\IS$}\label{alg:IS}
-\KwIn{a graph $G=(V,E)$}
-\KwOut{\textbf{true} iff $G\in\IS$ (and, on success, a deletion sequence)}
-\lIf{$|V|=0$}{\Return \textbf{false}}
-\lIf{$|V|=1$ \textbf{or} $G$ is $0$-dismantlable}{\Return \textbf{true}}
-\lIf{$(V,E)$ is memoised}{\Return the stored answer}
-\ForEach{vertex $v$ with $\Nb(v)\neq\emptyset$ and {\normalfont\scshape InIS}$(\Nb(v))$}{\lIf{{\normalfont\scshape InIS}$(G-v)$}{memoise and \Return \textbf{true}}}
-\ForEach{edge $uv$ with $\Nb(u,v)\neq\emptyset$ and {\normalfont\scshape InIS}$(\Nb(u,v))$}{\lIf{{\normalfont\scshape InIS}$(G-uv)$}{memoise and \Return \textbf{true}}}
-memoise and \Return \textbf{false}
-\end{algorithm}
+For vertex reductions, all intermediate graphs are induced subgraphs
+of a fixed graph $G$. For $U\subseteq V(G)$ and $v\in U$, put
+$N_U(v)=U\cap V(\Nb_G(v))$. Define truth values $W(U)$ and $D_k(U)$
+to be false on the empty set and true on singletons. For nonempty $U$,
+$D_{-1}(U)$ means that $G[U]$ is a cone. On sets of size at least two,
+use
+\begin{align}
+ W(U)&=\bigvee_{v\in U}
+     \bigl(W(N_U(v))\land W(U\setminus\{v\})\bigr),
+     \label{eq:ivs-rec}\\
+ D_k(U)&=\bigvee_{v\in U}
+     \bigl(D_{k-1}(N_U(v))\land D_k(U\setminus\{v\})\bigr),
+     \qquad k\ge0.\label{eq:kdis-rec}
+\end{align}
 
-\paragraph{Implementation qualification}
-The Python implementation stores complete graph states and implements Algorithm~\ref{alg:IS} exactly. The archived C versions instead use a $64$-bit hash as the identity of a memoised state, without a final comparison of the underlying graph. The audit did not demonstrate an actual collision, but the implementation alone does not certify its absence. This affects the strong-membership part of the order-$12$ table, which supplies hypothesis $\mathrm{H12}$. Its acyclicity and vertex-strong decisions use exact arithmetic and subset-indexed states. A concrete way to close the gap is to export the $\num{11718}$ acyclic, non-vertex-strong candidates and check their strong membership with complete-state memoisation. The large stuck searches use homology tests rather than this strong-membership cache, but interpreting their outputs relies on $\mathrm{H12}$.
+\begin{proposition}\label{prop:vertex-correct}
+The recurrences~\eqref{eq:ivs-rec} and~\eqref{eq:kdis-rec} decide
+whether $G[U]$ belongs to $\ISV$ and to $k$-Dis, respectively. For a
+fixed largest level, evaluation in increasing order of $|U|$
+terminates.
+\end{proposition}
+\begin{proof}
+Each set on the right is a proper subset of $U$. Induct on its
+cardinality, evaluating the cone test directly. A successful
+conjunction supplies a first admissible vertex and a reduction of
+the remainder. In the opposite direction, the first step of any
+reduction supplies one of the conjunctions. The neighbourhood
+condition is at the same recursive class for $\ISV$ and at level
+$k-1$ for $k$-Dis, exactly as in their definitions. This proves both
+equivalences and termination.
+\end{proof}
 
-\subsection{Certificates of I-contractibility and $\mathrm{I}_4$-closures}
+At level zero there is also a simpler procedure: delete any dominated
+vertex until no such vertex remains. Here $v$ is dominated by $w\ne v$
+when $N_G[v]\subseteq N_G[w]$, where $N_G[v]=\{v\}\cup V(\Nb_G(v))$.
+This is equivalent to $\Nb_G(v)$ being a cone with apex $w$.
+The procedure succeeds precisely on the $0$-dismantlable graphs
+\cite[Section~4.1]{FieuxJouve2020}. To see why the order does not
+matter, consider two available deletions. Unless the vertices dominate
+each other, each remains dominated after the other is deleted:
+if a dominator is removed, use its dominator and the transitivity of
+closed-neighbourhood inclusion. Mutual domination gives identical
+closed neighbourhoods, so the two remainders are isomorphic.
+Induction on the number of vertices now shows that an arbitrary
+available deletion preserves dismantlability. Reaching $K_1$ is itself
+a dismantling, proving the converse. This procedure gives the
+$0$-Dis column of the table.
+No analogous order-independence holds for~\eqref{eq:strong-rec}:
+the extensions in Section~\ref{sec:examples} admit a deletion that
+leaves a non-strong graph.
 
-To certify that a stuck graph $G$ is I-contractible we search breadth-first for a short sequence of edge additions $uv$ with $\Nb(u,v)\in\IS$ (transformations (I4), legitimate since $\IS\subseteq\I$) leading to a graph in $\IS$ (Algorithm~\ref{alg:icert}); the certificate consists of the added edges together with the deletion sequence of the final graph produced by Algorithm~\ref{alg:IS}, and can be checked by hand or by the Python tools. For all three examples on $14$ vertices a single edge suffices.
+\subsection{Positive tests for I-contractibility}
 
-\begin{algorithm}[t]
-\caption{\textsc{ICert}$(G,d)$ --- certificate of I-contractibility by $\le d$ additions}\label{alg:icert}
-$Q\leftarrow\{(G,\emptyset)\}$\;
-\For{$\ell=0,\dots,d$}{
-  \ForEach{$(H,L)\in Q$}{\lIf{{\normalfont\scshape InIS}$(H)$}{\Return $(L,\ \text{deletion sequence of } H)$}}
-  $Q\leftarrow\{(H+uv,\ L\cdot uv): (H,L)\in Q,\ uv\notin E(H),\ \Nb_H(u,v)\in\IS\}$, one representative per isomorphism class\;
-}
-\Return \textbf{undecided}
-\end{algorithm}
+Strong reductions also supply positive tests for the larger class
+$\I$. Suppose
+\begin{equation}\label{eq:I-path}
+ G=G_0,\qquad G_j=G_{j-1}+u_jv_j\quad(1\le j\le t),
+ \qquad G_t\in\IS,
+\end{equation}
+and every added edge has common neighbourhood in $\IS$ at its step.
+Then $G\in\I$. Indeed, start from $G_t\in\IS\subseteq\I$ and delete
+the added edges in reverse order. Adding or deleting the edge between
+two vertices leaves their common neighbourhood unchanged, so each
+reverse step is an I-transformation.
 
-To enumerate the part of an $\mathrm{I}_4$-closure outside $\IS$, we expand only states outside $\IS$ and record their first successors in $\IS$. This pruning is valid because an admissible edge addition to a graph in $\IS$ remains in $\IS$: its inverse deletion starts a successful reduction. We call the retained non-strong states the \emph{pruned closure} and the first strong successors its \emph{strong boundary}. The C program deduplicates labelled states by hashes; canonical labelling with \texttt{labelg} is a separate step. The finite closures used here were also recomputed with complete-state Python storage. For the $51$ listed stuck graphs on $14$ vertices this produces the $\Ztwo$-acyclic graphs outside $\IS$ reached from those seeds (Section~\ref{sec:fourteen}).
+For a fixed bound $t$, enumerate all admissible edge additions from
+$G$, one step at a time, and test each reached graph by
+Proposition~\ref{prop:IS-correct}. This finds a path of the form
+\eqref{eq:I-path} of length at most $t$ whenever one exists: induction
+on the path length shows that every possible successor is considered.
+The search is finite, since the vertex set is fixed and edges are
+only added. Its failure excludes only the specified paths, not
+membership in $\I$. The negative decisions needed below instead use
+nonzero integral homology. Together these two tests will settle all
+graphs left outside $\IS$ in the universes of the table.
 
-\subsection{Unfolding into a disc}
+\subsection{Representatives up to isomorphism}\label{sec:representatives}
 
-For a pure two-dimensional candidate we retain the gluing across edges in exactly two triangles and cut across all other edges, splitting vertices according to the resulting corner equivalence (Section~\ref{sec:prelim}); when the result is a disc we draw it with a Tutte embedding (boundary on a regular polygon, interior vertices at the barycentres of their neighbours) and read off the boundary word. The resulting complexes must be checked for connectedness, vertex links, boundary components and Euler characteristic before they are called discs or annuli. This procedure yields $48$ discs, two annuli, and one disjoint union of a disc and an annulus among the $51$ seeds.
+The generation uses canonical vertex augmentation
+\cite[Section~4]{McKay1998}. For each graph $H$ of order at least
+two, choose a vertex orbit $O(H)$ under $\operatorname{Aut}(H)$,
+invariantly under isomorphism. This choice can be made from a
+canonical labelled representative. Begin with $K_1$. For every
+retained graph $G$, adjoin a vertex $x$ adjacent to one subset from
+each orbit of subsets of $V(G)$ under $\operatorname{Aut}(G)$.
+Retain the resulting graph $H$ when $x\in O(H)$. Connectedness is
+required at the output order. For the $K_4$-free universe, reject
+augmentations containing a $K_4$.
 
-\subsection{The distributed search}
+\begin{proposition}\label{prop:enumeration-correct}
+This construction, followed by the connectedness test, generates
+exactly one representative of every connected graph of the requested
+order. The additional $K_4$ rejection gives exactly the connected
+$K_4$-free graphs.
+\end{proposition}
+\begin{proof}
+Induct on the order, before testing connectedness. For a
+target $H$, choose $x\in O(H)$. Its parent is represented by induction
+and the neighbourhood orbit is considered. The resulting copy of
+$H$ is accepted because $O$ is invariant under isomorphism, proving
+existence.
+For two isomorphic accepted augmentations, an isomorphism followed
+by an automorphism identifies the new vertices, and hence the parents
+and neighbourhood orbits. These were considered once, proving
+uniqueness. Restricting the outputs preserves both conclusions.
+Every induced subgraph of a $K_4$-free graph is $K_4$-free, so the
+additional rejection loses no predecessor of an eligible target.
+\end{proof}
 
-The enumeration used the CPU partition of the YUCA cluster at ACARUS, Universidad de Sonora, with $64$ cores per node and \texttt{geng}'s \protect\path{res/mod} partitioning. The order-$14$ search used \texttt{nauty}~2.8 for its $K_4$-free option \texttt{-k}. Figure~\ref{fig:flow} summarises the mathematical pipeline; Appendix~\ref{app:cluster} gives the scheduling procedure, hardware and provenance qualifications.
+For any of the exact predicates above, sum its value over the generated
+representatives of a fixed order. Proposition~\ref{prop:enumeration-correct}
+and the decision propositions show that this sum is the cardinality
+of the corresponding class, with neither missing isomorphism classes
+nor repeated contributions. The column for $\I$ additionally requires
+the positive and negative adjudications described in
+Section~\ref{sec:table}.
+The inclusions in~\eqref{eq:dismantling-inclusions} and
+\eqref{eq:homology-inclusions} allow a positive decision for one
+class to establish membership in every larger class of these chains;
+a negative decision establishes non-membership in every smaller class.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig09.pdf}
-\caption{The computational pipeline: \texttt{geng} enumeration in \protect\path{res/mod} slices, the filter cascade of Algorithm~\ref{alg:stuck} (with the survivor counts of the $n=13$ run), $\mathrm{I}_4$-closures, integer homology and certificates; bottom: the three cluster runs. The phrase ``all $\Ztwo$-acyclic non-$\IS$ graphs'' applies to order $13$ under the stated hypotheses; at order $14$ only descendants of the listed seeds are covered. The preserved graphic shows the earlier approximate duration $33$ h; the accounting gives $35$ h $2$ min $48$ s for the order-$14$ array span.}\label{fig:flow}
-\end{figure}
+\subsection{Reduction of the order-fourteen classification}\label{sec:reduction}
 
+The complete census gives the class counts. To identify the acyclic
+non-strong graphs behind these counts, we reduce them until no
+admissible move remains.
 
+\begin{definition}\label{def:stuck}
+A graph of order at least two is \defi{stuck} if it is
+$\mathbb F_2$-acyclic and has no $\IS$-admissible vertex or edge.
+A graph of order at least two is \defi{almost stuck at $u$} if it is
+$\mathbb F_2$-acyclic,
+has no $\IS$-admissible edge, and no vertex other than $u$ is
+$\IS$-admissible. The distinguished vertex $u$ need not be admissible.
+\end{definition}
 
-For $n=14$ two projects processed slices in opposite orders. The reconstructed registries contain $\num{2000692}$ entries, covering every one of the $\num{2000000}$ slices, with $692$ slices recorded twice. The counters in Table~\ref{tab:runs} sum the per-slice files once. The two workers used different lock files while writing shared result paths, so the surviving archive does not establish that both executions of each duplicated slice produced identical output. Repeating those slices with separate output files remains a certification requirement for $\mathrm{H14}$.
+Every stuck graph lies outside $\IS$, since a reduction cannot start.
+Two observations explain the role of minimum order. An admissible
+deletion from a graph of $\I$ remains in $\I$. Moreover, if its
+remainder is in $\IS$, then the original graph is in $\IS$, by
+prepending that deletion to a strong reduction.
 
-\begin{table}[t]
-\centering\small
-\caption{Searches performed. ``graphs'' is the number of graphs produced by \texttt{geng} and examined; the filter counters are the numbers of graphs passing the cone test, the Euler characteristic test and the neighbourhood tests of Algorithm~\ref{alg:stuck}.}\label{tab:runs}
-\resizebox{\textwidth}{!}{\begin{tabular}{@{}lllrrrrr@{}}
-\toprule
-$n$ & class (\texttt{geng} options) & mode & graphs & pass cone & pass $\chi$ & pass $\Nb$ & stuck \\
-\midrule
-12 & connected (\texttt{-c}) & table & \num{164059830476} & -- & -- & -- & 0 \\
-13 & \texttt{-C -d4 -D11} & stuck & \num{21011415992470} & \num{3335926431910} & \num{480204455162} & \num{15693920490} & 1 \\
-14 & \texttt{-k -C -d4 -D12} & stuck & \num{64856470381820} & \num{48303369131820} & \num{1462235073536} & \num{108022349478} & 51 \\
-\bottomrule
-\end{tabular}}
+\begin{lemma}\label{lem:stuck}
+Let $\mathcal H$ be closed under vertex and edge deletion, and let $n$
+be the smallest order attained in $\mathcal H\cap(\I\setminus\IS)$.
+Every graph in this class of order $n$ reduces by admissible edge
+deletions to a stuck graph in the same class.
+\end{lemma}
+\begin{proof}
+An admissible vertex deletion would give a smaller graph in the same
+class, by the two observations, contradicting the choice of $n$.
+Delete admissible edges as long as possible. The order is unchanged,
+membership in $\mathcal H\cap(\I\setminus\IS)$ is preserved, and
+the number of edges decreases. At termination neither kind of
+deletion is possible. The terminal graph is acyclic because it is
+in $\I$, so it is stuck.
+\end{proof}
 
-\medskip
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-$n$ & slices $M$ & max. cores & wall time & SLURM arrays \\
-\midrule
-12 & \num{4000} & 448 & $7$ min $10$ s & 2079049, 2079051 \\
-13 & \num{200000} & 448 & 7 h 10 min & 2079058, 2079059 \\
-14 & \num{2000000} & 896 & $35$ h $2$ min $48$ s & 2079102 (p029), 2079156 (p011) \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{lemma}\label{lem:2conn}
+If a stuck graph has a cut vertex $u$, it is the union of two induced
+graphs $A,B$, each of order at least three, that meet only at $u$ and
+are almost stuck there. Consequently, if no almost stuck graph in a
+hereditary class has order at most $m$, every stuck graph in that
+class of order at most $2m$ is $2$-connected.
+\end{lemma}
+\begin{proof}
+Partition the components of $G-u$ into two nonempty collections and
+include $u$ in both pieces. Their clique complexes meet at one
+vertex, so reduced Mayer--Vietoris gives
+\[
+ \widetilde H_i(G;\mathbb F_2)\cong
+ \widetilde H_i(A;\mathbb F_2)\oplus
+ \widetilde H_i(B;\mathbb F_2).
+\]
+Both pieces are acyclic. The neighbourhood of a vertex other than
+$u$, and the common neighbourhood of every edge in a piece, agree
+with those in $G$. Thus no such element is admissible. A piece of
+order two would have a leaf of $G$, which is admissible. Both orders
+are therefore at least three. If both exceed $m$, their union has
+order at least $2(m+1)-1=2m+1$, proving the last assertion.
+\end{proof}
 
-\subsection{Validation}
+\begin{lemma}\label{lem:degrees}
+Every edge of a $2$-connected stuck graph $G$ lies in at least two
+triangles, and
+\[
+ 4\le\delta(G)\le\Delta(G)\le |V(G)|-2.
+\]
+\end{lemma}
+\begin{proof}
+An edge in no triangle belongs to a cycle, by $2$-connectedness.
+Its coefficient in every $2$-boundary is zero, whereas its coefficient
+in that cycle is one. The cycle therefore represents nonzero homology
+over $\mathbb F_2$, contradicting acyclicity.
+An edge in exactly one triangle has common neighbourhood $K_1$ and
+is admissible. Hence every edge lies in at least two triangles.
+For $H=\Nb_G(v)$, every vertex $w$ of $H$ consequently has at least
+two neighbours in $H$. If $|V(H)|\le3$, this forces $H=K_3$, making
+$v$ admissible. Thus every degree is at least four. A universal
+vertex would make $G$ a cone and hence a member of $\IS$, so no
+degree is $|V(G)|-1$.
+\end{proof}
 
-All $63$ cells common to Table~\ref{tab:card} and Table~1 of~\cite{DEFH2023} agree (nine rows and seven columns). In the present audit, \texttt{verify.sh} completed with $31$ checks passed and no failures, including regenerated rows through order $9$; row $10$ was also regenerated. Row $11$ was compared with the publication but its billion-graph enumeration was not repeated to completion. The historical order-$12$ comparison with the unpublished 2025 draft is limited to cells actually filled in that draft; the $\IVS$ cell there is blank.
+On $K_4$-free graphs these reductions have particularly simple tests.
+\begin{proposition}\label{rem:K4-local}
+In a $K_4$-free graph, a vertex is $\IS$-admissible exactly when its
+open neighbourhood is a nonempty tree, and an edge is $\IS$-admissible
+exactly when it belongs to one triangle.
+\end{proposition}
+\begin{proof}
+A vertex neighbourhood is triangle-free. A triangle-free graph in
+$\IS$ has a contractible clique complex of dimension at most one,
+so it is a tree. Conversely, a nonempty tree reduces by leaf deletions
+to $K_1$. The common neighbourhood of an edge is independent and
+belongs to $\IS$ exactly when it has one vertex. Its vertices
+correspond to the triangles containing the edge.
+\end{proof}
 
-The seven principal graphs were independently checked in Wolfram Language using integral kernel bases and Smith normal forms. The Python tools verify the homology and strong-membership status of all $51$ seeds, the one-edge certificates and the cone routes. Complete-state closure enumeration and canonical labelling reproduce the finite closure counts. These checks establish the listed finite results; they do not replace the computational hypotheses needed for exhaustivity of the original searches.
+This criterion is independent of any small-order census. In particular,
+to test stuckness on a $K_4$-free graph, check its reduced homology and
+exclude every tree vertex neighbourhood and every edge in one triangle.
+For almost stuckness allow at most one such vertex, including the
+possibility of none.
+
+Finally, reverse the edge deletions of Lemma~\ref{lem:stuck} to recover
+the graphs arising from a stuck graph. Starting with a finite set of
+stuck graphs, called \defi{seeds}, adjoin every missing edge with common neighbourhood in
+$\IS$; continue from non-strong successors and discard strong ones.
+Identify isomorphic graphs throughout. The retained set is the
+\defi{pruned edge-addition closure}.
+
+\begin{proposition}\label{prop:closure-correct}
+This procedure terminates and retains exactly the non-strong graphs
+reachable from the seeds by admissible edge additions. To recover
+only $K_4$-free targets, one may also discard successors containing
+a $K_4$.
+\end{proposition}
+\begin{proof}
+There are finitely many graphs on the fixed vertex set and every
+step adds an edge. All retained graphs are reachable, by construction.
+If $H\in\IS$ and $H+uv$ is an admissible addition, deleting $uv$
+first and then reducing $H$ proves $H+uv\in\IS$. A path to a
+non-strong target therefore never passes through a strong graph.
+Every predecessor on that path is expanded, so induction on path
+length proves completeness. Isomorphisms transport nonedges and
+their neighbourhoods, and hence all possible continuations.
+Finally, adding edges cannot remove a $K_4$, so no path to a
+$K_4$-free target is lost by the additional restriction.
+\end{proof}

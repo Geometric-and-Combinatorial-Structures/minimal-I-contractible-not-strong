@@ -1,2 +1,0 @@
-179508d908b1f399fde36cb0e702960150eaa8b48ba0788bc8627cbdf33ae2cb  /lustre/proyectos/p029/busqueda_minimal/bin/geng28
-4c7d127ad7ee2f531c431bdc536f0753df84d4f5b04beb6f4aa81f696d707ddb  /lustre/proyectos/p029/Librerias/nauty27r4/geng

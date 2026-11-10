@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{Adamaszek2014}
+{\sc M.~Adamaszek}, {\em Small flag complexes with torsion}, Can. Math. Bull.,
+  57 (2014), pp.~225--230.
+
+\bibitem{ChenYauYeh2001}
+{\sc B.~Chen, S.-T. Yau, and Y.-N. Yeh}, {\em Graph homotopy and {Graham}
+  homotopy}, Discrete Math., 241 (2001), pp.~153--170.
+
+\bibitem{DEFH2023}
+{\sc A.~Dochtermann, J.~F. Espinoza, M.~E. Fr{\'i}as-Armenta, and H.~A.
+  Hern{\'a}ndez}, {\em Minimal graphs for contractible and dismantlable
+  properties}, Discrete Math., 346 (2023), p.~113516.
+
+\bibitem{DochtermannMatsushita2025}
+{\sc A.~Dochtermann and T.~Matsushita}, {\em Simple homotopy of flag simplicial
+  complexes and contractible contractions of graphs}, Topol. Appl., 367 (2025),
+  p.~109326.
+\newblock Numbered results and page numbers cited in the text refer to the
+  author version,
+  \href{https://arxiv.org/abs/2312.10976v2}{arXiv:2312.10976v2}.
+
+\bibitem{EFH2022}
+{\sc J.~F. Espinoza, M.-E. Fr{\'i}as-Armenta, and H.~A.
+  Hern{\'a}ndez-Hern{\'a}ndez}, {\em Collapsibility and homological properties
+  of {$\mathfrak{I}$}-contractible transformations}, Bol. Soc. Mat. Mex., 28
+  (2022), p.~42.
+
+\bibitem{FieuxJouve2020}
+{\sc E.~Fieux and B.~Jouve}, {\em A hierarchy of dismantlings in graphs},
+  Discrete Math., 343 (2020), p.~111914.
+
+\bibitem{Hatcher2002}
+{\sc A.~Hatcher}, {\em Algebraic Topology}, Cambridge University Press,
+  Cambridge, 2002.
+
+\bibitem{Ivashchenko1993}
+{\sc A.~V. Ivashchenko}, {\em Representation of smooth surfaces by graphs.
+  {T}ransformations of graphs which do not change the {Euler} characteristic of
+  graphs}, Discrete Math., 122 (1993), pp.~219--233.
+
+\bibitem{Ivashchenko1994a}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Contractible
+  transformations do not change the homology groups of graphs}, Discrete Math.,
+  126 (1994), pp.~159--170.
+
+\bibitem{Katzman2006}
+{\sc M.~Katzman}, {\em Characteristic-independence of {Betti} numbers of graph
+  ideals}, J. Comb. Theory Ser. A, 113 (2006), pp.~435--454.
+
+\bibitem{McKay1998}
+{\sc B.~D. McKay}, {\em Isomorph-free exhaustive generation}, Journal of
+  Algorithms, 26 (1998), pp.~306--324.
+
+\bibitem{McKayPiperno2014}
+{\sc B.~D. McKay and A.~Piperno}, {\em Practical graph isomorphism, {II}}, J.
+  Symb. Comput., 60 (2014), pp.~94--112.
+
+\bibitem{OEISA000088}
+{\sc {OEIS Foundation Inc.}}, {\em The {On-Line Encyclopedia of Integer
+  Sequences}, sequence {A000088}: Number of simple graphs on n unlabeled
+  nodes}.
+\newblock \url{https://oeis.org/A000088}.
+\newblock Accessed 10 November 2026.
+
+\bibitem{OEISA001349}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em The {On-Line
+  Encyclopedia of Integer Sequences}, sequence {A001349}: Number of simple
+  connected graphs on n unlabeled nodes}.
+\newblock \url{https://oeis.org/A001349}.
+\newblock Accessed 10 November 2026.
+
+\bibitem{OEISA006785}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em The {On-Line
+  Encyclopedia of Integer Sequences}, sequence {A006785}: Number of
+  triangle-free graphs on n vertices}.
+\newblock \url{https://oeis.org/A006785}.
+\newblock Accessed 10 November 2026.
+
+\end{thebibliography}

@@ -1,9 +1,0 @@
-n=3 conexas=2 chi1=2 aciclicas=2 I=2 I_indecisas=0 I_S=2 I_SV=2 3-Dis=2 2-Dis=2 1-Dis=2 0-Dis=2 -1-Dis=2
-n=4 conexas=6 chi1=5 aciclicas=5 I=5 I_indecisas=0 I_S=5 I_SV=5 3-Dis=5 2-Dis=5 1-Dis=5 0-Dis=5 -1-Dis=4
-n=5 conexas=21 chi1=16 aciclicas=16 I=16 I_indecisas=0 I_S=16 I_SV=16 3-Dis=16 2-Dis=16 1-Dis=16 0-Dis=16 -1-Dis=11
-n=6 conexas=112 chi1=68 aciclicas=68 I=68 I_indecisas=0 I_S=68 I_SV=68 3-Dis=68 2-Dis=68 1-Dis=68 0-Dis=68 -1-Dis=34
-n=7 conexas=853 chi1=404 aciclicas=403 I=403 I_indecisas=0 I_S=403 I_SV=403 3-Dis=403 2-Dis=403 1-Dis=403 0-Dis=403 -1-Dis=156
-n=8 conexas=11117 chi1=3837 aciclicas=3798 I=3798 I_indecisas=0 I_S=3798 I_SV=3798 3-Dis=3798 2-Dis=3798 1-Dis=3798 0-Dis=3791 -1-Dis=1044
-n=9 conexas=261080 chi1=68458 aciclicas=66167 I=66167 I_indecisas=0 I_S=66167 I_SV=66167 3-Dis=66167 2-Dis=66167 1-Dis=66167 0-Dis=65561 -1-Dis=12346
-n=10 conexas=11716571 chi1=2571263 aciclicas=2343148 I=2343148 I_indecisas=0 I_S=2343148 I_SV=2343148 3-Dis=2343148 2-Dis=2343148 1-Dis=2343148 0-Dis=2258314 -1-Dis=274668
-n=11 conexas=1006700565 chi1=204131202 aciclicas=166978401 I=166978401 I_indecisas=0 I_S=166978401 I_SV=166978389 3-Dis=166978389 2-Dis=166978389 1-Dis=166978389 0-Dis=151084672 -1-Dis=12005168

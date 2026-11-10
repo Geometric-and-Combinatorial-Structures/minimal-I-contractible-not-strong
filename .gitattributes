@@ -1,0 +1,4 @@
+# Preserve the exact bytes of historical inputs and their recorded hashes.
+* -text
+*.pdf binary
+*.png binary

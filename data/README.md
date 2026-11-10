@@ -1,17 +1,11 @@
-# Data files
+# Data routes and encodings
 
-All graphs are given in graph6 format (one per line; lines starting with `#` are comments; tab-separated
-extra columns where indicated).  Vertex labels referred to in other files are the 0-based labels of the graph6 string.
+`cardinalities.csv` is the mathematical table: its universe column distinguishes unrestricted connected rows 3–13 from the K4-free connected row 14, and the two acyclicity columns specify coefficients.
 
-| file | content |
-|---|---|
-| `acyclic_not_strong_13.g6` | The 3 ℤ/2-acyclic graphs on 13 vertices that are not strong I-contractible (exhaustive). First line: the unique stuck one, G13. All have H₁(ℤ) = ℤ/3. |
-| `stuck_14_K4free.g6` / `.tsv` | The 51 stuck ℤ/2-acyclic K₄-free graphs on 14 vertices (exhaustive within the K₄-free class). The `.tsv` adds edges, triangles, integer H₁, I-contractibility with the certifying I₄ edge, |Aut|, size of the unfolded disc and its boundary word. |
-| `minimal_I_not_strong_14.g6` | The three minimal members of 𝔍 ∖ 𝔍_S (G14a, G14b, G14c) and the strong I-contractible graphs G + e that certify I-contractibility. |
-| `I_not_strong_14_closure.tsv` | The 29 graphs in 𝔍 ∖ 𝔍_S on 14 vertices lying in the I₄-closure of the 51 stuck graphs (8 of them K₄-free). |
-| `acyclic_not_strong_14_closure.tsv` | The 2,271 ℤ/2-acyclic non-𝔍_S graphs on 14 vertices in that closure (29 contractible, 2,242 with H₁ = ℤ/3). |
-| `closure_G14a.tsv` | The I₄-closure of G14a as computed by `atascadas --modo cerradura` (graphs outside 𝔍_S are expanded; graphs in 𝔍_S are recorded but not expanded): 48 pairwise non-isomorphic graphs, 16 outside 𝔍_S and 32 in 𝔍_S; the latter are the 32 examples for Theorem D (Conjecture 15). |
-| `strictly_2dis_12.g6` / `.tsv` | The 20 connected graphs on 12 vertices that are 2-dismantlable but not 1-dismantlable (exhaustive over all connected 12-vertex graphs; none on ≤ 11 vertices); `.tsv` adds edges, triangles, K₄ count, clique number, min/max degree, \|Aut\|. 2-dismantling sequences in `certificates/strictly_2dis_12_traces.txt`. Identical to the list of the authors' 2025 computation. |
-| `dunce_hat_15.g6` | Flag dunce hat of DEFH 2023 Fig. 2A and the Fig. 2B graph. |
-| `table_cardinalities_raw.txt` | Rows n = 3 … of the extended cardinality table as printed by `atascadas --modo tabla` (local runs for n ≤ 11; cluster logs in `yuca/logs/` for n = 12, 13). |
-| `table_cardinalities.csv` | The same table in CSV with English column names. |
+`table_cardinalities.csv` and `table_row14_K4free.csv` are retained historical table views used for source comparison and regression tests. `raw_classifier_reference.csv` contains the twelve fields consumed by the current recording driver; it does not have the derived integral column. `tools/check_cardinalities.py` compares these views with `cardinalities.csv`.
+
+The canonical TSV catalogs are under `finite/data/`; duplicate copies formerly placed here have been removed. `stuck_14_K4free.g6` and `strictly_2dis_12.g6` are graph6 input streams for full reproduction and regression tests. The latter contains 20 data records and no comment lines. `acyclic_not_strong_13.g6` and `dunce_hat_15.g6` retain labelled regression examples. Their class sets are compared with the certificate catalogs by the secondary checker.
+
+`census/` retains selected normalized historical aggregate records, all residual graphs, homology adjudications and the finite positive set. Campaign names beginning with F are historical identifiers, not coefficient fields. The local `local_K4/` directory contains the 643 small graphs used in a reduction lemma.
+
+The old `minimal_I_not_strong_14.g6` export had an ambiguous scope in its name; use `finite/data/K4_free_I_not_strong_14.tsv` for the eight classes. The unused historical 84-graph structure file and duplicate TSVs are retained in Git history, with their disposition recorded in `docs/provenance/migration-inventory.tsv`.

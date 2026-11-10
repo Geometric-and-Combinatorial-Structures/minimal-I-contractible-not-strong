@@ -1,0 +1,68 @@
+name: Finite reproduction
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify finite evidence, interfaces, notebook and C recurrences
+        run: python reproduce.py --extended --cc gcc --require-git-baseline --output results/ci
+      - name: Print reports
+        if: always()
+        run: |
+          if test -f results/ci/report.txt; then cat results/ci/report.txt; fi
+          for f in results/ci/*.stderr.txt; do
+            if test -f "$f"; then cat "$f"; fi
+          done
+  documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - name: Install TeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended texlive-science
+      - name: Compile both mathematical documents in temporary copies
+        run: |
+          python3 tools/build_paper.py --output build/paper
+          python3 tools/build_paper.py --source supplement --output build/supplement
+      - name: Require clean document logs
+        run: python3 tools/check_document_logs.py build/paper/main.log build/supplement/main.log
+  figures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+      - name: Install the optional figure verification environment
+        run: python3 -m pip install -r tools/figures/requirements.txt
+      - name: Regenerate and verify drawings and witness tables
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 tools/figures/make_witness_figures.py --check
+          python3 tools/figures/make_witness_tables.py --check
+          python3 tools/figures/verify_witnesses.py
+          python3 tools/integrity.py

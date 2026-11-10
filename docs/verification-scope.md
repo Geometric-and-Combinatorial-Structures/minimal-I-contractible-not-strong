@@ -1,0 +1,62 @@
+# Scope of verification
+
+`tools/verify_quick.py` requires every listed check to succeed and emits a structured report with commands, return codes and output. Its claims are limited to the files actually checked.
+
+| Claim | Local operation | Limit |
+|---|---|---|
+| Graph identity and certificates | Reconstruct graph6, test exact recursive membership, replay links and every deletion | Finite objects only |
+| Disc descriptions | Reconstruct triangles, cuts, links, boundary cycles and attaching degree | Applies to the five designated constructions |
+| Catalogs of 51 and 20 | Recompute listed invariants, exact strong/k-dismantlable predicates and automorphisms | Exhaustiveness depends on the enumerations |
+| Three pruned closures | Reconstruct all admissible additions until the first strong state, identifying isomorphism classes | Does not expand the strong boundary |
+| Union of 2,271 closure classes | Recompute H1 and listed seed paths; match the 29 positive classes | Does not classify all order-14 graphs |
+| Table | Compare 144 entries with source CSVs and large-run aggregate counters | Reading an aggregate is not reprocessing all receipts |
+| Integral column | Recompute H1 of 628 residuals; match eight positive classes | Exhaustiveness uses the recorded exhaustive partition |
+| Provenance | Check selected digests, arithmetic, counters and recorded identities | Does not authenticate historical execution |
+| Byte integrity | Compare all inventoried finite bytes | Hash equality alone is not a mathematical proof |
+
+## Assertion-to-evidence map
+
+The manuscript labels below are stable LaTeX labels, rather than page or theorem numbers. **Finite recheck** means that the supplied objects are recomputed by the quick route. **Historical enumeration** means that selected records of a past complete stream are retained; the quick route does not rerun that stream or reprocess all its receipts. **Mathematical argument** means that the deduction is proved in the manuscript. These evidence types can be required together.
+
+| Manuscript assertion | Evidence and check | Status and scope |
+|---|---|---|
+|`tab:card`, rows 3–9|`finite/provenance/small_order_counts.json`; source identities in `verification/historical_small_orders/`; `finite/provenance/check_records.py`|Historical enumeration and per-graph comparison with a separate C++ implementation. The selected record's digest is checked now; table transcription is checked separately by `tools/check_cardinalities.py`. The 273,191 comparison rows themselves are not included.|
+|`tab:card`, row 10|`separate_order10_census.txt` and `separate_order10_commands.jsonl` in `finite/provenance/`; [source-path analysis](small-order-provenance.md)|Historical full stream. Conditional on correct preliminary predicates, equality of acyclic and I_SV counts avoids the old hash-only strong branch; this does not independently validate the row. The source-to-executable attribution comes from local reading of historical orchestration, not an authenticated build record in this selection.|
+|`tab:card`, row 11|`exact_n11_summary.json`, four `exact_n11_r*.stderr.txt` files, `final_local_checks.json`; retained `exact_n11_capture.c`|Historical full enumeration with complete-state memoization. Four residue sums and successful exits are rechecked; no fresh billion-graph run.|
+|`tab:card`, rows 12–14: directly computed columns|`data/census/F2_12_aggregate.json`, `F2_13_aggregate.json`, `F4_aggregate.json`; `tools/check_cardinalities.py`|Historical table12/table13/table14 enumeration, with full coverage recorded. Current comparison of all numerical entries and raw counters; complete receipts remain outside this selection. Row 14 is K4-free in every column.|
+|`thm:classification13`: three exceptions, unique stuck seed, no smaller I/non-strong graph|Rows 3–11 and their evidence above, together with table12/table13; `data/census/F2_13_residual.g6`; exact isomorphism with the three constructed variants in `tools/check_cardinalities.py`; witness certificates and link checks|Historical exhaustive partition through order 13, finite identity/homology rechecks and mathematical classification. Orders one and two are immediate. The negative I decision follows from nonzero integral homology.|
+|`thm:classification14`, small-piece step|`data/local_K4/connected_n2_7.g6` and `generation.json`; `tools/check_local_K4_catalogue.py`|Fresh bounded generation of 643 connected K4-free classes; finite recheck of nonisomorphism, homology and the local criterion, including zero admissible vertices. Generation completeness uses the stated nauty method; the stored list alone is not a coverage proof.|
+|`thm:classification14`, 51 stuck seeds|`data/census/F3_aggregate.json`, `F3_stuck.g6`; `finite/data/stuck_14_K4free.tsv`; `check_tables.py` and `tools/check_cardinalities.py`|Historical seeds14 restricted enumeration; finite rechecks of all 51 graphs, 48 torsion cases and three I certificates. Exhaustiveness uses both the manuscript's reduction lemmas and nauty's implementation of `-k -C -d4 -D12` with residue splitting. The unrestricted-degree table14 exceptional stream has exactly these 51 stuck classes among its 633 graphs; this corroborates the restricted stream using the same classification core.|
+|`thm:classification14`, eight classes and minimum 44 edges|`finite/data/check_small_closures.py`; `finite/data/K4_free_I_not_strong_14.tsv`; `data/census/F4_positive.g6`|Finite exhaustive reconstruction of the three pruned closures, giving disjoint K4-free sets of sizes 4, 3 and 1; exact identification with the eight table positives. Completeness for all targets uses the mathematical reduction to a seed.|
+|`prop:table-integral`: coefficient columns and I equality|All 3 order-13 and 625 order-14 residuals and their adjudications in `data/census/`; `tools/check_cardinalities.py`|Finite exact H1 recheck of all 628 residuals; pairwise nonisomorphism of the 625; the 48 torsion seeds match members of the 625 and the three I seeds match positive classes. Exhaustiveness uses the historical partition and the manuscript's classification; it is not an independent integral census.|
+|`cor:minimality`: minimum orders 13 and 14, including admissible-edge deletion|Explicit witnesses and reductions in `finite/certificates/`, together with `thm:classification13` and `prop:table-integral`|Finite witness verification and mathematical deduction from complete lower-order rows. The minimum order 14 is unrestricted; eight classes and minimum 44 edges refer only to the K4-free order-14 universe.|
+|`cor:minimality`: minimum 14 vertices for a contractible non-collapsible flag complex|`thm:classification13`, the explicit non-collapsibility in `prop:noncollapsible`, Dochtermann–Matsushita Corollary 1.5 (`DochtermannMatsushita2025`) and Espinoza–Frías-Armenta–Hernández-Hernández Theorem 1 (`EFH2022`)|Mathematical deduction using the computer-assisted lower-order classification: contractibility gives I, the classification through order 13 gives I_S, and I_S gives collapsibility. The explicit order-14 witness attains the bound. This global minimum inherits the computational dependence of `thm:classification13`.|
+|Dismantling separations and the catalog of 20|Nested-family column differences; `finite/data/strictly_2dis_12.tsv`; `finite/data/check_tables.py`|Finite membership and automorphism checks; exhaustiveness and minimum order use the retained table. This auxiliary catalog does not supply the main classification.|
+|Cone column and external numerical comparisons|Bijection proved in the manuscript; selected counts in `finite/provenance/`; cited OEIS and published-table comparisons|Mathematical identity and numerical consistency checks, not an additional independent census. The row-14 cone count concerns triangle-free graphs on 13 vertices.|
+|Algorithm implementation correspondence|`verification/current_recurrences/`|Optional bounded comparison of current C and separate direct recurrences: 1,100 labelled graphs and 33,867 induced masks. This supplements the algorithmic proofs; it does not cover the large enumeration streams.|
+
+The nested-family inclusions also determine the 2-Dis and 3-Dis entries through order 11 from the published equality of 1-Dis and I_SV in those rows. In the K4-free row the equality of these four families is structural. These deductions and the limits of the Euler-characteristic column are detailed in [small-order-provenance.md](small-order-provenance.md); they are consistency checks, not another census.
+
+The catalogs of 2,271 closure classes, the 29 contractible descendants and their boundary states are auxiliary results. They are checked as stated in [secondary-results.md](secondary-results.md), but the classification of eight K4-free classes uses the three small closures, not the full 2,271-class union.
+
+## Homology and independence
+
+All 628 residual graphs are connected and K4-free with Euler characteristic one. Exact integer H1 is Z/3. Their clique complexes have dimension at most two; H2 is free, and the Euler characteristic forces its rank to vanish. Thus the only nonzero reduced integral homology is H1=Z/3. The exact H1 computation independently resolves the recorded residual classes. An unsuccessful bounded I-certificate search is never counted as a negative proof.
+
+The table classifier and its later recomputations share the C classification core. The finite Python verifier is a separate implementation; it verifies selected graphs and certificates. Comparisons of both programs on these objects and reruns of the C program do not constitute an independent full census.
+
+The byte-substitution tests in `finite/certificates/test_certificate_integrity.py` are mandatory in the root reproduction route. The additional enumeration `finite/data/check_local_K4_small.py --geng /path/to/geng` is optional and enumerates connected K4-free graphs through order 8. It requires a compatible nauty `geng` with `-k`; it is separate from the dependency-free quick route.
+
+The quick route now requires the supplied 643-graph catalog through order seven, without a generator. Its optional regeneration command is in [full-reproduction.md](full-reproduction.md). The historical source-identity command in [small-order-provenance.md](small-order-provenance.md) checks source bytes and recorded counter equalities without executing a classifier.
+
+The optional [current-recurrence comparison](../verification/current_recurrences/README.md) compiles the current C functions and compares them with direct recurrences on all 1,100 labelled graphs of orders 0–5 and their 33,867 induced masks, including empty and disconnected states and all first deletion choices. It requires a C compiler and writes only under `build/` by default. This bounded comparison is not an independent full census.
+
+## Additional repository and supplement checks
+
+`reproduce.py` verifies the full distributed-file inventory, the unchanged r01 article, migration coverage, local documentation links, generated mathematical tables, witness exports and the notebook. The existing eleven finite checks remain required. The source-identity checker is now also required by this top-level route.
+
+`tools/check_secondary_results.py` checks pairwise nonisomorphism of the 51 seeds, 20 strictly 2-dismantlable examples and all 2,271 closure graphs; the three-seed union against all 29 positives; the 29/2,242 partition; and the unfolding/H1 cross-tabulation. It places all 277 K4-free closure classes inside the 633 table14 exceptions, identifying the 356 outside the union. Labelled regression streams are compared with their certificate catalogs up to isomorphism.
+
+`tools/reproduce_closures.py` has regenerated all 51 closures locally with the current C core, obtaining precisely the 2,271 deposited classes. `verification/closures51/run.json` records this finite regeneration and its source hashes. This strengthens the evidence for that specific closure catalog; it is neither a full graph census nor an independent classification engine.
+
+Mutation tests reject changed source bytes, extra input files, an altered disc attaching degree, and an exchange of two I-membership flags even when the byte manifests and positive-subset file are recomputed consistently. Every file in the original finite manifest is also subjected to specified byte-substitution and append tests. These checks distinguish byte consistency from mathematical validation.

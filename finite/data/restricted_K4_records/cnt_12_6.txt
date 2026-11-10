@@ -1,0 +1,1 @@
+total=140533989 after_vertex=4403527 after_edge=20887 after_euler=560

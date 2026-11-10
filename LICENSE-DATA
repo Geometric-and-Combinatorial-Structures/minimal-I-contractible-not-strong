@@ -1,4 +1,13 @@
-The contents of data/, certificates/, figures/, yuca/logs/ and paper/ are licensed under the
-Creative Commons Attribution 4.0 International License (CC BY 4.0),
-https://creativecommons.org/licenses/by/4.0/ .
-Please cite the paper and this repository (see CITATION.cff) when reusing them.
+Original non-code data, mathematical text and figures supplied by the authors in
+this repository are licensed under Creative Commons Attribution 4.0
+International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/ .
+This includes data/, finite/, docs/ and any original figure sources added to the
+manuscript package. Cite the authors and the source work identified in the files.
+
+Original source code and executable scripts are covered by the MIT License in
+LICENSE. Third-party works and dependencies retain their own licenses; no
+third-party work is relicensed by this notice. In particular, the graph encodings
+attributed to Adamaszek retain that source attribution. This selection contains
+neither literature PDFs nor bundled nauty executables. If a modified bibliography
+style is later supplied with the manuscript, its LPPL and modification notice
+must be retained.

@@ -6,6 +6,21 @@ paper/*.aux
 paper/*.log
 paper/*.blg
 paper/*.bbl
+!paper/main.bbl
 paper/*.out
 paper/*.toc
 __pycache__/
+
+# Local verification and generated working files
+build/
+quick-verification.json
+results/
+.ipynb_checkpoints/
+supplement/*.aux
+supplement/*.log
+supplement/*.blg
+supplement/*.out
+supplement/*.brf
+supplement/*.toc
+supplement/*.fls
+supplement/*.fdb_latexmk

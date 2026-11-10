@@ -1,0 +1,2 @@
+{"order": "<deposit>/classifier --mode table", "cwd": "<deposit>", "input": "D3_n10 input supplied by script", "exit": 0, "seconds": 9.578119145007804, "stdout": "logs/D3_n10.stdout", "stderr": "logs/D3_n10.stderr"}
+{"generator": "<deposit>/environment/nauty2_8_9/geng -cq 10", "exit": 0, "seconds": 15.017757588997483}

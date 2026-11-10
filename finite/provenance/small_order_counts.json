@@ -1,0 +1,282 @@
+[
+  {
+    "n": 3,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "3"
+    ],
+    "counts": {
+      "connected": 2,
+      "chi1": 2,
+      "acyclic": 2,
+      "I": 2,
+      "IS": 2,
+      "ISV": 2,
+      "minus1": 2,
+      "k0": 2,
+      "k1": 2,
+      "k2": 2,
+      "k3": 2
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "3",
+      "connected": "2",
+      "chi=1": "2",
+      "Z2-acyclic": "2",
+      "I-contractible": "2",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "2",
+      "J_SV": "2",
+      "3-Dis": "2",
+      "2-Dis": "2",
+      "1-Dis": "2",
+      "0-Dis": "2",
+      "(-1)-Dis": "2"
+    },
+    "seconds": 0.004252717946656048
+  },
+  {
+    "n": 4,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "4"
+    ],
+    "counts": {
+      "connected": 6,
+      "chi1": 5,
+      "acyclic": 5,
+      "I": 5,
+      "IS": 5,
+      "ISV": 5,
+      "minus1": 4,
+      "k0": 5,
+      "k1": 5,
+      "k2": 5,
+      "k3": 5
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "4",
+      "connected": "6",
+      "chi=1": "5",
+      "Z2-acyclic": "5",
+      "I-contractible": "5",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "5",
+      "J_SV": "5",
+      "3-Dis": "5",
+      "2-Dis": "5",
+      "1-Dis": "5",
+      "0-Dis": "5",
+      "(-1)-Dis": "4"
+    },
+    "seconds": 0.004927896079607308
+  },
+  {
+    "n": 5,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "5"
+    ],
+    "counts": {
+      "connected": 21,
+      "chi1": 16,
+      "acyclic": 16,
+      "I": 16,
+      "IS": 16,
+      "ISV": 16,
+      "minus1": 11,
+      "k0": 16,
+      "k1": 16,
+      "k2": 16,
+      "k3": 16
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "5",
+      "connected": "21",
+      "chi=1": "16",
+      "Z2-acyclic": "16",
+      "I-contractible": "16",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "16",
+      "J_SV": "16",
+      "3-Dis": "16",
+      "2-Dis": "16",
+      "1-Dis": "16",
+      "0-Dis": "16",
+      "(-1)-Dis": "11"
+    },
+    "seconds": 0.004841407993808389
+  },
+  {
+    "n": 6,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "6"
+    ],
+    "counts": {
+      "connected": 112,
+      "chi1": 68,
+      "acyclic": 68,
+      "I": 68,
+      "IS": 68,
+      "ISV": 68,
+      "minus1": 34,
+      "k0": 68,
+      "k1": 68,
+      "k2": 68,
+      "k3": 68
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "6",
+      "connected": "112",
+      "chi=1": "68",
+      "Z2-acyclic": "68",
+      "I-contractible": "68",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "68",
+      "J_SV": "68",
+      "3-Dis": "68",
+      "2-Dis": "68",
+      "1-Dis": "68",
+      "0-Dis": "68",
+      "(-1)-Dis": "34"
+    },
+    "seconds": 0.006258671055547893
+  },
+  {
+    "n": 7,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "7"
+    ],
+    "counts": {
+      "connected": 853,
+      "chi1": 404,
+      "acyclic": 403,
+      "I": 403,
+      "IS": 403,
+      "ISV": 403,
+      "minus1": 156,
+      "k0": 403,
+      "k1": 403,
+      "k2": 403,
+      "k3": 403
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "7",
+      "connected": "853",
+      "chi=1": "404",
+      "Z2-acyclic": "403",
+      "I-contractible": "403",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "403",
+      "J_SV": "403",
+      "3-Dis": "403",
+      "2-Dis": "403",
+      "1-Dis": "403",
+      "0-Dis": "403",
+      "(-1)-Dis": "156"
+    },
+    "seconds": 0.02018521702848375
+  },
+  {
+    "n": 8,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "8"
+    ],
+    "counts": {
+      "connected": 11117,
+      "chi1": 3837,
+      "acyclic": 3798,
+      "I": 3798,
+      "IS": 3798,
+      "ISV": 3798,
+      "minus1": 1044,
+      "k0": 3791,
+      "k1": 3798,
+      "k2": 3798,
+      "k3": 3798
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "8",
+      "connected": "11117",
+      "chi=1": "3837",
+      "Z2-acyclic": "3798",
+      "I-contractible": "3798",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "3798",
+      "J_SV": "3798",
+      "3-Dis": "3798",
+      "2-Dis": "3798",
+      "1-Dis": "3798",
+      "0-Dis": "3791",
+      "(-1)-Dis": "1044"
+    },
+    "seconds": 0.28585131897125393
+  },
+  {
+    "n": 9,
+    "geng_command": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-q",
+      "-c",
+      "9"
+    ],
+    "counts": {
+      "connected": 261080,
+      "chi1": 68458,
+      "acyclic": 66167,
+      "I": 66167,
+      "IS": 66167,
+      "ISV": 66167,
+      "minus1": 12346,
+      "k0": 65561,
+      "k1": 66167,
+      "k2": 66167,
+      "k3": 66167
+    },
+    "mismatch_count": 0,
+    "mismatches": [],
+    "expected_csv": {
+      "n": "9",
+      "connected": "261080",
+      "chi=1": "68458",
+      "Z2-acyclic": "66167",
+      "I-contractible": "66167",
+      "I-undecided": "0",
+      "strong I-contractible (J_S)": "66167",
+      "J_SV": "66167",
+      "3-Dis": "66167",
+      "2-Dis": "66167",
+      "1-Dis": "66167",
+      "0-Dis": "65561",
+      "(-1)-Dis": "12346"
+    },
+    "seconds": 9.03858303593006
+  }
+]

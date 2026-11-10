@@ -1,0 +1,67 @@
+{
+  "attempt_id": "20261029T224045.532685Z-16b1e100",
+  "comparison": {
+    "ATASCADA_set": {
+      "actual": 51,
+      "compared": "up to isomorphism (labelg -q run from a frozen copy with SHA-256 f6a1ded5fcabc96a075090dd9992da1c7115862fc1d6cdcfb99c1643106b8f33, checked before and after each run)",
+      "equal": true,
+      "expected": 51,
+      "only_found": 0,
+      "only_reference": 0,
+      "sources": [
+        "g6:<archived-run>/reference51.g6@2f3f8701313179d59d9f653487287bcf7ee074c1e8d157a6f8ed4cecd33c24c5"
+      ]
+    },
+    "encontradas": {
+      "actual": 51,
+      "equal": true,
+      "expected": 51,
+      "sources": [
+        "expect"
+      ]
+    }
+  },
+  "config_sha256": "bbaee25e79b2ce37b9b3ebc08829cf419579996f8336e2e10f589728eb71f104",
+  "counts": {
+    "encontradas": 51,
+    "pasa_aristas": 13536597,
+    "pasa_chi": 1462235073536,
+    "pasa_cono": 48303369131820,
+    "pasa_vecindades": 108022349478,
+    "total": 64856470381820
+  },
+  "coverage": 2000000,
+  "found_counts": {
+    "ATASCADA": 51
+  },
+  "memo_totals": {
+    "memo_aciertos": 0,
+    "memo_colisiones_hash": 0,
+    "memo_consultas": 0
+  },
+  "mod": 2000000,
+  "mode": "atascadas",
+  "n": 14,
+  "ok": true,
+  "problems": [],
+  "references": [
+    {
+      "graphs": 51,
+      "kind": "graph6",
+      "path": "<archived-run>/reference51.g6",
+      "sha256": "2f3f8701313179d59d9f653487287bcf7ee074c1e8d157a6f8ed4cecd33c24c5"
+    },
+    {
+      "expected_sha256": "f6a1ded5fcabc96a075090dd9992da1c7115862fc1d6cdcfb99c1643106b8f33",
+      "frozen_copy": "<archived-run>/labelg",
+      "kind": "labelg",
+      "path": "<archived-run>/labelg",
+      "sha256": "f6a1ded5fcabc96a075090dd9992da1c7115862fc1d6cdcfb99c1643106b8f33"
+    }
+  ],
+  "requested_comparisons": [
+    "ATASCADA_set",
+    "encontradas"
+  ],
+  "utc": "2026-10-29T23:02:46.906079+00:00"
+}

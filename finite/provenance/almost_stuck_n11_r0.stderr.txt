@@ -1,0 +1,1 @@
+n=11 total=240722772 passed_cone=0 passed_euler=50355354 passed_vertex_neighbourhoods=482781 passed_edge_neighbourhoods=349 found=0

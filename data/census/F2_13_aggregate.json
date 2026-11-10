@@ -1,0 +1,167 @@
+{
+  "attempt_id": "20261028T003328.801239Z-1e2f354f",
+  "comparison": {
+    "-1-Dis": {
+      "actual": 165091172592,
+      "equal": true,
+      "expected": 165091172592,
+      "sources": [
+        "csv:(-1)-Dis",
+        "expect"
+      ]
+    },
+    "0-Dis": {
+      "actual": 4015494549880,
+      "equal": true,
+      "expected": 4015494549880,
+      "sources": [
+        "csv:0-Dis",
+        "expect"
+      ]
+    },
+    "1-Dis": {
+      "actual": 5619007205823,
+      "equal": true,
+      "expected": 5619007205823,
+      "sources": [
+        "csv:1-Dis",
+        "expect"
+      ]
+    },
+    "2-Dis": {
+      "actual": 5619007241580,
+      "equal": true,
+      "expected": 5619007241580,
+      "sources": [
+        "csv:2-Dis",
+        "expect"
+      ]
+    },
+    "3-Dis": {
+      "actual": 5619007241580,
+      "equal": true,
+      "expected": 5619007241580,
+      "sources": [
+        "csv:3-Dis",
+        "expect"
+      ]
+    },
+    "I": {
+      "actual": 5619022190283,
+      "equal": true,
+      "expected": 5619022190283,
+      "sources": [
+        "csv:I-contractible",
+        "expect"
+      ]
+    },
+    "I_S": {
+      "actual": 5619022190283,
+      "equal": true,
+      "expected": 5619022190283,
+      "sources": [
+        "csv:strong I-contractible (J_S)",
+        "expect"
+      ]
+    },
+    "I_SV": {
+      "actual": 5619007241580,
+      "equal": true,
+      "expected": 5619007241580,
+      "sources": [
+        "csv:J_VS",
+        "expect"
+      ]
+    },
+    "I_indecisas": {
+      "actual": 3,
+      "equal": true,
+      "expected": 3,
+      "sources": [
+        "csv:I-undecided",
+        "expect"
+      ]
+    },
+    "aciclicas": {
+      "actual": 5619022190286,
+      "equal": true,
+      "expected": 5619022190286,
+      "sources": [
+        "csv:Z2-acyclic",
+        "expect"
+      ]
+    },
+    "chi1": {
+      "actual": 9859955384222,
+      "equal": true,
+      "expected": 9859955384222,
+      "sources": [
+        "csv:chi=1",
+        "expect"
+      ]
+    },
+    "conexas": {
+      "actual": 50335907869219,
+      "equal": true,
+      "expected": 50335907869219,
+      "sources": [
+        "csv:connected",
+        "expect"
+      ]
+    }
+  },
+  "config_sha256": "f06216b147a0c80a8a20a7b8d7e20760faa0a83a0ae39ef4fef45e37fbfbaf3f",
+  "counts": {
+    "-1-Dis": 165091172592,
+    "0-Dis": 4015494549880,
+    "1-Dis": 5619007205823,
+    "2-Dis": 5619007241580,
+    "3-Dis": 5619007241580,
+    "I": 5619022190283,
+    "I_S": 5619022190283,
+    "I_SV": 5619007241580,
+    "I_indecisas": 3,
+    "aciclicas": 5619022190286,
+    "chi1": 9859955384222,
+    "conexas": 50335907869219
+  },
+  "coverage": 200000,
+  "found_counts": {
+    "ACICLICA_NO_IS_INDECISA": 3,
+    "I_NO_IS": 0
+  },
+  "memo_totals": {
+    "icert_truncados": 0,
+    "memo_aciertos": 3458495831,
+    "memo_colisiones_hash": 0,
+    "memo_consultas": 4783946255
+  },
+  "mod": 200000,
+  "mode": "tabla",
+  "n": 13,
+  "ok": true,
+  "problems": [],
+  "references": [
+    {
+      "kind": "csv",
+      "path": "<archived-run>/raw_table.csv",
+      "row_n": 13,
+      "sha256": "c5c50257189d9ea3460ac67eab786e40b58e67d9cc4458d28cb47aa974a712fa"
+    }
+  ],
+  "requested_comparisons": [
+    "-1-Dis",
+    "0-Dis",
+    "1-Dis",
+    "2-Dis",
+    "3-Dis",
+    "I",
+    "I_S",
+    "I_SV",
+    "I_indecisas",
+    "aciclicas",
+    "chi1",
+    "conexas"
+  ],
+  "utc": "2026-10-28T00:35:06.098902+00:00"
+}

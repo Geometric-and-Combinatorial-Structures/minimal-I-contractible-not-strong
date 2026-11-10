@@ -1,0 +1,44 @@
+% Thirteen logical columns, including n; twelve counts in two panels.
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\sisetup{group-separator={,}}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rrrrrrr@{}}
+\toprule
+$n$ & connected & $\chi=1$ & $\mathcal A_{\mathbb F_2}$ & $\mathcal A_{\ZZ}$ & $\I$ & $\IS$ \\
+\midrule
+3 & \num{2} & \num{2} & \num{2} & \num{2} & \num{2} & \num{2} \\
+4 & \num{6} & \num{5} & \num{5} & \num{5} & \num{5} & \num{5} \\
+5 & \num{21} & \num{16} & \num{16} & \num{16} & \num{16} & \num{16} \\
+6 & \num{112} & \num{68} & \num{68} & \num{68} & \num{68} & \num{68} \\
+7 & \num{853} & \num{404} & \num{403} & \num{403} & \num{403} & \num{403} \\
+8 & \num{11117} & \num{3837} & \num{3798} & \num{3798} & \num{3798} & \num{3798} \\
+9 & \num{261080} & \num{68458} & \num{66167} & \num{66167} & \num{66167} & \num{66167} \\
+10 & \num{11716571} & \num{2571263} & \num{2343148} & \num{2343148} & \num{2343148} & \num{2343148} \\
+11 & \num{1006700565} & \num{204131202} & \num{166978401} & \num{166978401} & \num{166978401} & \num{166978401} \\
+12 & \num{164059830476} & \num{32482574568} & \num{22666537431} & \num{22666537431} & \num{22666537431} & \num{22666537431} \\
+13 & \num{50335907869219} & \num{9859955384222} & \num{5619022190286} & \num{5619022190283} & \num{5619022190283} & \num{5619022190283} \\
+14$^{\dagger}$ & \num{309317860269934} & \num{6112638767338} & \num{755877673752} & \num{755877673127} & \num{755877673127} & \num{755877673119} \\
+\bottomrule
+\end{tabular*}
+\par\medskip
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rrrrrrr@{}}
+\toprule
+$n$ & $\ISV$ & $3$-Dis & $2$-Dis & $1$-Dis & $0$-Dis & $(-1)$-Dis \\
+\midrule
+3 & \num{2} & \num{2} & \num{2} & \num{2} & \num{2} & \num{2} \\
+4 & \num{5} & \num{5} & \num{5} & \num{5} & \num{5} & \num{4} \\
+5 & \num{16} & \num{16} & \num{16} & \num{16} & \num{16} & \num{11} \\
+6 & \num{68} & \num{68} & \num{68} & \num{68} & \num{68} & \num{34} \\
+7 & \num{403} & \num{403} & \num{403} & \num{403} & \num{403} & \num{156} \\
+8 & \num{3798} & \num{3798} & \num{3798} & \num{3798} & \num{3791} & \num{1044} \\
+9 & \num{66167} & \num{66167} & \num{66167} & \num{66167} & \num{65561} & \num{12346} \\
+10 & \num{2343148} & \num{2343148} & \num{2343148} & \num{2343148} & \num{2258314} & \num{274668} \\
+11 & \num{166978389} & \num{166978389} & \num{166978389} & \num{166978389} & \num{151084672} & \num{12005168} \\
+12 & \num{22666525713} & \num{22666525713} & \num{22666525713} & \num{22666525693} & \num{18510237804} & \num{1018997864} \\
+13 & \num{5619007241580} & \num{5619007241580} & \num{5619007241580} & \num{5619007205823} & \num{4015494549880} & \num{165091172592} \\
+14$^{\dagger}$ & \num{755266302709} & \num{755266302709} & \num{755266302709} & \num{755266302709} & \num{81156275851} & \num{20797002} \\
+\bottomrule
+\end{tabular*}
+\endgroup

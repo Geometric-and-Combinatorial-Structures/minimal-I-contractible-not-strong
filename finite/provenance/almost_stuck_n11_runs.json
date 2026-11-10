@@ -1,0 +1,74 @@
+[
+  {
+    "geng": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-cq",
+      "11",
+      "0/4"
+    ],
+    "classifier": [
+      "<deposit>/classifier",
+      "--mode",
+      "almost_stuck"
+    ],
+    "exit": [
+      0,
+      0
+    ],
+    "seconds": 332.60453056299593
+  },
+  {
+    "geng": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-cq",
+      "11",
+      "1/4"
+    ],
+    "classifier": [
+      "<deposit>/classifier",
+      "--mode",
+      "almost_stuck"
+    ],
+    "exit": [
+      0,
+      0
+    ],
+    "seconds": 325.58961260400247
+  },
+  {
+    "geng": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-cq",
+      "11",
+      "2/4"
+    ],
+    "classifier": [
+      "<deposit>/classifier",
+      "--mode",
+      "almost_stuck"
+    ],
+    "exit": [
+      0,
+      0
+    ],
+    "seconds": 345.5803334059892
+  },
+  {
+    "geng": [
+      "<deposit>/environment/nauty2_8_9/geng",
+      "-cq",
+      "11",
+      "3/4"
+    ],
+    "classifier": [
+      "<deposit>/classifier",
+      "--mode",
+      "almost_stuck"
+    ],
+    "exit": [
+      0,
+      0
+    ],
+    "seconds": 347.0820844429545
+  }
+]

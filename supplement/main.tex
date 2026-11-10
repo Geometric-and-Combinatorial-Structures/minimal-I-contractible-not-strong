@@ -1,0 +1,465 @@
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[margin=1in]{geometry}
+\parindent=8pt
+\parskip=3pt
+\linespread{1.1}
+\usepackage{amsmath,amssymb,amsthm,palatino,euler,microtype}
+\renewcommand{\updefault}{n}
+\usepackage{booktabs,longtable,array,enumitem,xcolor,upquote}
+\usepackage[colorlinks=true,linkcolor=red!60!black,citecolor=blue!60!black,urlcolor=blue!60!black]{hyperref}
+\hypersetup{pdftitle={Finite closures and graph certificates},pdfauthor={Espinoza, Frias-Armenta, Hernandez-Amador and Hernandez-Hernandez}}
+\setlength{\emergencystretch}{2em}
+\newcommand{\I}{\mathfrak I}
+\newcommand{\IS}{\mathfrak I_S}
+\newcommand{\ISV}{\mathfrak I_{SV}}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\Ga}{G_{14}^{a}}
+\newcommand{\Gb}{G_{14}^{b}}
+\newcommand{\Gc}{G_{14}^{c}}
+\newcommand{\Dunce}{D_{15}}
+\newcommand{\NS}{\mathcal N}
+\newcommand{\BS}{\mathcal B}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title[Finite closures and graph certificates]{Finite closures and graph certificates\\
+Supplement to \emph{Counterexamples and enumeration for contractible and dismantlable graphs}}
+\author[J. F. Espinoza]{Jes\'us F. Espinoza}
+\author[M. E. Fr\'ias-Armenta]{Mart\'in Eduardo Fr\'ias-Armenta}
+\author[R. G. Hern\'andez-Amador]{Rosal\'ia G. Hern\'andez-Amador}
+\author[H. A. Hern\'andez-Hern\'andez]{H\'ector A. Hern\'andez-Hern\'andez}
+\address{Departamento de Matem\'aticas, Universidad de Sonora, Hermosillo, Sonora, M\'exico}
+\date{}
+\begin{document}
+\begin{abstract}
+We describe the finite admissible-edge closures associated with the
+counterexamples in the accompanying article. We prove the stopping rule
+and the exhaustiveness of the closure algorithm, explain the natural
+unfoldings of the 51 stuck seeds, and give an integral first-homology
+presentation for their finite verification. We also record the
+20 strictly 2-dismantlable graphs of order 12 and relate the earlier
+15-vertex example to the present labelling.
+\end{abstract}
+\maketitle
+
+\section{Graph classes and the finite constructions}
+All graphs are finite and simple. The clique complex of a graph $G$ is
+denoted by $\cl(G)$. We use induced open neighbourhoods $N_G(v)$ and
+induced common neighbourhoods $N_G(u,v)$. All homology groups below have
+integer coefficients unless a field is specified.
+
+The class $\IS$ of strong I-contractible graphs contains $K_1$ and does
+not contain the empty graph. For a graph of order at least two,
+$G\in\IS$ precisely when either
+\[
+ N_G(v),\,G-v\in\IS\quad\hbox{for some }v,
+ \qquad\hbox{or}\qquad
+ N_G(u,v),\,G-uv\in\IS\quad\hbox{for some }uv\in E(G).
+\]
+The definition is well founded because each argument has smaller
+$|V|+|E|$. A deletion, or its inverse addition, is \emph{admissible}
+when the tested neighbourhood lies in $\IS$.
+In the larger class $\I$, additions and deletions are both permitted,
+and their neighbourhoods are required to lie in $\I$.
+Starting from $K_1$ gives the least class closed under these four
+operations \cite{DEFH2023}. Reversing a strong reduction shows
+$\IS\subseteq\I$.
+
+A graph of order at least two is \emph{stuck} if its clique complex is
+acyclic over $\mathbb F_2$ and no vertex or edge is admissible for
+deletion. The order restriction excludes $K_1$. A stuck graph is
+outside $\IS$, since a strong reduction cannot start.
+
+The accompanying article \cite{companion2026} classifies 51 stuck
+$K_4$-free graphs of order 14. Three are I-contractible:
+$\Ga,\Gb,\Gc$, with respectively 44, 45 and 45 edges. Each has an
+admissible one-edge extension in $\IS$. The other 48 have
+$H_1\cong\ZZ/3$ and no other reduced homology.
+Their completeness as seeds depends on the enumeration and reduction
+lemmas in the article. The finite constructions below start with
+these explicitly deposited graphs. They permit edges that create a
+$K_4$, unless a restriction is stated.
+
+\section{Admissible-edge closures}
+\begin{definition}
+For a graph $G\notin\IS$, let $\NS(G)$ be the set of isomorphism classes
+of graphs outside $\IS$ obtainable from $G$ by a finite, possibly empty,
+sequence of admissible edge additions. Let $\BS(G)$ consist of the classes $[H+uv]\in\IS$
+for which $[H]\in\NS(G)$ and $uv$ is admissible in $H$.
+We call $\BS(G)$ the \emph{first-strong boundary}.
+For a set of seeds $\mathcal S$, take the unions
+$\NS(\mathcal S)$ and $\BS(\mathcal S)$.
+\end{definition}
+The boundary records the first entry into the strong class along some
+path. A class may have several predecessors or paths from a seed.
+
+\begin{lemma}\label{lem:monotone}
+If $uv$ is a missing edge of $H$, then
+$N_{H+uv}(u,v)=N_H(u,v)$ as induced graphs.
+If $H\in\IS$ and this common neighbourhood belongs to $\IS$,
+then $H+uv\in\IS$.
+\end{lemma}
+\begin{proof}
+Neither endpoint belongs to the common neighbourhood. Adding $uv$
+changes no adjacency within it and creates no new common neighbour.
+Deleting $uv$ from $H+uv$ leaves $H$, so the edge alternative in the
+definition of $\IS$ applies.
+\end{proof}
+\begin{corollary}\label{cor:no-return}
+Every intermediate graph of an admissible-addition path ending outside
+$\IS$ also lies outside $\IS$.
+\end{corollary}
+\begin{proof}
+Once a path reaches $\IS$, Lemma~\ref{lem:monotone} applies to every
+subsequent addition.
+\end{proof}
+
+The \emph{pruned closure algorithm} maintains a list of classes already
+seen and a queue of non-strong classes still to be expanded. Initially
+both the seen list and the queue contain the distinct non-strong seed
+classes. On removing a class $[H]$,
+test every missing edge $uv$ of a representative. If $N_H(u,v)\in\IS$,
+form $H+uv$. Insert its class if unseen. Place a non-strong result in
+the queue; record a strong result on the boundary and do not expand it.
+The tests for $\IS$ use the full current graph, including every
+previously added edge.
+
+\begin{theorem}\label{thm:closure}
+For a finite set of seeds, the pruned closure algorithm terminates.
+Its non-strong output is exactly $\NS(\mathcal S)$, and its strong
+output is exactly $\BS(\mathcal S)$.
+\end{theorem}
+\begin{proof}
+On each branch the order stays fixed and the number of edges increases
+strictly. A branch from an $n$-vertex graph has at most
+$\binom n2-|E(G)|$ steps. There are finitely many graph classes at
+each seed order.
+
+Each inserted state is reached by tested admissible additions, so
+every reported class has the asserted origin.
+Conversely, take a path to a non-strong target.
+By Corollary~\ref{cor:no-return}, every state on it is expanded unless
+its class has already been expanded.
+An isomorphism $\varphi:H\to H'$ sends $N_H(u,v)$ isomorphically to
+$N_{H'}(\varphi(u),\varphi(v))$ and extends to
+$H+uv\cong H'+\varphi(u)\varphi(v)$. Thus identifying isomorphic states
+preserves every possible successor class. Induction along the path
+shows that the target is found. Applying the same argument to the
+last non-strong predecessor proves the assertion about the boundary.
+\end{proof}
+
+If only $K_4$-free targets are wanted, candidates containing a $K_4$
+may also be discarded: subsequent additions cannot remove that clique.
+The same argument proves exhaustiveness in this restricted universe.
+
+\begin{remark}
+For a 14-vertex graph, a common neighbourhood has at most 12 vertices.
+The article's classification through order 13 implies that $\I$ and
+$\IS$ agree on all such neighbourhoods; members of $\I$ are connected.
+Consequently I-admissible and $\IS$-admissible edge additions coincide
+at order 14. This observation inherits the finite classification's
+computational dependence. Theorem~\ref{thm:closure} itself needs only
+the definition of $\IS$ and holds at every order.
+\end{remark}
+
+\begin{lemma}\label{lem:homology}
+An admissible edge addition induces isomorphisms on integral homology
+in every degree. It preserves membership in $\I$ in both directions.
+\end{lemma}
+\begin{proof}
+Let $C=N_H(u,v)$ and $K=\cl(C)$. The added simplices give
+\[
+ \cl(H+uv)=\cl(H)\cup(\Delta^{uv}*K),\qquad
+ \cl(H)\cap(\Delta^{uv}*K)=(\partial\Delta^{uv})*K.
+\]
+Since $C\in\IS\subseteq\I$, the nonempty complex $K$ is contractible
+\cite{EFH2022,DochtermannMatsushita2025}.
+The intersection is the suspension of $K$. Both it and the added
+piece are contractible.
+The reduced Mayer--Vietoris sequence gives the homology isomorphisms
+induced by inclusion. The addition and reverse deletion are
+I-transformations, since their common neighbourhood is the same
+member of $\I$.
+\end{proof}
+
+\section{The closure catalogs}\label{sec:catalogs}
+Applying Theorem~\ref{thm:closure} to the three contractible seeds gives
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Seed & $|\NS(G)|$ & $|\BS(G)|$ & $K_4$-free members of $\NS(G)$\\
+\midrule
+$\Ga$ &16&32&4\\
+$\Gb$ &10&16&3\\
+$\Gc$ &5&8&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+These finite computations use the proved recursion for $\IS$ and
+exact isomorphism tests. The three searches are regenerated by the
+separate finite verifier. Their non-strong union has 29 classes,
+rather than 31, because classes from different seeds can coincide.
+All 29 belong to $\I$ by Lemma~\ref{lem:homology}.
+Their eight $K_4$-free members form the positive exceptional set in
+row 14 of the article's table. The remaining 21 contain a $K_4$;
+their simplicial collapsibility is not classified here.
+
+Every class in $\BS(\Ga)$ supplies a counterexample of the type used
+for Conjecture~15 of \cite{DEFH2023}: it has a representative $H+uv\in\IS$ whose
+admissible edge $uv$ can be deleted to give $H\notin\IS$.
+The count 32 describes this boundary, not every graph with such a
+deletion.
+
+\begin{proposition}[Computer-assisted finite catalog]\label{prop:2271}
+For the set $\mathcal S$ of 51 deposited seeds,
+$\NS(\mathcal S)$ has 2,271 isomorphism classes. Exactly 29 belong
+to $\I$, and the other 2,242 have $H_1\cong\ZZ/3$.
+Exactly 277 classes in this union are $K_4$-free: eight belong to
+$\I$ and 269 have first homology $\ZZ/3$.
+\end{proposition}
+\begin{proof}
+The complete pruned search on the 51 seeds, followed by exact
+isomorphism identification, produces 2,271 non-strong classes.
+For the torsion-seed part, exhaustiveness uses the complete-state
+classifier and canonical labelling. A separate finite verifier
+reconstructs the three positive-seed closures.
+This finite search has been regenerated with the current complete-state
+classifier. Its class set agrees with the deposited catalog.
+The stored paths are checked independently, as are nonmembership in
+$\IS$, pairwise nonisomorphism and integral first homology.
+
+The three contractible seeds contribute precisely the 29-class union
+above. Every other seed has $H_1\cong\ZZ/3$.
+Lemma~\ref{lem:homology} preserves that group along each addition path,
+so none of those descendants belongs to $\I$.
+The two parts are disjoint, with sizes $29$ and $2271-29=2242$.
+Testing every four-vertex subset gives the restricted counts 8 and 269.
+\end{proof}
+
+The $K_4$-free non-strong exceptional set in row 14 has 633 classes.
+Exact comparison places all 277 restricted closure classes inside
+that set, leaving 356 classes outside these closures. One is encoded
+by \texttt{M?B@\char96 jIja\{J\}jy\{]?}.
+Thus the 2,271-class union does not exhaust even the $K_4$-free
+exceptions at order 14.
+The positive part is complete in the $K_4$-free universe by the
+article's reduction theorem; the 29-class positive union is not claimed
+to classify the unrestricted order-14 universe.
+
+\section{Natural unfoldings of the stuck seeds}\label{sec:unfold}
+For a $K_4$-free graph, the clique complex has dimension at most two.
+Let $d(e)$ be the number of triangles containing an edge $e$.
+Begin with a separate closed triangle for each triangle of $\cl(G)$.
+Whenever $d(e)=2$, glue the two copies of $e$ preserving the endpoint
+labels. Make no other identifications. The resulting complex is the
+\emph{natural unfolding} $U(G)$.
+When every edge and vertex belongs to a triangle, as for all 51 seeds,
+the labels define a quotient map $U(G)\to\cl(G)$.
+The construction identifies triangle corners as well as edges.
+Distinct edges of the unfolding may have the same image labels.
+
+\begin{proposition}\label{prop:unfold}
+The triangle list determines the unfolding's components, vertex links
+and boundary words by finite gluing.
+If every vertex link is a circle or an interval, the unfolding is a
+compact surface with boundary. A connected component with Euler
+characteristic 1 and one boundary component is a disc; one with Euler
+characteristic 0 and two boundary components is an annulus.
+\end{proposition}
+\begin{proof}
+Represent a corner by $(T,v)$, where $T$ is a triangle containing $v$.
+For an edge $uv$ in exactly two triangles $T,T'$, identify
+$(T,u)$ with $(T',u)$ and $(T,v)$ with $(T',v)$.
+The resulting equivalence classes are the quotient vertices.
+The glued triangle edges are its edges. Joining triangle pairs along
+the prescribed edges determines the connected components; no other
+identification joins two components.
+
+Each incident triangle contributes an interval to a vertex link.
+Glue interval endpoints exactly when the corresponding triangle
+edges were glued. A circular link gives a disc neighbourhood; an
+interval link gives a half-disc neighbourhood. This proves the local
+surface condition. Unglued triangle edges form the boundary;
+traversing its cycles gives the boundary words in original labels.
+Cell counts give the Euler characteristic.
+The classification of compact connected surfaces now gives the
+two stated types.
+\end{proof}
+
+All 51 unfoldings satisfy this surface condition. The cross-tabulation
+with the homology of the original clique complex is
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Integral $H_1(\cl(G))$ &Disc&Annulus&Disc $\sqcup$ annulus\\
+\midrule
+$0$&3&0&0\\
+$\ZZ/3$&45&2&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+Thus the three contractible seeds have disc unfoldings, and there
+are 45 further discs with torsion after boundary identification.
+The 48/2/1 split is reconstructed from the corner gluing,
+independently of the homology column.
+The annuli have boundary lengths 4 and 12. In the disconnected
+unfolding, the annulus has boundary lengths 8 and 12 and the disc has
+boundary length 4. Table~\ref{tab:seeds} gives all encodings and
+boundary lengths; in row 51 the length 4 belongs to the disc and
+lengths 8 and 12 to the annulus. The data also record every cyclic boundary word
+and vertex-link certificate.
+
+\section{Integral first homology from triangle relations}
+The finite checks use an integer presentation that applies to every
+graph. Its output concerns first homology; higher homology requires
+additional information.
+
+\begin{proposition}\label{prop:h1}
+Orient all edges of $G$ from smaller to larger endpoints, and let $F$
+be a spanning forest of $G$. Put $Q=E(G)\setminus E(F)$.
+Form an integer matrix $M$ with rows indexed by $Q$ and columns by
+triangles. The column for $i<j<k$ records the coefficients of
+$[j,k]-[i,k]+[i,j]$ on the edges in $Q$.
+Then $H_1(\cl(G);\ZZ)\cong\operatorname{coker}M$.
+If the nonzero Smith factors are $d_1,\ldots,d_r$, this group is
+\[
+ \ZZ^{\,|Q|-r}\oplus
+ \bigoplus_{\substack{1\leq i\leq r\\d_i>1}}\ZZ/d_i.
+\]
+\end{proposition}
+\begin{proof}
+An edge outside $F$ and the unique forest path between its endpoints
+determine a fundamental cycle. These cycles form an integral basis
+of $\ker\partial_1$. Equivalently, recording coefficients on $Q$
+gives an isomorphism $\ker\partial_1\to\ZZ^Q$: the remaining
+coefficients are uniquely determined by the cycle equations on
+each tree. Isolated vertices contribute no generator.
+The boundary of each triangle maps to its column of $M$.
+First homology is the cycle lattice modulo triangle boundaries.
+Higher-dimensional simplices do not change this quotient.
+The Smith normal form gives the displayed decomposition.
+\end{proof}
+
+The Smith computation uses unimodular integer row and column
+operations and freezes a pivot only after it divides the remaining
+block. For a connected two-dimensional complex with $\chi=1$ and
+finite $H_1$, the group $H_2$ is free of rank zero by the Euler
+characteristic. This gives the higher-homology conclusion for the
+48 torsion seeds. For their descendants,
+Lemma~\ref{lem:homology} supplies the conclusion in every dimension,
+including when added edges create higher cliques.
+
+\section{The strictly 2-dismantlable catalog}
+A nonempty graph is a cone if a vertex is adjacent to every other
+vertex. Cones form level $(-1)$-Dis. For $k\geq0$, a vertex is
+$k$-dismantlable if its open neighbourhood belongs to $(k-1)$-Dis;
+a graph belongs to $k$-Dis if successive such deletions reduce it
+to $K_1$. The empty graph belongs to no level.
+The hierarchy satisfies
+$1\text{-Dis}\subseteq2\text{-Dis}\subseteq\ISV$,
+where $\ISV$ is the strong class using vertex gluings alone
+\cite{DEFH2023}.
+
+\begin{proposition}[Computer-assisted]
+The minimum order of a graph in $2$-Dis outside $1$-Dis is 12.
+There are exactly 20 isomorphism classes of that order.
+\end{proposition}
+\begin{proof}
+Vertex deletion cannot merge components, and an isolated vertex
+cannot be deleted because its neighbourhood is empty. Thus every $2$-dismantlable graph is
+connected, so the connected universes in the table suffice.
+For orders 3 through 11, the article's table gives equal counts for
+$1$-Dis and $\ISV$. The inclusions force equality with $2$-Dis.
+At orders one and two, its only members are $K_1$ and $K_2$,
+both in $1$-Dis. At order 12 the difference is
+\[
+ 22\,666\,525\,713-22\,666\,525\,693=20.
+\]
+The 20 deposited graphs are pairwise nonisomorphic. Exact recursion
+places each in $2$-Dis and outside $1$-Dis. They exhaust the difference
+and establish existence at the minimum order.
+Completeness and minimality inherit the table's enumeration dependence.
+\end{proof}
+
+Table~\ref{tab:strict} records the graphs and elementary invariants.
+Automorphism-group orders are exact counts of adjacency-preserving
+permutations, included as catalog invariants.
+
+\section{The earlier 15-vertex example}
+Let $\Dunce$ have encoding
+\texttt{N\textbar thHsL\char96 sHoI\char96 RPOwLG}.
+It has 15 vertices, 46 edges and 32 triangles.
+The correspondence with Figure~2A of \cite{DEFH2023} is
+\[
+\begin{array}{c|rrrrrrrrrrrrrrr}
+ \text{present}&0&1&2&3&4&5&6&7&8&9&10&11&12&13&14\\
+ \text{published}&1&4&13&12&11&3&14&15&10&5&2&6&7&8&9
+\end{array}
+\]
+Under this bijection the complete triangle lists agree. The image of
+the full edge set also agrees with the union of edges in the recorded
+published triangles. These comparisons identify the recorded
+triangulation and its graph in the two labellings.
+The missing edge $\{9,12\}$ corresponds to the missing edge
+$\{5,7\}$ in the published labelling.
+
+The unfolding is a disc with face vector $(23,54,32)$ and boundary word
+\[
+ (0,1,5,10,\;0,1,5,10,\;0,10,5,1).
+\]
+Its image is a four-cycle, and the attaching degree is one.
+Collapsing a spanning tree of that cycle gives a circle with a
+two-cell attached by degree one, so $\cl(\Dunce)$ is contractible.
+The disc verifier checks interior injectivity and that all
+identifications occur on the boundary.
+
+For a direct graph certificate, add $\{9,12\}$.
+The common neighbourhood is strong, and the resulting graph has
+the strong reduction in Table~\ref{tab:d15}.
+Every displayed neighbourhood is taken in the current graph;
+its stored vertex reduction is checked recursively.
+Conversely, the vertex links of $\Dunce$ are triangle-free and not
+trees, and its edge links are edgeless graphs of order at least two.
+None belongs to $\IS$, so $\Dunce$ is stuck.
+This relates the earlier example to the present constructions,
+without asserting a new minimum at order 15.
+
+\section{Data and verification}
+The encodings, triangle lists, boundary words and reductions are
+in the companion repository:
+\begin{center}\small
+\url{https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong}.
+\end{center}
+The article contains the essential counterexample proofs and the
+algorithms for the table. This supplement supplies the mathematical
+basis and scope of the auxiliary catalogs. Execution instructions,
+requirements and provenance are given separately in the repository.
+
+The finite verification reconstructs five disc presentations, all
+51 unfoldings, the three small closures and the displayed reductions.
+It checks the 2,271 stored paths and integral first homology groups,
+and compares the catalogs up to isomorphism. The full 51-seed
+closure has also been regenerated with the current complete-state
+C classifier. This search on fixed seeds is distinct from the much
+larger enumerations establishing the table and seed completeness.
+Those retain their documented historical computational dependence;
+the finite checks do not supply a full independent recount.
+
+\appendix
+\section{Catalog tables}
+The machine-readable catalogs are the authoritative source for copying
+graph6 encodings; PDF text extraction may substitute glyphs.
+\input{tables/seeds}
+\input{tables/strict12}
+\input{tables/d15}
+\bibliographystyle{siam}
+\bibliography{refs}
+\end{document}

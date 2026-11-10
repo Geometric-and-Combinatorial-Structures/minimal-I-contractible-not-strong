@@ -1,0 +1,252 @@
+\section{Cardinalities and minimum orders}\label{sec:searches}\label{sec:table}
+
+We count connected graphs up to isomorphism. For orders $3$ through
+$13$ the universe is unrestricted; at order $14$ it consists of the
+connected $K_4$-free graphs. The exact decisions in
+Section~\ref{sec:algorithms}, applied to representatives of these
+universes, give the directly computed columns of
+Table~\ref{tab:card}: connected graphs, Euler characteristic one,
+$\mathbb F_2$-acyclicity, $\IS$, $\ISV$, the four dismantling levels
+$0$ through $3$, and cones. The columns for $\I$ and integral
+acyclicity are deduced below by classifying the remaining acyclic
+graphs.
+
+The finite enumerations and the resulting cardinalities in this
+section are computer-assisted. The accompanying material records
+the input universes, comparisons and finite verifications, with a map
+from the results here to their supporting files.
+The mathematical procedures establish what is counted; the retained
+execution records supply their numerical results. The finite enumerations
+use the generation and isomorphism software of McKay and Piperno
+\cite{McKayPiperno2014}; the versions and generation restrictions are
+recorded with the data.
+
+\subsection{The first acyclic exceptions}
+
+The directly computed acyclic and strong columns agree through order
+$12$. At order $13$ their difference is three. 
+
+\begin{theorem}\label{thm:classification13}
+Up to isomorphism, the only $\mathbb F_2$-acyclic graphs on at most
+$13$ vertices outside $\IS$ are $\Gt,\Gt',\Gt''$. Every graph in
+$\I$ on at most $13$ vertices belongs to $\IS$, and $\Gt$ is the
+only stuck graph of order $13$.
+\end{theorem}
+\begin{proof}
+Every $\mathbb F_2$-acyclic graph is connected, so the connected census
+contains both classes. Every strong graph is $\mathbb F_2$-acyclic, so equality of the two
+finite cardinalities through order $12$ gives equality of the classes
+in those orders. The cases of orders one and two are immediate.
+At order $13$ the difference is
+\[
+ \RowThirteenAcyclic-\RowThirteenIS=3.
+\]
+Theorem~\ref{thm:A} supplies three acyclic non-strong graphs with
+different edge counts, hence pairwise non-isomorphic. They exhaust
+the difference. Their nonzero integral homology excludes them from
+$\I$, which lies between $\IS$ and $\mathcal A_{\mathbb F_2}$.
+Finally, the link calculations in Table~\ref{tab:witness-links}
+show that $\Gt$ is stuck, whereas $\Gt'$ and $\Gt''$ each admit the
+edge deletion reversing the last specified addition. Every stuck graph
+is acyclic and non-strong, so there are no others at this order.
+\end{proof}
+
+\subsection{The \texorpdfstring{$K_4$}{K4}-free graphs of order fourteen}
+
+The following classification supplies the positive exceptions in
+the last row of the table. Its reduction uses only the complete
+classification through order $13$ and the local $K_4$-free criterion.
+
+\begin{theorem}\label{thm:classification14}
+There are $51$ isomorphism classes of stuck $K_4$-free graphs of
+order $14$. Exactly three lie in $\I$, namely $\Ga,\Gb,\Gc$;
+each of the other $48$ has first integral homology $\ZZ/3$ and
+zero higher homology. There are exactly eight $K_4$-free graphs
+of order $14$ in $\I\setminus\IS$, up to isomorphism. Their
+minimum number of edges is $44$, attained by $\Ga$.
+\end{theorem}
+\begin{proof}
+First, enumerate the connected $K_4$-free graphs of orders two through
+seven and apply Proposition~\ref{rem:K4-local}. No graph is almost
+stuck. This check examines, respectively, $1,2,5,17,82,536$
+isomorphism classes; it includes graphs with no admissible vertex.
+If a stuck $K_4$-free graph of order at most $14$ had a cut vertex,
+Lemma~\ref{lem:2conn} would give two almost stuck pieces with
+orders summing to at most $15$. One would have order at most seven,
+a contradiction. The seeds are therefore $2$-connected and satisfy
+$4\le\delta\le\Delta\le12$, by Lemma~\ref{lem:degrees}.
+
+Enumerating the $K_4$-free graphs of order $14$ with these restrictions,
+and testing $\mathbb F_2$-homology and the local neighbourhood conditions, gives
+$51$ pairwise non-isomorphic stuck graphs. Theorem~\ref{thm:B}
+and Proposition~\ref{prop:other-seeds} prove that $\Ga,\Gb,\Gc$
+lie in $\I$. Integral homology of the
+other $48$, computed by~\eqref{eq:integral-homology}, has free
+rank zero in degree one, and $\partial_2$ has a single nonunit Smith
+factor, equal to $3$. Thus $H_1\cong\ZZ/3$. Their clique complexes
+are connected, have dimension at most two and Euler characteristic
+one. Hence $\widetilde H_0=0$, and $H_2$, which is free, has rank
+zero. All higher homology therefore vanishes. In particular,
+none of these $48$ seeds lies in $\I$.
+The list of seeds, together with its homology
+and the finite checks, is included in the accompanying repository.
+
+By Theorem~\ref{thm:classification13}, a graph in
+$\I\setminus\IS$ has at least $14$ vertices. Apply
+Lemma~\ref{lem:stuck} to the $K_4$-free class: every $K_4$-free
+member of $\I\setminus\IS$ of order $14$ reduces by edge deletions
+to a stuck graph in $\I$.
+It therefore arises from one of $\Ga,\Gb,\Gc$. Their pruned
+edge-addition closures, restricted to $K_4$-free graphs, have the
+following numbers of non-strong classes, grouped by edge count:
+\[
+\begin{array}{c|rrrr|r}
+ \text{seed} & 44 & 45 & 46 & 47 & \text{total}\\ \hline
+ \Ga & 1 & 2 & 1 & 0 & 4\\
+ \Gb & 0 & 1 & 1 & 1 & 3\\
+ \Gc & 0 & 1 & 0 & 0 & 1
+\end{array}
+\]
+The three sets are pairwise disjoint up to isomorphism, so their
+union has eight classes. Proposition~\ref{prop:closure-correct}
+shows that no non-strong target is lost. Every retained graph belongs
+to $\I$, since the additions are I-transformations; every possible
+target has now been included. This proves the count of eight.
+
+The three contractible seeds have $44,45,45$ edges. Edge additions
+cannot decrease these numbers, so every target has at least $44$
+edges. The graph $\Ga$ attains the bound.
+\end{proof}
+
+The eight graphs have one-edge extensions in $\IS$, each obtained by
+an admissible addition. Thus their membership in $\I$ can also be
+checked individually by~\eqref{eq:I-path}; the full lists and
+reductions are supplied with the repository.
+
+\subsection{Adjudication of the integral and contractible columns}
+
+The coefficient distinction is essential to the first conjecture.
+Within each finite universe, the inclusions
+\begin{equation}\label{eq:table-chain}
+ \IS\subseteq\I\subseteq\mathcal A_{\ZZ}
+       \subseteq\mathcal A_{\mathbb F_2}
+\end{equation}
+leave only the acyclic non-strong graphs to be decided. Through
+order $12$ there are none. At order $13$ all three have integral
+torsion, as established above.
+
+At order $14$, let $G$ be $K_4$-free, $\mathbb F_2$-acyclic and
+outside $\IS$. An admissible deletion preserves its homotopy type
+and cannot leave a strong graph, since that would give a strong
+reduction of $G$. Delete admissible edges until either a vertex
+deletion is possible or no admissible element remains. In the first
+case the vertex deletion gives an acyclic non-strong graph of order
+$13$. Theorem~\ref{thm:classification13} identifies it with one of
+the three torsion graphs. Hence $G$ also has nonzero integral homology.
+In the second case the terminal graph is one of the $51$ stuck seeds.
+A torsion seed again gives nonzero integral homology. A contractible
+seed gives one of the eight graphs of
+Theorem~\ref{thm:classification14}. This exhausts the possibilities.
+In every torsion case the first integral homology is $\ZZ/3$ and
+the reduced homology vanishes in all other degrees.
+
+\begin{proposition}\label{prop:table-integral}
+In each universe of Table~\ref{tab:card}, integral acyclicity and
+I-contractibility coincide. Their common cardinality equals the
+$\mathbb F_2$-acyclic count through order $12$, that count minus
+three at order $13$, and that count minus $625$ in the $K_4$-free
+row of order $14$.
+\end{proposition}
+\begin{proof}
+The preceding classification partitions every acyclic non-strong
+graph into a member of $\I$ or a graph with nonzero integral
+homology. Together with~\eqref{eq:table-chain}, this proves the
+equality of classes in the specified universes. At order $14$,
+the acyclic and strong counts differ by
+\[
+ \RowFourteenAcyclic-\RowFourteenIS=633.
+\]
+Exactly eight of these graphs lie in $\I$, leaving $625$ with
+nonzero integral homology. The preceding reduction also determines their homology:
+$\widetilde H_1\cong\ZZ/3$, with vanishing reduced homology in
+all other degrees. Separate integral calculations on the $625$
+graphs confirm these groups. Thus the integral entries are
+$\RowThirteenI$ at order $13$ and $\RowFourteenI$ in the last
+row. All earlier entries follow from equality of the acyclic and
+strong classes.
+\end{proof}
+
+The equality just proved concerns the listed finite universes; it
+does not identify integral acyclicity and contractibility in general.
+
+Table~\ref{tab:card} combines these deductions with the direct counts.
+The $63$ entries shared with the published table
+\cite[Table~1]{DEFH2023} agree: these are the connected,
+$\mathcal A_{\mathbb F_2}$, $\I$, $\IS$, $\ISV$, $1$-Dis
+and $0$-Dis columns at orders $3$ through $11$.
+
+\begin{table}[tbp]
+\centering
+\caption{Numbers of isomorphism classes of connected graphs.
+The two panels give twelve counts, with $n$ repeated.
+The entire row $14^{\dagger}$ is restricted to $K_4$-free graphs.
+$\mathcal A_R$ denotes reduced acyclicity over $R$, and $(-1)$-Dis
+denotes the cones.}\label{tab:card}
+\input{tables/cardinalities}
+\end{table}
+
+\subsection{Consequences of the table}
+
+The constructions and the complete lower-order counts now determine
+the three minima relevant to the conjectures.
+
+\begin{corollary}[Computer-assisted]\label{cor:minimality}
+The minimum order of an $\mathbb F_2$-acyclic graph outside $\IS$
+is $13$. The minimum order of a graph in $\I\setminus\IS$ is
+$14$, and the same minimum holds for an integrally acyclic graph
+outside $\IS$. The minimum order of a strong graph having an
+$\IS$-admissible edge whose deletion leaves a non-strong graph
+is also $14$. The minimum number of vertices of a contractible,
+non-collapsible flag simplicial complex is $14$.
+\end{corollary}
+\begin{proof}
+Theorem~\ref{thm:classification13} excludes the smaller orders,
+and Theorems~\ref{thm:A} and~\ref{thm:B} provide the first two
+examples. Proposition~\ref{prop:table-integral} excludes an
+integrally acyclic non-strong graph through order $13$, while
+$\Ga\in\I$ attains order $14$. Finally, an admissible edge
+deletion from a strong graph is an I-transformation. If its result
+is non-strong, that result lies in $\I\setminus\IS$ and has the
+same order. The lower bound is therefore $14$; the one-edge
+extension of $\Ga$ in Section~\ref{sec:examples} attains it.
+
+If a contractible flag complex $K=\cl(G)$ has at most $13$ vertices,
+then $G\in\I$ by \cite[Corollary~1.5]{DochtermannMatsushita2025}.
+Theorem~\ref{thm:classification13} gives $G\in\IS$, and
+\cite[Theorem~1]{EFH2022} shows that $K$ is collapsible.
+Proposition~\ref{prop:noncollapsible} supplies the example
+$\cl(\Ga)$ on $14$ vertices.
+\end{proof}
+
+The dismantling columns give further separations. The classes
+$2$-Dis and $3$-Dis have the same counts as $\ISV$ throughout the
+table. The first difference between $2$-Dis and $1$-Dis occurs at
+order $12$, where it has cardinality $20$; at order $13$ the
+difference is $\NumTwoDisNotOneDisThirteen$. These conclusions
+follow by subtracting the counts of nested classes. The $20$ graphs
+of order $12$ are catalogued in the accompanying material. The first
+difference between $\IS$ and $\ISV$, already established in
+\cite[Theorem~11]{DEFH2023}, occurs at order $11$ and consists of
+twelve graphs.
+
+There is also a direct interpretation of the cone column. Adjoining
+a universal vertex is a bijection between isomorphism classes of
+graphs on $n-1$ vertices and cones on $n$ vertices. Its inverse is
+well defined because deleting any of several universal vertices
+gives isomorphic graphs. This explains the agreement of the
+unrestricted cone entries with the known numbers of unlabelled
+graphs~\cite{OEISA000088}; the connected totals at orders $3$ through
+$13$ agree with~\cite{OEISA001349}. A cone is $K_4$-free exactly when deletion
+of its apex leaves a triangle-free graph. The last cone entry is
+therefore $\RowFourteenCone$, the number of triangle-free graphs
+on $13$ vertices~\cite{OEISA006785}.

@@ -1,0 +1,1686 @@
+{
+  "status": "local candidate; no publication asserted",
+  "original_sources": "Source records identify provenance; originals and full production archives are not all redistributed.",
+  "files": [
+    {
+      "source_record": "fixed ZIP + verified b6 patch:.gitignore",
+      "original_sha256": "9ee84d276f67653b7e692c3ce939625dfb97ed06bf27ec2816ed0818302fa906",
+      "file": ".gitignore",
+      "sha256": "10ed3927fd3cce1f10bff6b8c770bd7ae85de31c54281da30d4b83d553a73126",
+      "selection": "byte-identical copy; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:LICENSE",
+      "original_sha256": "8324ddefd80414f7d220120fcbb10215e951ba700e5c69017f16a93aaeadcdce",
+      "file": "LICENSE",
+      "sha256": "8324ddefd80414f7d220120fcbb10215e951ba700e5c69017f16a93aaeadcdce",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:LICENSE-DATA",
+      "original_sha256": "1a4f127ad0dc8d7572708df818255fc6499c96b0fca49433cb22021b7f95592a",
+      "file": "LICENSE-DATA",
+      "sha256": "db30ea8bf0a7eccfe451223dd9f1eef82c84b3688d5d9b473c9ec4b2c00cbbdd",
+      "selection": "byte-identical copy; local publication copy edited (paths, scope or citation metadata only)",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:CITATION.cff",
+      "original_sha256": "9f3fb8e85d97c83c39229b8d8b81bef296d30b2e73a1c8ee001308b3e4c38ca2",
+      "file": "CITATION.cff",
+      "sha256": "601b3144dc31087ecc2029f718955286bbb3966ac8648f76cf917af87811c785",
+      "selection": "byte-identical copy; local publication copy edited (paths, scope or citation metadata only); updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:verification/atascadas_memo_exacto.c",
+      "original_sha256": "63f060c6ff2aea9f9da77176bb6c9a783b939857ebbd01410f1c3939660b1b56",
+      "file": "verification/atascadas_memo_exacto.c",
+      "sha256": "63f060c6ff2aea9f9da77176bb6c9a783b939857ebbd01410f1c3939660b1b56",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:verification/indep.py",
+      "original_sha256": "e426fb3ce0da69a975b859f0c0ecad573523ea758e09e59e012c7aa4db07deee",
+      "file": "verification/indep.py",
+      "sha256": "e426fb3ce0da69a975b859f0c0ecad573523ea758e09e59e012c7aa4db07deee",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/build.sh",
+      "original_sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+      "file": "v2/build.sh",
+      "sha256": "a32f444c1ac21146f009f2411580de75ed8e05d27480fa4c701a23087d802916",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/.gitignore",
+      "original_sha256": "c7cd0fc55d4b88bc4ed87b1cdc33670d9046174ab762188a0f2ce10290bb56e0",
+      "file": "v2/.gitignore",
+      "sha256": "c7cd0fc55d4b88bc4ed87b1cdc33670d9046174ab762188a0f2ce10290bb56e0",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/README.md",
+      "original_sha256": "b4bca02a2a27378a7c5a6d78f2c90f255cc63ceab25f727db93d060d574cbfa5",
+      "file": "v2/README.md",
+      "sha256": "41cf0374f40637203206e3b8fd780c0739a30f6474695630c6cec32fee834c4b",
+      "selection": "byte-identical copy; local publication copy edited (paths, scope or citation metadata only)",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/acyclic_not_strong_14_closure.tsv",
+      "original_sha256": "3a37e23ea93c48890f4264636e097269700b71d7bd0ece261f3e3a11d7fa754a",
+      "file": "data/acyclic_not_strong_14_closure.tsv",
+      "sha256": "3a37e23ea93c48890f4264636e097269700b71d7bd0ece261f3e3a11d7fa754a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/stuck_14_K4free.g6",
+      "original_sha256": "2f3f8701313179d59d9f653487287bcf7ee074c1e8d157a6f8ed4cecd33c24c5",
+      "file": "data/stuck_14_K4free.g6",
+      "sha256": "2f3f8701313179d59d9f653487287bcf7ee074c1e8d157a6f8ed4cecd33c24c5",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/table_cardinalities.csv",
+      "original_sha256": "3fccbf5b44c051e7dd930ff9cb492fb1cda3dfc019d3a79df57d135e9b980d44",
+      "file": "data/table_cardinalities.csv",
+      "sha256": "3fccbf5b44c051e7dd930ff9cb492fb1cda3dfc019d3a79df57d135e9b980d44",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/strictly_2dis_12.g6",
+      "original_sha256": "a31d923d0592b67b8743a45b38b499b6601281507d3ff9d10f06c9c12030565e",
+      "file": "data/strictly_2dis_12.g6",
+      "sha256": "a31d923d0592b67b8743a45b38b499b6601281507d3ff9d10f06c9c12030565e",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/I_not_strong_14_closure.tsv",
+      "original_sha256": "099b6927f450856256ab1b37ced36ea77f5e45e635a92331ef92a22ce0729680",
+      "file": "data/I_not_strong_14_closure.tsv",
+      "sha256": "099b6927f450856256ab1b37ced36ea77f5e45e635a92331ef92a22ce0729680",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/dunce_hat_15.g6",
+      "original_sha256": "3cd86834ad754e9233a3f3cbaacf252a92f04b55a2a224e5d6880dca605ea6b2",
+      "file": "data/dunce_hat_15.g6",
+      "sha256": "3cd86834ad754e9233a3f3cbaacf252a92f04b55a2a224e5d6880dca605ea6b2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/table_row14_K4free.csv",
+      "original_sha256": "052df6b8ee82e2f73d3d78743533775d8864eb4895ac4375c2f7fe04aaaf32a8",
+      "file": "data/table_row14_K4free.csv",
+      "sha256": "052df6b8ee82e2f73d3d78743533775d8864eb4895ac4375c2f7fe04aaaf32a8",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/acyclic_not_strong_13.g6",
+      "original_sha256": "02ff184ce065be418b07777793b7ea3fe07fab53c5b8521ec46ac1d3d4bad7b4",
+      "file": "data/acyclic_not_strong_13.g6",
+      "sha256": "02ff184ce065be418b07777793b7ea3fe07fab53c5b8521ec46ac1d3d4bad7b4",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/stuck_14_K4free.tsv",
+      "original_sha256": "9d56d71088f5b067505fbfa702d547e5a1638cd417b462e0d2e2079beed29c45",
+      "file": "data/stuck_14_K4free.tsv",
+      "sha256": "9d56d71088f5b067505fbfa702d547e5a1638cd417b462e0d2e2079beed29c45",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/minimal_I_not_strong_14.g6",
+      "original_sha256": "465b94d404e96b84635571407b5b5782e37c1fa5a8ae7b6db083c1b899e059a5",
+      "file": "data/minimal_I_not_strong_14.g6",
+      "sha256": "465b94d404e96b84635571407b5b5782e37c1fa5a8ae7b6db083c1b899e059a5",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/strictly_2dis_12.tsv",
+      "original_sha256": "4b560ccf654fba53e7f3d01d3727c1d306d048ed711858992827ad68bcd4a95b",
+      "file": "data/strictly_2dis_12.tsv",
+      "sha256": "4b560ccf654fba53e7f3d01d3727c1d306d048ed711858992827ad68bcd4a95b",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/structure_84_graphs.csv",
+      "original_sha256": "9cadf1023ce945543fe533634af9d8f57388384f546030054c0ac4a98f1c00af",
+      "file": "data/structure_84_graphs.csv",
+      "sha256": "9cadf1023ce945543fe533634af9d8f57388384f546030054c0ac4a98f1c00af",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:data/closure_G14a.tsv",
+      "original_sha256": "6ec6d4009f9c32455dd345834e70c85d59be34a5c0143fc4ff1be94b408c4d09",
+      "file": "data/closure_G14a.tsv",
+      "sha256": "6ec6d4009f9c32455dd345834e70c85d59be34a5c0143fc4ff1be94b408c4d09",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:src/atascadas.c",
+      "original_sha256": "db40ce4ff30b23e4d68444f594acf43761bfc808c4556dd006305306652f9089",
+      "file": "src/atascadas.c",
+      "sha256": "db40ce4ff30b23e4d68444f594acf43761bfc808c4556dd006305306652f9089",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:src/README.md",
+      "original_sha256": "2a32089596dab39c065975d5887977c1bf53ecd71e4cc81814594c86314a3ab5",
+      "file": "src/README.md",
+      "sha256": "9451cf23b37d9fe51b26a24db9ebf808682d99ff70014c77f6ee1cfdfc22fd01",
+      "selection": "byte-identical copy; local adaptation documented in public README",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:tools/clique_homology.py",
+      "original_sha256": "703394c9fa563d43175fda4a8cdb30ab7d59518daed273ae612d375676ed0ffa",
+      "file": "tools/clique_homology.py",
+      "sha256": "703394c9fa563d43175fda4a8cdb30ab7d59518daed273ae612d375676ed0ffa",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Integer and field homology algorithms, UCT and residual obstruction"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:tools/strong_contractible.py",
+      "original_sha256": "d29fc5bee9f53e91b122697c729ff854ee821fcc1d942417fa89e223be9014c1",
+      "file": "tools/strong_contractible.py",
+      "sha256": "d29fc5bee9f53e91b122697c729ff854ee821fcc1d942417fa89e223be9014c1",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:tools/ripser_z3_check.py",
+      "original_sha256": "7108391fc1b8eeb60dbe41ed53a6dedadf6ddd81ff6135c24e8a806393307364",
+      "file": "tools/ripser_z3_check.py",
+      "sha256": "7108391fc1b8eeb60dbe41ed53a6dedadf6ddd81ff6135c24e8a806393307364",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Integer and field homology algorithms, UCT and residual obstruction"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:tools/kdismantlable.py",
+      "original_sha256": "3ee50682777a1ecf8d16d81022b9976c2d3853d048c08b75e4ec3ed2af0f5c8a",
+      "file": "tools/kdismantlable.py",
+      "sha256": "3ee50682777a1ecf8d16d81022b9976c2d3853d048c08b75e4ec3ed2af0f5c8a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:tools/dunce_hat.py",
+      "original_sha256": "895a8f17d514374051e3082e0e4bfe8c9392628a3235d78c17cbb5d1cc00fd98",
+      "file": "tools/dunce_hat.py",
+      "sha256": "895a8f17d514374051e3082e0e4bfe8c9392628a3235d78c17cbb5d1cc00fd98",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/pipeline/campana_v2.py",
+      "original_sha256": "d417c200bb4a9e7d8274899332f44a7a9890003310f1bc6d8b7d5b640cd362a3",
+      "file": "v2/pipeline/campana_v2.py",
+      "sha256": "d417c200bb4a9e7d8274899332f44a7a9890003310f1bc6d8b7d5b640cd362a3",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/run_sanitizers.sh",
+      "original_sha256": "d3467d339b76a04a8f561a80f25aba862ca4ebc924335e72bb54d882a464fb3c",
+      "file": "v2/tests/run_sanitizers.sh",
+      "sha256": "d3467d339b76a04a8f561a80f25aba862ca4ebc924335e72bb54d882a464fb3c",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_equivalence.py",
+      "original_sha256": "bbe3cc5132e720432c969e5116852a979321929b11bede1ce6484401413b2cc0",
+      "file": "v2/tests/test_equivalence.py",
+      "sha256": "bbe3cc5132e720432c969e5116852a979321929b11bede1ce6484401413b2cc0",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/provenance.py",
+      "original_sha256": "29f628854df985c32ea89f034aae3ff4052eaaf2a3dd1a4978fd85e3bbd77bf9",
+      "file": "v2/tests/provenance.py",
+      "sha256": "29f628854df985c32ea89f034aae3ff4052eaaf2a3dd1a4978fd85e3bbd77bf9",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_regressions_r4.py",
+      "original_sha256": "3c8eaa372085f4c65d2b951fad8783c2c061973834cbdc27b9dd3430c89fe948",
+      "file": "v2/tests/test_regressions_r4.py",
+      "sha256": "3c8eaa372085f4c65d2b951fad8783c2c061973834cbdc27b9dd3430c89fe948",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_regressions_r3.py",
+      "original_sha256": "05bea698ed93cacf6b4b9d4a2a9c61258308dd35a6cceaf090271c93a8a3c2c9",
+      "file": "v2/tests/test_regressions_r3.py",
+      "sha256": "05bea698ed93cacf6b4b9d4a2a9c61258308dd35a6cceaf090271c93a8a3c2c9",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_pipeline.py",
+      "original_sha256": "4c2edac973de1eacaf6ba5caa787ff8a903ff87d106d4195b75401c840743747",
+      "file": "v2/tests/test_pipeline.py",
+      "sha256": "4c2edac973de1eacaf6ba5caa787ff8a903ff87d106d4195b75401c840743747",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_regressions_r5.py",
+      "original_sha256": "2854f03f0b78d1f563d01f32cec4a12ddd7151e1ef8f0ef30519363979ae36fd",
+      "file": "v2/tests/test_regressions_r5.py",
+      "sha256": "2854f03f0b78d1f563d01f32cec4a12ddd7151e1ef8f0ef30519363979ae36fd",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_robustness.py",
+      "original_sha256": "1a6b2309cd97697c9c10ffa8f70fb377107163929bf5f3c48118f1fc30258cd8",
+      "file": "v2/tests/test_robustness.py",
+      "sha256": "1a6b2309cd97697c9c10ffa8f70fb377107163929bf5f3c48118f1fc30258cd8",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/tests/test_regressions_r2.py",
+      "original_sha256": "cf13a4f7cdf169654be883bf538aa69388e15a6e257edf4d2ea243fa3a6ecf65",
+      "file": "v2/tests/test_regressions_r2.py",
+      "sha256": "cf13a4f7cdf169654be883bf538aa69388e15a6e257edf4d2ea243fa3a6ecf65",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "fixed ZIP + verified b6 patch:v2/src/atascadas_v2.c",
+      "original_sha256": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+      "file": "v2/src/atascadas_v2.c",
+      "sha256": "bd18224f907971e298a3997fad156628ed0f4aca0737beec3e7c900599782e8a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/integrity_manifest.sha256",
+      "original_sha256": "76e3654facc35b1a08283525b6e4a44044d67b58178ec9fd467155c132fd9761",
+      "file": "finite/integrity_manifest.sha256",
+      "sha256": "18fcd6f5bb9ad0f920e14e7a011f7983ca66a02add994074a188a3cb5b9f39c5",
+      "selection": "byte-identical copy; local adaptation documented in public README; updated in current local selection; updated in current local selection; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/integrity_manifest.json",
+      "original_sha256": "c63e35c4c0d4144c37e4beecf68af06b8ee6b20870026963116ec1b982a5129e",
+      "file": "finite/integrity_manifest.json",
+      "sha256": "df8b6ebec5c58b29cd49a295e1e863570457cf9045aa53670b46048cc9fa41d8",
+      "selection": "byte-identical copy; local adaptation documented in public README; updated in current local selection; updated in current local selection; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/check_integrity.py",
+      "original_sha256": "e3d56ac475e5a25567ae1b312e21117f52165c11eb07f182ff0cfd0546440c09",
+      "file": "finite/check_integrity.py",
+      "sha256": "ce3d6b7288cbf4e61370378e4538702143dc55faeaa3ad1187c308617b1a93a2",
+      "selection": "byte-identical copy; local adaptation documented in public README",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/figures/mosaic_index.tsv",
+      "original_sha256": "b9f0629307e626333d52976ba3afc5d9bbfd83f410c2950c96c5d70249b32b0c",
+      "file": "finite/figures/mosaic_index.tsv",
+      "sha256": "b9f0629307e626333d52976ba3afc5d9bbfd83f410c2950c96c5d70249b32b0c",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/figures/trace_steps.tsv",
+      "original_sha256": "fd2dc6b699916337695e5241f84f731e998fef62271b4077d2b1a25d36ef14ae",
+      "file": "finite/figures/trace_steps.tsv",
+      "sha256": "fd2dc6b699916337695e5241f84f731e998fef62271b4077d2b1a25d36ef14ae",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/D15_label_correspondence.tsv",
+      "original_sha256": "5fddde1eccb56a4583b4d6d02f6c717c3c546f9aa64391c2e0d04d6b5b4d1339",
+      "file": "finite/data/D15_label_correspondence.tsv",
+      "sha256": "5fddde1eccb56a4583b4d6d02f6c717c3c546f9aa64391c2e0d04d6b5b4d1339",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/small_closure_certificates.json",
+      "original_sha256": "759a28b96fcede07878ccacd3eb9de5664489cda4e5a83c23543674fff962e1e",
+      "file": "finite/data/small_closure_certificates.json",
+      "sha256": "759a28b96fcede07878ccacd3eb9de5664489cda4e5a83c23543674fff962e1e",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/K4_free_I_not_strong_14.tsv",
+      "original_sha256": "fe320aa596f25fd028d1a36749dda5f2f0d23dbe3022455759bf9ea05284363b",
+      "file": "finite/data/K4_free_I_not_strong_14.tsv",
+      "sha256": "fe320aa596f25fd028d1a36749dda5f2f0d23dbe3022455759bf9ea05284363b",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/adamaszek_11_homology.json",
+      "original_sha256": "b2d76d8b9da3715b64cc8c629ce384846e85f190e185ed4074de9678e08d6d47",
+      "file": "finite/data/adamaszek_11_homology.json",
+      "sha256": "b2d76d8b9da3715b64cc8c629ce384846e85f190e185ed4074de9678e08d6d47",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/check_local_K4_small.py",
+      "original_sha256": "5b706eae86f7fe54826db12f8be02d2d8b5647113d0e22d7d56cfb7d4f1f14c9",
+      "file": "finite/data/check_local_K4_small.py",
+      "sha256": "5b706eae86f7fe54826db12f8be02d2d8b5647113d0e22d7d56cfb7d4f1f14c9",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_filter.c",
+      "original_sha256": "36c9019dee6106b807d1f974dbc87358ba4f1ed0a94b0bc3560fa919e111427d",
+      "file": "finite/data/restricted_K4_filter.c",
+      "sha256": "36c9019dee6106b807d1f974dbc87358ba4f1ed0a94b0bc3560fa919e111427d",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/check_unfoldings.py",
+      "original_sha256": "b45208e2f05341cdbd8b5abba82529e2db97a41f4e1832cd0c454b16883e2cf0",
+      "file": "finite/data/check_unfoldings.py",
+      "sha256": "b45208e2f05341cdbd8b5abba82529e2db97a41f4e1832cd0c454b16883e2cf0",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/acyclic_not_strong_14_closure.tsv",
+      "original_sha256": "3a37e23ea93c48890f4264636e097269700b71d7bd0ece261f3e3a11d7fa754a",
+      "file": "finite/data/acyclic_not_strong_14_closure.tsv",
+      "sha256": "3a37e23ea93c48890f4264636e097269700b71d7bd0ece261f3e3a11d7fa754a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/check_local_K4_records.py",
+      "original_sha256": "59545234e81fec1a2ca63dd229226093cbf57a712fc57f494cf211095b6ce371",
+      "file": "finite/data/check_local_K4_records.py",
+      "sha256": "58cff7da7b5793e35adc009278628708dc3be7515b43630e0b0459015f0da9cc",
+      "selection": "byte-identical copy; updated in current local selection",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/unfolding_components.json",
+      "original_sha256": "79c992338b9a4b324aa98bd0637b8ce4776262e3ea94d6676645e2ab383bb945",
+      "file": "finite/data/unfolding_components.json",
+      "sha256": "79c992338b9a4b324aa98bd0637b8ce4776262e3ea94d6676645e2ab383bb945",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/check_adamaszek.py",
+      "original_sha256": "4acd8463d225f834b25301e71e62ba43d405d11ab352aa30566eb82cfee7bcb2",
+      "file": "finite/data/check_adamaszek.py",
+      "sha256": "4acd8463d225f834b25301e71e62ba43d405d11ab352aa30566eb82cfee7bcb2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/I_not_strong_14_closure.tsv",
+      "original_sha256": "099b6927f450856256ab1b37ced36ea77f5e45e635a92331ef92a22ce0729680",
+      "file": "finite/data/I_not_strong_14_closure.tsv",
+      "sha256": "099b6927f450856256ab1b37ced36ea77f5e45e635a92331ef92a22ce0729680",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/adamaszek_11_graphs.g6",
+      "original_sha256": "981b063ef6239052bafa31df28de270751cf542ab454661f71f1105dd5a9b2f2",
+      "file": "finite/data/adamaszek_11_graphs.g6",
+      "sha256": "981b063ef6239052bafa31df28de270751cf542ab454661f71f1105dd5a9b2f2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/D15_published_triangles.json",
+      "original_sha256": "b4fd4bd4e66a17d38d7635e68d5be548c6fedca5e834692bb9edaf30d36ddd60",
+      "file": "finite/data/D15_published_triangles.json",
+      "sha256": "b4fd4bd4e66a17d38d7635e68d5be548c6fedca5e834692bb9edaf30d36ddd60",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/README.md",
+      "original_sha256": "1be7ce53ba34a40115b4769c8beff5fca7afd1c3fca4c8f56a145954d1c52f7e",
+      "file": "finite/data/README.md",
+      "sha256": "66354cde31efc40e16b89a0d19f4f5f1615f8754b2bd588d41ecb9ca975915d9",
+      "selection": "byte-identical copy; local publication copy edited (paths, scope or citation metadata only)",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/local_filter_test.json",
+      "original_sha256": "10567e4b122dc3d541bda40b0ee4f4670311b5a27bfed4c85af434700d9dd51d",
+      "file": "finite/data/local_filter_test.json",
+      "sha256": "10567e4b122dc3d541bda40b0ee4f4670311b5a27bfed4c85af434700d9dd51d",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/stuck_14_K4free.tsv",
+      "original_sha256": "9d56d71088f5b067505fbfa702d547e5a1638cd417b462e0d2e2079beed29c45",
+      "file": "finite/data/stuck_14_K4free.tsv",
+      "sha256": "9d56d71088f5b067505fbfa702d547e5a1638cd417b462e0d2e2079beed29c45",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/check_small_closures.py",
+      "original_sha256": "9cec49bd9f85d74a6b3caf7272c7db3013394eff19aec7c6853f4556c6507009",
+      "file": "finite/data/check_small_closures.py",
+      "sha256": "9cec49bd9f85d74a6b3caf7272c7db3013394eff19aec7c6853f4556c6507009",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/check_tables.py",
+      "original_sha256": "35e2ad7acabebad44beb2da9e4b804414f6b76ae858ef4710185239fc04a9859",
+      "file": "finite/data/check_tables.py",
+      "sha256": "35e2ad7acabebad44beb2da9e4b804414f6b76ae858ef4710185239fc04a9859",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/strictly_2dis_12.tsv",
+      "original_sha256": "4b560ccf654fba53e7f3d01d3727c1d306d048ed711858992827ad68bcd4a95b",
+      "file": "finite/data/strictly_2dis_12.tsv",
+      "sha256": "4b560ccf654fba53e7f3d01d3727c1d306d048ed711858992827ad68bcd4a95b",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/closure_G14a.tsv",
+      "original_sha256": "6ec6d4009f9c32455dd345834e70c85d59be34a5c0143fc4ff1be94b408c4d09",
+      "file": "finite/data/closure_G14a.tsv",
+      "sha256": "6ec6d4009f9c32455dd345834e70c85d59be34a5c0143fc4ff1be94b408c4d09",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/link_checks.json",
+      "original_sha256": "fbc4b86eb25ff170f254ca288e64c92c1db0320bab50a272fa4ac670ace27940",
+      "file": "finite/certificates/link_checks.json",
+      "sha256": "fbc4b86eb25ff170f254ca288e64c92c1db0320bab50a272fa4ac670ace27940",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/test_certificate_integrity.py",
+      "original_sha256": "b3dc148ff373a254ba06d679bbcba0962171b42ac0866a596083c61a0d97ff2a",
+      "file": "finite/certificates/test_certificate_integrity.py",
+      "sha256": "b3dc148ff373a254ba06d679bbcba0962171b42ac0866a596083c61a0d97ff2a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/check_certificates.py",
+      "original_sha256": "c47658ca4db72a4d418add6b8d0d713da1d8ff954ada2a52af0498da1cee3b0a",
+      "file": "finite/certificates/check_certificates.py",
+      "sha256": "c47658ca4db72a4d418add6b8d0d713da1d8ff954ada2a52af0498da1cee3b0a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/finite_checks.py",
+      "original_sha256": "82e8b00137d8a78c49b65c6a0ae819db77983a3908e004c455844a3ec45453e3",
+      "file": "finite/certificates/finite_checks.py",
+      "sha256": "82e8b00137d8a78c49b65c6a0ae819db77983a3908e004c455844a3ec45453e3",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/disc_hypotheses.json",
+      "original_sha256": "a88e763bd949a0a07a00e2bcce3bc9964b47f234b411794268cfc2714cb3c28a",
+      "file": "finite/certificates/disc_hypotheses.json",
+      "sha256": "a88e763bd949a0a07a00e2bcce3bc9964b47f234b411794268cfc2714cb3c28a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/G13_successors.json",
+      "original_sha256": "9b0f61afe82107b6d3de430f82f10b3e304a18fa5fa4680ddefd85eb2571c705",
+      "file": "finite/certificates/G13_successors.json",
+      "sha256": "9b0f61afe82107b6d3de430f82f10b3e304a18fa5fa4680ddefd85eb2571c705",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/README.md",
+      "original_sha256": "787de9fecf81875d3e5fdfcf850e110ef47cdeff0850558b8e799ae3c05c1fca",
+      "file": "finite/certificates/README.md",
+      "sha256": "787de9fecf81875d3e5fdfcf850e110ef47cdeff0850558b8e799ae3c05c1fca",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/check_disc_hypotheses.py",
+      "original_sha256": "78ea57d8feb463a56348a75d515dfb4402ccf4ff5e1d399c898463be502c2320",
+      "file": "finite/certificates/check_disc_hypotheses.py",
+      "sha256": "78ea57d8feb463a56348a75d515dfb4402ccf4ff5e1d399c898463be502c2320",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/certificates/certificate_replay.json",
+      "original_sha256": "25e11d1e8cc4f2e562f4601ba46058ef488667cf10df8f4ae125a289dbdf91af",
+      "file": "finite/certificates/certificate_replay.json",
+      "sha256": "25e11d1e8cc4f2e562f4601ba46058ef488667cf10df8f4ae125a289dbdf91af",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Witness homology, obstruction and reductions"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/local_K4_restricted_records.json",
+      "original_sha256": "ce89a0f594569f36c85e9390242d06848d5b693389846ac753b23fcedd2c87b3",
+      "file": "finite/provenance/local_K4_restricted_records.json",
+      "sha256": "ce89a0f594569f36c85e9390242d06848d5b693389846ac753b23fcedd2c87b3",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/separate_order10_census.txt",
+      "original_sha256": "b75e263b19cef042a195a60d36dbf2eb55c451a881dd5351cdf5031c829abfed",
+      "file": "finite/provenance/separate_order10_census.txt",
+      "sha256": "b75e263b19cef042a195a60d36dbf2eb55c451a881dd5351cdf5031c829abfed",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/small_order_counts.json",
+      "original_sha256": "03d7fe1c32e0f126fd0e93b6547a8703472b20c528dda5fda14acb193cdc32c1",
+      "file": "finite/provenance/small_order_counts.json",
+      "sha256": "03d7fe1c32e0f126fd0e93b6547a8703472b20c528dda5fda14acb193cdc32c1",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/check_records.py",
+      "original_sha256": "f48cb1de6a56f825af587b48b89be6e29b97769287a892e658ba78fe9948e7d1",
+      "file": "finite/provenance/check_records.py",
+      "sha256": "d89672956ba20b1cf4dee2e7e571c9ff0cf128361d182c477d58338628649a38",
+      "selection": "byte-identical copy; updated in current local selection",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/almost_stuck_n11_r3.stderr.txt",
+      "original_sha256": "b4cc8cd249a87c56709e602fa32d435f44683407897545f8b81ffb9c456a0272",
+      "file": "finite/provenance/almost_stuck_n11_r3.stderr.txt",
+      "sha256": "b4cc8cd249a87c56709e602fa32d435f44683407897545f8b81ffb9c456a0272",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/nauty_build.json",
+      "original_sha256": "ac855bddde7026026bfbcef79805b038d3e1e685880551eb190dc0f17cdf80e7",
+      "file": "finite/provenance/nauty_build.json",
+      "sha256": "ac855bddde7026026bfbcef79805b038d3e1e685880551eb190dc0f17cdf80e7",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/search_task_intervals.tsv",
+      "original_sha256": "76e320ad280f0a0ac9abeab8391e27f898a9e68a41d017891a1c0269cf42689d",
+      "file": "finite/provenance/search_task_intervals.tsv",
+      "sha256": "76e320ad280f0a0ac9abeab8391e27f898a9e68a41d017891a1c0269cf42689d",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/exact_n11_r3.stderr.txt",
+      "original_sha256": "63b3f457814086b2f76eb1709754f389aa2559016a85661d6f62817996ef6b2d",
+      "file": "finite/provenance/exact_n11_r3.stderr.txt",
+      "sha256": "63b3f457814086b2f76eb1709754f389aa2559016a85661d6f62817996ef6b2d",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/final_local_checks.json",
+      "original_sha256": "4fe4bbf9436766add001df2694152ad408219b7ca9a44d8f6aaff01950ba86e2",
+      "file": "finite/provenance/final_local_checks.json",
+      "sha256": "4fe4bbf9436766add001df2694152ad408219b7ca9a44d8f6aaff01950ba86e2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/almost_stuck_n11_runs.json",
+      "original_sha256": "3abde23f7455bdcab4feb4a89ef962d2003c3104c964de3a31f82424ab2f99d1",
+      "file": "finite/provenance/almost_stuck_n11_runs.json",
+      "sha256": "3abde23f7455bdcab4feb4a89ef962d2003c3104c964de3a31f82424ab2f99d1",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/order13_elapsed.txt",
+      "original_sha256": "f760a66003d1af26b6edd616fc29021d0156a8e55021e586fe22ff5889ae6201",
+      "file": "finite/provenance/order13_elapsed.txt",
+      "sha256": "f760a66003d1af26b6edd616fc29021d0156a8e55021e586fe22ff5889ae6201",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/local_K4_small_checks.json",
+      "original_sha256": "d7e09ec80c2b808ae4384e0a69489d9bcb2c2371c4a29444eda232855bd382b0",
+      "file": "finite/provenance/local_K4_small_checks.json",
+      "sha256": "d7e09ec80c2b808ae4384e0a69489d9bcb2c2371c4a29444eda232855bd382b0",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/order13_wrapper_log.txt",
+      "original_sha256": "185615d80e49f952c60c66dc066983c3d53e4b6d2e0231815d1e472b0863646c",
+      "file": "finite/provenance/order13_wrapper_log.txt",
+      "sha256": "185615d80e49f952c60c66dc066983c3d53e4b6d2e0231815d1e472b0863646c",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/exact_n11_r1.stderr.txt",
+      "original_sha256": "a56a75045f2ea691b5fa407b594c0bee905fbfd9274c63bf43867cd64ba9c0cd",
+      "file": "finite/provenance/exact_n11_r1.stderr.txt",
+      "sha256": "a56a75045f2ea691b5fa407b594c0bee905fbfd9274c63bf43867cd64ba9c0cd",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/search_accounting_rows.tsv",
+      "original_sha256": "29169f7c0e20e06a767009af0ee7be115222f1b128b1579767fe4a9ab2d88117",
+      "file": "finite/provenance/search_accounting_rows.tsv",
+      "sha256": "29169f7c0e20e06a767009af0ee7be115222f1b128b1579767fe4a9ab2d88117",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/exact_n11_r2.stderr.txt",
+      "original_sha256": "c7fbbf0f83c27d3adf10f9decdfd4a32958f39f8f3b537f78f445a179c51b801",
+      "file": "finite/provenance/exact_n11_r2.stderr.txt",
+      "sha256": "c7fbbf0f83c27d3adf10f9decdfd4a32958f39f8f3b537f78f445a179c51b801",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/SELECTION_SOURCES.json",
+      "original_sha256": "12396f76e7c76ab69920d247d45faf7f605a5710a5f46694413953d6be2f1229",
+      "file": "finite/provenance/SELECTION_SOURCES.json",
+      "sha256": "12396f76e7c76ab69920d247d45faf7f605a5710a5f46694413953d6be2f1229",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/README.md",
+      "original_sha256": "a5951543d432415d150ad9499e9899a95679283f8a274a7e22d692c377ca29b0",
+      "file": "finite/provenance/README.md",
+      "sha256": "16d3230f62ce87986c4dee3ccf51448667ca0f4d9546889c3cfcfebd3b3e5158",
+      "selection": "byte-identical copy; local publication copy edited (paths, scope or citation metadata only); updated in current local selection; updated in current local selection",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/exact_n11_summary.json",
+      "original_sha256": "19e1bad8556762998f6b364e0b8171fa425b667f918b551cf99f722bc1ae2bd5",
+      "file": "finite/provenance/exact_n11_summary.json",
+      "sha256": "19e1bad8556762998f6b364e0b8171fa425b667f918b551cf99f722bc1ae2bd5",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/separate_order10_commands.jsonl",
+      "original_sha256": "02485f14b7a7231e94302e6a4e36f76457e042c5a40a4c55c58182e502b831ab",
+      "file": "finite/provenance/separate_order10_commands.jsonl",
+      "sha256": "02485f14b7a7231e94302e6a4e36f76457e042c5a40a4c55c58182e502b831ab",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/generator_probe_2026-10-17.json",
+      "original_sha256": "cd6ceb6996ef756995e79c58ed2aa19be6011704d9b4b86d76cc9eb5d4254593",
+      "file": "finite/provenance/generator_probe_2026-10-17.json",
+      "sha256": "cd6ceb6996ef756995e79c58ed2aa19be6011704d9b4b86d76cc9eb5d4254593",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/exact_n11_r0.stderr.txt",
+      "original_sha256": "4a8f5cbbd9a7c227067f6ea20a4b5101568220085a41ca214d068d21fff70aa4",
+      "file": "finite/provenance/exact_n11_r0.stderr.txt",
+      "sha256": "4a8f5cbbd9a7c227067f6ea20a4b5101568220085a41ca214d068d21fff70aa4",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/search_elapsed_comparison.json",
+      "original_sha256": "52bfa36ad64c74608280301c4a0100911f4085254e28b2af08c66374d86d34b3",
+      "file": "finite/provenance/search_elapsed_comparison.json",
+      "sha256": "52bfa36ad64c74608280301c4a0100911f4085254e28b2af08c66374d86d34b3",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/almost_stuck_n11_r1.stderr.txt",
+      "original_sha256": "09b17a0a9814d5d00a581460e0a45f90cde8c23fc9e719b62b156306af0a97a7",
+      "file": "finite/provenance/almost_stuck_n11_r1.stderr.txt",
+      "sha256": "09b17a0a9814d5d00a581460e0a45f90cde8c23fc9e719b62b156306af0a97a7",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/almost_stuck_n11_r0.stderr.txt",
+      "original_sha256": "b628a027847a0a0713158e058be17af99c1fba12d17ca14a552a5a259491a54c",
+      "file": "finite/provenance/almost_stuck_n11_r0.stderr.txt",
+      "sha256": "b628a027847a0a0713158e058be17af99c1fba12d17ca14a552a5a259491a54c",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/project_almost_stuck_orders3-11.txt",
+      "original_sha256": "ff08ee4fb286488441617b0417f4c9dacff40b64c72ebd1d0c9311f5c10dd7e8",
+      "file": "finite/provenance/project_almost_stuck_orders3-11.txt",
+      "sha256": "ff08ee4fb286488441617b0417f4c9dacff40b64c72ebd1d0c9311f5c10dd7e8",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/almost_stuck_n11_r2.stderr.txt",
+      "original_sha256": "d8cf43c39f04adc546f67a4a4bc82092e02a3cecdb61457c86dbc74f034913a2",
+      "file": "finite/provenance/almost_stuck_n11_r2.stderr.txt",
+      "sha256": "d8cf43c39f04adc546f67a4a4bc82092e02a3cecdb61457c86dbc74f034913a2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/provenance/nauty289_identity.json",
+      "original_sha256": "49f142b1c4fffa5252f2286e585d258a6e4340e03c288e9e9ee4d5ff34922fd5",
+      "file": "finite/provenance/nauty289_identity.json",
+      "sha256": "49f142b1c4fffa5252f2286e585d258a6e4340e03c288e9e9ee4d5ff34922fd5",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_9.g6",
+      "original_sha256": "c388cac06eac6ccd63fc7414d5def1a3f02d0d5b7b648f89a116a588a27d0a93",
+      "file": "finite/data/restricted_K4_records/surv_9.g6",
+      "sha256": "c388cac06eac6ccd63fc7414d5def1a3f02d0d5b7b648f89a116a588a27d0a93",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_1.g6",
+      "original_sha256": "09370a24ee404f0cd6de0f1954cd5a6e07d436da78ec9f29cbd0a32e77bacf92",
+      "file": "finite/data/restricted_K4_records/surv_12_1.g6",
+      "sha256": "09370a24ee404f0cd6de0f1954cd5a6e07d436da78ec9f29cbd0a32e77bacf92",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_8.g6",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "finite/data/restricted_K4_records/surv_8.g6",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_6.txt",
+      "original_sha256": "4b6b075ee6ca91721b74ab002f03fbcb82ce5eab9d215392fa839f61d8a7ac2c",
+      "file": "finite/data/restricted_K4_records/cnt_12_6.txt",
+      "sha256": "4b6b075ee6ca91721b74ab002f03fbcb82ce5eab9d215392fa839f61d8a7ac2c",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_0.txt",
+      "original_sha256": "5e61b514b610c8f8eb84f8d20e1de248788d6014458d4608eff396aa0548cddb",
+      "file": "finite/data/restricted_K4_records/cnt_12_0.txt",
+      "sha256": "5e61b514b610c8f8eb84f8d20e1de248788d6014458d4608eff396aa0548cddb",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_7.g6",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "finite/data/restricted_K4_records/surv_7.g6",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_5.g6",
+      "original_sha256": "4fbac46ac2b97c6fae65db615990b1e58ede45d7216c77339ca767bbe34c3151",
+      "file": "finite/data/restricted_K4_records/surv_12_5.g6",
+      "sha256": "4fbac46ac2b97c6fae65db615990b1e58ede45d7216c77339ca767bbe34c3151",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_11.txt",
+      "original_sha256": "dae72e83d613be544e8bb12ec4eba1f21c5d5ac2b8440992cbd0deabd5e1997f",
+      "file": "finite/data/restricted_K4_records/cnt_11.txt",
+      "sha256": "dae72e83d613be544e8bb12ec4eba1f21c5d5ac2b8440992cbd0deabd5e1997f",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_11.g6",
+      "original_sha256": "ff37f92184260bb0afe36eeca826453dd3f8bbb09a1ea28d9d16c5dd41dad1d2",
+      "file": "finite/data/restricted_K4_records/surv_11.g6",
+      "sha256": "ff37f92184260bb0afe36eeca826453dd3f8bbb09a1ea28d9d16c5dd41dad1d2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_4.txt",
+      "original_sha256": "916d4721a43c7ae86890edb446192ed36392e7b75319b49945647334ff876cc0",
+      "file": "finite/data/restricted_K4_records/cnt_12_4.txt",
+      "sha256": "916d4721a43c7ae86890edb446192ed36392e7b75319b49945647334ff876cc0",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_2.g6",
+      "original_sha256": "995e6a0f6efaffef31e6f14990896eefb3905fb3b4cb47e7bd1445a574c5bae2",
+      "file": "finite/data/restricted_K4_records/surv_12_2.g6",
+      "sha256": "995e6a0f6efaffef31e6f14990896eefb3905fb3b4cb47e7bd1445a574c5bae2",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_3.g6",
+      "original_sha256": "a9498b7d087a7122d1b85afcb9088caebb9b715053df06ac9e3b320b0bff3a4a",
+      "file": "finite/data/restricted_K4_records/surv_12_3.g6",
+      "sha256": "a9498b7d087a7122d1b85afcb9088caebb9b715053df06ac9e3b320b0bff3a4a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_6.g6",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "finite/data/restricted_K4_records/surv_6.g6",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_2.txt",
+      "original_sha256": "a64e80fc88418192bb522143fdfbc57f20a6b67f5a7077e94663fca243d26aaf",
+      "file": "finite/data/restricted_K4_records/cnt_12_2.txt",
+      "sha256": "a64e80fc88418192bb522143fdfbc57f20a6b67f5a7077e94663fca243d26aaf",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_6.txt",
+      "original_sha256": "cf26b1a69cff9035264b8161cd394f5f5578ac6c69139e1145cc8e83bd02c37a",
+      "file": "finite/data/restricted_K4_records/cnt_6.txt",
+      "sha256": "cf26b1a69cff9035264b8161cd394f5f5578ac6c69139e1145cc8e83bd02c37a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_5.g6",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "file": "finite/data/restricted_K4_records/surv_5.g6",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_7.txt",
+      "original_sha256": "5892351f7e1412796de9e0075ede98bcb79c6b02454e93f527711a5f6bc30598",
+      "file": "finite/data/restricted_K4_records/cnt_7.txt",
+      "sha256": "5892351f7e1412796de9e0075ede98bcb79c6b02454e93f527711a5f6bc30598",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_9.txt",
+      "original_sha256": "7d38f3d459a76deab991f512a1ada630e08fdfd6e25f8be7abd6752c1fd55ffc",
+      "file": "finite/data/restricted_K4_records/cnt_9.txt",
+      "sha256": "7d38f3d459a76deab991f512a1ada630e08fdfd6e25f8be7abd6752c1fd55ffc",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_7.txt",
+      "original_sha256": "5d133f068797f0ebc9e8dba763bfa84ab84123224982a521a1289d0141f8ca57",
+      "file": "finite/data/restricted_K4_records/cnt_12_7.txt",
+      "sha256": "5d133f068797f0ebc9e8dba763bfa84ab84123224982a521a1289d0141f8ca57",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_8.txt",
+      "original_sha256": "1241af272c97dd47f44ff3eb8121d53f519803ff685d173fff37227eb85f66d4",
+      "file": "finite/data/restricted_K4_records/cnt_8.txt",
+      "sha256": "1241af272c97dd47f44ff3eb8121d53f519803ff685d173fff37227eb85f66d4",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_7.g6",
+      "original_sha256": "23c26fbbe7d17f24b5468d9f419a2f3be8c9477db489bdabcca813cdad31c54f",
+      "file": "finite/data/restricted_K4_records/surv_12_7.g6",
+      "sha256": "23c26fbbe7d17f24b5468d9f419a2f3be8c9477db489bdabcca813cdad31c54f",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12.g6",
+      "original_sha256": "1536189fa0c0766aed986984e410cb55b9fd1b1fe3480e5b7e2dd7d906eef872",
+      "file": "finite/data/restricted_K4_records/surv_12.g6",
+      "sha256": "1536189fa0c0766aed986984e410cb55b9fd1b1fe3480e5b7e2dd7d906eef872",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_0.g6",
+      "original_sha256": "d5e0a47820d28a1a5aa04f85fe92fc58cb36b5dd706dd82129bee9ddc80d11ee",
+      "file": "finite/data/restricted_K4_records/surv_12_0.g6",
+      "sha256": "d5e0a47820d28a1a5aa04f85fe92fc58cb36b5dd706dd82129bee9ddc80d11ee",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_10.g6",
+      "original_sha256": "327655d64fc702aec9d65f851bce352b4a4633bfd32314a9feac074db00bcb7e",
+      "file": "finite/data/restricted_K4_records/surv_10.g6",
+      "sha256": "327655d64fc702aec9d65f851bce352b4a4633bfd32314a9feac074db00bcb7e",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_5.txt",
+      "original_sha256": "ba20346205299b7de58e25c718b66e2c27ee0a635aa1b6be0b34e3020d60d4a6",
+      "file": "finite/data/restricted_K4_records/cnt_12_5.txt",
+      "sha256": "ba20346205299b7de58e25c718b66e2c27ee0a635aa1b6be0b34e3020d60d4a6",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_5.txt",
+      "original_sha256": "bbf783539109542a68c9128392ff6ce3135f9c5784f542f8022a174e85217229",
+      "file": "finite/data/restricted_K4_records/cnt_5.txt",
+      "sha256": "bbf783539109542a68c9128392ff6ce3135f9c5784f542f8022a174e85217229",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_3.txt",
+      "original_sha256": "928f40e621f0eec73a0eb3c2b67993d6012c34f0697a90742e587cc1377e1494",
+      "file": "finite/data/restricted_K4_records/cnt_12_3.txt",
+      "sha256": "928f40e621f0eec73a0eb3c2b67993d6012c34f0697a90742e587cc1377e1494",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_6.g6",
+      "original_sha256": "b2bd295d16a22fc061ca9761a3d97ba4dd6d30e0b9aa9595ce6c9113a441f0bc",
+      "file": "finite/data/restricted_K4_records/surv_12_6.g6",
+      "sha256": "b2bd295d16a22fc061ca9761a3d97ba4dd6d30e0b9aa9595ce6c9113a441f0bc",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_12_1.txt",
+      "original_sha256": "d5e8e7b215c5a37419b9d6536b199b9e3c45f8e25a3ad0bf73b160d445879c93",
+      "file": "finite/data/restricted_K4_records/cnt_12_1.txt",
+      "sha256": "d5e8e7b215c5a37419b9d6536b199b9e3c45f8e25a3ad0bf73b160d445879c93",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/surv_12_4.g6",
+      "original_sha256": "e0f73b23dbfbe89328bf55541d52eeea23862eb8393a8f54a392baa73cf28e2d",
+      "file": "finite/data/restricted_K4_records/surv_12_4.g6",
+      "sha256": "e0f73b23dbfbe89328bf55541d52eeea23862eb8393a8f54a392baa73cf28e2d",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "14_Manuscrito_v5_2026-10/ENTREGAS/Astra_borrador6/supplement/data/restricted_K4_records/cnt_10.txt",
+      "original_sha256": "74c1acd1596c663837b41be2f669c3001f746ba8f455b8668d59d916905e971f",
+      "file": "finite/data/restricted_K4_records/cnt_10.txt",
+      "sha256": "74c1acd1596c663837b41be2f669c3001f746ba8f455b8668d59d916905e971f",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F2_12/evidencia/aggregate.json",
+      "original_sha256": "06fd4e366bb3fce128264344e13a7b81c5e75f2cd53351b28839d279eb9bbd90",
+      "file": "data/census/F2_12_aggregate.json",
+      "sha256": "d287ffc0e25fe34475dc6c33ab906ca56d198477901d5932f5ff652da6fc46d0",
+      "selection": "normalised absolute reference paths; all numbers and graph data retained",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F2_13/evidencia/aggregate.json",
+      "original_sha256": "4519749c700ea36098ed060cea1c542eca5a803ac2c65c824e580a4831ce939e",
+      "file": "data/census/F2_13_aggregate.json",
+      "sha256": "9be0b93e40af741791f3b50e7c8f740092bf39793f16eb127a11b62a5efa0d1e",
+      "selection": "normalised absolute reference paths; all numbers and graph data retained",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F3/evidencia/aggregate.json",
+      "original_sha256": "89d9a4747e92b6f8e53ab3e2fcccf3ddd0e011ae7a8eaa112ff7ce84706ec3b9",
+      "file": "data/census/F3_aggregate.json",
+      "sha256": "64955949258237221980663abe491d97fb1e935f06e82fe5efbc526675fee114",
+      "selection": "normalised absolute reference paths; all numbers and graph data retained; local publication copy edited (paths, scope or citation metadata only)",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F4/evidencia/campaign/aggregate.json",
+      "original_sha256": "6d589944de83e95a88d08c49fbd276da5a678ce0ede33765a49d6ff28a465562",
+      "file": "data/census/F4_aggregate.json",
+      "sha256": "9e291670e353aba6716ed11361b4eacef4c22f67e4131b7d2624401d8236f84d",
+      "selection": "normalised absolute reference paths; all numbers and graph data retained",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F2_13/evidencia/homology_adjudications.jsonl",
+      "original_sha256": "c8e4f36e689fddc39164261d2fb23353aad9dbbeaf0c5f54797d3e413ab3e960",
+      "file": "data/census/F2_13_adjudications.jsonl",
+      "sha256": "c8e4f36e689fddc39164261d2fb23353aad9dbbeaf0c5f54797d3e413ab3e960",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F4/evidencia/homology_20261106T052407Z/adjudications.jsonl",
+      "original_sha256": "7a5712fa2387a0655196e87de7b2d0c435382325810128e4643b0a193abba348",
+      "file": "data/census/F4_adjudications.jsonl",
+      "sha256": "7a5712fa2387a0655196e87de7b2d0c435382325810128e4643b0a193abba348",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F2_13/evidencia/ACICLICA_NO_IS_INDECISA.g6",
+      "original_sha256": "9c20bb624ba45c1ace90c73f02544a21bc982794247311077b13112b3535dd1a",
+      "file": "data/census/F2_13_residual.g6",
+      "sha256": "9c20bb624ba45c1ace90c73f02544a21bc982794247311077b13112b3535dd1a",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F4/evidencia/campaign/ACICLICA_NO_IS_INDECISA.g6",
+      "original_sha256": "7f1ead4ea3fb6fb58013f807950d9e9c12fa2e3ba91ef7820b7e432b4772b7cc",
+      "file": "data/census/F4_residual.g6",
+      "sha256": "7f1ead4ea3fb6fb58013f807950d9e9c12fa2e3ba91ef7820b7e432b4772b7cc",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F4/evidencia/campaign/I_NO_IS.g6",
+      "original_sha256": "673300564893da58e854f775c5ba38e53e45528e98ebe81d75cd870c79c5eed6",
+      "file": "data/census/F4_positive.g6",
+      "sha256": "673300564893da58e854f775c5ba38e53e45528e98ebe81d75cd870c79c5eed6",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F3/evidencia/ATASCADA.g6",
+      "original_sha256": "51fe8dbac365cce99becb5ce038e6675913d2b43a4898b4a94246befcb783ed5",
+      "file": "data/census/F3_stuck.g6",
+      "sha256": "51fe8dbac365cce99becb5ce038e6675913d2b43a4898b4a94246befcb783ed5",
+      "selection": "byte-identical copy",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda6/scripts/audit_receipt_metadata_r6.py",
+      "original_sha256": "b5a1e728743688317f6e513539ef452c0dcf09c8b13d3000c0a7ec11df04b8a5",
+      "file": "tools/campaign_controls/audit_receipt_metadata_r6.py",
+      "sha256": "b5a1e728743688317f6e513539ef452c0dcf09c8b13d3000c0a7ec11df04b8a5",
+      "selection": "byte-identical production control",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda6/scripts/check_audit_python_r6.py",
+      "original_sha256": "19af86b890c4b5c785e2a96ffeb08e865ac77d5626f6b3074c03258bfb5f9663",
+      "file": "tools/campaign_controls/check_audit_python_r6.py",
+      "sha256": "19af86b890c4b5c785e2a96ffeb08e865ac77d5626f6b3074c03258bfb5f9663",
+      "selection": "byte-identical production control",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda6/scripts/compare_campaign_slices_v24_r6.py",
+      "original_sha256": "9a2b053445161f78dba81cf4a56ace6382823c257240232668eb8358a30a6944",
+      "file": "tools/campaign_controls/compare_campaign_slices_v24_r6.py",
+      "sha256": "9a2b053445161f78dba81cf4a56ace6382823c257240232668eb8358a30a6944",
+      "selection": "byte-identical production control",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda6/scripts/finalize_campaign_r6.py",
+      "original_sha256": "d0a56fb0e0bb915a7f1c77c91eb96deb4f4798c437490fef6f5b4c0637d3095d",
+      "file": "tools/campaign_controls/finalize_campaign_r6.py",
+      "sha256": "d0a56fb0e0bb915a7f1c77c91eb96deb4f4798c437490fef6f5b4c0637d3095d",
+      "selection": "byte-identical production control",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda6/scripts/verify_approved_attempt_r6.py",
+      "original_sha256": "839e3bad1aac4d96a5b2ff135143eba3179aeda49705f9ed5d710521fa537930",
+      "file": "tools/campaign_controls/verify_approved_attempt_r6.py",
+      "sha256": "839e3bad1aac4d96a5b2ff135143eba3179aeda49705f9ed5d710521fa537930",
+      "selection": "byte-identical production control",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda6/scripts/verify_campaign_state_r6.py",
+      "original_sha256": "59917b89fdf239e9498ca7345258e3a5b8ce8825dab0706571c634a12257b691",
+      "file": "tools/campaign_controls/verify_campaign_state_r6.py",
+      "sha256": "59917b89fdf239e9498ca7345258e3a5b8ce8825dab0706571c634a12257b691",
+      "selection": "byte-identical production control",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda3/scripts/independent_homology_r2.py",
+      "original_sha256": "ffe667447460d5b5b9e56148f8c6c569f80f63da1caf1968c262b329ba188e29",
+      "file": "tools/homology/independent_homology_r2.py",
+      "sha256": "ffe667447460d5b5b9e56148f8c6c569f80f63da1caf1968c262b329ba188e29",
+      "selection": "byte-identical computational source",
+      "manuscript_role": "Integer and field homology algorithms, UCT and residual obstruction"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/ronda2/scripts/adjudicate_inventory_r2.py",
+      "original_sha256": "a1c8cb3a8a5ee1a6d3f51b2ec6463f4b97b8a76f151bfba4122e90e12c8a3895",
+      "file": "tools/homology/adjudicate_inventory_r2.py",
+      "sha256": "a1c8cb3a8a5ee1a6d3f51b2ec6463f4b97b8a76f151bfba4122e90e12c8a3895",
+      "selection": "byte-identical computational source",
+      "manuscript_role": "Integer and field homology algorithms, UCT and residual obstruction"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/PREPARACION_RONDA7_2026-10-17/F4/verificacion_independiente_F4.py",
+      "original_sha256": "1e01931841a72d6d517bdaf5b850f375fc37d01b8c4e70b552bd867c59dce17a",
+      "file": "tools/homology/archive/verificacion_independiente_F4.py",
+      "sha256": "1e01931841a72d6d517bdaf5b850f375fc37d01b8c4e70b552bd867c59dce17a",
+      "selection": "byte-identical computational source",
+      "manuscript_role": "Integer and field homology algorithms, UCT and residual obstruction"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/tools/generate_cardinalities.py",
+      "original_sha256": "a1ee14c20a3787dcd86ceb959e63dc18f3149991e54a9411465714b0830feede",
+      "file": "tools/generate_cardinalities.py",
+      "sha256": "4982c40064cace5462e3325971633512ef21ad189c29b90788be4a37b6ff1a31",
+      "selection": "byte-identical computational source; local adaptation documented in public README; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/tools/figures/make_witness_figures.py",
+      "original_sha256": "e4550556ebdaacadae030078925b8203b3c0041ea9bfa24ab5c1cf902ee731ec",
+      "file": "tools/figures/make_witness_figures.py",
+      "sha256": "8c7eb48f097a811beb37c63fbad73c5b5b87c01809d548893a425b9b75605c3a",
+      "selection": "current r01 source; report path adapted to public build directory",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/tools/figures/make_witness_tables.py",
+      "original_sha256": "af56642d411cd7aaada1aa7fb6fd7aa1d8c4912e6c3900e84bf95498657d75d2",
+      "file": "tools/figures/make_witness_tables.py",
+      "sha256": "af56642d411cd7aaada1aa7fb6fd7aa1d8c4912e6c3900e84bf95498657d75d2",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/tools/figures/verify_witnesses.py",
+      "original_sha256": "77ddcee06118ee11c83aee48fda53143fc318c45064f7231ec5b3470061982c1",
+      "file": "tools/figures/verify_witnesses.py",
+      "sha256": "c7a1bf8aa426c4f98a1543f4b7f4078b1a58ca21480a5b70559862602130c9d0",
+      "selection": "current r01 source; report path adapted to public build directory",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/tools/figures/witness_data.json",
+      "original_sha256": "d7729838675a01fb749542a8dde63f4507c40060cc249b6304f0bec23e2d6172",
+      "file": "tools/figures/witness_data.json",
+      "sha256": "d7729838675a01fb749542a8dde63f4507c40060cc249b6304f0bec23e2d6172",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/tools/figures/README.md",
+      "original_sha256": "8790a12f4dad84cc77349894c2dc79dad568cb112fe831e35164e5c587e1eaa0",
+      "file": "tools/figures/README.md",
+      "sha256": "8fc98e6dd1b28a871e468cd52d8755afb0d629113985fdc1d03138e821a6b589",
+      "selection": "current r01 source; report path adapted to public build directory",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/figures/G13_disc.tex",
+      "original_sha256": "64705a6121d4f461971ddd7eb1b42d317c5ceadc71ba53155e4bfd4047cc1fe6",
+      "file": "paper/figures/G13_disc.tex",
+      "sha256": "64705a6121d4f461971ddd7eb1b42d317c5ceadc71ba53155e4bfd4047cc1fe6",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/figures/G13_graph.tex",
+      "original_sha256": "a3d1e6986a13de79140ef363a1ca1861c5ebdb43d124f3b990581da3cf481d8c",
+      "file": "paper/figures/G13_graph.tex",
+      "sha256": "a3d1e6986a13de79140ef363a1ca1861c5ebdb43d124f3b990581da3cf481d8c",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/figures/Ga_extension.tex",
+      "original_sha256": "9fd3fbd9a95935d05d838d436820d7665d4e7f6a2cd7c0881ddf5c4632fbd33c",
+      "file": "paper/figures/Ga_extension.tex",
+      "sha256": "9fd3fbd9a95935d05d838d436820d7665d4e7f6a2cd7c0881ddf5c4632fbd33c",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/figures/jfef-grafos.tikzstyles",
+      "original_sha256": "3612af427e4be1d021b0591028924ae326ee996aaba25f550a0280efab90fb1b",
+      "file": "paper/figures/jfef-grafos.tikzstyles",
+      "sha256": "3612af427e4be1d021b0591028924ae326ee996aaba25f550a0280efab90fb1b",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Explicit constructions and figures in the manuscript"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/tables/witness_adjacency.tex",
+      "original_sha256": "ea582218a91b2a20e8b8920dac0e46a09f59ad2724945066b1d99b021ef23399",
+      "file": "paper/tables/witness_adjacency.tex",
+      "sha256": "ea582218a91b2a20e8b8920dac0e46a09f59ad2724945066b1d99b021ef23399",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Printed finite data and complete witness reductions"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/tables/G13_disc_triangles.tex",
+      "original_sha256": "c26e9e377e2462b4385c6b6e7ae9f92ee191a171e92ee825527ad28ebeeedfa1",
+      "file": "paper/tables/G13_disc_triangles.tex",
+      "sha256": "c26e9e377e2462b4385c6b6e7ae9f92ee191a171e92ee825527ad28ebeeedfa1",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Printed finite data and complete witness reductions"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/tables/Ga_reduction.tex",
+      "original_sha256": "6f7dd8daba01f8490dd1119f7f3e4651e400a1896e59e2d5a073a540d05c4bb6",
+      "file": "paper/tables/Ga_reduction.tex",
+      "sha256": "6f7dd8daba01f8490dd1119f7f3e4651e400a1896e59e2d5a073a540d05c4bb6",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Printed finite data and complete witness reductions"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/paper/tables/variant_reductions.tex",
+      "original_sha256": "413fa3317f90fb1bfddd7e9566007c63d177ff5aef3ee1fa1c6d98aa2e4b082a",
+      "file": "paper/tables/variant_reductions.tex",
+      "sha256": "413fa3317f90fb1bfddd7e9566007c63d177ff5aef3ee1fa1c6d98aa2e4b082a",
+      "selection": "byte-identical current r01 source",
+      "manuscript_role": "Printed finite data and complete witness reductions"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "README.md",
+      "sha256": "62f910a6ee01ce5a7ec7dfb0aa43a5c1de3118805ac4d1a8da828abef0aa4473",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "data/cardinalities.csv",
+      "sha256": "ceddac19324d6c50e5c60b567dfca1dc5ada7996d229445226144bf0795bac4e",
+      "selection": "current local preparation",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "data/census/SOURCES.json",
+      "sha256": "9e58f927bfc3dec6b259cd8eac0180aa96be2945438efa178892acde18d6d3d0",
+      "selection": "current local preparation",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "data/raw_classifier_reference.csv",
+      "sha256": "3f16fe0dec7a9de77b4e121f2e7722c982436ef56c7d455a16f33d0a46f2e430",
+      "selection": "current local preparation",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "docs/full-reproduction.md",
+      "sha256": "226313e214dc3ea90454fe8698d702cfa37b9864a2a9553a68f3ea4db1b3a21d",
+      "selection": "current local preparation; updated in current local selection; updated in current local selection; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "docs/secondary-results.md",
+      "sha256": "f2b7730ee1c60470ad4d0af6fe867d65b7b29d2b196ba4a09bb956027ee9454f",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "docs/verification-scope.md",
+      "sha256": "a15e6721fbadbdb86b4cf4980b53706e122a77e4503b480361c60231855ea1cf",
+      "selection": "current local preparation; updated in current local selection; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "finite/README.md",
+      "sha256": "3ef255f9da0d6b8ac8acf71e7d86e47f5d92dc38c7030dd11c7515ac42c12e61",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "finite/VERIFICATION_COVERAGE.md",
+      "sha256": "baa71afd053dc49565f9c2a33ef8b4d25af8028d3d2b8ffb8dcbb5a1b14330e4",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/campaign_controls/README.md",
+      "sha256": "32018689968bc8f3f3246e04176762f1a072cafc344ea0007d309e69568be6cc",
+      "selection": "current local preparation",
+      "manuscript_role": "Computational scope and exhaustive table partition"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/check_cardinalities.py",
+      "sha256": "88bb6b78f0a652eb604988a190e081297e46da1b3c55071ad1439589b26705c9",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/homology/README.md",
+      "sha256": "4d629f8e496b10964b0a4fd43f40cf9150eb560c57f2ccf75fbf0956a2718434",
+      "selection": "current local preparation",
+      "manuscript_role": "Integer and field homology algorithms, UCT and residual obstruction"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/verify_quick.py",
+      "sha256": "e82fce87a01527c559f6691b000e0beb66ba079d2a5d964c6482c369220bbcf7",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verify.sh",
+      "sha256": "e90101b14310441f3edff325abb402502af69faeaf0bf4fb6825e8b940f7817f",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/scripts/exact_n11_capture.c",
+      "original_sha256": "dad7a247f4b0da465135a3988120041e148211dc7d73f4d98b7c7bf469e17187",
+      "file": "verification/historical_small_orders/exact_n11_capture.c",
+      "sha256": "dad7a247f4b0da465135a3988120041e148211dc7d73f4d98b7c7bf469e17187",
+      "selection": "byte-identical historical computational source; execution not repeated",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/scratch/atascadas_classify.c",
+      "original_sha256": "23b25abb68faddeb6aa64e87f720111a5b8723884673694cfbaebb0c633b7abe",
+      "file": "verification/historical_small_orders/atascadas_classify.c",
+      "sha256": "23b25abb68faddeb6aa64e87f720111a5b8723884673694cfbaebb0c633b7abe",
+      "selection": "byte-identical historical computational source; execution not repeated",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "11_Auditoria_externa_2026-10/AUDIT_OUT/scripts/cleanroom.cpp",
+      "original_sha256": "1c3f2acee15ff31c8b836b8aa3bcb398647fd0f999afc5aee69aa27fa3fd1eea",
+      "file": "verification/historical_small_orders/cleanroom.cpp",
+      "sha256": "1c3f2acee15ff31c8b836b8aa3bcb398647fd0f999afc5aee69aa27fa3fd1eea",
+      "selection": "byte-identical historical computational source; execution not repeated",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "17_Manuscrito_arXiv_2026-11-10/r01/internal/verification/repository/local_K4_generation_original.json",
+      "original_sha256": "971f14bb407e6c549447a0c2d433c1a60d23119946bf218dafc72b9c71654a67",
+      "file": "data/local_K4/generation.json",
+      "sha256": "69480e610169ecf9dabf07dd860f8ba98dea82078ccaa5176b0d954fc51d66c4",
+      "selection": "selected current-generation record; absolute project prefix normalised only in generator_stderr; unmodified original preserved internally",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "data/local_K4/README.md",
+      "sha256": "b09ca62d959c307e06bc06ee1e9cbe8bf418876fcce4ce88d05ddecd5a76ca64",
+      "selection": "current local preparation",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "data/local_K4/connected_n2_7.g6",
+      "sha256": "4190865d7edcfec7d21a8c7ff8e09d9ff47faa6c10972153c9889bc59b324266",
+      "selection": "current local preparation",
+      "manuscript_role": "Table, classification and minimality; extended finite catalogs in repository"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "docs/small-order-provenance.md",
+      "sha256": "4e2f36d7af44bb0c7ca868bc985a1f4eeb0844bcfe296389eddf5d682d43de94",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/main.bbl",
+      "sha256": "5d226b0c0f9531930a6cf782c4fe835d22313f5eeacc4d5d7dace4a2116c9fc4",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/main.tex",
+      "sha256": "c9ac1f0a53aef4c50f69908d4949502f83406deaf4f755b58fdd9a52279fe357",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/numbers.tex",
+      "sha256": "7083fd904793dddc4043c394433cabf4154c00da2deec37b7a6397bab4386746",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/refs.bib",
+      "sha256": "673a2636099891b21b76c38d4458e526e4a87f5eabe572fcbbc017e4ac9bd120",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/01_introduction.tex",
+      "sha256": "8ff8ad9f284cb59f37ea93c4c1bf96a20c9232a9b594247e1868c3e4360d6d5a",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/02_preliminaries.tex",
+      "sha256": "5f02ba3e51a107eda882dc47bc88ae5771ecade1dd77f8c8703ac291f3302d22",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/03_counterexamples.tex",
+      "sha256": "233ec6b4a29cfb1057929e7007ca03480f0bd9a21bc69bed1e7466c52b39113a",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/04_algorithms.tex",
+      "sha256": "21164726972051f30801119631b881d61a78e44377b1034af143c90434984d03",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/05_enumeration.tex",
+      "sha256": "07e24e4c141a4fea9d1bb293ff32695532cf286a419c5c39bcb103c50e3c8c87",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/B_witnesses.tex",
+      "sha256": "2a71aa5bad5a58a755c32f067f58ec1e075a681e722b984a74c4510bfec56c60",
+      "selection": "current local preparation; updated in current local selection",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/sections/declarations.tex",
+      "sha256": "899ea4679eb79c4a16726ebc72171d21fe8acdc98eba06efa0159394a0f612b8",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "paper/tables/cardinalities.tex",
+      "sha256": "ef6e2d3c0e9ca48522ef4717fbcf66c050ea2f234ee4da0821aafb78083ad1ef",
+      "selection": "current local preparation",
+      "manuscript_role": "Printed finite data and complete witness reductions"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/build_paper.py",
+      "sha256": "a66422046b04f24056a4443c24853a3c6040bd22add5b1d76939ca9e3c85c363",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/check_local_K4_catalogue.py",
+      "sha256": "8ea13aeb4e039e6d472291c308dfe01200d1fae7ee2c3a9bbe0d1f414a2c1531",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/finite_isomorphism.py",
+      "sha256": "39a359f5ebd5581af720da213a10f846ecfc854101971e22ff227c8deea21615",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "tools/generate_local_K4_catalogue.py",
+      "sha256": "30249b7bfb278b348bb7cd14923d7c8e8a9b223c48a6d7b4c1817a83c5b01a42",
+      "selection": "current local preparation",
+      "manuscript_role": "Availability and reproducibility documentation"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verification/current_recurrences/README.md",
+      "sha256": "30e82334eb7f758277f774af14c35bc741a371b4d56755860c1e197ec13a28d8",
+      "selection": "current local preparation",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verification/current_recurrences/implementation_correspondence.c",
+      "sha256": "22749f0b987579d1edc56bd929be9d55e2d4bab006adc3f493e50c1116ae522e",
+      "selection": "current local preparation",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verification/current_recurrences/implementation_correspondence.py",
+      "sha256": "34cfd1a9ceb3b3a3d33fab3bc2384f5aa1a360447df7f0141aa4caf2ac5f7b12",
+      "selection": "current local preparation",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verification/historical_small_orders/README.md",
+      "sha256": "e44c1aeae2d6640ebb86bec6ddb1dbd75cab25764b8b6713370cff648a9573a4",
+      "selection": "current local preparation",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verification/historical_small_orders/SOURCE_IDENTITY.json",
+      "sha256": "efa44b9da7862c698bb7409c1e908ca78693912aa3b4246f7f418f939eea3077",
+      "selection": "current local preparation",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    },
+    {
+      "source_record": "authored or assembled in r01",
+      "original_sha256": null,
+      "file": "verification/historical_small_orders/check_source_identity.py",
+      "sha256": "a953e219714c055a6c41769fa17f04d7648e0c5c0b174ef8ffd836dd41dcf41a",
+      "selection": "current local preparation",
+      "manuscript_role": "Mathematical recurrences, termination, soundness and completeness"
+    }
+  ]
+}

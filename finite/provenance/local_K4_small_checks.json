@@ -1,0 +1,96 @@
+{
+  "geng_sha256": "7d3e7c585e52445c1e3ab4d1d19abcaf8b45fbb351ea15663e7e2307370846f5",
+  "options": "-kc n",
+  "almost_stuck_definition": "order >= 2, Z2-acyclic, no admissible edge and at most one admissible vertex",
+  "local_criterion": "vertex link tree; edge common neighbourhood has one vertex",
+  "runs": [
+    {
+      "order": 2,
+      "connected_K4_free_graphs": 1,
+      "local_candidates": 0,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 1 graphs generated in 0.00 sec",
+      "stream_sha256": "fae4bfc454bd04363dcd5222772f2973b1193e1ff6f676e822a427323a677ef9"
+    },
+    {
+      "order": 3,
+      "connected_K4_free_graphs": 2,
+      "local_candidates": 0,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 2 graphs generated in 0.00 sec",
+      "stream_sha256": "5966edf890849db6cb03626431916231a81a30c9db9a4781a4a8f2e5dc7e6129"
+    },
+    {
+      "order": 4,
+      "connected_K4_free_graphs": 5,
+      "local_candidates": 1,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 5 graphs generated in 0.00 sec",
+      "stream_sha256": "a69bebc1c15bd24d0284700a64bfce1a3a8db68435cdbafa5b176717592c4324"
+    },
+    {
+      "order": 5,
+      "connected_K4_free_graphs": 17,
+      "local_candidates": 3,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 17 graphs generated in 0.00 sec",
+      "stream_sha256": "f630a092fc217ab1cd09ce74f11cae0ab95d3652451c99724a5ff7a4b547a705"
+    },
+    {
+      "order": 6,
+      "connected_K4_free_graphs": 82,
+      "local_candidates": 11,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 82 graphs generated in 0.00 sec",
+      "stream_sha256": "c88316c8f3a8fbd5184b5b961f3a0e8ce165a5a073277afa521ea93ee9035d80"
+    },
+    {
+      "order": 7,
+      "connected_K4_free_graphs": 536,
+      "local_candidates": 36,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 536 graphs generated in 0.00 sec",
+      "stream_sha256": "74b796a16d6c2e5098107a9ac670459842d333fbcd8c865a71e66ec6b3ce5a6a"
+    },
+    {
+      "order": 8,
+      "connected_K4_free_graphs": 5606,
+      "local_candidates": 181,
+      "almost_stuck": [],
+      "generator_stderr": ">Z 5606 graphs generated in 0.01 sec",
+      "stream_sha256": "c80f03b90464aba3e5c15b677363ae4797ab4aba8230a66894a0d0aefcf538d2"
+    }
+  ],
+  "G13_variants": [
+    {
+      "graph6": "L?qa``{wttym~o",
+      "K4_count": 0,
+      "H1_free_and_torsion": [
+        0,
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "graph6": "L?qa`p{wttym~o",
+      "K4_count": 0,
+      "H1_free_and_torsion": [
+        0,
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "graph6": "L?qahp{wttym~o",
+      "K4_count": 0,
+      "H1_free_and_torsion": [
+        0,
+        [
+          3
+        ]
+      ]
+    }
+  ]
+}

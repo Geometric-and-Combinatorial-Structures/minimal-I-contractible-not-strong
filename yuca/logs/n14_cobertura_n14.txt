@@ -1,2 +1,0 @@
-registros=2000692 distintas=2000000
-faltantes=0

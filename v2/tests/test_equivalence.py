@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Equivalence and regression tests: src/atascadas.c (v1) versus v2/src/atascadas_v2.c (v2).
 
-Usage:  python3 test_equivalence.py --build ../build --out results/equivalence.json [--nmax-table 10] [--procs 8]
+Usage:  python3 test_equivalence.py --build ../build --out results/v2.4/equivalence.json [--nmax-table 10] [--procs 8]
+The report records the SHA-256 and --version of every binary and source it exercised (key "provenance").
 
 Binaries expected in --build: atascadas_v1, atascadas_v2, atascadas_v2_weak (v2 with a 6-bit hash, -DHASH_WEAK_BITS=6),
 atascadas_v1_weak (v1 with its hash truncated to 6 bits).  geng (nauty) must be on PATH.
@@ -9,7 +10,7 @@ atascadas_v1_weak (v1 with its hash truncated to 6 bits).  geng (nauty) must be 
 Checks (each one PASS/FAIL in the JSON report; exit status 0 only if all pass):
   T1  --modo tabla, all connected graphs n = 1..nmax: the 13 v1 summary fields are identical for v1 and v2, the
       multisets of stdout lines are identical, v2 reports invalidos=0 errores=0, and (n >= 3) the row equals
-      data/table_cardinalities.csv.
+      data/raw_classifier_reference.csv.
   T2  --modo atascadas on geng -C -d4 -D(n-2) n, n = 5..10: identical stdout and counters.
   T3  --modo casi on geng -c n, n = 3..9: identical stdout and counters (all zero, as in the paper).
   T4  --modo 2dis_no_1dis on geng -c n, n = 1..9 (expect 0) and on data/strictly_2dis_12.g6 (expect all 20).
@@ -20,12 +21,14 @@ Checks (each one PASS/FAIL in the JSON report; exit status 0 only if all pass):
       independent of the hash); the final 0-Dis/I_SV/I_S of v2 equal those of v1.  Also reports how many graphs
       v1_weak classifies differently from v1 (demonstration of finding H-01; not a pass/fail criterion).
 """
-import argparse, collections, json, os, re, subprocess, sys, time
+import argparse, collections, csv, json, os, re, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent.parent
+sys.path.insert(0, str(HERE))
+import provenance  # noqa: E402
 V1_FIELDS = ["n", "conexas", "chi1", "aciclicas", "I", "I_indecisas", "I_S", "I_SV", "3-Dis", "2-Dis", "1-Dis",
              "0-Dis", "-1-Dis"]
 
@@ -111,13 +114,11 @@ def table_run(binary, n, procs):
 
 
 def load_csv_rows():
-    rows = {}
-    for l in open(REPO / "data" / "table_cardinalities.csv"):
-        if l.startswith("#") or l.startswith("n,"):
-            continue
-        p = l.strip().split(",")
-        rows[int(p[0])] = [int(x) for x in p[1:]]
-    return rows
+    # Read by field name; the raw undecided counter is the final CSV column.
+    columns = ["connected", "chi=1", "Z2-acyclic", "I-contractible", "I-undecided",
+               "strong I-contractible (J_S)", "J_VS", "3-Dis", "2-Dis", "1-Dis", "0-Dis", "(-1)-Dis"]
+    with (REPO / "data/raw_classifier_reference.csv").open(newline="") as stream:
+        return {int(row["n"]): [int(row[key]) for key in columns] for row in csv.DictReader(stream)}
 
 
 def csv_from_fields(t):
@@ -129,14 +130,19 @@ def csv_from_fields(t):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--build", default=str(HERE.parent / "build"))
-    ap.add_argument("--out", default=str(HERE / "results" / "equivalence.json"))
+    ap.add_argument("--out", default=str(HERE / "results" / "v2.4" / "equivalence.json"))
     ap.add_argument("--nmax-table", type=int, default=10)
     ap.add_argument("--procs", type=int, default=8)
     ap.add_argument("--weak-nmax", type=int, default=7)
     a = ap.parse_args()
     B = Path(a.build)
     v1, v2, v2w, v1w = (str(B / x) for x in ("atascadas_v1", "atascadas_v2", "atascadas_v2_weak", "atascadas_v1_weak"))
-    report = {"started": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "checks": []}
+    report = {"started": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "started_utc": provenance.utc_now(), "checks": []}
+    report["provenance"] = provenance.record(
+        binaries=[(v1, None), (v2, ["--version"]), (v2w, ["--version"]), (v1w, None)],
+        sources=[HERE.parent / "src" / "atascadas_v2.c", REPO / "src" / "atascadas.c", B / "atascadas_v1_weak.c",
+                 REPO / "data" / "raw_classifier_reference.csv", Path(__file__)],
+        tools=["geng"])
 
     def check(name, ok, **detail):
         report["checks"].append({"name": name, "pass": bool(ok), **detail})
@@ -262,9 +268,10 @@ def main():
         check(f"T6 verificar n={n}", ok, **info)
     report["H01_demo"] = {"graphs": total, "v1_with_6bit_hash_misclassified": diff_v1w}
     report["finished"] = time.strftime("%Y-%m-%dT%H:%M:%S%z")
+    report["finished_utc"] = provenance.utc_now()
     report["all_pass"] = all(c["pass"] for c in report["checks"])
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
-    Path(a.out).write_text(json.dumps(report, indent=1) + "\n")
+    Path(a.out).write_text(provenance.check_portable(json.dumps(report, indent=1) + "\n"))
     print("ALL PASS" if report["all_pass"] else "SOME CHECKS FAILED", "H01 demo:", report["H01_demo"])
     sys.exit(0 if report["all_pass"] else 1)
 

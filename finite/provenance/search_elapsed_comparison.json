@@ -1,0 +1,32 @@
+{
+  "definition": "last task End minus first task Start; Hermosillo time UTC-7",
+  "results": {
+    "13": {
+      "jobs": [
+        "2079059"
+      ],
+      "start": "2026-10-11T01:40:45",
+      "end": "2026-10-11T08:50:56",
+      "seconds": 25811,
+      "hours_minutes_seconds": [
+        7,
+        10,
+        11
+      ]
+    },
+    "14": {
+      "jobs": [
+        "2079102",
+        "2079156"
+      ],
+      "start": "2026-10-11T11:23:46",
+      "end": "2026-10-12T22:26:34",
+      "seconds": 126168,
+      "hours_minutes_seconds": [
+        35,
+        2,
+        48
+      ]
+    }
+  }
+}

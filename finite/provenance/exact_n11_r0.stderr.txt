@@ -1,0 +1,2 @@
+n=11 connected=240722772 chi1=50355354 acyclic=41410839 I=41410839 I_undecided=0 I_S=41410839 I_SV=41410832 3-Dis=41410832 2-Dis=41410832 1-Dis=41410832 0-Dis=37448963 -1-Dis=2882865
+memo diagnostic: queries=376 hits=145 actual_collisions=0 estimated_false_hash63_hits=4.840e-15

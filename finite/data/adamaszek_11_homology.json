@@ -1,0 +1,53 @@
+{
+  "source_url": "https://arxiv.org/src/1208.3892v1",
+  "source_compressed_sha256": "7812289824a0478e2ad07c0e9331554ed3dd4ec33760e1a1aeb820b7ed9dc027",
+  "source_tex_sha256": "82c8f14417fbdf7b899f60933cb363119495f303f7df4fc53da6b44f29acf296",
+  "location": "First four graph6 lines after THE LIST OF THE GRAPHS K_i, L_i, after end{document}",
+  "published_reference": "M. Adamaszek, Small Flag Complexes with Torsion, Canad. Math. Bull. 57 (2014), 225-230; Theorem 1.1, p. 225; Section 2, p. 226; Section 4, p. 229.",
+  "graphs": [
+    {
+      "graph": 1,
+      "graph6": "JEhbtj{rve?",
+      "vertices": 11,
+      "edges": 32,
+      "triangles": 24,
+      "H1_free_rank": 0,
+      "H1_torsion": [
+        2
+      ]
+    },
+    {
+      "graph": 2,
+      "graph6": "JCpVTqu\\rZ?",
+      "vertices": 11,
+      "edges": 30,
+      "triangles": 20,
+      "H1_free_rank": 0,
+      "H1_torsion": [
+        2
+      ]
+    },
+    {
+      "graph": 3,
+      "graph6": "JCZJdq}xuu?",
+      "vertices": 11,
+      "edges": 31,
+      "triangles": 22,
+      "H1_free_rank": 0,
+      "H1_torsion": [
+        2
+      ]
+    },
+    {
+      "graph": 4,
+      "graph6": "JCR`upvvd]?",
+      "vertices": 11,
+      "edges": 30,
+      "triangles": 20,
+      "H1_free_rank": 0,
+      "H1_torsion": [
+        2
+      ]
+    }
+  ]
+}

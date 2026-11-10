@@ -1,6 +1,0 @@
-inicio Mon Oct 12 21:04:33 MST 2026  nodo amdcpu-hpc-01  N=13 MOD=200000 NT=7 GOPTS=-c MODE=tabla
-array interno: 2084597
-inicio frente p011 Mon Oct 12 22:28:58 MST 2026 nodo amdcpu-hpc-01
-array interno p011: 2084636
-array p011 terminado Tue Oct 13 17:59:03 MST 2026
-array terminado Tue Oct 13 17:59:26 MST 2026
