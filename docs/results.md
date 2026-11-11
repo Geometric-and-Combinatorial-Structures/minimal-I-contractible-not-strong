@@ -26,7 +26,7 @@ $$\mathfrak I_S\subseteq\mathfrak I\subseteq\mathcal A_{\mathbb Z}\subseteq\math
 
 where $\mathcal A_R$ denotes the graphs acyclic over $R$.
 
-A **stuck graph** has at least two vertices, is $\mathbb F_2$-acyclic and admits no admissible vertex or edge deletion. Starting from a non-strong graph, add every admissible missing edge and identify isomorphic results. Stop expanding a graph when it becomes strong. The resulting **pruned closure** consists of its non-strong descendants and their **first-strong boundary**.
+A **stuck graph** has at least two vertices, is $\mathbb F_2$-acyclic and admits no admissible vertex or edge deletion. Starting from a non-strong graph, add every admissible missing edge and identify isomorphic results. Stop expanding a graph when it becomes strong. The resulting **pruned closure** consists of the non-strong graphs reached, including the starting graph, and their **first-strong boundary**.
 
 ## Counterexamples and minimum orders
 
@@ -42,7 +42,7 @@ The graphs `G14a`, `G14b` and `G14c` belong to $\mathfrak I\setminus\mathfrak I_
 | Strong graph with an admissible edge deletion leaving the strong class | 14 | The extension of `G14a` and the preceding lower bound |
 | Contractible, non-collapsible flag complex | 14 vertices | The clique complex of `G14a` has no free face; the lower-order classification gives minimality |
 
-Every edge of the clique complex of `G14a` lies in at least two triangles, and every vertex lies in a triangle. There is therefore no free face with which to start a collapse (article, Proposition 3.5).
+Since `G14a` is K4-free, its clique complex has dimension two. Every edge lies in at least two triangles, and every vertex lies in a triangle. There is therefore no free face with which to start a collapse (article, Proposition 3.5).
 
 All these minima are global. The eight isomorphism classes and minimum of 44 edges describe the narrower class of **K4-free order-14 graphs** in $\mathfrak I\setminus\mathfrak I_S$.
 

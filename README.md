@@ -10,13 +10,13 @@ The article constructs graphs on 13 and 14 vertices that refute the minimum orde
 
 ## The examples
 
-A graph is **I-contractible** if it can be transformed into one vertex by vertex and edge additions and deletions whose tested neighbourhoods are themselves I-contractible. **Strong I-contractibility** requires a reduction by deletions alone, with the same condition imposed recursively on the neighbourhoods used. Write $\mathfrak I$ and $\mathfrak I_S$ for these classes. We call members of $\mathfrak I_S$ **strong**, and an operation **admissible** when its tested neighbourhood is strong. Homology of a graph means homology of its clique complex, whose simplices are the cliques. A graph lies in $\mathfrak I$ exactly when its clique complex is contractible; a graph in $\mathfrak I_S$ has a collapsible clique complex. [Results and notation](docs/results.md) gives the definitions and references.
+A graph is **I-contractible** if it can be transformed into one vertex by vertex and edge additions and deletions whose tested neighbourhoods are themselves I-contractible. **Strong I-contractibility** requires a reduction by deletions alone whose tested neighbourhoods are themselves strongly I-contractible. Write $\mathfrak I$ and $\mathfrak I_S$ for these classes. We call members of $\mathfrak I_S$ **strong**, and an operation **admissible** when its tested neighbourhood is strong. Homology of a graph means homology of its clique complex, whose simplices are the cliques. A graph lies in $\mathfrak I$ exactly when its clique complex is contractible; a graph in $\mathfrak I_S$ has a collapsible clique complex. [Results and notation](docs/results.md) gives the definitions and references.
 
 The graph $G_{13}$ has vanishing reduced homology over $\mathbb F_2$ and first integral homology $\mathbb Z/3$. Thus it is acyclic over $\mathbb F_2$ but is not I-contractible. Adding $\{4,7\}$, and then $\{5,6\}$, gives two variants with the same homology.
 
 The graph $G_{14}^a$, with 14 vertices and 44 edges, belongs to $\mathfrak I\setminus\mathfrak I_S$. Adding the edge $\{0,1\}$ gives a strong I-contractible graph. The endpoints have a strong common neighbourhood, so deleting this edge is admissible and recovers $G_{14}^a$.
 
-Conjecture 14 proposed minimum order 15 both for $\mathbb F_2$-acyclic non-strong graphs and for members of $\mathfrak I\setminus\mathfrak I_S$. Conjecture 15 proposed minimum order 15 for a strong graph with an admissible edge whose deletion leaves the strong class. The three constructions above refute these proposed bounds, respectively.
+Conjecture 14 proposed minimum order 15 both for $\mathbb F_2$-acyclic non-strong graphs and for members of $\mathfrak I\setminus\mathfrak I_S$. Conjecture 15 proposed minimum order 15 for a strong graph with an admissible edge whose deletion leaves the strong class. The graphs $G_{13}$, $G_{14}^a$ and $G_{14}^a+\{0,1\}$ refute these proposed bounds, respectively.
 
 The [examples guide](docs/examples.md) gives the labelled graphs, their certificates and the variants of $G_{13}$. To export the 14-vertex example and its extension, run from the repository root:
 
