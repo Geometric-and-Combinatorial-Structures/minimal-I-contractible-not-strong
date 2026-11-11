@@ -1,13 +1,29 @@
-# Finite certificates
+# Certificates for the examples
 
-`check_certificates.py` checks every field of the following three records:
+The records in this directory specify the constructions and reductions used to prove the properties of `G13`, `G14a`, `G14b`, `G14c` and `D15`. The [examples guide](../../docs/examples.md) identifies these graphs and their role in the conjectures. Vertex labels are preserved throughout each reduction.
 
-- `link_checks.json`: all 70 vertex links of G13, G14a, G14b, G14c and D15, including vertex and edge counts, first Betti numbers and all edge-link size sets. These links are triangle-free, so the first Betti number is edges minus vertices plus connected components.
-- `G13_successors.json`: all IS-admissible missing edges in each of the three representative states, their common neighbourhoods, and the isomorphism relating the two first additions. The field is named `IS_admissible`.
-- `certificate_replay.json`: four exact one-edge extensions and every subsequent deletion, its current neighbourhood, its edge list, its strong reduction certificate, its tree flag, the consecutive step numbers and the final singleton. Vertex labels are retained throughout. The three displayed traces are also compared field by field with `../figures/trace_steps.tsv`.
+| Record | Mathematical content |
+|---|---|
+| [`disc_hypotheses.json`](disc_hypotheses.json) | Five disc presentations, their boundary identifications and attaching degrees |
+| [`link_checks.json`](link_checks.json) | All 70 vertex neighbourhoods and the edge-neighbourhood size sets |
+| [`G13_successors.json`](G13_successors.json) | Every admissible missing edge in the three order-13 states, the common neighbourhoods and the isomorphism relating the first additions |
+| [`certificate_replay.json`](certificate_replay.json) | Four one-edge extensions and each subsequent deletion, with its current neighbourhood and reduction certificate |
 
-`check_disc_hypotheses.py` reconstructs and compares every field of `disc_hypotheses.json`. It checks the five unfolded complexes, incidence conditions, connectedness, every vertex link, boundary cycles, injectivity off the boundary and attaching degree. It reads by default; `--write` is an explicit regeneration mode.
+The vertex neighbourhoods in `link_checks.json` are triangle-free, so their first Betti numbers are edges minus vertices plus connected components. In the reduction record, every neighbourhood is evaluated before its deletion; the final state is a singleton. The displayed traces are also compared with `../figures/trace_steps.tsv`.
 
-`finite_checks.py` supplies exact strong recursion, exact k-dismantlability recursion, adjacency-preserving automorphism counting, and integer Smith reduction used by the finite table checks. It constructs the integer H1 presentation by contracting a spanning forest, with one generator per non-tree edge and one relation per triangle. No precomputed homology group is used as an input to that calculation.
+## Check the constructions
 
-`test_certificate_integrity.py` exercises the distinct byte-integrity layer. It uses the system temporary directory (or `TMPDIR`) and never writes into the supplied evidence tree. Its output lists the exact number of substitutions tried in every file. The fixed digest manifest covers all bytes; a hash agreement is not a proof of a mathematical claim, nor authentication of a historical run.
+From the repository root:
+
+```bash
+python3 -P finite/certificates/check_certificates.py
+python3 -P finite/certificates/check_disc_hypotheses.py
+```
+
+The first command checks all fields of the neighbourhood, successor and reduction records. The second reconstructs triangles, connected components, vertex links and boundary cycles, checks injectivity away from the boundary and computes the attaching degree. Both run in the standard finite reproduction route.
+
+`finite_checks.py` supplies the recursive strong and k-dismantlability tests, automorphism counting and the integer first-homology calculation. The latter uses a spanning forest, with one generator per non-tree edge and one relation per triangle; its proof is in the supplement.
+
+## Regeneration and input checks
+
+`check_disc_hypotheses.py --write` regenerates the disc record. Use a separate working copy and update the finite inventory after an intentional change. `test_certificate_integrity.py` tests specified byte substitutions and file appending in a temporary directory, reporting the number tried for each file. The [coverage note](../VERIFICATION_COVERAGE.md) distinguishes those input checks from the mathematical calculations.

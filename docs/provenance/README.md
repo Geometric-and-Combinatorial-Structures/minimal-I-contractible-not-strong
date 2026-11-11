@@ -1,17 +1,21 @@
-# Provenance and migration
+# Sources and repository history
 
-The previous default-branch commit is `c66e0399bc864e4e0147aa14d01ac9fb24db5028`. Its complete Git history is preserved. `migration-inventory.tsv` accounts for every file in that tree by old Git blob, disposition and current destination. Historical figures, scheduler records and obsolete notes remain available in history; they are not active reproduction instructions.
+`migration-inventory.tsv` accounts for every file in the historical tree at commit `c66e0399bc864e4e0147aa14d01ac9fb24db5028`, recording its Git blob, disposition and current destination. Earlier figures, scheduling records and notes remain in Git history.
 
-The prepared manuscript selection was imported from the ZIP identified in root `PROVENANCE.json`. `selection-migration.json` accounts for every file from that selection. The old selection map and manifest are preserved as `manuscript-r01-selection.json` and `manuscript-r01-sha256.txt`; their hashes refer to the prior snapshot. They do not assert that later edited documentation still has those bytes. The current full inventory is root `SHA256SUMS.txt`.
+Root `PROVENANCE.json` identifies the source archive imported into this repository. `selection-migration.json` accounts for its files. `manuscript-r01-selection.json` and `manuscript-r01-sha256.txt` preserve the source selection map and inventory; root `SHA256SUMS.txt` covers the current tree. A file marked as updated or superseded retains its original identity in the corresponding migration record.
 
-`article-r01.json` fixes the 20 packaged source inputs and the complete reviewed PDF. The repository checker compares these hashes on every finite run. The article delivery itself remains unchanged; the new mathematical material is in the separate supplement.
+`article-r01.json` identifies the 20 article source inputs and the PDF in `paper/`. The repository checker compares those files with the recorded identities. The supplement has its own sources under `supplement/`.
 
-The baseline is a historical research repository, so its older commits include material removed from the current reader-facing tree. The migration preserves history rather than rewriting it. No change of repository visibility is part of this update.
+## Enumeration and finite verification
 
-## Retained historical evidence
+| Records | Contents |
+|---|---|
+| [`finite/provenance/`](../../finite/provenance/) | Selected source identities, small-order comparisons and completion records |
+| [`data/census/`](../../data/census/) | Enumeration aggregates, residual graphs and homology adjudications |
+| [`finite/data/restricted_K4_records/`](../../finite/data/restricted_K4_records/) | Restricted-search counters and survivor lists used in local reduction checks |
+| [`verification/historical_small_orders/`](../../verification/historical_small_orders/) | Historical source variants and their comparison |
+| [`verification/closures51/`](../../verification/closures51/) | A recorded regeneration of all 51 finite seed closures |
 
-`finite/provenance/` holds selected normalized source identities, small-order comparisons and completion records. `finite/data/restricted_K4_records/` preserves the earlier restricted-search survivor lists and counters used to interpret reduction checks. `finite/figures/` contains tabular panel/trace dictionaries used by finite verifiers, not obsolete drawings. `src/atascadas.c` and `verification/historical_small_orders/` serve historical source comparisons; new runs use `v2/src/atascadas_v2.c`.
+[`finite/figures/`](../../finite/figures/) contains panel and reduction dictionaries used by the verifiers. Historical homology comparison scripts are under [`tools/homology/archive/`](../../tools/homology/archive/); the active route is described in [full reproduction](../full-reproduction.md).
 
-The homology scripts under `tools/homology/archive/` are historical comparison material. Their filenames do not certify independence of a full census. The active residual-adjudication route and its two homology methods are described in `docs/full-reproduction.md`. The small benchmark graph streams under `data/` are compared with their canonical certificate catalogs by `tools/check_secondary_results.py`.
-
-Mathematical claims, finite reconstructions and historical execution evidence are distinguished in `docs/verification-scope.md`. The source selection does not contain all per-residue production archives or authenticate historical execution.
+The [verification map](../verification-scope.md) relates these records to the mathematical statements and distinguishes the checks that can be repeated from the retained execution evidence.

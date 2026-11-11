@@ -9,7 +9,7 @@
     "source_path": "CITATION.cff",
     "source_sha256": "601b3144dc31087ecc2029f718955286bbb3966ac8648f76cf917af87811c785",
     "destination": "CITATION.cff",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "LICENSE",
@@ -147,7 +147,7 @@
     "source_path": "data/local_K4/README.md",
     "source_sha256": "b09ca62d959c307e06bc06ee1e9cbe8bf418876fcce4ce88d05ddecd5a76ca64",
     "destination": "data/local_K4/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "data/local_K4/connected_n2_7.g6",
@@ -243,13 +243,13 @@
     "source_path": "finite/README.md",
     "source_sha256": "3ef255f9da0d6b8ac8acf71e7d86e47f5d92dc38c7030dd11c7515ac42c12e61",
     "destination": "finite/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/VERIFICATION_COVERAGE.md",
     "source_sha256": "baa71afd053dc49565f9c2a33ef8b4d25af8028d3d2b8ffb8dcbb5a1b14330e4",
     "destination": "finite/VERIFICATION_COVERAGE.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/certificates/G13_successors.json",
@@ -261,7 +261,7 @@
     "source_path": "finite/certificates/README.md",
     "source_sha256": "787de9fecf81875d3e5fdfcf850e110ef47cdeff0850558b8e799ae3c05c1fca",
     "destination": "finite/certificates/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/certificates/certificate_replay.json",
@@ -339,7 +339,7 @@
     "source_path": "finite/data/README.md",
     "source_sha256": "66354cde31efc40e16b89a0d19f4f5f1615f8754b2bd588d41ecb9ca975915d9",
     "destination": "finite/data/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/data/acyclic_not_strong_14_closure.tsv",
@@ -639,19 +639,19 @@
     "source_path": "finite/integrity_manifest.json",
     "source_sha256": "df8b6ebec5c58b29cd49a295e1e863570457cf9045aa53670b46048cc9fa41d8",
     "destination": "finite/integrity_manifest.json",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/integrity_manifest.sha256",
     "source_sha256": "18fcd6f5bb9ad0f920e14e7a011f7983ca66a02add994074a188a3cb5b9f39c5",
     "destination": "finite/integrity_manifest.sha256",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/provenance/README.md",
     "source_sha256": "16d3230f62ce87986c4dee3ccf51448667ca0f4d9546889c3cfcfebd3b3e5158",
     "destination": "finite/provenance/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "finite/provenance/SELECTION_SOURCES.json",
@@ -939,7 +939,7 @@
     "source_path": "src/README.md",
     "source_sha256": "9451cf23b37d9fe51b26a24db9ebf808682d99ff70014c77f6ee1cfdfc22fd01",
     "destination": "src/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "src/atascadas.c",
@@ -957,7 +957,7 @@
     "source_path": "tools/campaign_controls/README.md",
     "source_sha256": "32018689968bc8f3f3246e04176762f1a072cafc344ea0007d309e69568be6cc",
     "destination": "tools/campaign_controls/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "tools/campaign_controls/audit_receipt_metadata_r6.py",
@@ -1071,7 +1071,7 @@
     "source_path": "tools/homology/README.md",
     "source_sha256": "4d629f8e496b10964b0a4fd43f40cf9150eb560c57f2ccf75fbf0956a2718434",
     "destination": "tools/homology/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "tools/homology/adjudicate_inventory_r2.py",
@@ -1209,7 +1209,7 @@
     "source_path": "verification/current_recurrences/README.md",
     "source_sha256": "30e82334eb7f758277f774af14c35bc741a371b4d56755860c1e197ec13a28d8",
     "destination": "verification/current_recurrences/README.md",
-    "disposition": "unchanged"
+    "disposition": "updated"
   },
   {
     "source_path": "verification/current_recurrences/implementation_correspondence.c",

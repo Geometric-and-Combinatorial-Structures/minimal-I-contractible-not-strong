@@ -1,9 +1,13 @@
-# Finite mathematical evidence
+# Finite graphs, constructions and certificates
 
-Run `../verify.sh` from the repository root, or the individual scripts described in `data/README.md` and `certificates/README.md`. Every graph6 encoding uses zero-based vertices. Geometric drawings may relabel those vertices; the paper supplies the correspondence.
+This directory contains the five designated examples (`G13`, `G14a`, `G14b`, `G14c`, `D15`), their certificates and the finite catalogs developed in the [article](../paper/main.pdf) and [supplement](../supplement/main.pdf). Graph6 encodings use vertex labels starting at zero; the displayed reductions and figures use the corresponding labels.
 
-The five designated graphs are G13, G14a, G14b, G14c and D15. G13 has integer H1=Z/3 and is F2-acyclic. G14a is the 14-vertex, 44-edge I-contractible non-strong witness developed in the manuscript. G14b and G14c account for the other contractible stuck seeds. D15 is the 15-vertex published comparison example.
+| Material | Guide |
+|---|---|
+| Disc presentations, neighbourhood obstructions and reductions | [Certificates](certificates/README.md) |
+| The 51 seeds, eight K4-free examples, 20 strictly 2-dismantlable graphs and closure catalogs | [Catalog data](data/README.md) |
+| Enumeration totals, source identities and execution records | [Provenance](provenance/README.md) |
 
-The 51-row, eight-row and 20-row catalogs, all 2,271 pruned-closure classes and the three complete finite closure records are included. Their exhaustiveness statements have different scopes: see `../docs/secondary-results.md`. The evidence files are not a new exhaustive enumeration of all graphs.
+For the finite reproduction route, run `python3 reproduce.py` from the repository root. The compatibility command `./verify.sh`, also run from the root, invokes the eleven checks within this directory. Individual commands are given in the guides above.
 
-`check_integrity.py` verifies the byte inventory in `integrity_manifest.json`; the manifest digest is in `integrity_manifest.sha256`. A mathematical verifier and an integrity verifier answer different questions. [Coverage](VERIFICATION_COVERAGE.md) identifies the distinction.
+The [verification map](../docs/verification-scope.md) explains how these finite calculations combine with the mathematical proofs and exhaustive enumerations. [Coverage](VERIFICATION_COVERAGE.md) identifies the file inventories used by the checks.

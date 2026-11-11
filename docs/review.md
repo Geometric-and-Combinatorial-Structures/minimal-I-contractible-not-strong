@@ -1,11 +1,14 @@
-# Review and verification of the companion
+# Validation records
 
-Repository preparation on 10 November 2026 used six completed adversarial reviews through the direct Anthropic API, all with `claude-opus-5-5` and reasoning effort `xhigh`. The [snapshot record](../verification/review/snapshots.json) identifies the files or diffs supplied to each review and the completion status. Two interrupted or truncated attempts produced no completed assessment and are excluded.
+The mathematical proofs, finite calculations and complete enumerations have distinct roles, described in the [verification map](verification-scope.md). The [reproduction guide](reproduction.md) gives the commands for the finite calculations; [GitHub Actions](https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong/actions/workflows/reproduce.yml) runs them on Python 3.11 and 3.13 and checks the document builds and figure generation.
 
-The reviews covered selection, the mathematical supplement, repository interfaces and subsequent focal corrections. They prompted explicit seed inclusion and label checks, clearer computational scope, and corrections to clean-copy table generation, output locations, Git history checks, notebook use, bibliography builds and process deadlines. Findings were checked against the actual data and code before changes were adopted. Some alleged missing mathematical checks were already enforced in other mandatory verifiers; those were confirmed by direct inspection and execution.
+The retained validation records include:
 
-The mathematical proofs and executable checks are the evidence for the results. Model responses are review records, not certificates. The snapshots distinguish complete files from supplied diffs and do not imply that the reviewer ran the programs or read the entire repository.
+- [Source comparisons for the small-order enumerations](../verification/historical_small_orders/README.md).
+- [Comparison of the C classifier with direct mathematical recurrences](../verification/current_recurrences/README.md).
+- [Regeneration of all 51 finite closures](../verification/closures51/README.md), giving the deposited 2,271-class set.
+- [Adversarial-review inputs](../verification/review/snapshots.json), identifying the files or diffs supplied in six completed reviews of the repository preparation.
 
-Local validation included the required finite route and current-C recurrence comparison, generated tables and drawings, both document builds, a source archive, the example notebook, semantic certificate mutations and byte-integrity checks. The historical implementation and pipeline suite also passed: 47 equivalence checks, 25 robustness cases, 12 pipeline cases, and 89, 104, 25 and 14 later regression cases. The last suite included 19 ASan/UBSan runs with positive controls. The 51-seed closure was regenerated and matched the deposited 2,271-class set.
+Those review records identify the versions examined. Their assessments were considered alongside direct inspection and executable checks.
 
-The [reproduction guide](reproduction.md) gives executable checks. GitHub Actions applies the finite route on Python 3.11 and 3.13, builds both documents, and checks figure regeneration. The [verification scope](verification-scope.md) separates these finite checks from the historical large enumerations; a complete independent recount remains deferred.
+The classifier and partition-driver [regression suite](../v2/README.md#regression-suite) covers equivalence, incomplete or malformed input, failed processes and aggregation. The finite route also tests deliberately altered certificates and input files. Reports retain the individual outcomes so that a reader can distinguish a completed check from a missing or failed one.

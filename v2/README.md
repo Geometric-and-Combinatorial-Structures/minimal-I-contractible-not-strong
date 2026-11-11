@@ -1,8 +1,10 @@
-# Exact classifier and enumeration pipeline
+# Enumeration and recursive classification
 
-`src/atascadas_v2.c` is classifier v2.2, with complete-state memoisation. Its keys contain the current vertex mask and all restricted adjacency rows. `pipeline/campana_v2.py` is recording driver v2.4. These are the sources used in the recorded complete recomputations; their bytes and hashes are preserved.
+The classifier evaluates the recursive graph classes in the cardinality table and searches for admissible-edge certificates for the remaining acyclic graphs. The driver partitions a graph universe into residue streams, records each contribution and combines the results after checking complete coverage.
 
-For the finite reader-facing checks, use `python3 reproduce.py --extended` from the repository root. The [full reproduction guide](../docs/full-reproduction.md) is the single maintained specification for generation, partitioning, residual adjudication and aggregation. It uses `data/raw_classifier_reference.csv` for the twelve raw counters and `data/cardinalities.csv` for the mathematical table, including the derived integral column.
+`src/atascadas_v2.c` is classifier v2.2; `pipeline/campana_v2.py` is driver v2.4. Strong-membership memoisation compares the complete active graph: the vertex mask and all restricted adjacency rows.
+
+For the finite checks together with the comparison of this classifier with direct recurrences, use `python3 reproduce.py --extended --cc gcc` from the repository root. The [full reproduction guide](../docs/full-reproduction.md) is the single maintained specification for generation, partitioning, residual adjudication and aggregation. It uses `data/raw_classifier_reference.csv` for the twelve raw counters and `data/cardinalities.csv` for the mathematical table, including the derived integral column.
 
 ## Build and a small example
 
@@ -16,7 +18,7 @@ geng -c 5 | build/atascadas_v2 --modo tabla
 
 Use Bash with `set -euo pipefail` when retaining a pipeline result. The example enumerates only the 21 connected graphs of order five. `build.sh` also creates the legacy and deliberately weakened-hash executables used by the regression suite. The executable option is `--modo`; the recording driver's option is `--mode`.
 
-## Aggregate certificate contract
+## Conditions for accepting an aggregate
 
 An invocation certifies its recorded result only when all four conditions hold:
 

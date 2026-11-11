@@ -1,71 +1,81 @@
-# Reproducing the finite evidence
+# Reproduce the finite calculations
 
-Run commands from the repository root. A POSIX system and Python 3.11 or later, without `-O` or `-OO`, are required; the deposited routes are tested on Linux. The default route uses only the Python standard library and performs no network or scheduler operations.
+This route reconstructs the examples and the finite catalogs and checks their relation to the cardinality table. It uses the graphs and enumeration records supplied in the repository. Generating every graph in a table row is a separate, larger calculation described in [full enumeration](full-reproduction.md).
+
+## Run the checks
+
+Clone or download the repository and open a terminal in its root directory. With Python 3.11 or later on a POSIX system, run:
 
 ```bash
 python3 reproduce.py
 ```
 
-The output directory is new on every invocation. To choose its name:
+The route uses the Python standard library and is tested on Linux. Run Python without `-O` or `-OO`, since the checks use assertions. The checkout must be writable for the generated reports and notebook outputs.
+
+The command creates a new directory under `results/` and reports its location. To choose a name:
 
 ```bash
 python3 reproduce.py --output results/my-check
 ```
 
-An existing output directory is refused. `report.txt` gives a short result; `report.json` records the route, Python version, source-manifest digest, required checks, exit codes and elapsed times. Separate output files retain the individual checker results. The input manifest is checked before and after execution.
+Use a new directory for each invocation. Open `report.txt` for the overall result and the outcome of each check. `report.json` additionally records the commands, return codes, elapsed times and input identities. Individual outputs are retained alongside these reports. A failed or incomplete required check gives a nonzero exit code.
 
-## Required checks
+## What is calculated
 
-The finite driver runs eleven checks: the finite byte inventory; five disc presentations; witness links and strong reductions; all 51 natural unfoldings; the three small pruned closures and stored admissible paths; the auxiliary catalog invariants and integral first homology; the four attributed Adamaszek encodings; retained small K4-free records; lower-order provenance consistency; the supplied 643-graph reduction set; and all 144 table entries with the complete finite residual adjudication.
+| Mathematical object | Calculation |
+|---|---|
+| Five designated examples | Disc presentations, neighbourhood obstructions and complete reduction sequences |
+| The 51 stuck K4-free graphs | Graph invariants, integral first homology and all natural unfoldings |
+| Closures of the three I-contractible seeds | All admissible additions up to the first strong graph, with isomorphism identification |
+| The 2,271-class closure union | Stored addition paths, first homology, pairwise nonisomorphism and the 29/2,242 partition |
+| The 20 strictly 2-dismantlable graphs | Membership, nonmembership and automorphism orders |
+| Small K4-free reduction set | All 643 supplied connected graphs of orders 2–7 and the almost-stuck criterion |
+| Cardinality table | All 144 entries against their sources; the three order-13 and 625 order-14 torsion cases; the eight positive order-14 classes |
 
-The top-level command additionally verifies the unchanged article and migration inventory, then runs secondary catalog comparisons, historical source identities, both generated mathematical tables, witness-export tests, semantic certificate-mutation tests, 46,913 specified byte substitutions and file-appending tests and all code cells of the example notebook. These stages are required, and no missing dependency is silently skipped. The report records elapsed time for each stage. The top-level subprocess limit is configurable with `--timeout` (seconds, greater than zero and at most 100,000). The eleven-stage finite driver applies that limit to each of its stages and receives twelve times the limit overall; the other required stages each receive one limit. The interface tests inherit it for their subprocesses. An expired check fails rather than certifying a partial result. On POSIX systems the driver terminates the timed-out process group and retains its captured output. The working checkout must be writable for generated test and notebook outputs.
+The route also checks the four attributed Adamaszek examples, correspondence with historical records, generated tables, witness exports and the notebook. Input inventories check that the tested files are the distributed ones; tests with deliberately altered certificates check that the verifiers reject such alterations. The [verification map](verification-scope.md) relates these calculations to the proofs and enumeration records.
 
-The source inventory excludes root Git metadata, root `build/`, `results/` and `.venv/`, the legacy generated directories `v2/build/` and `v2/tests/results/`, Python bytecode and notebook checkpoints, `.DS_Store`, LaTeX intermediates within the two document directories, the legacy local binary `src/atascadas`, and root `quick-verification.json`. A directory named `build` or `results` inside the data is still checked as an input. New command outputs inside the repository are restricted to subdirectories of root `results/` or `build/`. The inventory includes the distributed source, data, notes and PDFs. To verify the inventory alone:
-
-```bash
-python3 tools/integrity.py
-```
-
-Maintainers can deliberately regenerate it with `python3 tools/integrity.py --write` after reviewing changes. Hashes detect changes relative to a selected version; they do not authenticate an execution or establish mathematical correctness.
-
-## Current C implementation
-
-```bash
-python3 reproduce.py --extended --cc gcc --output results/extended
-```
-
-This route adds the actual C functions in `v2/src/atascadas_v2.c` to the finite checks. It compares them with direct recurrences on all 1,100 labelled graphs of orders 0–5, including all induced masks and all possible first vertex and edge deletions. The evidence covers 33,867 masked states. It includes empty graphs, singleton graphs and empty neighbourhoods. The harness does not modify the classifier source. This is a bounded implementation check, not a proof of arbitrary machine code or an independent large census.
-
-Continuous integration runs this route on Python 3.11 and 3.13. Compiler outputs and reports remain under `results/`. The larger historical regression suite is described in [`v2/README.md`](../v2/README.md).
-
-## Examples, figures and documents
-
-`generate.py` exports witnesses without external dependencies. The [examples guide](examples.md) gives the formats and label conventions. For an interactive walkthrough, make a writable copy first with `python3 tools/copy_notebook.py`, then open `results/notebook/reproduce.ipynb` in Jupyter. Jupyter is needed only for the interface. Its autosaved output belongs in that copy; the distributed notebook remains an inventoried input. The distributed notebook's plain-Python cells also run without saving with:
-
-```bash
-python3 tests/run_notebook.py
-```
-
-The manuscript already contains the checked TikZ sources. [`tools/figures/README.md`](../tools/figures/README.md) documents regeneration and the additional NetworkX/SymPy verification route. Build the article and supplement as described in [`ARTICLE.md`](../ARTICLE.md).
-
-`./verify.sh` remains a compatibility entry point for the eleven finite checks alone. It prints a JSON report to standard output and does not run the new interface or notebook tests.
-
-## Large computations and historical evidence
-
-The [full route](full-reproduction.md) specifies graph generation, classification, integral homology adjudication and aggregation. It is deliberately separate from the commands above because its universes are large. It records the requirements for a valid run, including complete residue coverage and real successful exits.
-
-The quick route rechecks the deposited finite exceptions and the arithmetic connection to retained aggregate records. It does not generate every graph counted by those records. Full per-residue production archives remain in the authors' project archive; this repository contains a selected reproducible core. A full independent recount using a different classifier remains deferred. See the [assertion-to-evidence map](verification-scope.md).
-
-## Regenerating the complete finite closure catalog
-
-The 51-seed closure can be regenerated locally without a graph-universe census:
+The three positive-seed closures are regenerated in this route. To regenerate the **full 51-seed closure**, install a C11 compiler and nauty `labelg`, then run:
 
 ```bash
 python3 tools/reproduce_closures.py --cc gcc --labelg /path/to/labelg --output results/closures51
 ```
 
-This route requires nauty `labelg` and the C11 compiler. It compares the complete non-strong class set with the 2,271-row catalog and records successful process exits and unchanged input hashes. The recorded local run and its precise scope are described in [`verification/closures51/`](../verification/closures51/). The default route checks its finite data and independently regenerates the three smaller positive-seed closures.
+This command compares the generated non-strong class set with the 2,271-row catalog. The [closure guide](../verification/closures51/README.md) describes the output and the recorded comparison.
 
-## Git history and source archives
+## Interactive examples
 
-Every route checks the distributed snapshot. When Git and the baseline commit are available, it also compares the complete migration inventory with that historical tree. Source ZIPs and shallow clones lack that optional historical object comparison; both `report.txt` and `report.json` state this explicitly. For a shallow clone, `git fetch --unshallow` makes the historical comparison available. Continuous integration fetches the complete history and passes `--require-git-baseline`, so its historical comparison is mandatory. A source archive omits that option.
+Create a working copy of the notebook:
+
+```bash
+python3 tools/copy_notebook.py
+```
+
+Open `results/notebook/reproduce.ipynb` in Jupyter. It computes the first homology of `G13`, compares `G14a` with its one-edge extension and examines the two coefficient columns of the table. Jupyter is needed for this interactive interface; the cells themselves use only the standard library. They also run from the terminal with:
+
+```bash
+python3 tests/run_notebook.py
+```
+
+Keep interactive outputs in the working copy, since the distributed notebook is part of the input inventory. The [examples guide](examples.md) describes the graph exporter and the mathematical meaning of its outputs.
+
+## Compare the two implementations
+
+To include a comparison of the C classifier with direct mathematical recurrences, run:
+
+```bash
+python3 reproduce.py --extended --cc gcc --output results/extended
+```
+
+This needs a C11 compiler. It compares all 1,100 labelled graphs of orders 0–5 and their 33,867 induced states, including empty graphs, singletons, empty neighbourhoods and every possible first deletion. This tests the implementations on that finite domain; the algorithmic proofs and the large enumeration records have the separate roles described in the [verification map](verification-scope.md).
+
+## Figures and documents
+
+The [figure guide](../tools/figures/README.md) describes how to regenerate the TikZ drawings and check their exact edge sets. Its additional witness verifier uses NetworkX and SymPy. The [document guide](../ARTICLE.md#build-the-documents) gives commands to build the article and supplement from their LaTeX sources.
+
+## Run options and input records
+
+The default time limit is applied separately to the required checks. `--timeout SECONDS` accepts a positive value at most 100,000; an expired check fails and retains its captured output. Details of the stage limits and output locations are in [maintainer guidance](../CONTRIBUTING.md#checks-and-output-directories).
+
+Every route compares the distributed files with their recorded hashes. With a complete Git history it also checks the import records against the historical baseline. Source archives and shallow clones omit that historical-object comparison and identify the omission in the report. To require it, use `--require-git-baseline`; for a shallow clone, first run `git fetch --unshallow`. GitHub Actions fetches the complete history and requires this comparison.
+
+The compatibility entry point `./verify.sh` runs the eleven checks in `finite/` and prints their JSON report. `reproduce.py` additionally runs the repository, interface and notebook checks described above.

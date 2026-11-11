@@ -1,30 +1,70 @@
-# Data dictionaries
+# Catalogs and data fields
 
-The TSV files have one English header row and use ASCII. Vertex labels in all boundary words refer to the corresponding graph6 string. Each word is cyclic: the final vertex is followed by the first.
+The catalogs describe the finite constructions in the [supplement](../../supplement/main.pdf). TSV files have one header row. Graph6 strings determine vertex labels, starting at zero. A boundary word is cyclic: its final vertex is followed by its first. [Results and notation](../../docs/results.md) defines the graph families; [finite closures](../../docs/secondary-results.md) explains their construction and scope.
 
-`stuck_14_K4free.tsv` lists the 51 stuck K4-free order-14 graphs. `H1_Z` is integral first homology; `trivial` means zero. `I_certificate_edge` is either `no` or `yes ({u,v})`, displaying one missing edge whose addition certifies I-contractibility; no uniqueness is claimed. `unfolded_vertices` and `boundary_edges` count the whole complex obtained by cutting along edges contained in a number of triangles different from two. They are not labelled as disc invariants. `unfolding` specifies the component types. `boundary_component_lengths` lists all boundary lengths in increasing order; the JSON array in `boundary_words` uses the same order (ties are ordered lexicographically). Boundary words may differ from earlier displays by cyclic rotation or reversal.
+## The 51 stuck graphs and their unfoldings
 
-`unfolding_components.json` records every connected component of every unfolding, including its Euler characteristic, all boundary words and all vertex-link checks. Components are reconstructed by gluing corners of triangles across edges of triangle incidence two. Every vertex link is a path at the boundary and a cycle otherwise. Run `python3 -P check_unfoldings.py` to reconstruct and compare all component types, vertex counts, boundary lengths and boundary words. The script also compares every field of `unfolding_components.json`, including the vertex-link records. It uses only the Python standard library and performs no writes.
+[`stuck_14_K4free.tsv`](stuck_14_K4free.tsv) lists the 51 stuck K4-free graphs of order 14.
 
-`strictly_2dis_12.tsv` lists the 20 strictly 2-dismantlable order-12 graphs. `K4_count` counts four-vertex cliques, `clique_number` is the maximum clique order, and the two degree columns give the minimum and maximum graph degrees. `automorphism_order` is the order of the automorphism group in both files.
+| Field | Meaning |
+|---|---|
+| `H1_Z` | Integral first homology; `trivial` denotes zero |
+| `I_certificate_edge` | `yes ({u,v})` gives a missing edge whose addition certifies I-contractibility; `no` records the torsion cases |
+| `unfolded_vertices`, `boundary_edges` | Counts for the entire natural unfolding |
+| `unfolding` | Types of its connected components |
+| `boundary_component_lengths` | All boundary lengths in increasing order |
+| `boundary_words` | Cyclic words in the same order, with ties ordered lexicographically |
+| `automorphism_order` | Order of the graph's automorphism group |
 
-`closure_G14a.tsv` records the pruned edge-addition closure of G14a together with its first-entry strong boundary: 16 non-strong states and 32 strong boundary states. Strong states are not expanded. `added_edges` is measured from the seed. This finite list does not purport to exhaust the full edge-addition closure.
+The natural unfolding glues triangle edges of incidence two, preserving endpoint labels. [`unfolding_components.json`](unfolding_components.json) records every component, its Euler characteristic, boundary words and vertex-link checks. Boundary links are paths and interior links are cycles. A displayed boundary word may be cyclically rotated or reversed without changing the boundary component.
 
+## Admissible-edge closures
 
-`K4_free_I_not_strong_14.tsv` gives all eight K4-free order-14 graphs in I outside I_S, their seed, an ordered sequence of admissible additions and a certifying missing edge. For each graph G and displayed edge e, both the common neighbourhood in G and G+e are strong I-contractible, whereas G is not. `small_closure_certificates.json` contains the complete three pruned closures and their first-entry strong states. Run `python3 -P check_small_closures.py` to reconstruct and compare them using exact strong recursion and exact isomorphism backtracking; `--write` explicitly regenerates the record. Their non-strong/strong-boundary sizes are 16/32, 10/16 and 5/8. Some non-strong states from different seeds are isomorphic; the union has 29 classes.
+The pruned closure expands non-strong graphs by admissible edge additions and records their first-strong boundary. Strong states are recorded without further expansion.
 
-`acyclic_not_strong_14_closure.tsv` and `I_not_strong_14_closure.tsv` give the 2,271-state union and its 29 I-contractible classes, respectively. Each row retains a seed and a checked ordered list of added edges in that seed's labelling. `H1_torsion` is a JSON list of invariant factors; an empty list denotes no torsion. The I-contractibility column is justified by the seed's certificate and the admissible additions, not by acyclicity alone. These lists record the finite pruned closures used in the article.
+| File | Contents |
+|---|---|
+| [`closure_G14a.tsv`](closure_G14a.tsv) | The 16 non-strong classes and 32 first-strong boundary classes from `G14a`; `added_edges` is measured from the seed |
+| [`small_closure_certificates.json`](small_closure_certificates.json) | The complete three positive-seed closures, with non-strong/boundary sizes 16/32, 10/16 and 5/8 |
+| [`K4_free_I_not_strong_14.tsv`](K4_free_I_not_strong_14.tsv) | All eight K4-free order-14 graphs in $\mathfrak I\setminus\mathfrak I_S$, with seeds, paths and certifying edges |
+| [`acyclic_not_strong_14_closure.tsv`](acyclic_not_strong_14_closure.tsv) | The 2,271 non-strong classes generated from all 51 seeds |
+| [`I_not_strong_14_closure.tsv`](I_not_strong_14_closure.tsv) | The 29 I-contractible classes in that union |
 
-`D15_label_correspondence.tsv` and `D15_published_triangles.json` give the full bijection to Figure 2A of Dochtermann et al., [Minimal graphs for contractible and dismantlable properties](https://doi.org/10.1016/j.disc.2023.113516) (2023), and its triangle set. In particular, graph6 edge {9,12} maps to published edge {5,7}. The finite checker compares all 32 triangles after relabelling.
+Each addition path is ordered and uses its seed's labelling. `H1_torsion` is a JSON list of invariant factors; the empty list means no torsion. Membership in $\mathfrak I$ follows from the seed certificate and admissible additions. For each of the eight K4-free graphs and its displayed edge, the common neighbourhood and the extended graph are strong, while the original graph is non-strong.
 
-`check_tables.py` recomputes all graph-count and automorphism columns of the 51-row and 20-row tables, verifies exact membership in 2-Dis minus 1-Dis, recomputes integral first homology for all 2,271 closure graphs, checks the seed-based classification, compares all 48 rows of `closure_G14a.tsv` up to exact isomorphism, and compares every mosaic index row. The unfolding columns are checked by `check_unfoldings.py`; addition paths and the eight-row and 29-row subsets are checked by `check_small_closures.py`. None of these finite-list checks enumerates the full universe of graphs of an order.
+The three positive-seed closures overlap up to isomorphism, giving 29 non-strong classes in their union. The larger 2,271-class union is the specified closure catalog; its relation to the complete order-14 table is explained in [finite closures](../../docs/secondary-results.md#the-union-from-all-51-seeds).
 
-`../check_integrity.py` additionally compares every byte in the evidence inventory against a fixed SHA-256 manifest. `../certificates/test_certificate_integrity.py` tests one-byte substitutions at specified positions in every inventoried file and at every TSV cell and JSON token, preserving the input tree and using the system temporary directory. Byte integrity and semantic validation are different checks; see `../VERIFICATION_COVERAGE.md`.
+## Strictly 2-dismantlable graphs
 
-`restricted_K4_records/` preserves the separate restricted-search counters and graph6 survivor streams for orders 5 through 12. The eight order-12 residue streams concatenate in numeric residue order to the aggregate stream. `restricted_K4_filter.c` is the supplied filter source: it assumes K4-free input and tests for tree neighbourhoods, singleton common neighbourhoods of edges, and Euler characteristic one. `check_local_K4_records.py` checks every stored survivor and its Z2 homology, the per-file counts and the residue concatenation; it does not regenerate the large input universes. The full-generation counts are retained provenance evidence.
+[`strictly_2dis_12.tsv`](strictly_2dis_12.tsv) lists the 20 order-12 graphs in $2$-Dis outside $1$-Dis. `K4_count` counts four-vertex cliques; `clique_number` is the maximum clique order; the degree columns give minimum and maximum degree; `automorphism_order` is the group order.
 
-`check_local_K4_small.py --geng /path/to/geng` reproduces the connected K4-free enumeration through order 8 and the almost-stuck test, including zero or one admissible vertex. The original run used the preserved nauty 2.8.9 executable, whose digest is recorded in `../provenance/local_K4_small_checks.json`; any `geng` producing the recorded streams is accepted unless `--require-digest` is given. This is a small enumeration; it does not repeat orders 9–12. The JSON records stream hashes, counts and the three K4-free order-13 examples. Use `PYTHONDONTWRITEBYTECODE=1` when running any Python check.
+## Earlier examples
 
-The small local enumeration covers orders 2–8; the proof uses only orders at most 7. Reproduction compares per-order stream SHA-256 values and counts. The generator executable digest is informational unless `--require-digest` is requested.
+[`D15_label_correspondence.tsv`](D15_label_correspondence.tsv) and [`D15_published_triangles.json`](D15_published_triangles.json) give the vertex bijection and triangle set for Figure 2A of [Dochtermann et al. (2023)](https://doi.org/10.1016/j.disc.2023.113516). Edge {9,12} in the repository labelling corresponds to {5,7} there. The finite checker compares all 32 triangles after relabelling.
 
-`adamaszek_11_graphs.g6` contains the first four encodings appended to the source of arXiv:1208.3892v1. They are the four eleven-vertex torsion graphs of Adamaszek's Theorem 1.1. `adamaszek_11_homology.json` records their provenance and exact H1 groups; `python3 -P data/check_adamaszek.py` (from the finite evidence root) recomputes their cycle-lattice presentations and Smith normal forms. All four have free rank zero and a single invariant factor 2. This finite check does not reproduce Adamaszek's classification.
+[`adamaszek_11_graphs.g6`](adamaszek_11_graphs.g6) contains the first four encodings appended to the source of arXiv:1208.3892v1: the eleven-vertex torsion graphs in Adamaszek's Theorem 1.1. [`adamaszek_11_homology.json`](adamaszek_11_homology.json) records attribution and homology. Each calculation has free rank zero and one torsion factor 2, giving first integral homology $\mathbb Z/2$.
+
+## Run individual checks
+
+From the repository root:
+
+```bash
+python3 -P finite/data/check_unfoldings.py
+python3 -P finite/data/check_small_closures.py
+python3 -P finite/data/check_tables.py
+python3 -P finite/data/check_adamaszek.py
+```
+
+These commands use the Python standard library and are included in `reproduce.py`. They reconstruct the unfoldings and the three small closures, calculate the graph and automorphism invariants, check the 2,271 first-homology groups and seed classification, and compare the path and subset records. `check_tables.py` also compares the tabular panel dictionaries. For an intentional regeneration, `check_small_closures.py --write` replaces its certificate record; update the finite inventory in that working copy afterward.
+
+## Restricted-search records
+
+[`restricted_K4_records/`](restricted_K4_records/) contains the counters and survivor streams of the restricted searches at orders 5–12. The eight order-12 residues concatenate in numerical order. `restricted_K4_filter.c` tests tree vertex neighbourhoods, singleton edge neighbourhoods and Euler characteristic one on K4-free input. `check_local_K4_records.py` compares the retained counts and streams and calculates the survivors' homology.
+
+The optional command below regenerates connected K4-free graphs of orders 2–8 and tests almost-stuckness, including zero admissible vertices:
+
+```bash
+python3 -P finite/data/check_local_K4_small.py --geng /path/to/geng
+```
+
+It requires a nauty `geng` supporting `-k`. Per-order stream hashes and counts are compared with [`local_K4_small_checks.json`](../provenance/local_K4_small_checks.json), which also records checks of the three order-13 examples. Add `--require-digest` to require the recorded generator bytes. The article's reduction uses only orders 2–7; the default reproduction route checks that supplied [643-graph list](../../data/local_K4/README.md) without a generator.

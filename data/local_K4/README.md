@@ -1,16 +1,18 @@
 # Connected K4-free graphs of orders 2–7
 
-`connected_n2_7.g6` contains one representative of each class produced by nauty `geng -kc n`, concatenated in increasing order. The class counts are 1, 2, 5, 17, 82 and 536, for a total of 643. `generation.json` records the fresh small generation, generator digest, return codes, per-order stream digests and the combined catalogue digest. The streams agree with the retained historical small-order check.
+[`connected_n2_7.g6`](connected_n2_7.g6) contains all 643 connected K4-free isomorphism classes at orders 2–7, with respective counts 1, 2, 5, 17, 82 and 536. They are used in the article's cut-vertex reduction.
 
-The mandatory quick route runs `tools/check_local_K4_catalogue.py`. It verifies the universe, counts, absence of isomorphic duplicates and the almost-stuck criterion on every listed graph. In the K4-free universe a vertex is admissible precisely when its open neighbourhood is a nonempty tree, and an edge is admissible precisely when its common neighbourhood has one vertex. The check includes **zero or one admissible vertex**, not just exactly one. None of these graphs is almost stuck. Finite membership checks and a stored list alone do not prove exhaustive coverage; coverage relies on the stated generator and its mathematical generation method.
+In a K4-free graph, a vertex deletion is admissible precisely when its open neighbourhood is a nonempty tree; an edge deletion is admissible precisely when the endpoints have one common neighbour. An **almost-stuck** graph is $\mathbb F_2$-acyclic, has no admissible edge and has at most one admissible vertex. None of these 643 graphs is almost stuck.
 
-From the repository root, no generator is needed to check the supplied list:
+The list was generated with nauty `geng -kc n` and concatenated in increasing order. [`generation.json`](generation.json) records the generator identity, counts, successful exits and stream hashes. Exhaustiveness uses the graph-generation method; the finite checker verifies every supplied graph, the local criterion and pairwise nonisomorphism.
+
+From the repository root, check the supplied list with:
 
 ```bash
 python3 -P tools/check_local_K4_catalogue.py
 ```
 
-To repeat only this bounded generation with an installed nauty `geng` supporting `-k`, and check the newly generated copy:
+This uses the Python standard library and repository modules. To regenerate the same bounded universe with a nauty `geng` supporting `-k`, choose a new output directory and run:
 
 ```bash
 python3 tools/generate_local_K4_catalogue.py --geng /path/to/geng \
@@ -18,4 +20,4 @@ python3 tools/generate_local_K4_catalogue.py --geng /path/to/geng \
 python3 -P tools/check_local_K4_catalogue.py --data-dir build/local_K4
 ```
 
-The verifier uses the Python standard library and repository modules only. It does not invoke a generator or access the network. The generation script does not run any census above order seven.
+This generation covers only orders 2–7. The complete table universes are described in [full enumeration](../../docs/full-reproduction.md).

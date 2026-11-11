@@ -1,9 +1,9 @@
-# Homology adjudication
+# Classifying residual graphs by homology
 
-`independent_homology_r2.py` is the exact integer boundary-matrix and Smith implementation whose SHA-256 appears in the F4 adjudication record:
-`ffe667447460d5b5b9e56148f8c6c569f80f63da1caf1968c262b329ba188e29`.
-It can be imported without running the historical comparison helpers.
+The table classifier can leave acyclic graphs outside the strong class without a contractibility certificate. For each such **residual**, this stage computes reduced integral homology in every degree and checks the coefficient formulas over $\mathbb F_2$ and $\mathbb F_3$. Nonzero integral homology excludes I-contractibility. The [full reproduction guide](../../docs/full-reproduction.md#required-adjudication-of-every-residual) gives the command and the conditions for completing the classification.
 
-`adjudicate_inventory_r2.py` accepts a validated campaign directory and creates a new output directory with all residual adjudications. It checks integer reduced homology in every dimension and compares the coefficient formulas with Ripser over F2 and F3 through dimension two. It requires NumPy and Ripser. It does not certify campaign completeness, authenticate old receipts or check the positive I certificates; those are separate obligations.
+`independent_homology_r2.py` implements integer boundary matrices and Smith reduction. `adjudicate_inventory_r2.py` reads an aggregated enumeration, runs that calculation on each residual and compares its field-homology predictions with Ripser through dimension two. It requires NumPy and Ripser and writes to a new directory outside the input run. Enumeration coverage and positive contractibility certificates are checked by the other stages of the full route.
 
-`archive/verificacion_independiente_F4.py` preserves the historical additional check with independent graph decoding, modular elimination over F2/F3/F5/F7 and SymPy Smith reduction. It also compares three historical versions of the counts and graph sets. It expects the original four-directory layout documented in its header and writes into that supplied verification layout. Those full historical inputs are not redistributed here, so it is archived source, not part of the quick command. The present finite verifier recomputes H1 by a separate cycle-lattice implementation.
+## Historical comparison
+
+`archive/verificacion_independiente_F4.py` preserves an additional comparison using separate graph decoding, elimination over $\mathbb F_2,\mathbb F_3,\mathbb F_5,\mathbb F_7$ and SymPy Smith reduction. It expects the four-directory layout documented in its header; those complete historical inputs are not included here. The [finite verifier](../../finite/README.md) instead recomputes first homology of the supplied residuals by a cycle-lattice presentation proved in the supplement.

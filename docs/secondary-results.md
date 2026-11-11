@@ -1,27 +1,43 @@
-# Secondary finite results
+# Finite closures and auxiliary catalogs
 
-## Naming and scope
+The [supplement](../supplement/main.pdf) proves the constructions described here. Notation for the graph families is recalled in [results and notation](results.md). The identifiers `G14a`, `G14b` and `G14c` denote the three I-contractible stuck K4-free graphs of order 14.
 
-Repository identifiers use plain text: `G13` denotes the manuscript's G_13, and `G14a`, `G14b`, `G14c` denote G_14^a, G_14^b, G_14^c, respectively. The three order-13 variants are G_13 and its two successive admissible-edge additions, as constructed in the manuscript and reconstructed by `tools/check_cardinalities.py`.
+## Admissible-edge closures
 
-The catalogs below preserve auxiliary finite results and the data needed to inspect them. Their automorphism orders are recorded invariants, not a new analysis of symmetries or an additional premise for the classification of eight K4-free classes. 
+Starting from a graph outside $\mathfrak I_S$, add each missing edge whose common neighbourhood belongs to $\mathfrak I_S$. Identify isomorphic graphs and continue from the non-strong results. Record a strong result on the **first-strong boundary** and stop expanding it. This is the pruned edge-addition closure.
 
-## Pruned admissible-edge closures
+The procedure terminates because each addition increases the edge count on a fixed vertex set. Its pruning rule follows from the definition of $\mathfrak I_S$: adding an admissible edge to a strong graph leaves a strong graph, since deleting that edge recovers the original one. Thus every path ending outside $\mathfrak I_S$ stays outside that class at every intermediate step. Exploring every admissible edge, with exact membership and isomorphism tests, finds all non-strong descendants and their first-strong boundary.
 
-For a graph G, explore every missing edge whose common neighborhood belongs to I_S. Identify isomorphic results and stop expanding a state when it first belongs to I_S. Each branch terminates because an edge is added at every step. Exact tests of I_S and graph isomorphism make this a finite exhaustive procedure on the stated search space.
+| Seed | Non-strong classes | First-strong boundary | K4-free non-strong classes |
+|---|---:|---:|---:|
+| `G14a` | 16 | 32 | 4 |
+| `G14b` | 10 | 16 | 3 |
+| `G14c` | 5 | 8 | 1 |
 
-The pruning is valid for the purpose of enumerating non-strong descendants: if H is in I_S and an edge is admissibly added, the resulting graph is in I_S by the defining gluing rule. Induction shows that no later admissible addition leaves I_S. The stopping boundary therefore omits no non-strong descendant, but it is not the full set of strong descendants.
+The non-strong sets overlap up to isomorphism, so their union has 29 classes. All belong to $\mathfrak I$: the seeds have I-contractibility certificates and admissible additions preserve membership. Eight are K4-free and 21 contain a K4. Each of the 32 boundary classes for `G14a` has an admissible edge deletion leaving the strong class. The boundary counts first entries into the strong class along these paths.
 
-The closures of G14a, G14b and G14c have respectively 16/32, 10/16 and 5/8 non-strong/first-strong classes. Their non-strong union has 29 isomorphism classes, of which eight are K4-free. Each retains a seed and an ordered admissible-addition path. The certificates of the seeds show that all 29 belong to I. The 32 first-strong classes for G14a give examples with an admissible edge deletion leaving I_S. They are not asserted to exhaust all such examples.
+[`small_closure_certificates.json`](../finite/data/small_closure_certificates.json) gives the complete three closures. Each graph in [`K4_free_I_not_strong_14.tsv`](../finite/data/K4_free_I_not_strong_14.tsv) has a seed, an ordered addition path and a certifying edge. The finite reproduction route reconstructs these closures.
 
-The other 21 classes in this 29-class union contain a K4. Their collapsibility is not examined here; that question is reserved for separate work. Their inclusion as finite data makes no assertion about a complete unrestricted order-14 classification.
+## The union from all 51 seeds
 
-The 51 stuck K4-free order-14 seeds have a union of 2,271 non-strong classes in their pruned closures. The three I-contractible seeds generate the 29 classes above. The other 48 seeds have H1=Z/3; admissible additions preserve integral homology, so their descendants cannot belong to I. Exact Smith computations check H1 for every catalog entry. Overlaps are removed up to isomorphism. These 2,271 graphs do not exhaust all F2-acyclic non-strong order-14 graphs: only 277 of the 633 K4-free exceptions occur in the closure union, and the 29 I graphs do not assert an unrestricted order-14 classification.
+The 51 stuck K4-free graphs of order 14 generate **2,271 non-strong isomorphism classes**. The three I-contractible seeds contribute the 29 classes above. The other 48 seeds have first integral homology $\mathbb Z/3$; admissible additions preserve homology, so their 2,242 distinct descendants lie outside $\mathfrak I$.
 
-## Other finite catalogs
+The union contains 277 K4-free classes: eight in $\mathfrak I$ and 269 with first homology $\mathbb Z/3$. These lie among the 633 K4-free acyclic non-strong graphs of order 14 in the table. The remaining 356 are outside this seed-generated union. Accordingly, the catalog classifies the specified closures; it is not an enumeration of all acyclic non-strong graphs of order 14.
 
-`finite/data/strictly_2dis_12.tsv` has the 20 isomorphism classes in 2-Dis outside 1-Dis at order 12. The finite checker verifies their membership and automorphism orders; the full table supplies the completeness and minimality statements. 
+The full union and its I-contractible subset are in [`acyclic_not_strong_14_closure.tsv`](../finite/data/acyclic_not_strong_14_closure.tsv) and [`I_not_strong_14_closure.tsv`](../finite/data/I_not_strong_14_closure.tsv). Each row records a seed, an admissible path and first-homology invariants. [Closure regeneration](../verification/closures51/README.md) gives the command that reconstructs the complete union.
 
-`finite/data/D15_label_correspondence.tsv` relates D15 to Figure 2A of Dochtermann et al. (2023). The checker compares all 32 published triangles after relabeling, as well as the graph's local obstruction and its one-edge extension certificate. This is a comparison with the earlier example, not a claim of a new 15-vertex minimum.
+## Natural unfoldings
 
-The four Adamaszek order-11 encodings are attributed in `finite/data/adamaszek_11_homology.json`. Their finite H1 check returns Z/2. It does not reproduce that paper's classification or convert a general odd-torsion problem into the F2-acyclic problem studied here.
+Take a separate triangle for each triangle of a seed's clique complex. Glue pairs of triangle edges precisely when the original edge belongs to two triangles, preserving endpoint labels. The result is the **natural unfolding**. The supplement proves how to recover its components, vertex links and boundary words from this gluing.
+
+The 51 unfoldings consist of 48 discs, two annuli, and one disc together with an annulus. The three I-contractible seeds have disc unfoldings; the other 45 discs acquire torsion after their boundary identifications. [`unfolding_components.json`](../finite/data/unfolding_components.json) records the components and their local surface checks.
+
+## Strictly 2-dismantlable graphs
+
+[`strictly_2dis_12.tsv`](../finite/data/strictly_2dis_12.tsv) lists the 20 isomorphism classes in $2$-Dis outside $1$-Dis at order 12. Exact recursive tests verify membership and nonmembership for each graph. Given the table, the difference of the corresponding columns proves completeness, and their equality at smaller orders gives minimality. Degree bounds, clique counts and automorphism-group orders are included as catalog invariants.
+
+## Earlier examples
+
+[`D15_label_correspondence.tsv`](../finite/data/D15_label_correspondence.tsv) identifies `D15` with the graph in Figure 2A of [Dochtermann et al. (2023)](https://doi.org/10.1016/j.disc.2023.113516). The comparison uses all 32 triangles after relabelling, together with the certifying edge. The supplement gives its disc presentation and strong reduction after that edge is added.
+
+Four eleven-vertex examples from Adamaszek's torsion classification are retained in [`adamaszek_11_graphs.g6`](../finite/data/adamaszek_11_graphs.g6), with [attribution and first-homology data](../finite/data/adamaszek_11_homology.json). Their first integral homology is $\mathbb Z/2$. The finite check concerns these four examples; the classification theorem is taken from the cited work.

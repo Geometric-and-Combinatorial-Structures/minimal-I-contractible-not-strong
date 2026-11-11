@@ -8,8 +8,8 @@
     },
     {
       "path": "certificates/README.md",
-      "bytes": 2079,
-      "sha256": "787de9fecf81875d3e5fdfcf850e110ef47cdeff0850558b8e799ae3c05c1fca"
+      "bytes": 2543,
+      "sha256": "3cb22499cf6974e4c60fbfedf90fd8e53af595967b1df2d9783adee4c92f6575"
     },
     {
       "path": "certificates/certificate_replay.json",
@@ -68,8 +68,8 @@
     },
     {
       "path": "data/README.md",
-      "bytes": 6972,
-      "sha256": "66354cde31efc40e16b89a0d19f4f5f1615f8754b2bd588d41ecb9ca975915d9"
+      "bytes": 6323,
+      "sha256": "1f509b4a20b3cceb1e755e05ebe7f164985b1a45b0091d080e97d69792d494d8"
     },
     {
       "path": "data/acyclic_not_strong_14_closure.tsv",
@@ -318,8 +318,8 @@
     },
     {
       "path": "provenance/README.md",
-      "bytes": 14562,
-      "sha256": "16d3230f62ce87986c4dee3ccf51448667ca0f4d9546889c3cfcfebd3b3e5158"
+      "bytes": 14664,
+      "sha256": "38d47da74086c3ed2292f0f02a488e4ea41c3c650f2d1bdce79416a290a901e8"
     },
     {
       "path": "provenance/SELECTION_SOURCES.json",

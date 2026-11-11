@@ -5,16 +5,16 @@ type: software
 authors:
   - family-names: Espinoza
     given-names: Jesús F.
-    affiliation: Universidad de Sonora
+    affiliation: "Departamento de Matemáticas, Universidad de Sonora"
   - family-names: Frías-Armenta
     given-names: Martín Eduardo
-    affiliation: Universidad de Sonora
+    affiliation: "Departamento de Matemáticas, Universidad de Sonora"
   - family-names: Hernández-Amador
     given-names: Rosalía G.
-    affiliation: Universidad de Sonora
+    affiliation: "Departamento de Matemáticas, Universidad de Sonora"
   - family-names: Hernández-Hernández
     given-names: Héctor A.
-    affiliation: Universidad de Sonora
+    affiliation: "Departamento de Matemáticas, Universidad de Sonora"
 repository-code: https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong
 license:
   - MIT
@@ -29,7 +29,7 @@ keywords:
 preferred-citation:
   type: article
   title: "Counterexamples and enumeration for contractible and dismantlable graphs"
-  status: in-preparation
+  url: https://github.com/Geometric-and-Combinatorial-Structures/minimal-I-contractible-not-strong/blob/main/paper/main.pdf
   year: 2026
   authors:
     - family-names: Espinoza

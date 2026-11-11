@@ -1,6 +1,6 @@
 # Provenance of the table rows of orders 3–11
 
-The retained small-order results were not all produced by one program. This note identifies the runs supporting those rows and explains where the historical hash-only memoization is relevant. These are preserved execution records, read and cross-checked for this delivery; no census of orders 10 or 11 was rerun during manuscript preparation.
+The retained small-order results were not all produced by one program. This note identifies the runs supporting those rows and explains where the historical hash-only memoization is relevant. The finite route checks the retained records; the full route generates the graph universes again.
 
 | Rows | Recorded generator and classifier | Retained evidence |
 |---|---|---|
@@ -14,7 +14,7 @@ For order 10, the attribution of the generator version and of `src/atascadas.c` 
 
 ## Orders 3–10: scope of the hash-only branch argument
 
-The historical `src/atascadas.c` stores only a hash in its strong-membership memo. No injectivity guarantee for that hash at these orders is supplied. We do not infer collision freedom from an upper bound on the number of edges.
+The historical `src/atascadas.c` stores only a hash in its strong-membership memo. No injectivity guarantee for that hash at these orders is supplied.
 
 For the table runs of orders at most ten, the relevant code is:
 
@@ -25,19 +25,19 @@ int sv = d0 || (ac && isv_graph(A));
 int si = sv || (ac && is_graph(A));
 ```
 
-Here `ac`, `d0` and `sv` are intended to test acyclicity over F_2, 0-dismantlability and I_SV, respectively. The first three tests do not use the hash-only strong-membership memo. The I_SV recursion deletes only vertices of one fixed graph, so its exact vertex-subset key determines its state. Assume that the preliminary Euler-characteristic, homology and dismantlability tests compute their stated predicates correctly. Then 0-dismantlability implies acyclicity, and the code gives `sv` as a subset of `ac` on this input universe.
+Here `ac`, `d0` and `sv` are intended to test acyclicity over $\mathbb F_2$, 0-dismantlability and $\mathfrak I_{SV}$, respectively. The first three tests do not use the hash-only strong-membership memo. The $\mathfrak I_{SV}$ recursion deletes only vertices of one fixed graph, so its exact vertex-subset key determines its state. Assume that the preliminary Euler-characteristic, homology and dismantlability tests compute their stated predicates correctly. Then 0-dismantlability implies acyclicity, and the code gives `sv` as a subset of `ac` on this input universe.
 
 For every retained row of orders 3–10, the `acyclic` and `I_SV` counters agree. Under the preceding assumptions, no graph in those streams satisfied `ac && !sv`; C short-circuit evaluation therefore avoids `is_graph(A)` in the table branch. No bounded I-certificate search is needed either. This isolates the hash-only memoization issue. It does not independently certify the preliminary predicates, the source-to-executable attribution or the order-10 row, and it makes no assertion about other modes of the historical program.
 
 The orders 3–9 comparison supplies a second implementation on all 273,191 graphs: `cleanroom.cpp` implements its recursive membership using full graph strings as memo keys. The historical driver compared its output with the instrumented project program graph by graph, including the homology and dismantlability fields. It also required acyclicity and strong membership to agree for every graph before inferring the I count. This independence applies to these small orders only.
 
-For order 10 the retained row reports 2,343,148 acyclic graphs and the same number of I_SV graphs. Its coverage is supported by the recorded full generator stream and successful exits, subject to the source-attribution limit above. No fresh independent classification is supplied for that row.
+For order 10 the retained row reports 2,343,148 acyclic graphs and the same number of I_SV graphs. Its coverage is supported by the recorded full generator stream and successful exits, subject to the source-attribution limit above. No independent classification is supplied for that row.
 
 ## Order 11: complete-state memoization
 
-The order-11 run used `verification/atascadas_memo_exacto.c`, with one additional output statement listing the acyclic graphs outside I_SV. The exact instrumented source is retained as `verification/historical_small_orders/exact_n11_capture.c`. Its source comparison verifies that no classification logic changed.
+The order-11 run used `verification/atascadas_memo_exacto.c`, with one additional output statement listing the acyclic graphs outside $\mathfrak I_{SV}$. The exact instrumented source is retained as `verification/historical_small_orders/exact_n11_capture.c`. Its source comparison verifies that no classification logic changed.
 
-This version stores the active vertex mask and the restricted adjacency rows, and compares the complete key by `memcmp`. The hash selects a bucket; it does not decide state identity. The four residue streams contain twelve acyclic graphs outside I_SV, all strong. The retained sum is 166,978,401 acyclic and strong graphs, with 166,978,389 in I_SV and zero unresolved I cases.
+This version stores the active vertex mask and the restricted adjacency rows, and compares the complete key by `memcmp`. The hash selects a bucket; it does not decide state identity. The four residue streams contain twelve acyclic graphs outside $\mathfrak I_{SV}$, all strong. The retained sum is 166,978,401 acyclic and strong graphs, with 166,978,389 in $\mathfrak I_{SV}$ and zero unresolved I cases.
 
 `finite/provenance/final_local_checks.json` records 818 memo queries, 334 hits and zero detected hash collisions across the four runs. The guarantee needed here comes from comparing full keys, not from the observed absence of collisions or from the heuristic collision estimates also retained in that record. Other historical modes still contain hash-only deduplication; they are not used to establish this table row. The zero acyclic/non-strong remainder also means that the bounded extension search is not used for its I count.
 
@@ -53,9 +53,9 @@ In the K4-free universe the equality is structural: an I_SV vertex link is a non
 
 No independent full enumeration of the Euler-characteristic-one column is supplied for orders 10–14. Those entries retain their dependence on the producer's clique enumeration and Euler-characteristic calculation. The separate implementation at orders 3–9 and the present finite checks have their stated, smaller scopes; they do not validate that entire column in the larger universes.
 
-## What is checked now
+## Checks of the retained records
 
-The quick route compares the retained small-order counts with the manuscript's numerical table. The source identity check verifies the retained source bytes and the two instrumentation-only transformations:
+The finite route compares the retained small-order counts with the cardinality table. The source identity check verifies the retained source bytes and the two instrumentation-only transformations:
 
 ```bash
 python3 -P verification/historical_small_orders/check_source_identity.py

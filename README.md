@@ -1,71 +1,57 @@
-# Counterexamples and enumeration for contractible graphs
+# Counterexamples and enumeration for contractible and dismantlable graphs
 
-Can every I-contractible graph be reduced to a point by strong contractible deletions? The accompanying article answers this question negatively and separates integral acyclicity from acyclicity over the field with two elements. It refutes Conjectures 14 and 15 of [Dochtermann, Espinoza, Frías-Armenta and Hernández (2023)](https://doi.org/10.1016/j.disc.2023.113516) and establishes a table of cardinalities by exact graph algorithms.
+This repository contains the graphs, mathematical supplement and computations accompanying *Counterexamples and enumeration for contractible and dismantlable graphs* by Jesús F. Espinoza, Martín Eduardo Frías-Armenta, Rosalía G. Hernández-Amador and Héctor A. Hernández-Hernández.
 
-This repository contains the examples, algorithms, data and proofs that support the article, together with a mathematical supplement on finite closures and auxiliary catalogs.
+The article constructs graphs on 13 and 14 vertices that refute the minimum orders proposed in Conjectures 14 and 15 of [Dochtermann, Espinoza, Frías-Armenta and Hernández (2023)](https://doi.org/10.1016/j.disc.2023.113516). It also gives a cardinality table for contractible and dismantlable graph families, with algorithms and proofs of correctness and exhaustiveness.
 
-- [Read the article](paper/main.pdf) · [LaTeX sources](paper/) · [Article and citation information](ARTICLE.md)
-- [Read the mathematical supplement](supplement/main.pdf) · [Supplement sources](supplement/main.tex)
-- [Explore examples](docs/examples.md) · [Notebook guide](docs/reproduction.md) · [Understand the results](docs/results.md)
+- [Article](paper/main.pdf) · [LaTeX sources](paper/) · [Citation information](ARTICLE.md)
+- [Mathematical supplement](supplement/main.pdf) · [Results and notation](docs/results.md)
+- [Examples](docs/examples.md) · [Reproduction guide](docs/reproduction.md)
 
-## One edge makes the difference
+## The examples
 
-The graph $G_{14}^a$ has 14 vertices and 44 edges. It belongs to $\mathfrak I$ but not to $\mathfrak I_S$. Adding the edge $\{0,1\}$ gives a strong I-contractible graph. The reverse deletion is admissible and leaves the strong class: this is the counterexample to Conjecture 15.
+A graph is **I-contractible** if it can be transformed into one vertex by vertex and edge additions and deletions whose tested neighbourhoods are themselves I-contractible. **Strong I-contractibility** requires a reduction by deletions alone, with the same condition imposed recursively on the neighbourhoods used. Write $\mathfrak I$ and $\mathfrak I_S$ for these classes. We call members of $\mathfrak I_S$ **strong**, and an operation **admissible** when its tested neighbourhood is strong. Homology of a graph means homology of its clique complex, whose simplices are the cliques. A graph lies in $\mathfrak I$ exactly when its clique complex is contractible; a graph in $\mathfrak I_S$ has a collapsible clique complex. [Results and notation](docs/results.md) gives the definitions and references.
 
-Export the pair, preserving the labels in the article:
+The graph $G_{13}$ has vanishing reduced homology over $\mathbb F_2$ and first integral homology $\mathbb Z/3$. Thus it is acyclic over $\mathbb F_2$ but is not I-contractible. Adding $\{4,7\}$, and then $\{5,6\}$, gives two variants with the same homology.
+
+The graph $G_{14}^a$, with 14 vertices and 44 edges, belongs to $\mathfrak I\setminus\mathfrak I_S$. Adding the edge $\{0,1\}$ gives a strong I-contractible graph. The endpoints have a strong common neighbourhood, so deleting this edge is admissible and recovers $G_{14}^a$.
+
+Conjecture 14 proposed minimum order 15 both for $\mathbb F_2$-acyclic non-strong graphs and for members of $\mathfrak I\setminus\mathfrak I_S$. Conjecture 15 proposed minimum order 15 for a strong graph with an admissible edge whose deletion leaves the strong class. The three constructions above refute these proposed bounds, respectively.
+
+The [examples guide](docs/examples.md) gives the labelled graphs, their certificates and the variants of $G_{13}$. To export the 14-vertex example and its extension, run from the repository root:
 
 ```bash
 python3 generate.py --graph G14a --format json
 python3 generate.py --graph G14a --extension --format json
 ```
 
-The 13-vertex witness `G13` instead has first integral homology $\mathbb Z/3$ and vanishing reduced homology over $\mathbb F_2$. Its disc construction explains the torsion. The [examples guide](docs/examples.md) connects each construction to its certificate and proof.
+## The cardinality table
 
-## Reproduce the finite results
+The [table](data/cardinalities.csv) counts connected graphs up to isomorphism. Rows **3–13 include all connected graphs**; **every column of row 14 is restricted to K4-free graphs**. Separate columns record acyclicity over $\mathbb Z$ and over $\mathbb F_2$.
 
-Clone the repository, enter its directory, and run:
+The classification gives minimum orders 13 for $\mathbb F_2$-acyclic graphs outside $\mathfrak I_S$ and 14 for graphs in $\mathfrak I\setminus\mathfrak I_S$. There are exactly eight K4-free graphs of order 14 in the latter class, with minimum 44 edges. Integral acyclicity and I-contractibility coincide within the universes of the table. [Results and notation](docs/results.md) explains these deductions and the auxiliary finite catalogs.
+
+## Reproduce the calculations
+
+With Python 3.11 or later on a POSIX system, run:
 
 ```bash
 python3 reproduce.py
 ```
 
-On a POSIX system (tested on Linux), Python 3.11 or later and its standard library are sufficient. The command creates a new directory under `results/` containing `report.txt`, `report.json` and the check outputs. It checks the witnesses, reduction traces, finite closures, unfoldings, homology, table-source correspondence, notebook and input hashes. A failed or incomplete required check returns a nonzero exit code.
+This command uses the Python standard library. It reconstructs the finite examples and certificates, checks homology and reductions, and compares the table with its recorded sources. It writes a report in a new directory under `results/`. The [reproduction guide](docs/reproduction.md) explains the outputs and provides an interactive notebook.
 
-To include a comparison of the current C classifier with direct mathematical recurrences on every labelled graph of order at most five:
+The finite checks use the supplied graphs and records. To generate the complete graph universes and recalculate the table, follow the [full enumeration guide](docs/full-reproduction.md). That route has substantially larger computing requirements. The [verification map](docs/verification-scope.md) identifies the mathematical arguments, finite checks and enumeration records supporting each result.
 
-```bash
-python3 reproduce.py --extended --cc gcc
-```
+## Data and algorithms
 
-This additional check requires a C11 compiler. Neither command repeats the large census. [Reproduction](docs/reproduction.md) describes both routes, their requirements and expected outputs. [Full reproduction](docs/full-reproduction.md) gives the generation, classification and aggregation procedure for the table, with its substantially larger resource requirements.
-
-## What is counted
-
-All entries count connected graphs up to isomorphism. Rows **3–13 are unrestricted**. **Every column of row 14 counts only K4-free graphs**. The table separates acyclicity over $\mathbb Z$ from acyclicity over $\mathbb F_2$.
-
-| Result | Scope |
+| Material | Location |
 |---|---|
-| Minimum order for $\mathbb F_2$-acyclic graphs outside $\mathfrak I_S$: 13 | All connected graphs |
-| Minimum order for $\mathfrak I\setminus\mathfrak I_S$: 14 | All graphs |
-| Eight classes in $\mathfrak I\setminus\mathfrak I_S$, with minimum 44 edges | K4-free graphs of order 14 |
-| Equality of integral acyclicity and I-contractibility | Only the classified universes above |
-| 2,271 non-strong classes from the 51 stuck seeds | The stated admissible-edge closures |
+| Cardinalities, with universes and coefficient columns | [`data/cardinalities.csv`](data/cardinalities.csv) |
+| Disc constructions, neighbourhoods and reduction sequences | [`finite/certificates/`](finite/certificates/) |
+| Seed graphs, the eight K4-free examples and auxiliary catalogs | [`finite/data/`](finite/data/) |
+| Enumeration totals and graphs requiring a separate homology calculation | [`data/`](data/) |
+| Enumeration and classification programs | [`v2/`](v2/) |
+| Figure data and generators | [`tools/figures/`](tools/figures/) |
 
-The complete large enumerations are represented by selected historical aggregate records and their finite exceptional sets. The finite verifiers use code separate from the census classifier; they do not constitute an independent recount of its entire input universes. [Verification scope](docs/verification-scope.md) connects each assertion to its evidence and states the limits of the retained production records.
-
-## Find the material
-
-| Location | Contents |
-|---|---|
-| [`data/cardinalities.csv`](data/cardinalities.csv) | Table with universes and coefficient columns |
-| [`finite/certificates/`](finite/certificates/) | Witnesses, disc presentations, links and reductions |
-| [`finite/data/`](finite/data/) | The 51 seeds, eight K4-free positive exceptions, 20 strictly 2-dismantlable graphs, and closure catalogs |
-| [`data/census/`](data/census/) | Selected aggregates, all residuals and their homology adjudications |
-| [`v2/`](v2/) | Current complete-state classifier and partition driver |
-| [`verification/`](verification/) | Bounded implementation checks and historical source comparisons |
-| [`tools/figures/`](tools/figures/) | Exact witness data, TikZ generators and drawing verification |
-| [`docs/provenance/`](docs/provenance/) | Selection and migration records |
-
-[Review and verification](docs/review.md) records the adversarial review scope and local validation.
-
-The paper is a complete draft for author review. It has no assigned arXiv identifier or publication DOI. The [citation file](CITATION.cff) records the authors and manuscript title. Original code is under the [MIT License](LICENSE); original mathematical notes, data and figures are under [CC BY 4.0](LICENSE-DATA). Third-party works retain their own licenses and attribution.
+See [citation information](ARTICLE.md) when using the results, code or data. Original code is under the [MIT License](LICENSE); the article, supplement, original mathematical notes, data and figures are under [CC BY 4.0](LICENSE-DATA). Third-party material retains its attribution and licence.
