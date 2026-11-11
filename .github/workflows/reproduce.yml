@@ -38,12 +38,16 @@ jobs:
           fetch-depth: 0
       - name: Install TeX dependencies
         run: |
-          # Avoid the runner's regional mirror, which can stall large TeX downloads.
-          if test -f /etc/apt/apt-mirrors.txt; then
-            printf '%s\n' 'https://archive.ubuntu.com/ubuntu' | sudo tee /etc/apt/apt-mirrors.txt > /dev/null
-          fi
-          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
-          sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended texlive-science
+          # Use independent mirror hosts; APT still checks Ubuntu's archive signatures.
+          test -f /etc/apt/apt-mirrors.txt && \
+            grep -Fq 'mirror+file:/etc/apt/apt-mirrors.txt' /etc/apt/sources.list.d/ubuntu.sources \
+            || { echo 'Expected Ubuntu mirror-list configuration is absent' >&2; exit 1; }
+          printf '%s\tpriority:%s\n' \
+            'https://mirrors.edge.kernel.org/ubuntu' 1 \
+            'https://archive.ubuntu.com/ubuntu' 2 \
+            | sudo tee /etc/apt/apt-mirrors.txt > /dev/null
+          sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15 -o APT::Update::Error-Mode=any update
+          sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=15 -o Acquire::https::Timeout=15 install -y --no-install-recommends latexmk texlive-latex-extra texlive-fonts-recommended texlive-science
       - name: Compile both mathematical documents in temporary copies
         run: |
           python3 tools/build_paper.py --output build/paper
