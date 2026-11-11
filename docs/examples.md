@@ -12,7 +12,7 @@ The examples distinguish acyclicity over $\mathbb F_2$, integral acyclicity and 
 
 All five graphs are non-strong. For each of the last four, the displayed edge has a strong common neighbourhood, and adding it produces a strong graph. Reversing the addition proves I-contractibility of the original graph. The article gives the reductions for the order-14 examples; the supplement relates `D15` to the example in [Dochtermann et al. (2023)](https://doi.org/10.1016/j.disc.2023.113516).
 
-`G13` has a different role: its clique complex is obtained from a disc by a boundary attachment of degree three. It is acyclic over $\mathbb F_2$ but has nonzero integral first homology, so it is not I-contractible. Its two variants are obtained by adding $\{4,7\}$ and then $\{5,6\}$. The admissible additions and their common neighbourhoods are recorded in [`G13_successors.json`](../finite/certificates/G13_successors.json).
+`G13` has a different role: its clique complex is obtained from a disc by a boundary attachment of degree three. It is acyclic over $\mathbb F_2$ but has nonzero integral first homology, so it is not I-contractible. Its two variants are obtained by adding $\lbrace 4,7\rbrace$ and then $\lbrace 5,6\rbrace$. The admissible additions and their common neighbourhoods are recorded in [`G13_successors.json`](../finite/certificates/G13_successors.json).
 
 ## Export a labelled graph
 

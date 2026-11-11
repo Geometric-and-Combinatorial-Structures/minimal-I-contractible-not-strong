@@ -30,7 +30,7 @@ A **stuck graph** has at least two vertices, is $\mathbb F_2$-acyclic and admits
 
 ## Counterexamples and minimum orders
 
-The graph `G13` and its two variants, obtained by adding $\{4,7\}$ and then $\{5,6\}$, have first integral homology $\mathbb Z/3$ and vanishing reduced homology over $\mathbb F_2$. They are the only $\mathbb F_2$-acyclic graphs outside $\mathfrak I_S$ through order 13. Their nonzero integral homology excludes them from $\mathfrak I$.
+The graph `G13` and its two variants, obtained by adding $\lbrace 4,7\rbrace$ and then $\lbrace 5,6\rbrace$, have first integral homology $\mathbb Z/3$ and vanishing reduced homology over $\mathbb F_2$. They are the only $\mathbb F_2$-acyclic graphs outside $\mathfrak I_S$ through order 13. Their nonzero integral homology excludes them from $\mathfrak I$.
 
 The graphs `G14a`, `G14b` and `G14c` belong to $\mathfrak I\setminus\mathfrak I_S$. Each has an admissible one-edge extension in $\mathfrak I_S$. The [examples guide](examples.md) describes their certificates. These constructions refute the two assertions of Conjecture 14 and the minimum proposed in Conjecture 15 of [Dochtermann et al. (2023)](https://doi.org/10.1016/j.disc.2023.113516).
 
